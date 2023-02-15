@@ -61,7 +61,7 @@
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="<?php echo URL::to('/'); ?>/public/assets/images/logo-light-text.png" alt="homepage" class="dark-logo" />
+                            <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/logo-light-text.png" alt="homepage" class="dark-logo" /> -->
 
                         </span>
                     </a>
@@ -109,7 +109,8 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/1.jpg" alt="user" class="profile-pic me-2">Markarn Doe
+                                <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/1.jpg" alt="user" class="profile-pic me-2">  -->
+                                Admin Name
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
@@ -139,8 +140,8 @@
                         </li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/table" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
-                                    class="hide-menu">Table</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
+                                    class="hide-menu">Supervisor</span></a></li>
+                        <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i
                                     class="mdi me-2 mdi-emoticon"></i><span class="hide-menu">Icon</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/google_map" class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -153,12 +154,18 @@
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/error" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-help-circle"></i><span
                                     class="hide-menu">Error 404</span></a>
-                        </li>
-                        <li class="text-center p-20 upgrade-btn">
+                        </li> -->
+
+                        <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/user_list" class="sidebar-link waves-effect waves-dark sidebar-link"
+                                 aria-expanded="false"><i class="mdi me-2 mdi-help-circle"></i><span
+                                    class="hide-menu">Supervisor</span></a>
+                        </li> -->
+
+                        <!-- <li class="text-center p-20 upgrade-btn">
                             <a href="https://www.wrappixel.com/templates/materialpro/"
                                 class="btn btn-warning text-white mt-4" target="_blank">Upgrade to
                                 Pro</a>
-                        </li>
+                        </li> -->
                     </ul>
 
                 </nav>
@@ -209,11 +216,10 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
-                        <div class="text-end upgrade-btn">
-                            <a href="https://www.wrappixel.com/templates/materialpro/"
-                                class="btn btn-danger d-none d-md-inline-block text-white" target="_blank">Upgrade to
-                                Pro</a>
-                        </div>
+                        <!-- <div class="text-end">
+                            <a href="<?php echo URL::to('/'); ?>/add_user"
+                                class="btn btn-danger d-none d-md-inline-block text-white" target="">Add user</a>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -230,7 +236,7 @@
                 <!-- Row -->
                 <div class="row">
                     <!-- Column -->
-                    <div class="col-lg-4 col-xlg-3 col-md-5">
+                    <!-- <div class="col-lg-4 col-xlg-3 col-md-5">
                         <div class="card">
                             <div class="card-body profile-card">
                                 <center class="mt-4"> <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/5.jpg"
@@ -252,10 +258,10 @@
                                 </center>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Column -->
                     <!-- Column -->
-                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                    <!-- <div class="col-lg-8 col-xlg-9 col-md-7">
                         <div class="card">
                             <div class="card-body">
                                 <form class="form-horizontal form-material mx-2">
@@ -315,7 +321,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Column -->
                 </div>
                 <!-- Row -->

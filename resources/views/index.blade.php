@@ -61,7 +61,7 @@
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="<?php echo URL::to('/'); ?>/public/assets/images/logo-light-text.png" alt="homepage" class="dark-logo" />
+                            <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/logo-light-text.png" alt="homepage" class="dark-logo" /> -->
 
                         </span>
                     </a>
@@ -109,7 +109,8 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2">Markarn Doe
+                                <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
+                                Admin Name
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
@@ -139,8 +140,8 @@
                         </li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/table" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
-                                    class="hide-menu">Table</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
+                                    class="hide-menu">Supervisor</span></a></li>
+                        <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i
                                     class="mdi me-2 mdi-emoticon"></i><span class="hide-menu">Icon</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/google_map" class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -153,18 +154,18 @@
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/error" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-help-circle"></i><span
                                     class="hide-menu">Error 404</span></a>
-                        </li>
+                        </li> -->
 
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/user_list" class="sidebar-link waves-effect waves-dark sidebar-link"
+                        <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/user_list" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-help-circle"></i><span
                                     class="hide-menu">Supervisor</span></a>
-                        </li>
+                        </li> -->
 
-                        <li class="text-center p-20 upgrade-btn">
+                        <!-- <li class="text-center p-20 upgrade-btn">
                             <a href="https://www.wrappixel.com/templates/materialpro/"
                                 class="btn btn-warning text-white mt-4" target="_blank">Upgrade to
                                 Pro</a>
-                        </li>
+                        </li> -->
                     </ul>
 
                 </nav>
@@ -215,11 +216,10 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
-                        <div class="text-end upgrade-btn">
-                            <a href="https://www.wrappixel.com/templates/materialpro/"
-                                class="btn btn-danger d-none d-md-inline-block text-white" target="_blank">Upgrade to
-                                Pro</a>
-                        </div>
+                        <!-- <div class="text-end upgrade-btn">
+                            <a href="<?php echo URL::to('/'); ?>/add_user"
+                                class="btn btn-danger d-none d-md-inline-block text-white" target="">Add user</a>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -229,13 +229,13 @@
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid">
+            <!-- <div class="container-fluid"> -->
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
                 <!-- ============================================================== -->
-                <div class="row">
+                <!-- <div class="row"> -->
                     <!-- Column -->
-                    <div class="col-lg-8">
+                    <!-- <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
@@ -298,16 +298,16 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div> -->
+                <!-- </div> -->
                 <!-- ============================================================== -->
                 <!-- Sales chart -->
                 <!-- ============================================================== -->
-                <div class="row">
+                <!-- <div class="row"> -->
                     <!-- Column -->
-                    <div class="col-lg-4 col-xlg-3">
+                    <!-- <div class="col-lg-4 col-xlg-3"> -->
                         <!-- Column -->
-                        <div class="card">
+                        <!-- <div class="card">
                             <img class="card-img-top" src="<?php echo URL::to('/'); ?>/public/assets/images/background/profile-bg.jpg"
                                 alt="Card image cap">
                             <div class="card-body little-profile text-center">
@@ -328,9 +328,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- Column -->
-                        <div class="card">
+                        <!-- <div class="card">
                             <div class="card-body bg-info">
                                 <h4 class="text-white card-title">My Contacts</h4>
                                 <h6 class="card-subtitle text-white mb-0 op-5">Checkout my contacts here</h6>
@@ -342,7 +342,7 @@
                                     </h2>
                                     <div class="message-widget contact-widget">
                                         <!-- Message -->
-                                        <a href="#" class="d-flex align-items-center">
+                                        <!-- <a href="#" class="d-flex align-items-center">
                                             <div class="user-img mb-0"> <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/1.jpg"
                                                     alt="user" class="img-circle"> <span
                                                     class="profile-status online pull-right"></span> </div>
@@ -350,9 +350,9 @@
                                                 <h5 class="mb-0">Pavan kumar</h5> <span
                                                     class="mail-desc">info@wrappixel.com</span>
                                             </div>
-                                        </a>
+                                        </a> -->
                                         <!-- Message -->
-                                        <a href="#" class="d-flex align-items-center">
+                                        <!-- <a href="#" class="d-flex align-items-center">
                                             <div class="user-img mb-0"> <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/2.jpg"
                                                     alt="user" class="img-circle"> <span
                                                     class="profile-status busy pull-right"></span> </div>
@@ -360,18 +360,18 @@
                                                 <h5 class="mb-0">Sonu Nigam</h5> <span
                                                     class="mail-desc">pamela1987@gmail.com</span>
                                             </div>
-                                        </a>
+                                        </a> -->
                                         <!-- Message -->
-                                        <a href="#" class="d-flex align-items-center">
+                                        <!-- <a href="#" class="d-flex align-items-center">
                                             <div class="user-img mb-0"> <span class="round">A</span> <span
                                                     class="profile-status away pull-right"></span> </div>
                                             <div class="mail-contnet">
                                                 <h5 class="mb-0">Arijit Sinh</h5> <span
                                                     class="mail-desc">cruise1298.fiplip@gmail.com</span>
                                             </div>
-                                        </a>
+                                        </a> -->
                                         <!-- Message -->
-                                        <a href="#" class="d-flex align-items-center">
+                                        <!-- <a href="#" class="d-flex align-items-center">
                                             <div class="user-img mb-0"> <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/4.jpg"
                                                     alt="user" class="img-circle"> <span
                                                     class="profile-status offline pull-right"></span> </div>
@@ -382,13 +382,13 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-xlg-9">
-                        <div class="card">
+                            </div> -->
+                        <!-- </div> --> 
+                    <!-- </div> -->
+                    <!-- <div class="col-lg-8 col-xlg-9">
+                        <div class="card"> -->
                             <!-- Nav tabs -->
-                            <ul class="nav nav-tabs profile-tab" role="tablist">
+                            <!-- <ul class="nav nav-tabs profile-tab" role="tablist">
                                 <li class="nav-item"> <a class="nav-link active" data-bs-toggle="tab" href="#home"
                                         role="tab">Activity</a>
                                 </li>
@@ -397,9 +397,9 @@
                                 <li class="nav-item"> <a class="nav-link" data-bs-toggle="tab" href="#settings"
                                         role="tab">Settings</a>
                                 </li>
-                            </ul>
+                            </ul> -->
                             <!-- Tab panes -->
-                            <div class="tab-content">
+                            <!-- <div class="tab-content">
                                 <div class="tab-pane active" id="home" role="tabpanel">
                                     <div class="card-body">
                                         <div class="profiletimeline border-start-0">
@@ -498,7 +498,7 @@
                                     </div>
                                 </div>
                                 <!--second tab-->
-                                <div class="tab-pane" id="profile" role="tabpanel">
+                                <!-- <div class="tab-pane" id="profile" role="tabpanel">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
@@ -558,8 +558,8 @@
                                                 <span class="sr-only">50% Complete</span> </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="tab-pane" id="settings" role="tabpanel">
+                                </div> -->
+                                <!-- <div class="tab-pane" id="settings" role="tabpanel">
                                     <div class="card-body">
                                         <form class="form-horizontal form-material mx-2">
                                             <div class="form-group">
@@ -617,17 +617,17 @@
                                             </div>
                                         </form>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                </div> -->
+                            <!-- </div> 
+                        </div> -->
+                    <!-- </div>
+                </div> -->
                 <!-- ============================================================== -->
                 <!-- Table -->
                 <!-- ============================================================== -->
 
                 
-            </div>
+            <!-- </div> -->
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->

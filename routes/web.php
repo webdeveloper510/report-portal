@@ -29,4 +29,5 @@ Route::get('google_map', [AdminController::class, 'google_map']);
 Route::get('blank', [AdminController::class, 'blank']);
 Route::get('error', [AdminController::class, 'error']);
 Route::get('user_list', [AdminController::class, 'user_list']);
-
+Route::post('add_user', [AdminController::class, 'add_user'])->name('add.user');
+Route::get('table', [AdminController::class, 'get_user']);
