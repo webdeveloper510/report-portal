@@ -217,14 +217,14 @@
                             @csrf
                             <div class="text-end">
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
-                                    Add User
+                                    Add Supervisor
                                 </button>
                                 <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="Report_user">Add User
-                                                    form</h5>
+                                                <h5 class="modal-title" id="Report_user">Add Supervisor
+                                                    </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>                        
                                                 <div class="modal-body">                                                  
@@ -251,7 +251,7 @@
                                                             <div class="mb-3 row">
                                                                 <label for="email" class="col-sm-2 col-form-label">Phone</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="integer" class="form-control" name="phone">
+                                                                    <input type="tel" class="form-control" name="phone">
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
@@ -327,8 +327,8 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">User Table</h4>
-                            <h6 class="card-subtitle">Add class <code>.table</code></h6>
+                            <h4 class="card-title">Supervisor Table</h4>
+                            <!-- <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
                             <div class="table-responsive">
                                 <table class="table user-table">
                                     <thead>
@@ -351,9 +351,9 @@
                                             <td>{{$user['phone']}}</td>
                                             <td>{{$user['address']}}</td>
                                             <td>{{$user['status']}}</td>
-                                            <td >
-                                                <i class="fa fa-pencil"  aria-hidden="true"></i>
-                                            <i class=" fa fa-trash-o" aria-hidden="true"></i>
+                                            <td>
+                                               <a href="{{ 'edit_supervisor/' . $user['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
+                                               <a href="{{ 'delete_supervisor/' . $user['id'] }}"><i class=" fa fa-trash-o" aria-hidden="true"></i></a>
                                            </td>   
                                         </tr>
                                        @endforeach

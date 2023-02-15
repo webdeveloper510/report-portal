@@ -23,6 +23,17 @@
     <link href="<?php echo URL::to('/'); ?>/public/assets/plugins/c3-master/c3.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?php echo URL::to('/'); ?>/public/css/style.min.css" rel="stylesheet">
+<style>
+.card.text-center {
+    background:coral;
+}
+.card-1.text-center {
+    background:lightcoral;
+}
+.card-2.text-center {
+    background:burlywood;
+}
+</style>
 </head>
 
 <body>
@@ -108,7 +119,7 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <a href="<?php echo URL::to('/'); ?>/admin_login" class="nav-link dropdown-toggle text-muted waves-effect waves-dark">
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
                                 Admin Name
                             </a>
@@ -141,7 +152,7 @@
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/table" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
                                     class="hide-menu">Supervisor</span></a></li>
-                        <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i
                                     class="mdi me-2 mdi-emoticon"></i><span class="hide-menu">Icon</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/google_map" class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -154,7 +165,7 @@
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/error" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-help-circle"></i><span
                                     class="hide-menu">Error 404</span></a>
-                        </li> -->
+                        </li>
 
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/user_list" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-help-circle"></i><span
@@ -203,7 +214,15 @@
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="page-breadcrumb">
+
                 <div class="row align-items-center">
+                @if (\Session::has('success'))
+                        <div class="alert alert-danger">
+                            <ul>
+                               <li>{!! \Session::get('success') !!}</li>
+                            </ul>
+                        </div>
+                @endif
                     <div class="col-md-6 col-8 align-self-center">
                         <h3 class="page-title mb-0 p-0">Dashboard</h3>
                         <div class="d-flex align-items-center">
@@ -221,8 +240,40 @@
                                 class="btn btn-danger d-none d-md-inline-block text-white" target="">Add user</a>
                         </div> -->
                     </div>
-                </div>
+                </div>  
+                <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3">
+                            <div class="card text-center" style="width: 18rem;">
+                                <div class="card-body">
+                                <h5 class="card-title">Total Reports</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="col-md-3">
+                            <div class="card-1 text-center" style="width: 18rem;">
+                                <div class="card-body">
+                                <h5 class="card-title">Upcoming Reports</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="col-md-3">
+                            <div class="card-2 text-center" style="width: 18rem;">
+                                <div class="card-body">
+                                <h5 class="card-title">All Supervisor</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>          
             </div>
+            
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
