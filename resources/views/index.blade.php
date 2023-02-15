@@ -149,7 +149,7 @@
                                  aria-expanded="false">
                                 <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">Profile</span></a>
                         </li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/table" class="sidebar-link waves-effect waves-dark sidebar-link"
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
                                     class="hide-menu">Supervisor</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -216,13 +216,7 @@
             <div class="page-breadcrumb">
 
                 <div class="row align-items-center">
-                @if (\Session::has('success'))
-                        <div class="alert alert-danger">
-                            <ul>
-                               <li>{!! \Session::get('success') !!}</li>
-                            </ul>
-                        </div>
-                @endif
+                
                     <div class="col-md-6 col-8 align-self-center">
                         <h3 class="page-title mb-0 p-0">Dashboard</h3>
                         <div class="d-flex align-items-center">
@@ -721,6 +715,11 @@
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/pages/dashboards/dashboard1.js"></script>
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
+    
+
 </body>
+
+
+            
 
 </html>

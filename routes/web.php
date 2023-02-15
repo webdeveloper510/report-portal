@@ -30,7 +30,7 @@ Route::get('blank', [AdminController::class, 'blank']);
 Route::get('error', [AdminController::class, 'error']);
 Route::get('user_list', [AdminController::class, 'user_list']);
 Route::post('add_user', [AdminController::class, 'add_user'])->name('add.user');
-Route::get('table', [AdminController::class, 'get_user']);
+Route::get('users', [AdminController::class, 'get_user']);
 Route::get('/edit_supervisor/{id}', [AdminController::class, 'ShowData']);
 Route::post('/update', [AdminController::class, 'update']);
 Route::get('/delete_supervisor/{id}', [AdminController::class, 'delete_supervisor']);

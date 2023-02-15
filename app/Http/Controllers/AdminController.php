@@ -54,16 +54,16 @@ class AdminController extends Controller
         $data['phone'] = $request->phone;
         $data['address'] = $request->address;
         $data['status'] = $request->status;
-        $data->save();
-        return redirect('table')->with('success', 'Supervisor created successfully !');
+        if($data->save()){
+        return redirect('users')->with('message', 'Supervisor created successfully !');
     }
-
+    }
     public function get_user()
     {
         $users = User::all();
         // echo "<pre>";
         // print_r($users);die;
-        return view('table', compact('users'));
+        return view('users', compact('users'));
     }
 
     function ShowData($id)
@@ -85,7 +85,7 @@ class AdminController extends Controller
         $data->address = $request->address;
         $data->status = $request->status;
         $data->save();
-        return redirect('table')->with('success', 'Updated Supervisor Successfully!');
+        return redirect('users')->with('message', 'Updated Supervisor Successfully!');
     }
 
     public function delete_supervisor($id)
@@ -94,7 +94,7 @@ class AdminController extends Controller
         // echo "<pre>";
         // print_r($data);die;
         $data->delete();
-        return redirect('table')->with('success', 'Deleted Supervisor Successfully!');
+        return redirect('users')->with('message', 'Deleted Supervisor Successfully!');
     }
 
 
