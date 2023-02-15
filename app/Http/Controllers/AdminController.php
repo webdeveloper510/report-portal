@@ -108,9 +108,9 @@ class AdminController extends Controller
     {
         $login = User::where(['email' => $request['email'], 'password' => $request['password']])->first();
         if ($login) {
-            return redirect('index')->with('success', 'Login successfully !!');
+            return redirect('index')->with('message', 'Login successfully !!');
         } else {
-            return redirect('admin_login')->with('success', 'Your email or password is incorrect please try again ! ');
+            return redirect('admin_login')->with('message', 'Your email or password is incorrect please try again ! ');
         }
     }
 }

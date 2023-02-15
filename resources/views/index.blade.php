@@ -23,6 +23,10 @@
     <link href="<?php echo URL::to('/'); ?>/public/assets/plugins/c3-master/c3.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?php echo URL::to('/'); ?>/public/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
 <style>
 .card.text-center {
     background:coral;
@@ -241,7 +245,7 @@
                             <div class="card text-center" style="width: 18rem;">
                                 <div class="card-body">
                                 <h5 class="card-title">Total Reports</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <p class="card-text">1</p>
                                 <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div>
@@ -250,7 +254,7 @@
                             <div class="card-1 text-center" style="width: 18rem;">
                                 <div class="card-body">
                                 <h5 class="card-title">Upcoming Reports</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <p class="card-text">2</p>
                                 <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div>
@@ -259,7 +263,7 @@
                             <div class="card-2 text-center" style="width: 18rem;">
                                 <div class="card-body">
                                 <h5 class="card-title">All Supervisor</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <p class="card-text">3</p>
                                 <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div>
@@ -715,8 +719,27 @@
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/pages/dashboards/dashboard1.js"></script>
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+  @if(Session::has('message'))
+  toastr.options =
+  {
+    "closeButton" : true,
+    "progressBar" : true
+  }
+        toastr.success("{{ session('message') }}");
+  @endif
 
+  @if(Session::has('error'))
+  toastr.options =
+  {
+    "closeButton" : true,
+    "progressBar" : true
+  }
+        toastr.error("{{ session('error') }}");
+  @endif
+</script>
 </body>
 
 
