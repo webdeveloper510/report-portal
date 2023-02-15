@@ -247,7 +247,7 @@
                             <div class="card text-center" style="width: 18rem;">
                                 <div class="card-body">
                                 <h5 class="card-title">Total Reports</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <p class="card-text">1</p>
                                 <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div>
@@ -256,7 +256,7 @@
                             <div class="card-1 text-center" style="width: 18rem;">
                                 <div class="card-body">
                                 <h5 class="card-title">Upcoming Reports</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <p class="card-text">2</p>
                                 <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div>
@@ -265,7 +265,7 @@
                             <div class="card-2 text-center" style="width: 18rem;">
                                 <div class="card-body">
                                 <h5 class="card-title">All Supervisor</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <p class="card-text">3</p>
                                 <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div>
