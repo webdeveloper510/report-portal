@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::view('index','index');
 
 Route::get('profile_page', [AdminController::class, 'profile_page']);
-Route::get('table', [AdminController::class, 'basic_table']);
+Route::get('users', [AdminController::class, 'basic_table']);
 Route::get('profile_page', [AdminController::class, 'profile_page']);
 Route::get('icon_materiale', [AdminController::class, 'icon_materiale']);
 Route::get('google_map', [AdminController::class, 'google_map']);
@@ -30,7 +30,7 @@ Route::get('blank', [AdminController::class, 'blank']);
 Route::get('error', [AdminController::class, 'error']);
 Route::get('user_list', [AdminController::class, 'user_list']);
 Route::post('add_user', [AdminController::class, 'add_user'])->name('add.user');
-Route::get('table', [AdminController::class, 'get_user']);
+Route::get('users', [AdminController::class, 'get_user']);
 Route::get('/edit_supervisor/{id}', [AdminController::class, 'ShowData']);
 Route::post('/update', [AdminController::class, 'update']);
 Route::get('/delete_supervisor/{id}', [AdminController::class, 'delete_supervisor']);

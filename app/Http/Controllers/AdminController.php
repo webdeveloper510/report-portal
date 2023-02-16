@@ -15,7 +15,7 @@ class AdminController extends Controller
 
     public function basic_table()
     {
-        return view('table');
+        return view('users');
     }
 
     public function icon_materiale()
@@ -55,7 +55,7 @@ class AdminController extends Controller
         $data['address'] = $request->address;
         $data['status'] = $request->status;
         $data->save();
-        return redirect('table')->with('success', 'Supervisor created successfully !');
+        return redirect('users')->with('message', 'Supervisor created successfully !');
     }
 
     public function get_user()
@@ -63,7 +63,7 @@ class AdminController extends Controller
         $users = User::all();
         // echo "<pre>";
         // print_r($users);die;
-        return view('table', compact('users'));
+        return view('users', compact('users'));
     }
 
     function ShowData($id)
@@ -85,7 +85,7 @@ class AdminController extends Controller
         $data->address = $request->address;
         $data->status = $request->status;
         $data->save();
-        return redirect('table')->with('success', 'Updated Supervisor Successfully!');
+        return redirect('users')->with('message', 'Updated Supervisor Successfully!');
     }
 
     public function delete_supervisor($id)
@@ -94,7 +94,7 @@ class AdminController extends Controller
         // echo "<pre>";
         // print_r($data);die;
         $data->delete();
-        return redirect('table')->with('success', 'Deleted Supervisor Successfully!');
+        return redirect('users')->with('message', 'Deleted Supervisor Successfully!');
     }
 
 
@@ -106,11 +106,15 @@ class AdminController extends Controller
 
     public function login(Request $request)
     {
+        
         $login = User::where(['email' => $request['email'], 'password' => $request['password']])->first();
+        // echo "<pre>";       
+        $request->session()->put('data' , $login);
+        
         if ($login) {
-            return redirect('index')->with('success', 'Login successfully !!');
+            return redirect('index')->with('message', 'Login successfully !!');
         } else {
-            return redirect('admin_login')->with('success', 'Your email or password is incorrect please try again ! ');
+            return redirect('admin_login')->with('message', 'Your email or password is incorrect please try again ! ');
         }
     }
 }
