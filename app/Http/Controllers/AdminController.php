@@ -106,7 +106,11 @@ class AdminController extends Controller
 
     public function login(Request $request)
     {
+        
         $login = User::where(['email' => $request['email'], 'password' => $request['password']])->first();
+        // echo "<pre>";       
+        $request->session()->put('name',$login['name']);
+        
         if ($login) {
             return redirect('index')->with('message', 'Login successfully !!');
         } else {

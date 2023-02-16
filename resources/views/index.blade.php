@@ -28,14 +28,18 @@
      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
      alpha/css/bootstrap.css" rel="stylesheet">
 <style>
-.card.text-center {
-    background:coral;
-}
 .card-1.text-center {
-    background:lightcoral;
+    background:lightcoral !important;
+    margin: 28px !important;
 }
 .card-2.text-center {
-    background:burlywood;
+    background:coral !important;
+    margin: 28px !important;
+  
+}
+.card-3.text-center {
+    background:burlywood !important;
+    margin: 28px !important;
 }
 </style>
 </head>
@@ -123,10 +127,11 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                          <a href="<?php echo URL::to('/'); ?>/admin_login" class="nav-link dropdown-toggle text-muted waves-effect waves-dark">
+                          <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark">
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                Admin Name
+                                 {{session('name')}} 
                             </a>
+                            <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark ">Logout</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
@@ -239,37 +244,37 @@
                         </div> -->
                     </div>
                 </div>  
-                <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-3">
-                            <div class="card text-center" style="width: 18rem;">
+                <div class="row ">
+                        <!-- <div class="col-md-2"></div> -->
+                        <!-- <div class="col-sm-4"> -->
+                            <div class="col-sm-4 card-1 text-center" style="width: 18rem;">
                                 <div class="card-body">
-                                <h5 class="card-title">Total Reports</h5>
-                                <p class="card-text">1</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <h5 class="card-title">Total Reports</h5>
+                                    <p class="card-text">1</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
-                            </div>
-                        </div>
-                        <div  class="col-md-3">
-                            <div class="card-1 text-center" style="width: 18rem;">
+                            </div
+                        <!-- </div> 
+                        <!-- <div  class="col-sm-4"> -->
+                            <div class="col-sm-4  card-2 text-center" style="width: 18rem;">
                                 <div class="card-body">
-                                <h5 class="card-title">Upcoming Reports</h5>
-                                <p class="card-text">2</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <h5 class="card-title">Upcomming Reports</h5>
+                                    <p class="card-text">2</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
-                            </div>
-                        </div>
-                        <div  class="col-md-3">
-                            <div class="card-2 text-center" style="width: 18rem;">
+                            </div
+                        <!-- </div> 
+                        <!-- <div  class="col-sm-4"> -->
+                            <div class="col-sm-3 card-3 text-center" style="width: 18rem;">
                                 <div class="card-body">
-                                <h5 class="card-title">All Supervisor</h5>
-                                <p class="card-text">3</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <h5 class="card-title">Special title treatment</h5>
+                                    <p class="card-text">3</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2"></div>
-                    </div>          
+                            </div
+                         </div> 
+                        <!-- <div class="col-md-2"></div> -->
+                </div>          
             </div>
             
             <!-- ============================================================== -->
@@ -683,8 +688,8 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer"> © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com </a>
-            </footer>
+            <!-- <footer class="footer"> © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com </a>
+            </footer> -->
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
