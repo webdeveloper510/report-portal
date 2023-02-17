@@ -76,7 +76,7 @@ class AdminController extends Controller
 
     function Update(Request $request)
     {
-        // print_r($request->all());die;
+        print_r($request->all());die;
         $data = User::find($request->id);
         $data->name = $request->name;
         $data->email = $request->email;

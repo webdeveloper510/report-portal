@@ -129,7 +129,7 @@
                         <li class="nav-item dropdown">
                           <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark">
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                 {{session('data')['name']}} 
+                                 <!-- {{session('data')['name]}}  -->
                             </a>
                             <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark ">Logout</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
@@ -395,7 +395,7 @@
                                             class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                     </h2>
                                     <div class="message-widget contact-widget">
-                                        <!-- Message -->
+                                        <!--- Message -->
                                         <!-- <a href="#" class="d-flex align-items-center">
                                             <div class="user-img mb-0"> <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/1.jpg"
                                                     alt="user" class="img-circle"> <span
@@ -551,7 +551,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!--second tab-->
+                                <!---second tab-->
                                 <!-- <div class="tab-pane" id="profile" role="tabpanel">
                                     <div class="card-body">
                                         <div class="row">
@@ -579,7 +579,7 @@
                                             elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
                                             porttitor eu, consequat vitae, eleifend ac, enim.</p>
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
+                                            Lorem Ipsum has been the industry standard dummy text ever since the
                                             1500s, when an unknown printer took a galley of type and scrambled it to
                                             make a type specimen book. It has survived not only five centuries </p>
                                         <p>It was popularised in the 1960s with the release of Letraset sheets
@@ -721,30 +721,13 @@
     <!--c3 JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/assets/plugins/d3/d3.min.js"></script>
     <script src="<?php echo URL::to('/'); ?>/public/assets/plugins/c3-master/c3.min.js"></script>
-    <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/pages/dashboards/dashboard1.js"></script>
-    <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script>
-  @if(Session::has('message'))
-  toastr.options =
-  {
-    "closeButton" : true,
-    "progressBar" : true
-  }
-        toastr.success("{{ session('message') }}");
-  @endif
 
-  @if(Session::has('error'))
-  toastr.options =
-  {
-    "closeButton" : true,
-    "progressBar" : true
-  }
-        toastr.error("{{ session('error') }}");
-  @endif
-</script>
+
+   </script>
 </body>
 
 

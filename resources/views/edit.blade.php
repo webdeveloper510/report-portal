@@ -265,7 +265,7 @@
                     <div class="card ">
                         <div class="card-body  ">
 
-                            <form action="{{ URL('/login') }}" method="POST" class="row ">
+                            <form action="{{ URL('/update') }}" method="POST" class="row ">
                                 @csrf
                                 <div class="col-md-4"></div>
 
@@ -276,37 +276,37 @@
                                         <div class="col-sm-4 mb-3 mt-4">
                                             <img class="supervisor" src="<?php echo URL::to('/'); ?>/public/assets/images/edit_profile1.jpg" />
                                         </div>
-                                        <h4 class="text-center">Edit Supervisor</h4>
+                                        <h4 class="text-center"> Supervisor</h4>
                                         <div class="col-sm-4"></div>
                                     </div>
                                     <div class="p-3">
                                         <div class="mb-3 row">
                                             <label for="name" class="col-sm- col-form-label">Name</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="name">
+                                                <input type="text" class="form-control" id="input" name="name" value="{{$data['name']}}">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="email" class="col-sm- col-form-label">Email</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control"  name="email">
+                                                <input type="text" class="form-control"  name="email" value="{{$data['email']}}">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="password" class="col-sm- col-form-label">Password</label>
                                             <div class="col-sm-12">
-                                                <input type="password" class="form-control" name="password">
+                                                <input type="password" class="form-control" name="password" value="{{$data['password']}}">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="phone" class="col-sm- col-form-label">Emergency Contact</label>
                                             <div class="col-sm-12">
-                                                <input type="number" class="form-control" id="input" name="phone">
+                                                <input type="number" class="form-control" id="input" name="phone" value="{{$data['phone']}}">
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="address" class="col-sm- form-label">Address</label>
-                                            <textarea class="form-control" id="address" rows="3"></textarea>
+                                            <textarea class="form-control" id="address" rows="3">{{$data['address']}}</textarea>
                                         </div>
                                         <!-- <div class="mb-3 row">
                                             <label for="status" class="col-sm- col-form-label">Status</label>
@@ -314,12 +314,12 @@
                                                 <input type="text" class="form-control" id="input" name="status">
                                             </div>
                                         </div> -->
-                                        <div class="mb-3 form-check">
+                                        <!-- <div class="mb-3 form-check">
                                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                                        </div>
+                                        </div> -->
                                         <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                            <a href="" type="submit" class="btn btn-primary">Update Supervisor</a>
+                                            <button type="submit" class="btn btn-primary">Update Supervisor</button>
                                         </div>
                                     </div>
                                 </div>
