@@ -38,9 +38,9 @@
             text-align: center !important;
         }
 
-        img.profile {
-            width: 80px !important;
-            height: 80px !important;
+        img.supervisor {
+            width: 100px !important;
+            height: 100px !important;
         }
 
         .footer {
@@ -135,7 +135,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                <!-- {{session('name')}} -->
+                                {{session('name')}}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
@@ -161,10 +161,12 @@
                                 <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">Profile</span></a>
                         </li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span class="hide-menu">Supervisor</span></a></li>
-                        <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="f5d8 mdi-animation"></i><span class="hide-menu">Reports</span></a></li>
+                        
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i
                                     class="mdi me-2 mdi-emoticon"></i><span class="hide-menu">Icon</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/google_map" class="sidebar-link waves-effect waves-dark sidebar-link"
+                        <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/google_map" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span
                                     class="hide-menu">Google Map</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/blank" class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -174,7 +176,7 @@
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/error" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-help-circle"></i><span
                                     class="hide-menu">Error 404</span></a>
-                        </li> -->
+                        </li>  -->
 
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/user_list" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-help-circle"></i><span
@@ -272,8 +274,9 @@
                                     <div class="mb-0 row">
                                         <div class="col-sm-4"></div>
                                         <div class="col-sm-4 mb-3 mt-4">
-                                            <img class="profile" src="<?php echo URL::to('/'); ?>/public/assets/images/profiel.png" />
+                                            <img class="supervisor" src="<?php echo URL::to('/'); ?>/public/assets/images/edit_profile1.jpg" />
                                         </div>
+                                        <h4 class="text-center">Edit Supervisor</h4>
                                         <div class="col-sm-4"></div>
                                     </div>
                                     <div class="p-3">
@@ -286,13 +289,13 @@
                                         <div class="mb-3 row">
                                             <label for="email" class="col-sm- col-form-label">Email</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="email">
+                                                <input type="text" class="form-control"  name="email">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="password" class="col-sm- col-form-label">Password</label>
                                             <div class="col-sm-12">
-                                                <input type="password" class="form-control" id="input" name="password">
+                                                <input type="password" class="form-control" name="password">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
@@ -305,19 +308,19 @@
                                             <label for="address" class="col-sm- form-label">Address</label>
                                             <textarea class="form-control" id="address" rows="3"></textarea>
                                         </div>
-                                        <div class="mb-3 row">
+                                        <!-- <div class="mb-3 row">
                                             <label for="status" class="col-sm- col-form-label">Status</label>
                                             <div class="col-sm-12">
                                                 <input type="text" class="form-control" id="input" name="status">
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="mb-3 form-check">
                                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
                                         </div>
-                                        <!-- <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                            <a href="" type="submit" class="btn btn-primary">Update Profile</a>
-                                        </div> -->
+                                        <div class="d-grid gap-2 col-6 mx-auto mb-3">
+                                            <a href="" type="submit" class="btn btn-primary">Update Supervisor</a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4"></div>

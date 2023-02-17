@@ -15,7 +15,7 @@ class AdminController extends Controller
 
     public function basic_table()
     {
-        return view('table');
+        return view('users');
     }
 
     public function icon_materiale()
@@ -105,11 +105,12 @@ class AdminController extends Controller
 
 
     public function login(Request $request)
-    {
-        
+    { 
+        // echo "<pre>"; 
+        // print_r($request->all());die;
         $login = User::where(['email' => $request['email'], 'password' => $request['password']])->first();
-        // echo "<pre>";       
-        $request->session()->put('name',$login['name']);
+       
+        $request->session()->put('data',$login);
         
         if ($login) {
             return redirect('index')->with('message', 'Login successfully !!');

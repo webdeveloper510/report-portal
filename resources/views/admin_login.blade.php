@@ -135,7 +135,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                {{session('name')}}
+                               
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
@@ -261,9 +261,9 @@
                 <!-- column -->
                 <div class="col-sm-12 ">
                     <div class="card ">
-                        <div class="card-body  ">
+                        <div class="card-body ">
 
-                            <form action="{{ URL('/login') }}" method="POST" class="row ">
+                            <form action="{{ URL('/login') }}" method="POST" class="row">
                                 @csrf
                                 <div class="col-md-4"></div>
 
@@ -271,22 +271,24 @@
 
                                     <div class="mb-0 row">
                                         <div class="col-sm-4"></div>
-                                        <div class="col-sm-4 ">
-                                            <img class="icon" src="<?php echo URL::to('/'); ?>/public/assets/images/login-icon.png" />
+                                        <div class="col-sm-4 mb-0">
+                                            <img class="icon " src="<?php echo URL::to('/'); ?>/public/assets/images/login-icon.png" />
                                         </div>
+                                        <h4 class="text-center ">Login Admin</h4>
+
                                         <div class="col-sm-4"></div>
                                     </div>
                                     <div class="p-3">
                                         <div class="mb-3 row">
                                             <label for="email" class="col-sm- col-form-label">Email</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="email">
+                                                <input type="text" class="form-control"  name="email">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="password" class="col-sm- col-form-label">Password</label>
                                             <div class="col-sm-12">
-                                                <input type="password" class="form-control" id="input" name="password">
+                                                <input type="password" class="form-control"  name="password">
                                             </div>
                                         </div>
                                         <div class="mb-3 form-check">
@@ -294,7 +296,8 @@
                                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
                                         </div>
                                         <div class="d-grid gap-2 col-6 mx-auto mb-4">
-                                            <a href="" type="submit" class="btn btn-primary">Login</a>
+                                            <!-- <a href="" type="submit" class="btn btn-primary">Login</a> -->
+                                            <button type="submit" class="btn btn-primary">Login</button>
                                         </div>
 
                                     </div>

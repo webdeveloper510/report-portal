@@ -11,7 +11,7 @@
     <meta name="description"
         content="Material Pro Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Material Pro Lite Template by WrapPixel</title>
+    <title>Admin Panel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo URL::to('/'); ?>/public/assets/images/favicon.png">
@@ -49,9 +49,9 @@
                 <p class="text-muted mb-4 mt-4">YOU SEEM TO BE TRYING TO FIND HIS WAY HOME</p>
                 <a href="<?php echo URL::to('/'); ?>/index" class="btn btn-info btn-rounded waves-effect waves-light mb-4 text-white">Back to home</a>
             </div>
-            <footer class="footer text-center w-100">
+            <!-- <footer class="footer text-center w-100">
                 © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">www.wrappixel.comm</a>
-            </footer>
+            </footer> -->
         </div>
 
         <!-- ============================================================== -->

@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::view('index','index');
 
 Route::get('profile_page', [AdminController::class, 'profile_page']);
-Route::get('table', [AdminController::class, 'basic_table']);
+Route::get('users', [AdminController::class, 'basic_table']);
 Route::get('profile_page', [AdminController::class, 'profile_page']);
 Route::get('icon_materiale', [AdminController::class, 'icon_materiale']);
 Route::get('google_map', [AdminController::class, 'google_map']);
