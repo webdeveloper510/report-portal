@@ -135,7 +135,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                {{session('name')}}
+                                {{session('data')['name']}}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
@@ -163,9 +163,9 @@
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span class="hide-menu">Supervisor</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="f5d8 mdi-animation"></i><span class="hide-menu">Reports</span></a></li>
                         
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
+                        <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i
-                                    class="mdi me-2 mdi-emoticon"></i><span class="hide-menu">Icon</span></a></li>
+                                    class="mdi me-2 mdi-emoticon"></i><span class="hide-menu">Icon</span></a></li> -->
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/google_map" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span
                                     class="hide-menu">Google Map</span></a></li>
@@ -265,7 +265,7 @@
                     <div class="card ">
                         <div class="card-body  ">
 
-                            <form action="{{ URL('/login') }}" method="POST" class="row ">
+                            <form action="{{ URL('/update') }}" method="POST" class="row ">
                                 @csrf
                                 <div class="col-md-4"></div>
 
@@ -280,46 +280,49 @@
                                         <div class="col-sm-4"></div>
                                     </div>
                                     <div class="p-3">
+                                                <input type="hidden" class="form-control"  name="id" value="{{$data['id']}}">
                                         <div class="mb-3 row">
                                             <label for="name" class="col-sm- col-form-label">Name</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="name">
+                                                <input type="text" class="form-control" id="input" name="name" value="{{$data['name']}}">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="email" class="col-sm- col-form-label">Email</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control"  name="email">
+                                                <input type="text" class="form-control" value="{{$data['email']}}" name="email">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="password" class="col-sm- col-form-label">Password</label>
                                             <div class="col-sm-12">
-                                                <input type="password" class="form-control" name="password">
+                                                <input type="password" class="form-control" name="password" value="{{$data['password']}}">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="phone" class="col-sm- col-form-label">Emergency Contact</label>
                                             <div class="col-sm-12">
-                                                <input type="number" class="form-control" id="input" name="phone">
+                                                <input type="number" class="form-control" id="input" name="phone" value="{{$data['phone']}}">
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="address" class="col-sm- form-label">Address</label>
-                                            <textarea class="form-control" id="address" rows="3"></textarea>
+                                            <textarea class="form-control" id="address" rows="3" name="address">{{$data['address']}}</textarea>
                                         </div>
                                         <!-- <div class="mb-3 row">
                                             <label for="status" class="col-sm- col-form-label">Status</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="status">
+                                                
                                             </div>
                                         </div> -->
-                                        <div class="mb-3 form-check">
+                                        <!-- <div class="mb-3 form-check">
                                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                                        </div>
+                                        </div> -->
+                                        <input type="text" class="form-control" id="input" name="status" value="{{$data['status']}}">
+                                        
                                         <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                            <a href="" type="submit" class="btn btn-primary">Update Supervisor</a>
+                                            <button type="submit" class="btn btn-primary">Update Supervisor</button>
                                         </div>
                                     </div>
                                 </div>
