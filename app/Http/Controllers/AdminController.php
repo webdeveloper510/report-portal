@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AddUser;
 use App\Models\User;
+use App\Models\Location;
 use App\Models\AccessWebsite;
 class AdminController extends Controller
 {
@@ -154,7 +155,33 @@ class AdminController extends Controller
 
 }
     public function locations(){
-        $users = User::all();
-        return view('locations',compact('users'));
+        $locations = Location::all();
+        return view('locations',compact('locations'));
     }
+
+
+    public function locations_admin(Request $request)
+    {
+        $user = new Location;
+        $user['location_name'] = $request->location_name;
+        $user['description'] = $request->description;
+        
+        if($user->save()){
+        return redirect('locations')->with('message', 'locations successfully !');
+    }
+    }
+
+    function location_update(Request $request)
+    {
+        // echo "<pre>";
+        // print_r($request->all());die;
+        $user = Location::find($request->id);
+        $user->location_name = $request->location_name;
+        $user->description = $request->description;
+        
+        $user->save();
+        return redirect('locations')->with('message', 'Updated  Successfully!');
+    }
+
+    
 }

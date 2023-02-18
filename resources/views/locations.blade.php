@@ -274,13 +274,13 @@
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm-4  col-form-label">Location Name</label>
                                                                 <div class="col-sm-">
-                                                                    <input type="text" class="form-control" name="name">
+                                                                    <input type="text" class="form-control" name="location_name">
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm-2 col-form-label text-left">Description</label>
                                                                 <div class="col-sm-">
-                                                                    <textarea type="text" class="form-control" rows="3" name="address"></textarea>
+                                                                    <textarea type="text" class="form-control" rows="3" name="description"></textarea>
                                                                 </div>
                                                             </div> 
                                                             <!-- <div class="mb-3 row">
@@ -384,14 +384,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($users as $user)
+                                        @foreach($locations as $location)
                                         <tr>
-                                            <td>{{$user['name']}}</td>
-                                            <td>{{$user['email']}}</td>
+                                            <td>{{$location['location_name']}}</td>
+                                            <td>{{$location['description']}}</td>
                                                                                     
                                             <td>
-                                               <a href="{{ 'edit_supervisor/' . $user['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
-                                               <a href="{{ 'delete_supervisor/' . $user['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                               <a href="{{ 'edit_supervisor/' . $location['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
+                                               <a href="{{ 'delete_supervisor/' . $location['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                            </td>   
                                           
                                         </tr>
