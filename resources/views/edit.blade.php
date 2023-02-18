@@ -292,7 +292,7 @@
                                         <div class="col-sm-4 mb-3 mt-4">
                                             <img class="supervisor" src="<?php echo URL::to('/'); ?>/public/assets/images/edit_profile1.jpg" />
                                         </div>
-                                        <h4 class="text-center">Admin  Supervisor</h4>
+                                        <h4 class="text-center">Edit Admin  Supervisor</h4>
                                         <div class="col-sm-4"></div>
                                     </div>
                                     <div class="p-3">

@@ -134,10 +134,10 @@
                                     class="srh-btn"><i class="ti-close"></i></a> </form>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link text-muted " href=""><i class="fa fa-phone"></i>Phone: 877-659-0419</a>
+                            <a class="nav-link text-muted " href=""><i class=""></i>Phone: 9876543210</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link text-muted" href=""><i class="fa fa-envelope"></i>Email: rohit@gmail.com</a>
+                            <a class="nav-link text-muted" href=""><i class=""></i>Email: rohit@gmail.com</a>
                         </li>
                     </ul>
 

@@ -62,10 +62,10 @@
         background-color: whitesmoke !important;
     }
 
-    .col-md-4.mx-4 {
+    .col-md-4.mx-1 {
         margin-top: 15px !important;
         background: white !important;
-        width: 35% !important;
+        width: 40% !important;
     }
 
     .col-sm-4 {
@@ -322,10 +322,7 @@
                                                                         <button>Submit</button>
                                                                     </div>
                                                                     <div class="col"></div>
-                                                                </div>
-
-                                                              
-                                                            
+                                                                </div>                                                       
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm-2 col-form-label">Status</label>
                                                                 <input type="hidden" class="form-control" name="status" value="supervisor">
@@ -372,10 +369,10 @@
                         <form action="{{ URL('/') }}" method="POST" class="row">
                                 @csrf
                                 <div class="col-md-4"></div>
-                                <div class="col-md-4 mx-4 ">
-                                    <div class="mb-0 row">
+                                <div class="col-md-4 mx-1">
+                                    <div class="mb-0 row mt-4">
                                         <div class="col-sm-4"></div>
-                                        <div class="col-sm-4 mb-3 mt-0">
+                                        <div class="col-sm-4 mb-3 ">
                                             <img class="report" src="<?php echo URL::to('/'); ?>/public/assets/images/report.jpg" />
                                         </div>
                                         <h4 class="text-center">Report</h4>
