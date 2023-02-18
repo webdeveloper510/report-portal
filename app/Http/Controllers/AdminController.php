@@ -12,7 +12,7 @@ class AdminController extends Controller
     //
     public function profile_page()
     {
-        return view('profile_page');
+        return view('admin.profile_page');
     }
 
     public function basic_table()
@@ -65,7 +65,7 @@ class AdminController extends Controller
         $users = User::all();
         // echo "<pre>";
         // print_r($users);die;
-        return view('users', compact('users'));
+        return view('admin.users', compact('users'));
     }
 
     function ShowData($id)
@@ -75,7 +75,7 @@ class AdminController extends Controller
         $data = User::find($id);
         // echo "<pre>";
         // print_r($data);die;
-        return view('edit', compact('data'));
+        return view('admin.edit', compact('data'));
     }
 
     function Update(Request $request)
@@ -105,7 +105,7 @@ class AdminController extends Controller
 
     public function admin_login()
     {
-        return view('admin_login');
+        return view('admin.admin_login');
     }
 
 
@@ -133,6 +133,11 @@ class AdminController extends Controller
         return view('manage_access', compact('users'));
     }
 
+    public function edit_location($id){
+        $data = Location::find($id);
+        return view('admin.edit_location',compact('data'));
+    }
+
     public function deny_access(Request $request){
         $count = AccessWebsite::where(['user_id'=>$request->user_id])->count();
         //echo $count;die;
@@ -156,32 +161,10 @@ class AdminController extends Controller
 }
     public function locations(){
         $locations = Location::all();
-        return view('locations',compact('locations'));
+        return view('admin.locations',compact('locations'));
     }
 
 
-    public function locations_admin(Request $request)
-    {
-        $user = new Location;
-        $user['location_name'] = $request->location_name;
-        $user['description'] = $request->description;
-        
-        if($user->save()){
-        return redirect('locations')->with('message', 'locations successfully !');
-    }
-    }
-
-    function location_update(Request $request)
-    {
-        // echo "<pre>";
-        // print_r($request->all());die;
-        $user = Location::find($request->id);
-        $user->location_name = $request->location_name;
-        $user->description = $request->description;
-        
-        $user->save();
-        return redirect('locations')->with('message', 'Updated  Successfully!');
-    }
 
     
 }
