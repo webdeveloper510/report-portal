@@ -128,8 +128,7 @@ class AdminController extends Controller
 
        
         $users = User::all();
-        // echo "<pre>";
-        // print_r($users);die;
+      
         return view('manage_access', compact('users'));
     }
 
@@ -154,4 +153,8 @@ class AdminController extends Controller
     }
 
 }
+    public function locations(){
+        $users = User::all();
+        return view('locations',compact('users'));
+    }
 }
