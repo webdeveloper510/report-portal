@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,6 +27,23 @@
      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
      alpha/css/bootstrap.css" rel="stylesheet">
 <style>
+ .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
+    font-size: medium !important;
+ }
+
+
+    #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
+        color: #2400ff !important;
+    }
+
+        #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
+        color: #2400ff !important;
+    }
+
+    .topbar{
+        background: #2f3356 !important;
+    }
+
 .card-1.text-center {
     background:lightcoral !important;
     margin: 28px !important;
@@ -117,6 +133,12 @@
                                 <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
                                     class="srh-btn"><i class="ti-close"></i></a> </form>
                         </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-muted " href=""><i class="fa fa-phone"></i>Phone: 877-659-0419</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-muted" href=""><i class="fa fa-envelope"></i>Email: rohit@gmail.com</a>
+                        </li>
                     </ul>
 
                     <!-- ============================================================== -->
@@ -129,7 +151,7 @@
                         <li class="nav-item dropdown">
                           <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark">
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                 <!-- {{session('data')['name]}}  -->
+                                 {{session('data')['name']}} 
                             </a>
                             <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark ">Logout</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
@@ -161,6 +183,8 @@
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
                                     class="hide-menu">Supervisor</span></a></li>
+                                    <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports</span></a></li>
+                                    <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Access</span></a></li>
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i
                                     class="mdi me-2 mdi-emoticon"></i><span class="hide-menu">Icon</span></a></li>
@@ -395,7 +419,7 @@
                                             class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
                                     </h2>
                                     <div class="message-widget contact-widget">
-                                        <!--- Message -->
+                                        <!-- Message -->
                                         <!-- <a href="#" class="d-flex align-items-center">
                                             <div class="user-img mb-0"> <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/1.jpg"
                                                     alt="user" class="img-circle"> <span
@@ -551,7 +575,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!---second tab-->
+                                <!--second tab-->
                                 <!-- <div class="tab-pane" id="profile" role="tabpanel">
                                     <div class="card-body">
                                         <div class="row">
@@ -579,7 +603,7 @@
                                             elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
                                             porttitor eu, consequat vitae, eleifend ac, enim.</p>
                                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry standard dummy text ever since the
+                                            Lorem Ipsum has been the industry's standard dummy text ever since the
                                             1500s, when an unknown printer took a galley of type and scrambled it to
                                             make a type specimen book. It has survived not only five centuries </p>
                                         <p>It was popularised in the 1960s with the release of Letraset sheets
@@ -721,13 +745,30 @@
     <!--c3 JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/assets/plugins/d3/d3.min.js"></script>
     <script src="<?php echo URL::to('/'); ?>/public/assets/plugins/c3-master/c3.min.js"></script>
+    <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/pages/dashboards/dashboard1.js"></script>
+    <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script>
+  @if(Session::has('message'))
+  toastr.options =
+  {
+    "closeButton" : true,
+    "progressBar" : true
+  }
+        toastr.success("{{ session('message') }}");
+  @endif
 
-
-   </script>
+  @if(Session::has('error'))
+  toastr.options =
+  {
+    "closeButton" : true,
+    "progressBar" : true
+  }
+        toastr.error("{{ session('error') }}");
+  @endif
+</script>
 </body>
 
 

@@ -37,7 +37,7 @@
      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
      alpha/css/bootstrap.css" rel="stylesheet">
 <style>
-     #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
+ #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
         color: #2400ff !important;
     }
 
@@ -46,16 +46,44 @@
     }
 
 
-.topbar{
+    .topbar{
         background: #2f3356 !important;
     }
+
     li {
-    list-style: none;
-    font-size: x-large;
-}
-.fa {
-    margin-left: 8px !important;
-}
+        list-style: none;
+        font-size: 16px;
+    }
+    .fa {
+        margin-left: 0px !important;
+    }
+
+    body {
+        background-color: whitesmoke !important;
+    }
+
+    .col-md-4.mx-4 {
+        margin-top: 15px !important;
+        background: white !important;
+        width: 35% !important;
+    }
+
+    .col-sm-4 {
+        text-align: center !important;
+    }
+
+    img.report {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .footer {
+        text-align: center !important;
+    }
+
+    .card {
+         background: whitesmoke;
+    }
 </style>
 </head>
 
@@ -167,8 +195,8 @@
                                 <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">Profile</span></a>
                         </li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span class="hide-menu">Supervisor</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports</span></a></li>
-
+                        
+                        <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="f5d8 mdi-animation"></i><span class="hide-menu">Reports</span></a></li> -->
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i
                                     class="mdi me-2 mdi-emoticon"></i><span class="hide-menu">Icon</span></a></li>
@@ -230,23 +258,23 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Supervisor Table</h3>
+                        <h3 class="page-title mb-0 p-0">Admin </h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Table</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Reports</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
-                    <form action="{{ route('add.user') }}" method="POST">
+                        <form action="{{ route('add.user') }}" method="POST">
                             @csrf
                             <div class="text-end">
-                                <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
+                                <!-- <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
                                     Add Supervisor
-                                </button>
+                                </button> -->
                                 <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -289,16 +317,16 @@
                                                                 </div>
                                                             </div>                                                                       
                                                                 <input type="hidden" name="status" value="supervisor"></input>
-                                                                <!-- <div class="row">
+                                                                <div class="row">
                                                                     <div class="col">
                                                                         <button>Submit</button>
                                                                     </div>
                                                                     <div class="col"></div>
-                                                                </div> -->
+                                                                </div>
 
                                                               
                                                             
-                                                            <!-- <div class="mb-3 row">
+                                                            <div class="mb-3 row">
                                                                 <label for="input" class="col-sm-2 col-form-label">Status</label>
                                                                 <input type="hidden" class="form-control" name="status" value="supervisor">
                                                                 <div class="col-sm-10">
@@ -308,27 +336,19 @@
                                                                         <option value="2">user</option>
                                                                     </select>
                                                                 </div>
-                                                            </div> -->
+                                                            </div>
                                                         </div>
-                                                        <!-- <div class="col-md-2"></div> -->
-                                                    <!-- </form> -->
+                                                        <div class="col-md-2"></div>
+                                                    </form>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
                                                         <button type="submit" class="btn btn-primary btn1">Submit</button>
                                                     </div>
                                                 </div>
                                         </div>
-                                    </div>
                                 </div>
+                             </div>
                         </form>
-                        <div class="row">
-                            <div class="col-sm-6"></div>
-                            <div class="col-sm-6">
-               
-                            </div>
-
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -346,13 +366,76 @@
             <div class="row">
                 
                 <!-- column -->
-                <div class="col-sm-12">
+                <div class="col-sm-12 ">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Supervisor List</h4>
+                        <form action="{{ URL('/') }}" method="POST" class="row">
+                                @csrf
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4 mx-4 ">
+                                    <div class="mb-0 row">
+                                        <div class="col-sm-4"></div>
+                                        <div class="col-sm-4 mb-3 mt-0">
+                                            <img class="report" src="<?php echo URL::to('/'); ?>/public/assets/images/report.jpg" />
+                                        </div>
+                                        <h4 class="text-center">Report</h4>
+
+                                        <div class="col-sm-4"></div>
+                                    </div>
+                                    <div class="p-3">
+                                        <div class="mb-3 row">
+                                            <label for="name" class="col-sm- col-form-label">Name</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control" id="input" name="name">
+                                            </div>
+                                        </div>
+                                        <!-- <div class="mb-3 row">
+                                            <label for="email" class="col-sm- col-form-label">Email</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control" id="input" name="email">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="password" class="col-sm- col-form-label">Password</label>
+                                            <div class="col-sm-12">
+                                                <input type="password" class="form-control" id="input" name="password">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="phone" class="col-sm- col-form-label">Emergency Contact</label>
+                                            <div class="col-sm-12">
+                                                <input type="number" class="form-control" id="input" name="phone">
+                                            </div>
+                                        </div> -->
+                                        <div class="mb-3 row">
+                                            <label for="title" class="col-sm- col-form-label">Title</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control" id="input" name="title">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="address" class="col-sm- form-label">Description</label>
+                                            <textarea class="form-control" id="address" rows="3"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="recipient-name"class="col-form-label"><h5>Report Time</h5></label>
+                                            <input type="time" class="form-control" id="validationCustom01"  name="timestamp" required>
+                                        </div>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                                        </div>
+                                        <div class="d-grid gap-2 col-6 mx-auto mb-3">
+                                            <a href="" type="submit" class="btn btn-primary">Submit Report</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4"></div>
+                            </form>
+                            <!-- <h4 class="card-title">Supervisor List</h4> -->
                             <!-- <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
-                            <div class="table-responsive">
-                                <table class="table user-table">
+                            <!-- <div class="table-responsive"> -->
+                                <!-- <table class="table user-table">
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Name</th>
@@ -362,41 +445,25 @@
                                             <th class="border-top-0">Address</th>
                                             <th class="border-top-0">Status</th>
                                             <th class="border-top-0">Action</th>
-                                            <!-- <th class="border-top-0">Manage Access</th> -->
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        @foreach($users as $user)
+                                    <tbody>           
                                         <tr>
-                                            <td>{{$user['name']}}</td>
-                                            <td>{{$user['email']}}</td>
-                                            <td>{{$user['password']}}</td>
-                                            <td>{{$user['phone']}}</td>
-                                            <td>{{$user['address']}}</td>
-                                            <td>{{$user['status']}}</td>                                          
-                                            <td>
-                                               <a href="{{ 'edit_supervisor/' . $user['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
-                                               <a href="{{ 'delete_supervisor/' . $user['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                           </td>   
-                                           <!-- <td>
-                                           <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                <label class="form-check-label" for="inlineRadio1">YES</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                <label class="form-check-label" for="inlineRadio2">No</label>
-                                            </div>
-                                           </td>   -->
-                                        </tr>
-                                       @endforeach
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>                                  
+                                        </tr>      
                                     </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                </table> -->
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>
+        </div>
             <!-- ============================================================== -->
             <!-- End PAge Content -->
             <!-- ============================================================== -->

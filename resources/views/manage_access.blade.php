@@ -354,31 +354,41 @@
                             <div class="table-responsive">
                                 <table class="table user-table">
                                     <thead>
-                                        <tr>
-                                            <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Email</th>
-                                            <th class="border-top-0">Password</th>
-                                            <th class="border-top-0">Phone</th>
-                                            <th class="border-top-0">Address</th>
-                                            <th class="border-top-0">Status</th>
-                                            <th class="border-top-0">Action</th>
-                                            <!-- <th class="border-top-0">Manage Access</th> -->
-                                        </tr>
+                                        <!-- <tr> -->
+                                            <!-- <th class="border-top-0">Name</th> -->
+                                            <!-- <th class="border-top-0">Email</th> -->
+                                            <!-- <th class="border-top-0">Password</th> -->
+                                            <!-- <th class="border-top-0">Phone</th> -->
+                                            <!-- <th class="border-top-0">Address</th> -->
+                                            <!-- <th class="border-top-0">Status</th> -->
+                                            <!-- <th class="border-top-0">Action</th> -->
+                                            <th class="border-top-0 text-center">
+                                            <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Manage Access
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
+                                            </th>
+                                        <!-- </tr> -->
                                     </thead>
                                     <tbody>
-                                        @foreach($users as $user)
-                                        <tr>
-                                            <td>{{$user['name']}}</td>
-                                            <td>{{$user['email']}}</td>
-                                            <td>{{$user['password']}}</td>
-                                            <td>{{$user['phone']}}</td>
-                                            <td>{{$user['address']}}</td>
-                                            <td>{{$user['status']}}</td>                                          
-                                            <td>
-                                               <a href="{{ 'edit_supervisor/' . $user['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
-                                               <a href="{{ 'delete_supervisor/' . $user['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                           </td>   
-                                           <!-- <td>
+                                        <!-- <tr> -->
+                                            <!-- <td></td> -->
+                                            <!-- <td></td> -->
+                                            <!-- <td></td> -->
+                                            <!-- <td></td> -->
+                                            <!-- <td></td> -->
+                                            <!-- <td></td>                                           -->
+                                            <!-- <td> -->
+                                               <!-- <a href=""><i class="fa fa-pencil"  aria-hidden="true"></i></a>
+                                               <a href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a> -->
+                                           <!-- </td>    -->
+                                           <td class="text-center">
                                            <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                                                 <label class="form-check-label" for="inlineRadio1">YES</label>
@@ -387,9 +397,9 @@
                                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                             </div>
-                                           </td>   -->
-                                        </tr>
-                                       @endforeach
+                                           </td>  
+                                        <!-- </tr> -->
+                              
                                     </tbody>
                                 </table>
                             </div>
