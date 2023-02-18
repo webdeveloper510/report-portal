@@ -415,15 +415,15 @@
                                             <textarea class="form-control" id="address" rows="3"></textarea>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="recipient-name"class="col-form-label"><h5>Report Time</h5></label>
+                                            <label for="recipient-name"class="col-form-label">Report Time</label>
                                             <input type="time" class="form-control" id="validationCustom01"  name="timestamp" required>
                                         </div>
-                                        <div class="mb-3 form-check">
+                                        <!-- <div class="mb-3 form-check">
                                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                                        </div>
+                                        </div> -->
                                         <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                            <a href="" type="submit" class="btn btn-primary">Submit Report</a>
+                                            <button href="" type="submit" class="btn btn-primary">Submit Report</button>
                                         </div>
                                     </div>
                                 </div>

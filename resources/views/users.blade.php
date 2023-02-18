@@ -230,12 +230,12 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Supervisor Table</h3>
+                        <h3 class="page-title mb-0 p-0">Supervisor List</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"> Table</li>
+                                    <li class="breadcrumb-item"><a href="<?php echo URL::to('/'); ?>/index">Home</a></li>
+                                    <!-- <li class="breadcrumb-item active" aria-current="page"></li> -->
                                 </ol>
                             </nav>
                         </div>

@@ -68,6 +68,8 @@ class AdminController extends Controller
 
     function ShowData($id)
     {
+        // $usernames = User::all('name');
+        // echo $usernames; die;
         $data = User::find($id);
         // echo "<pre>";
         // print_r($data);die;
@@ -107,6 +109,7 @@ class AdminController extends Controller
 
     public function login(Request $request)
     { 
+
         // echo "<pre>"; 
         // print_r($request->all());die;
         $login = User::where(['email' => $request['email'], 'password' => $request['password']])->first();

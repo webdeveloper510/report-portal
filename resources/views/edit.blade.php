@@ -128,7 +128,7 @@
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
-                    <ul class="navbar-nav me-auto mt-md-0 ">
+                    <ul class="navbar-nav me-auto mt-md-0">
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
@@ -255,11 +255,8 @@
                         <div class="row">
                             <div class="col-sm-6"></div>
                             <div class="col-sm-6">
-
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -328,18 +325,17 @@
                                         <!-- <div class="mb-3 row">
                                             <label for="status" class="col-sm- col-form-label">Status</label>
                                             <div class="col-sm-12">
-                                                
                                             </div>
                                         </div> -->
                                         <!-- <div class="mb-3 form-check">
                                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
                                         </div> -->
-                                        <input type="text" class="form-control mb-4" id="input" name="status" value="{{$data['status']}}">
+                                        <input type="hidden" class="form-control mb-4" id="input" name="status" value="{{$data['status']}}">
                                         
                                         <div class="d-grid gap-2 col-6 mx-auto mb-3">
                                             <button type="submit" class="btn btn-primary">Update Supervisor</button>
-                                        </div>
+                                        </div>                                        
                                     </div>
                                 </div>
                                 <div class="col-md-4"></div>
