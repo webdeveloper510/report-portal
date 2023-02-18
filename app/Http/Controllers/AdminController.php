@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AddUser;
 use App\Models\User;
+use App\Models\AccessWebsite;
 class AdminController extends Controller
 {
     //
@@ -122,4 +123,35 @@ class AdminController extends Controller
             return redirect('admin_login')->with('message', 'Your email or password is incorrect please try again ! ');
         }
     }
+
+    public function manage_access(){
+
+       
+        $users = User::all();
+        // echo "<pre>";
+        // print_r($users);die;
+        return view('manage_access', compact('users'));
+    }
+
+    public function deny_access(Request $request){
+        $count = AccessWebsite::where(['user_id'=>$request->user_id])->count();
+        //echo $count;die;
+        if($count>0){
+            $data['site_access'] =$request->site_access=='on' ?  1 : 0;
+            $data['create_account'] =$request->create_account=='on' ?  1 : 0;
+            $update = AccessWebsite::where('user_id', $request->user_id)->update($data);
+            if($update){
+                return redirect('manage_access')->with('message', 'Changes Successfully!');
+            }
+        }else{
+            $data = new AccessWebsite;
+        $data['site_access'] = $request->site_access=='on' ?  1 : 0;
+        $data['user_id'] = $request->user_id;
+        $data['create_account'] = $request->create_account=='on' ?  1 : 0;
+        if($data->save()){
+            return redirect('manage_access')->with('message', 'Changes Successfully!');
+        }
+    }
+
+}
 }
