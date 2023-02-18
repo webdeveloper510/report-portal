@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 
-Route::view('index','index');
+Route::view('index','admin.index');
 
 Route::get('profile_page', [AdminController::class, 'profile_page']);
 Route::get('users', [AdminController::class, 'basic_table']);
@@ -36,6 +36,7 @@ Route::post('/update', [AdminController::class, 'update']);
 Route::get('/delete_supervisor/{id}', [AdminController::class, 'delete_supervisor']);
 Route::get('admin_login', [AdminController::class, 'admin_login']);
 Route::post('login', [AdminController::class, 'login']);
-Route::view('admin_reports','admin_reports');
-Route::view('manage_access','manage_access');
+Route::view('admin_reports','admin.admin_reports');
+Route::view('manage_access','admin.manage_access');
 Route::get('locations',[AdminController::class, 'locations']);
+Route::get('edit_location',[AdminController::class, 'edit_location']);

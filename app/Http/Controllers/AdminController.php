@@ -10,7 +10,7 @@ class AdminController extends Controller
     //
     public function profile_page()
     {
-        return view('profile_page');
+        return view('admin.profile_page');
     }
 
     public function basic_table()
@@ -63,7 +63,7 @@ class AdminController extends Controller
         $users = User::all();
         // echo "<pre>";
         // print_r($users);die;
-        return view('users', compact('users'));
+        return view('admin.users', compact('users'));
     }
 
     function ShowData($id)
@@ -73,7 +73,7 @@ class AdminController extends Controller
         $data = User::find($id);
         // echo "<pre>";
         // print_r($data);die;
-        return view('edit', compact('data'));
+        return view('admin.edit', compact('data'));
     }
 
     function Update(Request $request)
@@ -103,7 +103,7 @@ class AdminController extends Controller
 
     public function admin_login()
     {
-        return view('admin_login');
+        return view('admin.admin_login');
     }
 
 
@@ -125,6 +125,10 @@ class AdminController extends Controller
 
     public function locations(){
         $users = User::all();
-        return view('locations',compact('users'));
+        return view('admin.locations',compact('users'));
+    }
+
+    public function edit_location(){
+        return view('admin.edit_location');
     }
 }

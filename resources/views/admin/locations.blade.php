@@ -243,7 +243,7 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Locations </h3>
+                        <h3 class="page-title mb-0 p-0">Locations</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -264,7 +264,7 @@
                                     <div class="modal-dialog p-4">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="Report_user">All Location
+                                                <h5 class="modal-title" id="Report_user">Add Location
                                                     </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>                        
@@ -272,7 +272,7 @@
                                                     <div class="row">                                            
                                                         <div class="col-md-12">
                                                             <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-4  col-form-label">Location Name</label>
+                                                                <label for="input" class="col-sm-4  col-form-label">Location </label>
                                                                 <div class="col-sm-">
                                                                     <input type="text" class="form-control" name="name">
                                                                 </div>
@@ -376,7 +376,7 @@
                                 <table class="table user-table">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">Location Name</th>
+                                            <th class="border-top-0">Location</th>
                                             <th class="border-top-0">Description</th>
                                             
                                             <th class="border-top-0">Action</th>
@@ -390,7 +390,7 @@
                                             <td>{{$user['email']}}</td>
                                                                                     
                                             <td>
-                                               <a href="{{ 'edit_supervisor/' . $user['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
+                                               <a href="{{ 'edit_location/' . $user[''] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
                                                <a href="{{ 'delete_supervisor/' . $user['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                            </td>   
                                           
