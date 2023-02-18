@@ -38,3 +38,4 @@ Route::get('admin_login', [AdminController::class, 'admin_login']);
 Route::post('login', [AdminController::class, 'login']);
 Route::view('admin_reports','admin_reports');
 Route::view('manage_access','manage_access');
+Route::get('locations',[AdminController::class, 'locations']);

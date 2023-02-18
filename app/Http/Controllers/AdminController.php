@@ -122,4 +122,9 @@ class AdminController extends Controller
             return redirect('admin_login')->with('message', 'Your email or password is incorrect please try again ! ');
         }
     }
+
+    public function locations(){
+        $users = User::all();
+        return view('locations',compact('users'));
+    }
 }
