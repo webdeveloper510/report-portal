@@ -2,6 +2,7 @@
 <html dir="ltr" lang="en">
 
 <head>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
@@ -16,15 +17,27 @@
     <!-- Custom CSS -->
     <link href="<?php echo URL::to('/'); ?>/public/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-    <style>
- #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
+
+<link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
+<style>
+     #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
         color: #2400ff !important;
     }
 
@@ -32,37 +45,18 @@
         color: #2400ff !important;
     }
 
+
 .topbar{
         background: #2f3356 !important;
     }
-
-        body {
-            background-color: whitesmoke !important;
-        }
-
-        .col-md-4.mb-3.mx-5 {
-        margin-top: 15px !important;
-        background: white !important;
-        width: 35% !important;
-    }
-
-        .col-sm-4 {
-            text-align: center !important;
-        }
-
-        img.profile {
-            width: 80px !important;
-            height: 80px !important;
-        }
-
-        .footer {
-            text-align: center !important;
-        }
-
-        .card {
-            background: whitesmoke;
-        }
-    </style>
+    li {
+    list-style: none;
+    font-size: x-large;
+}
+.fa {
+    margin-left: 8px !important;
+}
+</style>
 </head>
 
 <body>
@@ -145,7 +139,7 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a href="<?php echo URL::to('/'); ?>/admin_login" class="nav-link dropdown-toggle text-muted waves-effect waves-dark" >
                                 <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
                                 {{session('name')}}
                             </a>
@@ -236,22 +230,101 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Profile</h3>
+                        <h3 class="page-title mb-0 p-0">Supervisor Table</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"> Table</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
+                    <form action="{{ route('add.user') }}" method="POST">
+                            @csrf
+                            <div class="text-end">
+                                <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
+                                    Add Supervisor
+                                </button>
+                                <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="Report_user">Add Supervisor
+                                                    </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>                        
+                                                <div class="modal-body">                                                  
+                                                        <div class="col-md-12">
+                                                            <div class="mb-3 row">
+                                                                <label for="input" class="col-sm-2 col-form-label">Name</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control" name="name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control" name="email">
+                                                                </div>
+                                                            </div>
 
+                                                            <div class="mb-3 row">
+                                                                <label for="password" class="col-sm-2 col-form-label">Password</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="password" class="form-control" name="password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="email" class="col-sm-2 col-form-label">Phone</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="tel" class="form-control" name="phone">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="input" class="col-sm-2 col-form-label">Address</label>
+                                                                <div class="col-sm-10">
+                                                                    <textarea type="text" class="form-control" rows="3" name="address"></textarea>
+                                                                </div>
+                                                            </div>                                                                       
+                                                                <input type="hidden" name="status" value="supervisor"></input>
+                                                                <!-- <div class="row">
+                                                                    <div class="col">
+                                                                        <button>Submit</button>
+                                                                    </div>
+                                                                    <div class="col"></div>
+                                                                </div> -->
+
+                                                              
+                                                            
+                                                            <!-- <div class="mb-3 row">
+                                                                <label for="input" class="col-sm-2 col-form-label">Status</label>
+                                                                <input type="hidden" class="form-control" name="status" value="supervisor">
+                                                                <div class="col-sm-10">
+                                                                    <select class="form-select" aria-label="Default select example">
+                                                                        <option selected>status</option>
+                                                                        <option value="1">Admin</option>
+                                                                        <option value="2">user</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div> -->
+                                                        </div>
+                                                        <!-- <div class="col-md-2"></div> -->
+                                                    <!-- </form> -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                                                        <button type="submit" class="btn btn-primary btn1">Submit</button>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </form>
                         <div class="row">
                             <div class="col-sm-6"></div>
                             <div class="col-sm-6">
-
+               
                             </div>
 
                         </div>
@@ -271,64 +344,65 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="row">
+                
                 <!-- column -->
-                <div class="col-sm-12 mt-4 mx-5">
+                <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ URL('/login') }}" method="POST" class="row ">
-                                @csrf
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4 mb-3 mx-5">
-                                    <div class="mb-0 row">
-                                        <div class="col-sm-4"></div>
-                                        <div class="col-sm-4 mb-3 mt-4">
-                                            <img class="profile" src="<?php echo URL::to('/'); ?>/public/assets/images/profiel.png" />
-                                        </div>
-                                        <h4 class="text-center">Admin Profile</h4>
-                                        <div class="col-sm-4"></div>
-                                    </div>
-                                    <div class="p-3">
-                                        <div class="mb-3 row">
-                                            <label for="name" class="col-sm- col-form-label">Name</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="name" value="{{session('data')['name']}}">
+                            <h4 class="card-title">Supervisor List</h4>
+                            <!-- <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
+                            <div class="table-responsive">
+                                <table class="table user-table">
+                                    <thead>
+                                        <!-- <tr> -->
+                                            <!-- <th class="border-top-0">Name</th> -->
+                                            <!-- <th class="border-top-0">Email</th> -->
+                                            <!-- <th class="border-top-0">Password</th> -->
+                                            <!-- <th class="border-top-0">Phone</th> -->
+                                            <!-- <th class="border-top-0">Address</th> -->
+                                            <!-- <th class="border-top-0">Status</th> -->
+                                            <!-- <th class="border-top-0">Action</th> -->
+                                            <th class="border-top-0 text-center">
+                                            <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Manage Access
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
+                                            </th>
+                                        <!-- </tr> -->
+                                    </thead>
+                                    <tbody>
+                                        <!-- <tr> -->
+                                            <!-- <td></td> -->
+                                            <!-- <td></td> -->
+                                            <!-- <td></td> -->
+                                            <!-- <td></td> -->
+                                            <!-- <td></td> -->
+                                            <!-- <td></td>                                           -->
+                                            <!-- <td> -->
+                                               <!-- <a href=""><i class="fa fa-pencil"  aria-hidden="true"></i></a>
+                                               <a href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a> -->
+                                           <!-- </td>    -->
+                                           <td class="text-center">
+                                           <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                                <label class="form-check-label" for="inlineRadio1">YES</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">No</label>
                                             </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="email" class="col-sm- col-form-label">Email</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="email" value="{{session('data')['email']}}">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="password" class="col-sm- col-form-label">Password</label>
-                                            <div class="col-sm-12">
-                                                <input type="password" class="form-control" id="input" name="password" value="{{session('data')['password']}}">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="phone" class="col-sm- col-form-label">Phone</label>
-                                            <div class="col-sm-12">
-                                                <input type="number" class="form-control" id="input" name="phone" value="{{session('data')['phone']}}">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="address" class="col-sm- form-label">Address</label>
-                                            <textarea class="form-control" id="address" rows="3">{{session('data')['address']}}</textarea>
-                                        </div>
-                                                <input type="hidden" class="form-control" name="status" value="{{session('data')['status']}}">
-                                        </div>
-                                        <!-- <div class="mb-3 form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                                        </div>
-                                        <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                            <a href="" type="submit" class="btn btn-primary">Update Profile</a>
-                                        </div> -->
-                                    </div>
-                                </div>
-                                <div class="col-md-4"></div>
-                            </form>
+                                           </td>  
+                                        <!-- </tr> -->
+                              
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -376,8 +450,29 @@
     <script src="<?php echo URL::to('/'); ?>/public/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
+   
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+  @if(Session::has('message'))
+  toastr.options =
+  {
+    "closeButton" : true,
+    "progressBar" : true
+  }
+        toastr.success("{{ session('message') }}");
+  @endif
 
-
+  @if(Session::has('error'))
+  toastr.options =
+  {
+    "closeButton" : true,
+    "progressBar" : true
+  }
+        toastr.error("{{ session('error') }}");
+  @endif
+</script>
 </body>
 
 </html>

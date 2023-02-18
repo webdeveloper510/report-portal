@@ -37,6 +37,18 @@
      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
      alpha/css/bootstrap.css" rel="stylesheet">
 <style>
+     #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
+        color: #2400ff !important;
+    }
+
+        #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
+        color: #2400ff !important;
+    }
+
+
+.topbar{
+        background: #2f3356 !important;
+    }
     li {
     list-style: none;
     font-size: x-large;
@@ -155,6 +167,8 @@
                                 <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">Profile</span></a>
                         </li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span class="hide-menu">Supervisor</span></a></li>
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports</span></a></li>
+
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i
                                     class="mdi me-2 mdi-emoticon"></i><span class="hide-menu">Icon</span></a></li>
@@ -348,6 +362,7 @@
                                             <th class="border-top-0">Address</th>
                                             <th class="border-top-0">Status</th>
                                             <th class="border-top-0">Action</th>
+                                            <!-- <th class="border-top-0">Manage Access</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -358,11 +373,21 @@
                                             <td>{{$user['password']}}</td>
                                             <td>{{$user['phone']}}</td>
                                             <td>{{$user['address']}}</td>
-                                            <td>{{$user['status']}}</td>
+                                            <td>{{$user['status']}}</td>                                          
                                             <td>
                                                <a href="{{ 'edit_supervisor/' . $user['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
                                                <a href="{{ 'delete_supervisor/' . $user['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                            </td>   
+                                           <!-- <td>
+                                           <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                                <label class="form-check-label" for="inlineRadio1">YES</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                            </div>
+                                           </td>   -->
                                         </tr>
                                        @endforeach
                                     </tbody>
