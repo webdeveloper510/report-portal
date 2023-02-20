@@ -47,4 +47,6 @@ Route::get('edit_location/{id}',[AdminController::class, 'edit_location']);
 Route::post('/update_locations', [AdminController::class, 'update_locations']);
 Route::post('update_profile', [AdminController::class, 'update_profile']);
 Route::get('report_title',[AdminController::class, 'report_title']);
-Route::post('report_title', [AdminController::class, 'insert_title']);
+// Route::view('report_title',[AdminController::class, 'report_title']);
+Route::post('insert_title', [AdminController::class, 'insert_title']);
+Route::post('edit_title/', [AdminController::class, 'edit_title']);

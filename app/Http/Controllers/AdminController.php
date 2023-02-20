@@ -7,6 +7,7 @@ use App\Models\AddUser;
 use App\Models\User;
 use App\Models\Location;
 use App\Models\AccessWebsite;
+use DB;
 class AdminController extends Controller
 {
     //
@@ -198,17 +199,26 @@ class AdminController extends Controller
          public function insert_title(Request $request){
                 $title = $request->input('title');
                 $data=array('title'=>$title);
-                DB::table('custom_title')->insert($data);
-                return view('admin.report_title');
-                
-                }  
-
-
-
-
+                DB::table('custom_title')->insert($data);    
+                return redirect('report_title')->with('message', 'Title Created!');            
+    } 
     public function report_title(){
-        $users = User::all();
-        return view('admin.report_title',compact('users'));
+        $data = DB::table('custom_title')->select('id','title')->get();
+        return view('admin.report_title',compact('data'));
+    }
+    public function edit_title(Request $request){
+        // echo "<pre>";
+        // print_r($request->all());die;
+            $data = DB::table('custom_title')->where(['id' => $request['id']])->update(['title'=>$request['title']]);
+
+            if($data){
+                echo json_encode(['message'=>'Updated Successfully!']);
+            }
+
+            else{
+                echo json_encode(['message'=>'Some error!']);
+            }
+       
     }
     
 }
