@@ -56,6 +56,10 @@
 .fa {
     margin-left: 8px !important;
 }
+
+li.breadcrumb-item.active {
+    font-size: medium !important;
+}
 </style>
 </head>
 
