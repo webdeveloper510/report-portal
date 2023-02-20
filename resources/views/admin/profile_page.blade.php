@@ -1,22 +1,36 @@
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, materialpro admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, materialpro admin lite design, materialpro admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description" content="Material Pro Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, materialpro admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, materialpro admin lite design, materialpro admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+        content="Material Pro Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
     <title>Admin Panel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo URL::to('/'); ?>/public/assets/images/favicon.png">
+    <!-- chartist CSS -->
+    <link href="<?php echo URL::to('/'); ?>/public/assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="<?php echo URL::to('/'); ?>/public/assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+    <link href="<?php echo URL::to('/'); ?>/public/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <!--This page css - Morris CSS -->
+    <link href="<?php echo URL::to('/'); ?>/public/assets/plugins/c3-master/c3.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?php echo URL::to('/'); ?>/public/css/style.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
+<style>
+ .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
+    font-size: medium !important;
+ }
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,33 +51,24 @@
         background: #2f3356 !important;
     }
 
-        body {
-            background-color: whitesmoke !important;
-        }
-
-        .col-md-4.mb-3.mx-5 {
-        margin-top: 15px !important;
-        background: white !important;
-        width: 35% !important;
-    }
-
-        .col-sm-4 {
-            text-align: center !important;
-        }
-
-        img.profile {
-            width: 80px !important;
-            height: 80px !important;
-        }
-
-        .footer {
-            text-align: center !important;
-        }
-
-        .card {
-            background: whitesmoke;
-        }
-    </style>
+.card-1.text-center {
+    background:lightcoral !important;
+    margin: 28px !important;
+}
+.card-2.text-center {
+    background:coral !important;
+    margin: 28px !important;
+  
+}
+.card-3.text-center {
+    background:burlywood !important;
+    margin: 28px !important;
+}
+.footer{
+    text-align: center!important;
+    margin-top: 239px !important;
+}
+</style>
 </head>
 
 <body>
@@ -111,7 +116,8 @@
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
-                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none"
+                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -119,7 +125,8 @@
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
                     <ul class="navbar-nav d-lg-none d-md-block ">
                         <li class="nav-item">
-                            <a class="nav-toggler nav-link waves-effect waves-light text-white " href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                            <a class="nav-toggler nav-link waves-effect waves-light text-white "
+                                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                         </li>
                     </ul>
                     <!-- ============================================================== -->
@@ -133,8 +140,14 @@
                         <li class="nav-item search-box">
                             <a class="nav-link text-muted" href="javascript:void(0)"><i class="ti-search"></i></a>
                             <form class="app-search" style="display: none;">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>
-                            </form>
+                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
+                                    class="srh-btn"><i class="ti-close"></i></a> </form>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-muted " href=""><i class=""></i>Phone: 9876543210</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-muted" href=""><i class=""></i>Email: rohit@gmail.com</a>
                         </li>
                     </ul>
 
@@ -146,10 +159,11 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                {{session('name')}}
+                          <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark">
+                                <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
+                                 {{session('data')['name']}} 
                             </a>
+                            <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark ">Logout</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
@@ -180,9 +194,9 @@
                                  aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
                                     class="hide-menu">Supervisor</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports Record</span></a></li>
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Report Title</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Access</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/locations" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Location</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Report Title</span></a></li>
 
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i
@@ -284,7 +298,7 @@
                 <div class="col-sm-12 mt-4 mx-5">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ URL('/login') }}" method="POST" class="row ">
+                            <form action="{{ URL('/update_profile') }}" method="POST" class="row ">
                                 @csrf
                                 <div class="col-md-4"></div>
                                 <div class="col-md-4 mb-3 mx-5">
@@ -296,7 +310,9 @@
                                         <h4 class="text-center">Admin Profile</h4>
                                         <div class="col-sm-4"></div>
                                     </div>
+                                    <input type="hidden" class="form-control"  name="id" value="{{session('data')['id']}}">
                                     <div class="p-3">
+                                    
                                         <div class="mb-3 row">
                                             <label for="name" class="col-sm- col-form-label">Name</label>
                                             <div class="col-sm-12">
@@ -323,7 +339,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="address" class="col-sm- form-label">Address</label>
-                                            <textarea class="form-control" id="address" rows="3">{{session('data')['address']}}</textarea>
+                                            <textarea class="form-control" id="address" name="address" rows="3">{{session('data')['address']}}</textarea>
                                         </div>
                                                 <input type="hidden" class="form-control" name="status" value="{{session('data')['status']}}">
                                         </div>
@@ -332,7 +348,7 @@
                                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
                                         </div> -->
                                         <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                            <a href="" type="submit" class="btn btn-primary">Update Profile</a>
+                                            <button href="" type="submit" class="btn btn-primary">Update Profile</a>
                                         </div>
                                     </div>
                                 </div>

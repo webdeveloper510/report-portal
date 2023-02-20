@@ -114,7 +114,8 @@
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
-                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none"
+                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -122,13 +123,14 @@
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
                     <ul class="navbar-nav d-lg-none d-md-block ">
                         <li class="nav-item">
-                            <a class="nav-toggler nav-link waves-effect waves-light text-white " href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                            <a class="nav-toggler nav-link waves-effect waves-light text-white "
+                                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                         </li>
                     </ul>
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
-                    <ul class="navbar-nav me-auto mt-md-0">
+                    <ul class="navbar-nav me-auto mt-md-0 ">
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
@@ -136,8 +138,14 @@
                         <li class="nav-item search-box">
                             <a class="nav-link text-muted" href="javascript:void(0)"><i class="ti-search"></i></a>
                             <form class="app-search" style="display: none;">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>
-                            </form>
+                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
+                                    class="srh-btn"><i class="ti-close"></i></a> </form>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-muted " href=""><i class=""></i>Phone: 9876543210</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-muted" href=""><i class=""></i>Email: rohit@gmail.com</a>
                         </li>
                     </ul>
 
@@ -149,10 +157,11 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                {{session('data')['name']}}
+                          <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark">
+                                <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
+                                 {{session('data')['name']}} 
                             </a>
+                            <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark ">Logout</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
@@ -286,7 +295,7 @@
                     <div class="card ">
                         <div class="card-body  ">
 
-                            <form action="{{ URL('/') }}" method="POST" class="row ">
+                            <form action="{{ URL('/update_locations') }}" method="POST" class="row ">
                                 @csrf
                                 <div class="col-md-4"></div>
 
@@ -301,16 +310,16 @@
                                         <div class="col-sm-4"></div>
                                     </div>
                                     <div class="p-3">
-                                                <input type="hidden" class="form-control"  name="id" value="">
+                                                <input type="hidden" class="form-control"  name="id" value="{{$data['id']}}">
                                         <div class="mb-3 row">
                                             <label for="name" class="col-sm- col-form-label">Location</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="name" value="{{$data['location_name']}}">
+                                                <input type="text" class="form-control" id="input" name="location_name" value="{{$data['location_name']}}">
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="address" class="col-sm- form-label">Description</label>
-                                            <textarea class="form-control" id="address" rows="3" value="{{$data['description']}}" name="address">{{$data['description']}}</textarea>
+                                            <textarea class="form-control" id="address" rows="3" value="{{$data['description']}}" name="description">{{$data['description']}}</textarea>
                                         </div>
                                         <!-- <div class="mb-3 row">
                                             <label for="email" class="col-sm- col-form-label">Email</label>
@@ -346,7 +355,7 @@
                                         <!-- <input type="hidden" class="form-control mb-4" id="input" name="status" value=""> -->
                                         
                                         <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                            <button type="submit" class="btn btn-primary">Update Location</button>
+                                         <button type="submit" class="btn btn-primary">Update Location</button>
                                         </div>                                        
                                     </div>
                                 </div>

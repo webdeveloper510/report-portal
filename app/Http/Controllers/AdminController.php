@@ -7,6 +7,7 @@ use App\Models\AddUser;
 use App\Models\User;
 use App\Models\Location;
 use App\Models\AccessWebsite;
+use DB;
 class AdminController extends Controller
 {
     //
@@ -115,7 +116,7 @@ class AdminController extends Controller
         // echo "<pre>"; 
         // print_r($request->all());die;
         $login = User::where(['email' => $request['email'], 'password' => $request['password']])->first();
-       
+
         $request->session()->put('data',$login);
         
         if ($login) {
@@ -163,10 +164,61 @@ class AdminController extends Controller
         return view('admin.locations',compact('locations'));
     }
 
+    public function update_locations(Request $request){
+        // echo "<pre>";
+        // print_r($request->all());die;
+        $data = Location::find($request->id);
+        $data->location_name = $request->location_name;
+        $data->description = $request->description;
+        $data->save();
+        return redirect('locations')->with('message', 'Location Updated Successfully!');
+        
+    }
+    public function delete_location($id){
 
+        $data = Location::find($id);
+        $data->delete();
+        return redirect('locations')->with('message', 'Location Delete Successfully!');
+
+    }
+
+    public function update_profile(Request $request){
+        // echo "<pre>";
+        // print_r($request->all());die;
+        $data = User::find($request->id);
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = $request->password;
+        $data->phone = $request->phone;
+        $data->address = $request->address;
+        $data->save();
+        return redirect('profile_page')->with('message', 'Profile Updated Successfully!');
+        
+    }
+
+         public function insert_title(Request $request){
+                $title = $request->input('title');
+                $data=array('title'=>$title);
+                DB::table('custom_title')->insert($data);    
+                return redirect('report_title')->with('message', 'Title Created!');            
+    } 
     public function report_title(){
-        $users = User::all();
-        return view('admin.report_title',compact('users'));
+        $data = DB::table('custom_title')->select('id','title')->get();
+        return view('admin.report_title',compact('data'));
+    }
+    public function edit_title(Request $request){
+        // echo "<pre>";
+        // print_r($request->all());die;
+            $data = DB::table('custom_title')->where(['id' => $request['id']])->update(['title'=>$request['title']]);
+
+            if($data){
+                echo json_encode(['message'=>'Updated Successfully!']);
+            }
+
+            else{
+                echo json_encode(['message'=>'Some error!']);
+            }
+       
     }
     
 }

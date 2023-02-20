@@ -184,10 +184,10 @@ label.col-sm-4.col-form-label {
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
                                     class="hide-menu">Supervisor</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports Record</span></a></li>
+                                    <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports Record</span></a></li>
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Report Title</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Access</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/locations" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Location</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Report Title</span></a></li>
 
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i
@@ -261,94 +261,51 @@ label.col-sm-4.col-form-label {
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
-                    <form action="{{ route('add.user') }}" method="POST">
-                            @csrf
+                   
                             <div class="text-end">
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
                                     Add Report Title
                                 </button>
-                                <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="Report_user">Add Report Title 
-                                                    </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>                        
-                                                <div class="modal-body">                                                  
-                                                        <div class="col-md-12">
-                                                            <!-- <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-2 col-form-label">Name</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="name">
+                                <form action="{{ URL('/insert_title') }}" id="update_data" method="POST">
+                            @csrf
+                                        <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="Report_user">Add Report Title
+                                                            </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>                        
+                                                        <div class="modal-body">                                                  
+                                                                <div class="col-md-12">
+                                                                <input type="hidden" class="form-control" id="hidden" value="">
+                                                                    <div class="mb-3 row">
+                                                                       
+                                                                        <label for="input" class="col-sm-4  col-form-label">Report Title</label>
+                                                                        <div class="col-sm-">
+                                                                            <textarea type="text" id="show_data" class="form-control" rows="3" name="title"></textarea>
+                                                                        </div>
+                                                                    </div>                                                                       
+                                                                    <input type="hidden" name="status" value="supervisor"></input>
                                                                 </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="email" class="col-sm-2 col-form-label">Email</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="email">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="mb-3 row">
-                                                                <label for="password" class="col-sm-2 col-form-label">Password</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="password" class="form-control" name="password">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="email" class="col-sm-2 col-form-label">Phone</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="tel" class="form-control" name="phone">
-                                                                </div>
-                                                            </div> -->
-                                                            <div class="mb-3 row">
-                                                                <!-- <p class="me-auto">Report Title</p> -->
-                                                                <label for="input" class="col-sm-4  col-form-label">Report Title</label>
-                                                                <div class="col-sm-">
-                                                                    <textarea type="text" class="form-control" rows="3" name="address"></textarea>
-                                                                </div>
-                                                            </div>                                                                       
-                                                                <input type="hidden" name="status" value="supervisor"></input>
-                                                                <!-- <div class="row">
-                                                                    <div class="col">
-                                                                        <button>Submit</button>
-                                                                    </div>
-                                                                    <div class="col"></div>
-                                                                </div> -->
-
-                                                              
+                                                                <!-- <div class="col-md-2"></div> -->
                                                             
-                                                            <!-- <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-2 col-form-label">Status</label>
-                                                                <input type="hidden" class="form-control" name="status" value="supervisor">
-                                                                <div class="col-sm-10">
-                                                                    <select class="form-select" aria-label="Default select example">
-                                                                        <option selected>status</option>
-                                                                        <option value="1">Admin</option>
-                                                                        <option value="2">user</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div> -->
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                                                                <button type="submit" class="btn btn-primary btn1">Submit</button>
+                                                            </div>
                                                         </div>
-                                                        <!-- <div class="col-md-2"></div> -->
-                                                    <!-- </form> -->
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
-                                                        <button type="submit" class="btn btn-primary btn1">Submit</button>
-                                                    </div>
                                                 </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                        </form>
-                        <div class="row">
-                            <div class="col-sm-6"></div>
-                            <div class="col-sm-6">
-               
-                            </div>
+                                    </form>
+                                    <div class="row">
+                                        <div class="col-sm-6"></div>
+                                        <div class="col-sm-6">
+                        
+                                        </div>
 
-                        </div>
+                                    </div>
 
                     </div>
                 </div>
@@ -382,13 +339,49 @@ label.col-sm-4.col-form-label {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($users as $user)
+                                         <!-- <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog"> 
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="Report_user">edit Report Title
+                                                            </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>                        
+                                                        <div class="modal-body">                                                  
+                                                                <div class="col-md-12">
+                                                                    
+                                                                    <div class="mb-3 row">
+                                                                        <p class="me-auto">Report Title</p>
+                                                                        <label for="input" class="col-sm-4  col-form-label">Report Title</label>
+                                                                       
+                                                                        <div class="col-sm-">
+                                                                        @foreach($data as $title)
+                                                                            <textarea type="text" class="form-control" rows="3" name="title">{{$title->title}}</textarea>
+                                                                            @endforeach
+                                                                        </div>
+                                                                     
+                                                                    </div>                                                                       
+                                                                        <input type="hidden" name="status" value="supervisor"></input>
+                                                                        
+                                                                
+                                                                </div>
+                                                               
+                                                             </form>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                                                                <button type="submit" class="btn btn-primary btn1">Submit</button>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        @foreach($data as $title)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Tltle</td>                                     
+                                        <td>{{$loop->iteration}}</td>
+                                            <td class="text_{{$title->id}}">{{$title->title}}</td>                                     
                                             <td>
-                                               <a href="{{ '/' . $user['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
-                                               <a href="{{ 'delete_supervisor/' . $user['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                             <i class="fa fa-pencil icon"   aria-hidden="true" data-id="{{$title->id}}"></i>
+                                               <a href="{{ 'delete_supervisor/' . $title->id }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                            </td>   
                                            <!-- <td>
                                            <div class="form-check form-check-inline">
@@ -456,6 +449,48 @@ label.col-sm-4.col-form-label {
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $(".icon").click(function(){
+            let id = $(this).attr('data-id');
+            console.log(id)
+            let text = $('.text_'+id).text()
+            $('#show_data').val(text)
+            $("#update_data").removeAttr('action')
+            $("#Report_user").text('Edit Report');
+            $("#hidden").val(id);
+            $("#Report").modal('show');
+        });
+    });
+    $('#update_data').on('submit',function(e){
+    e.preventDefault();
+
+    let title = $('#show_data').val();
+    let id = $('#hidden').val();    
+    $.ajax({
+      url: "http://localhost/report-portal/edit_title",
+      type:"POST",
+      data:{
+        "_token": "{{ csrf_token() }}",
+        title:title,
+        id:id,
+   
+      },
+      success:function(response){
+            let done = JSON.parse(response);
+            toastr.options =  {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+        toastr.success(done.message);
+      },
+       error: function(response) {
+      
+      },
+      });
+    });
+</script>
     <script>
   @if(Session::has('message'))
   toastr.options =
