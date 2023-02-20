@@ -59,11 +59,8 @@
 }
 .footer{
     text-align: center!important;
-<<<<<<< HEAD
     margin-top: 239px !important;
-=======
-    margin-top: 250px !important;
->>>>>>> 9da6caecd50de748cfe82c36d744d962814b8a32
+    /* margin-top: 250px !important; */
 }
 </style>
 </head>

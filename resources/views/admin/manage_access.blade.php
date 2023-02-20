@@ -330,14 +330,13 @@
                                         <div class="mb-3 row">
                                             <label for="name" class="col-sm- col-form-label"><h6>Select Locations</h6></label>
                                             <div class="dropdown col-sm-12">
-                                            <select id="multiple-checkboxes" class="form-control" multiple="multiple">
-          <option value="php">PHP</option>
-          <option value="javascript">JavaScript</option>
-          <option value="java">Java</option>
-          <option value="sql">SQL</option>
-          <option value="jquery">Jquery</option>
-          <option value=".net">.Net</option>
-             </select>
+                                            <select id="multiple-checkboxes" class="form-control"  name="location_id[]" multiple="multiple">
+                                            @foreach($locations as $location)
+                                                <option value="{{$location['id']}}">{{$location['location_name']}}</option>
+                                               
+                                                 @endforeach
+                                               
+                                            </select>
                                                 <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
                                             </div>
                                         </div>
