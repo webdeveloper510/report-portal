@@ -263,7 +263,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
-                    <form action="" method="POST" class="">
+                    <form action="{{ URL('/location_insert') }}" method="POST" class="">
                             @csrf
                             <div class="text-end">
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
