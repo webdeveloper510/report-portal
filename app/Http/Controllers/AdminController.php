@@ -224,5 +224,15 @@ class AdminController extends Controller
             }
        
     }
+
+    public function locations_insert(Request $request){
+        $data = new Location;
+        $data['location_name'] = $request->location_name;
+        $data['description'] = $request->description;
+       
+        if($data->save()){
+        return redirect('locations')->with('message', 'Location created successfully !');
+    }
+    }
     
 }
