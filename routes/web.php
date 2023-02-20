@@ -45,4 +45,6 @@ Route::get('manage_access',[AdminController::class, 'manage_access']);
 Route::get('locations',[AdminController::class, 'locations']);
 Route::get('edit_location/{id}',[AdminController::class, 'edit_location']);
 Route::post('/update_locations', [AdminController::class, 'update_locations']);
+Route::post('update_profile', [AdminController::class, 'update_profile']);
+Route::post('insert_title', [AdminController::class, 'insert_title']);
 

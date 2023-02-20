@@ -136,7 +136,8 @@
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
-                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none"
+                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -144,7 +145,8 @@
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
                     <ul class="navbar-nav d-lg-none d-md-block ">
                         <li class="nav-item">
-                            <a class="nav-toggler nav-link waves-effect waves-light text-white " href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                            <a class="nav-toggler nav-link waves-effect waves-light text-white "
+                                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                         </li>
                     </ul>
                     <!-- ============================================================== -->
@@ -158,8 +160,14 @@
                         <li class="nav-item search-box">
                             <a class="nav-link text-muted" href="javascript:void(0)"><i class="ti-search"></i></a>
                             <form class="app-search" style="display: none;">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>
-                            </form>
+                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
+                                    class="srh-btn"><i class="ti-close"></i></a> </form>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-muted " href=""><i class=""></i>Phone: 9876543210</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link text-muted" href=""><i class=""></i>Email: rohit@gmail.com</a>
                         </li>
                     </ul>
 
@@ -171,10 +179,11 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a href="<?php echo URL::to('/'); ?>/admin_login" class="nav-link dropdown-toggle text-muted waves-effect waves-dark" >
-                                <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                {{session('name')}}
+                          <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark">
+                                <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
+                                 {{session('data')['name']}} 
                             </a>
+                            <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark ">Logout</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>

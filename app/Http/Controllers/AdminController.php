@@ -115,7 +115,7 @@ class AdminController extends Controller
         // echo "<pre>"; 
         // print_r($request->all());die;
         $login = User::where(['email' => $request['email'], 'password' => $request['password']])->first();
-       
+
         $request->session()->put('data',$login);
         
         if ($login) {
@@ -181,5 +181,28 @@ class AdminController extends Controller
 
     }
 
+    public function update_profile(Request $request){
+        // echo "<pre>";
+        // print_r($request->all());die;
+        $data = User::find($request->id);
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->password = $request->password;
+        $data->phone = $request->phone;
+        $data->address = $request->address;
+        $data->save();
+        return redirect('profile_page')->with('message', 'Profile Updated Successfully!');
+        
+    }
 
-}
+    public function insert_title(Request $request){
+        $title = $request->input('title');
+        $data=array('title'=>$title);
+        DB::table('custom_title')->insert($data);
+        
+        }
+        }
+
+
+
+
