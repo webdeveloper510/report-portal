@@ -397,7 +397,71 @@
                                                 <button type="submit" class="btn btn-primary">Update Manage</button>
                                             </div>
                                         </div>
-                                    </div>   
+                                        <div class="mb-3 row">
+                                            <label for="name" class="col-sm- col-form-label"><h6>Select Locations</h6></label>
+                                            <div class="dropdown col-sm-12">
+                                            <select id="multiple-checkboxes" class="form-control"  name="location_id[]" multiple="multiple">
+                                            @foreach($locations as $location)
+                                                <option value="{{$location['id']}}">{{$location['location_name']}}</option>
+                                               
+                                                 @endforeach
+                                               
+                                            </select>
+                                                <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="email" class="col-sm- col-form-label"><h6>Site Access</h6></label>
+                                            <div class="col-sm-12">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" name="site_access"   type="checkbox" id="flexSwitchCheckDefault">
+                                                <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
+                                            </div>
+                                                <!-- <input type="text" class="form-control" value="" name="email"> -->
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="email" class="col-sm- col-form-label"><h6>Create Other Account</h6></label>
+                                            <div class="col-sm-12">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input"  name="create_account"   type="checkbox" id="flexSwitchCheckDefault">
+                                                <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
+                                            </div>
+                                                <!-- <input type="text" class="form-control" value="" name="email"> -->
+                                            </div>
+                                        </div>
+                                        <!-- <div class="mb-3 row">
+                                            <label for="password" class="col-sm- col-form-label">Password</label>
+                                            <div class="col-sm-12">
+                                                <input type="password" class="form-control" name="password" value="">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="phone" class="col-sm- col-form-label">Emergency Contact</label>
+                                            <div class="col-sm-12">
+                                                <input type="number" class="form-control" id="input" name="phone" value="">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="address" class="col-sm- form-label">Address</label>
+                                            <textarea class="form-control" id="address" rows="3" name="address"></textarea>
+                                        </div> -->
+                                        <!-- <div class="mb-3 row">
+                                            <label for="status" class="col-sm- col-form-label">Status</label>
+                                            <div class="col-sm-12">
+                                                
+                                            </div>
+                                        </div> -->
+                                        <!-- <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                                        </div> -->
+                                        <!-- <input type="text" class="form-control mb-4" id="input" name="status" value=""> -->
+                                        
+                                        <div class="d-grid gap-2 col-6 mx-auto mb-3">
+                                            <button type="submit" class="btn btn-primary">Update Manage</button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-4"></div>
                             </form>

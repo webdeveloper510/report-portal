@@ -129,8 +129,9 @@ class AdminController extends Controller
     public function manage_access(){
        
         $users = User::all();
-      
-        return view('admin.manage_access', compact('users'));
+
+      $locations = Location::all();
+        return view('admin.manage_access', compact('users','locations'));
     }
 
     public function edit_location($id){
@@ -139,11 +140,13 @@ class AdminController extends Controller
     }
 
     public function deny_access(Request $request){
+
         $count = AccessWebsite::where(['user_id'=>$request->user_id])->count();
         //echo $count;die;
         if($count>0){
             $data['site_access'] =$request->site_access=='on' ?  1 : 0;
-            $data['create_account'] =$request->create_account=='on' ?  1 : 0;
+            $data['location_id'] =json_encode($request->location_id);
+          $data['create_account'] =$request->create_account=='on' ?  1 : 0;
             $update = AccessWebsite::where('user_id', $request->user_id)->update($data);
             if($update){
                 return redirect('manage_access')->with('message', 'Changes Successfully!');
@@ -152,6 +155,7 @@ class AdminController extends Controller
             $data = new AccessWebsite;
         $data['site_access'] = $request->site_access=='on' ?  1 : 0;
         $data['user_id'] = $request->user_id;
+        $data['location_id'] =json_encode($request->location_id);
         $data['create_account'] = $request->create_account=='on' ?  1 : 0;
         if($data->save()){
             return redirect('manage_access')->with('message', 'Changes Successfully!');
