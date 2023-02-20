@@ -164,6 +164,9 @@ class AdminController extends Controller
     }
 
 
-
+    public function report_title(){
+        $users = User::all();
+        return view('admin.report_title',compact('users'));
+    }
     
 }

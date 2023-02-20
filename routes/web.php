@@ -43,3 +43,4 @@ Route::view('admin_reports','admin.admin_reports');
 Route::get('manage_access',[AdminController::class, 'manage_access']);
 Route::get('locations',[AdminController::class, 'locations']);
 Route::get('edit_location/{id}',[AdminController::class, 'edit_location']);
+Route::get('report_title/',[AdminController::class, 'report_title']);

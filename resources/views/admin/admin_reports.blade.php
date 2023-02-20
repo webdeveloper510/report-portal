@@ -204,7 +204,7 @@
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
                                     class="hide-menu">Supervisor</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports</span></a></li>
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports Record</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Access</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/locations" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Location</span></a></li>
                         
@@ -270,12 +270,12 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Admin </h3>
+                        <h3 class="page-title mb-0 p-0"> Reports  List </h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Reports</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Reports List</li>
                                 </ol>
                             </nav>
                         </div>
@@ -387,7 +387,7 @@
                                         <div class="col-sm-4 mb-3 ">
                                             <img class="report" src="<?php echo URL::to('/'); ?>/public/assets/images/report.jpg" />
                                         </div>
-                                        <h4 class="text-center">Report</h4>
+                                        <h4 class="text-center">Report List</h4>
 
                                         <div class="col-sm-4"></div>
                                     </div>
