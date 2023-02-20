@@ -126,11 +126,10 @@ class AdminController extends Controller
     }
 
     public function manage_access(){
-
        
         $users = User::all();
       
-        return view('manage_access', compact('users'));
+        return view('admin.manage_access', compact('users'));
     }
 
     public function edit_location($id){

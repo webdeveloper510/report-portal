@@ -57,6 +57,10 @@
     background:burlywood !important;
     margin: 28px !important;
 }
+.footer{
+    text-align: center!important;
+    margin-top: 166px !important;
+}
 </style>
 </head>
 
@@ -713,8 +717,8 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <!-- <footer class="footer"> © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com </a>
-            </footer> -->
+             <footer class="footer "> © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com </a>
+            </footer> 
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
