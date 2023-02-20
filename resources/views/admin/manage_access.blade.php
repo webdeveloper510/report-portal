@@ -11,6 +11,8 @@
     <meta name="robots" content="noindex,nofollow">
     <title>Admin Panel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
+    <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo URL::to('/'); ?>/public/assets/images/favicon.png">
     <!-- Custom CSS -->
@@ -288,7 +290,7 @@
                     <div class="card ">
                         <div class="card-body  ">
 
-                            <form action="{{ URL('/') }}" method="POST" class="row ">
+                            <form action="{{ URL('/deny_access') }}" method="POST" class="row ">
                                 @csrf
                                 <div class="col-md-4"></div>
 
@@ -307,11 +309,10 @@
                                         <div class="mb-3 row">
                                             <label for="name" class="col-sm- col-form-label"><h6>Select Supervisor</h6></label>
                                             <div class="dropdown col-sm-12">
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option selected>Select Supervisor</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                            <select class="form-select"  name="user_id" aria-label="Default select example">
+                                            @foreach($users as $user)
+                                                <option selected value="{{$user['id']}}">{{$user['name']}}</option>
+                                            @endforeach
                                             </select>
                                                 <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
                                             </div>
@@ -320,8 +321,8 @@
                                             <label for="email" class="col-sm- col-form-label"><h6>Site Access</h6></label>
                                             <div class="col-sm-12">
                                             <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                                <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label>
+                                                <input class="form-check-input" name="site_access"   type="checkbox" id="flexSwitchCheckDefault">
+                                                <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
                                             </div>
                                                 <!-- <input type="text" class="form-control" value="" name="email"> -->
                                             </div>
@@ -330,8 +331,8 @@
                                             <label for="email" class="col-sm- col-form-label"><h6>Create Other Account</h6></label>
                                             <div class="col-sm-12">
                                             <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                                <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label>
+                                                <input class="form-check-input"  name="create_account"   type="checkbox" id="flexSwitchCheckDefault">
+                                                <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
                                             </div>
                                                 <!-- <input type="text" class="form-control" value="" name="email"> -->
                                             </div>
@@ -418,6 +419,26 @@
     <script src="<?php echo URL::to('/'); ?>/public/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+  @if(Session::has('message'))
+  toastr.options =
+  {
+    "closeButton" : true,
+    "progressBar" : true
+  }
+        toastr.success("{{ session('message') }}");
+  @endif
+
+  @if(Session::has('error'))
+  toastr.options =
+  {
+    "closeButton" : true,
+    "progressBar" : true
+  }
+        toastr.error("{{ session('error') }}");
+  @endif
+</script>
 
 
 </body>

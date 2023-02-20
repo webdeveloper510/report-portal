@@ -304,12 +304,12 @@
                                         <div class="mb-3 row">
                                             <label for="name" class="col-sm- col-form-label">Location</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="name" value="">
+                                                <input type="text" class="form-control" id="input" name="name" value="{{$data['location_name']}}">
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="address" class="col-sm- form-label">Description</label>
-                                            <textarea class="form-control" id="address" rows="3" name="address"></textarea>
+                                            <textarea class="form-control" id="address" rows="3" value="{{$data['description']}}" name="address">{{$data['description']}}</textarea>
                                         </div>
                                         <!-- <div class="mb-3 row">
                                             <label for="email" class="col-sm- col-form-label">Email</label>
