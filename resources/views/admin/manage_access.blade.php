@@ -18,7 +18,7 @@
     <!-- Custom CSS -->
     <link href="<?php echo URL::to('/'); ?>/public/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+     <script src="<?php echo URL::to('/'); ?>/public/js/popper.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -46,14 +46,13 @@
             background-color: whitesmoke !important;
         }
 
-        .col-md-4.mb-3.mx-5 {
-        margin-top: 15px !important;
-        background: white !important;
-        width: 35% !important;
-        }
 
         .col-sm-4 {
             text-align: center !important;
+        }
+        
+        .dropdown .btn-group {
+            width: 100%;
         }
 
         img.manage {
@@ -187,6 +186,8 @@
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports Record</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Access</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/locations" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Location</span></a></li>
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Report Title</span></a></li>
+
                         
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i
@@ -318,6 +319,20 @@
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
+                                            <label for="name" class="col-sm- col-form-label"><h6>Select Locations</h6></label>
+                                            <div class="dropdown col-sm-12">
+                                            <select id="multiple-checkboxes" class="form-control" multiple="multiple">
+          <option value="php">PHP</option>
+          <option value="javascript">JavaScript</option>
+          <option value="java">Java</option>
+          <option value="sql">SQL</option>
+          <option value="jquery">Jquery</option>
+          <option value=".net">.Net</option>
+             </select>
+                                                <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
                                             <label for="email" class="col-sm- col-form-label"><h6>Site Access</h6></label>
                                             <div class="col-sm-12">
                                             <div class="form-check form-switch">
@@ -409,11 +424,16 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="<?php echo URL::to('/'); ?>/public/assets/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo URL::to('/'); ?>/public/js/jquery.min.js"></script>
+    <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/plugins/jquery/dist/jquery.min.js"></script> -->
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo URL::to('/'); ?>/public/js/app-style-switcher.js"></script>
     <!--Wave Effects -->
+    <script src="<?php echo URL::to('/'); ?>/public/js/bootstrap-multiselect.js"></script>
+    
+    <script src="<?php echo URL::to('/'); ?>/public/js/main.js"></script>
+    <script src="<?php echo URL::to('/'); ?>/public/js/bootstrap.min.js"></script>
     <script src="<?php echo URL::to('/'); ?>/public/js/waves.js"></script>
     <!--Menu sidebar -->
     <script src="<?php echo URL::to('/'); ?>/public/js/sidebarmenu.js"></script>
