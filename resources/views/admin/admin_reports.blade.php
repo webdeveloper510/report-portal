@@ -84,6 +84,10 @@
     .card {
          background: whitesmoke;
     }
+
+    .page-breadcrumb .breadcrumb .breadcrumb-item.active {
+    font-size: medium !important;
+}
 </style>
 </head>
 

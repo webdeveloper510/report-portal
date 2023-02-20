@@ -56,6 +56,14 @@
 .fa {
     margin-left: 8px !important;
 }
+
+li.breadcrumb-item.active {
+    font-size: medium !important;
+}
+
+.user-table tbody tr td {
+    text-transform: capitalize !important;
+}
 </style>
 </head>
 
