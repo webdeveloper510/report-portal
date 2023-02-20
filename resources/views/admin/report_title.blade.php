@@ -64,6 +64,10 @@ li.breadcrumb-item.active {
 .user-table tbody tr td {
     text-transform: capitalize !important;
 }
+
+label.col-sm-4.col-form-label {
+    text-align: start !important;
+}
 </style>
 </head>
 
@@ -112,8 +116,7 @@ li.breadcrumb-item.active {
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
-                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none"
-                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -121,8 +124,7 @@ li.breadcrumb-item.active {
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
                     <ul class="navbar-nav d-lg-none d-md-block ">
                         <li class="nav-item">
-                            <a class="nav-toggler nav-link waves-effect waves-light text-white "
-                                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                            <a class="nav-toggler nav-link waves-effect waves-light text-white " href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                         </li>
                     </ul>
                     <!-- ============================================================== -->
@@ -136,14 +138,8 @@ li.breadcrumb-item.active {
                         <li class="nav-item search-box">
                             <a class="nav-link text-muted" href="javascript:void(0)"><i class="ti-search"></i></a>
                             <form class="app-search" style="display: none;">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
-                                    class="srh-btn"><i class="ti-close"></i></a> </form>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-muted " href=""><i class=""></i>Phone: 9876543210</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-muted" href=""><i class=""></i>Email: rohit@gmail.com</a>
+                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>
+                            </form>
                         </li>
                     </ul>
 
@@ -155,11 +151,10 @@ li.breadcrumb-item.active {
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                          <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark">
-                                <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                 {{session('data')['name']}} 
+                            <a href="<?php echo URL::to('/'); ?>/admin_login" class="nav-link dropdown-toggle text-muted waves-effect waves-dark" >
+                                <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
+                                {{session('name')}}
                             </a>
-                            <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark ">Logout</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
@@ -255,85 +250,44 @@ li.breadcrumb-item.active {
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Supervisor List</h3>
+                        <h3 class="page-title mb-0 p-0">Report Title List</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="<?php echo URL::to('/'); ?>/index">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Supervisor List</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Report Title List</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
-                    <form action="{{ route('add.user') }}" method="POST">
+                    <form action="{{ route('report_title') }}" method="POST">
                             @csrf
                             <div class="text-end">
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
-                                    Add Supervisor
+                                    Add Report Title
                                 </button>
                                 <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="Report_user">Add Supervisor
+                                                <h5 class="modal-title" id="Report_user">Add Report Title
                                                     </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>                        
                                                 <div class="modal-body">                                                  
                                                         <div class="col-md-12">
+                                                            
                                                             <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-2 col-form-label">Name</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="name">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="email" class="col-sm-2 col-form-label">Email</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="email">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="mb-3 row">
-                                                                <label for="password" class="col-sm-2 col-form-label">Password</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="password" class="form-control" name="password">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="email" class="col-sm-2 col-form-label">Phone</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="tel" class="form-control" name="phone">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-2 col-form-label">Address</label>
-                                                                <div class="col-sm-10">
+                                                                <!-- <p class="me-auto">Report Title</p> -->
+                                                                <label for="input" class="col-sm-4  col-form-label">Report Title</label>
+                                                                <div class="col-sm-">
                                                                     <textarea type="text" class="form-control" rows="3" name="address"></textarea>
                                                                 </div>
                                                             </div>                                                                       
                                                                 <input type="hidden" name="status" value="supervisor"></input>
-                                                                <!-- <div class="row">
-                                                                    <div class="col">
-                                                                        <button>Submit</button>
-                                                                    </div>
-                                                                    <div class="col"></div>
-                                                                </div> -->
-
-                                                              
-                                                            
-                                                            <!-- <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-2 col-form-label">Status</label>
-                                                                <input type="hidden" class="form-control" name="status" value="supervisor">
-                                                                <div class="col-sm-10">
-                                                                    <select class="form-select" aria-label="Default select example">
-                                                                        <option selected>status</option>
-                                                                        <option value="1">Admin</option>
-                                                                        <option value="2">user</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div> -->
+                                                                   
+                                                           
                                                         </div>
                                                         <!-- <div class="col-md-2"></div> -->
                                                     <!-- </form> -->
@@ -374,31 +328,24 @@ li.breadcrumb-item.active {
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Supervisor List</h4>
+                            <h4 class="card-title">Report Title List</h4>
                             <!-- <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
                             <div class="table-responsive">
                                 <table class="table user-table">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Email</th>
-                                            <th class="border-top-0">Password</th>
-                                            <th class="border-top-0">Phone</th>
-                                            <th class="border-top-0">Address</th>
-                                            <th class="border-top-0">Status</th>
+                                            <th class="border-top-0">Sr. No</th>
+                                            <th class="border-top-0">Report Title</th>
                                             <th class="border-top-0">Action</th>
+                                            
                                             <!-- <th class="border-top-0">Manage Access</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($users as $user)
                                         <tr>
-                                            <td>{{$user['name']}}</td>
-                                            <td>{{$user['email']}}</td>
-                                            <td>{{$user['password']}}</td>
-                                            <td>{{$user['phone']}}</td>
-                                            <td>{{$user['address']}}</td>
-                                            <td>{{$user['status']}}</td>                                          
+                                            <td>1</td>
+                                            <td>Tltle</td>                                     
                                             <td>
                                                <a href="{{ 'edit_supervisor/' . $user['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
                                                <a href="{{ 'delete_supervisor/' . $user['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>

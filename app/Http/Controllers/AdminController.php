@@ -195,14 +195,20 @@ class AdminController extends Controller
         
     }
 
-    public function insert_title(Request $request){
-        $title = $request->input('title');
-        $data=array('title'=>$title);
-        DB::table('custom_title')->insert($data);
-        
-        }
-        }
+         public function insert_title(Request $request){
+                $title = $request->input('title');
+                $data=array('title'=>$title);
+                DB::table('custom_title')->insert($data);
+                return view('admin.report_title');
+                
+                }  
 
 
 
 
+    public function report_title(){
+        $users = User::all();
+        return view('admin.report_title',compact('users'));
+    }
+    
+}
