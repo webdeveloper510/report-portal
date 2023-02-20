@@ -271,7 +271,7 @@ label.col-sm-4.col-form-label {
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="Report_user">Add Report Title
+                                                <h5 class="modal-title" id="Report_user">Add Report Title 
                                                     </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>                        
@@ -379,8 +379,6 @@ label.col-sm-4.col-form-label {
                                             <th class="border-top-0">Sr. No</th>
                                             <th class="border-top-0">Report Title</th>
                                             <th class="border-top-0">Action</th>
-                                            
-                                            <!-- <th class="border-top-0">Manage Access</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -389,7 +387,7 @@ label.col-sm-4.col-form-label {
                                             <td>1</td>
                                             <td>Tltle</td>                                     
                                             <td>
-                                               <a href="{{ 'edit_supervisor/' . $user['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
+                                               <a href="{{ '/' . $user['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
                                                <a href="{{ 'delete_supervisor/' . $user['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                            </td>   
                                            <!-- <td>
