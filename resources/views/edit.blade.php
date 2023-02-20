@@ -54,9 +54,9 @@
             text-align: center !important;
         }
 
-        img.location {
-            width: 80px !important;
-            height: 80px !important;
+        img.supervisor {
+            width: 100px !important;
+            height: 100px !important;
         }
 
         .footer {
@@ -172,19 +172,12 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <!-- User Profile-->
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/index" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-gauge"></i><span
-                                    class="hide-menu">Dashboard</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/profile_page" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false">
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/index" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-gauge"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/profile_page" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false">
                                 <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">Profile</span></a>
                         </li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
-                                    class="hide-menu">Supervisor</span></a></li>
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span class="hide-menu">Supervisor</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Access</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/locations" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Location</span></a></li>
                         
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i
@@ -247,7 +240,7 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Edit Location</h3>
+                        <h3 class="page-title mb-0 p-0">Edit Supervisor</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -285,7 +278,7 @@
                     <div class="card ">
                         <div class="card-body  ">
 
-                            <form action="{{ URL('/update_locations') }}" method="POST" class="row ">
+                            <form action="{{ URL('/locations') }}" method="POST" class="row ">
                                 @csrf
                                 <div class="col-md-4"></div>
 
@@ -294,45 +287,41 @@
                                     <div class="mb-0 row">
                                         <div class="col-sm-4"></div>
                                         <div class="col-sm-4 mb-3 mt-4">
-                                            <img class="location" src="<?php echo URL::to('/'); ?>/public/assets/images/location.png" />
+                                            <img class="supervisor" src="<?php echo URL::to('/'); ?>/public/assets/images/edit_profile1.jpg" />
                                         </div>
-                                        <h4 class="text-center">Edit User  Location</h4>
+                                        <h4 class="text-center">Update  Supervisor</h4>
                                         <div class="col-sm-4"></div>
                                     </div>
                                     <div class="p-3">
-                                                <input type="hidden" class="form-control"  name="id" value="{{$data['id']}}">
+                                                <input type="hidden" class="form-control"  name="id" value="{{$user['id']}}">
                                         <div class="mb-3 row">
-                                            <label for="name" class="col-sm- col-form-label">Location</label>
+                                            <label for="name" class="col-sm- col-form-label">Name</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="location_name" value="{{$data['location_name']}}">
+                                                <input type="text" class="form-control" id="input" name="name" value="{{$user['name']}}">
                                             </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="address" class="col-sm- form-label">Description</label>
-                                            <textarea class="form-control" id="address" rows="3" value="{{$data['description']}}" name="description">{{$data['description']}}</textarea>
-                                        </div>
-                                        <!-- <div class="mb-3 row">
+                                        <div class="mb-3 row">
                                             <label for="email" class="col-sm- col-form-label">Email</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control" value="" name="email">
+                                                <input type="text" class="form-control" value="{{$data['email']}}" name="email">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="password" class="col-sm- col-form-label">Password</label>
                                             <div class="col-sm-12">
-                                                <input type="password" class="form-control" name="password" value="">
+                                                <input type="password" class="form-control" name="password" value="{{$user['password']}}">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="phone" class="col-sm- col-form-label">Emergency Contact</label>
                                             <div class="col-sm-12">
-                                                <input type="number" class="form-control" id="input" name="phone" value="">
+                                                <input type="number" class="form-control" id="input" name="phone" value="{{$user['phone']}}">
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="address" class="col-sm- form-label">Address</label>
-                                            <textarea class="form-control" id="address" rows="3" name="address"></textarea>
-                                        </div> -->
+                                            <textarea class="form-control" id="address" rows="3" name="address">{{$data['address']}}</textarea>
+                                        </div>
                                         <!-- <div class="mb-3 row">
                                             <label for="status" class="col-sm- col-form-label">Status</label>
                                             <div class="col-sm-12">
@@ -342,10 +331,10 @@
                                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
                                         </div> -->
-                                        <!-- <input type="hidden" class="form-control mb-4" id="input" name="status" value=""> -->
+                                        <input type="hidden" class="form-control mb-4" id="input" name="status" value="{{$data['status']}}">
                                         
                                         <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                         <button type="submit" class="btn btn-primary">Update Location</button>
+                                            <button type="submit" class="btn btn-primary">Update Supervisor</button>
                                         </div>                                        
                                     </div>
                                 </div>

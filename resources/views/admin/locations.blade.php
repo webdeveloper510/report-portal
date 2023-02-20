@@ -391,7 +391,7 @@
                                                                                     
                                             <td>
                                                <a href="{{ 'edit_location/' . $location['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
-                                               <a href="{{ 'delete_supervisor/' . $location['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                               <a href="{{ 'delete_location/' . $location['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                 
                                            </td>   
                                           

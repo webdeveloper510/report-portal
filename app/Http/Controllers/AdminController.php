@@ -164,7 +164,23 @@ class AdminController extends Controller
         return view('admin.locations',compact('locations'));
     }
 
+    public function update_locations(Request $request){
+        // echo "<pre>";
+        // print_r($request->all());die;
+        $data = Location::find($request->id);
+        $data->location_name = $request->location_name;
+        $data->description = $request->description;
+        $data->save();
+        return redirect('locations')->with('message', 'Location Updated Successfully!');
+        
+    }
+    public function delete_location($id){
+
+        $data = Location::find($id);
+        $data->delete();
+        return redirect('locations')->with('message', 'Location Delete Successfully!');
+
+    }
 
 
-    
 }
