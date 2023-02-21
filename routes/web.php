@@ -39,7 +39,6 @@ Route::get('admin_login', [AdminController::class, 'admin_login']);
 Route::post('login', [AdminController::class, 'login']);
 Route::post('deny_access',[AdminController::class, 'deny_access']);
 Route::post('location_insert',[AdminController::class, 'locations_insert']);
-Route::post('update',[AdminController::class, 'location_update']);
 Route::view('admin_reports','admin.admin_reports');
 Route::get('manage_access',[AdminController::class, 'manage_access']);
 Route::get('locations',[AdminController::class, 'locations']);

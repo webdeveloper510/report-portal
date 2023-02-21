@@ -326,6 +326,18 @@
                                                 <input type="number" class="form-control" id="input" name="phone" value="{{$data['phone']}}">
                                             </div>
                                         </div>
+                                        <div class="mb-3 row">
+                                            <label for="categeory" class="col-sm- col-form-label">Categeory</label>
+                                            <div class="col-sm-12">
+                                            <select class="form-select" name="categeory" aria-label="Default select example">
+                                                <option selected>Select Categeory</option>
+                                                 <option value="supervisor">supervisor</option>
+                                                 <option value="dispatcher">dispatcher</option>
+                                                <option value="client">client </option>
+                                                <option value="guard">guard  </option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="mb-3">
                                             <label for="address" class="col-sm- form-label">Address</label>
                                             <textarea class="form-control" id="address" rows="3" name="address">{{$data['address']}}</textarea>

@@ -58,9 +58,9 @@ class AdminController extends Controller
         $data['type'] = $request->categeory;
         $data['address'] = $request->address;
      
-        if($data->save()){
-        return redirect('users')->with('message', 'Supervisor created successfully !');
-    }
+                if($data->save()){
+                return redirect('users')->with('message', 'Supervisor created successfully !');
+            }
     }
     public function get_user()
     {
@@ -80,17 +80,16 @@ class AdminController extends Controller
         return view('admin.edit', compact('data'));
     }
 
-    function Update(Request $request)
+    function update(Request $request)
     {
-        // echo "<pre>";
-        // print_r($request->all());die;
         $data = User::find($request->id);
         $data->name = $request->name;
         $data->email = $request->email;
         $data->password = $request->password;
         $data->phone = $request->phone;
+        $data->type = $request->categeory;
         $data->address = $request->address;
-        $data->status = $request->status;
+        
         $data->save();
         return redirect('users')->with('message', 'Updated Supervisor Successfully!');
     }
@@ -170,8 +169,7 @@ class AdminController extends Controller
     }
 
     public function update_locations(Request $request){
-        // echo "<pre>";
-        // print_r($request->all());die;
+     
         $data = Location::find($request->id);
         $data->location_name = $request->location_name;
         $data->description = $request->description;

@@ -419,16 +419,6 @@ li.breadcrumb-item.active {
                                                <a href="{{ 'edit_supervisor/' . $user['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
                                                <a href="{{ 'delete_supervisor/' . $user['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                            </td>   
-                                           <!-- <td>
-                                           <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                <label class="form-check-label" for="inlineRadio1">YES</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                <label class="form-check-label" for="inlineRadio2">No</label>
-                                            </div>
-                                           </td>   -->
                                         </tr>
                                        @endforeach
                                     </tbody>
