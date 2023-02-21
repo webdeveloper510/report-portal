@@ -263,10 +263,10 @@ label.col-sm-4.col-form-label {
                     <div class="col-md-6 col-4 align-self-center">
                    
                             <div class="text-end">
-                                <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
+                                <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white add_report">
                                     Add Report Title
                                 </button>
-                                <form action="{{ URL('/insert_title') }}" id="update_data" method="POST">
+                                <form  id="update_data">
                             @csrf
                                         <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
@@ -462,14 +462,29 @@ label.col-sm-4.col-form-label {
             $("#hidden").val(id);
             $("#Report").modal('show');
         });
-    });
-    $('#update_data').on('submit',function(e){
-    e.preventDefault();
 
+
+        $('.add_report').click(function(){
+            $('#show_data').val('')
+            $("#Report_user").text('Add Report');
+            $("#Report").modal('show');
+        })
+    });
+
+
+    $('#update_data').on('submit',function(e){
+    e.preventDefault();    
     let title = $('#show_data').val();
-    let id = $('#hidden').val();    
+    let id = $('#hidden').val(); 
+    let url = ''
+    if(id){
+         url = "http://localhost/report-portal/edit_title";
+    }   
+    else{
+         url = "http://localhost/report-portal/insert_title";
+    } 
     $.ajax({
-      url: "http://localhost/report-portal/edit_title",
+      url: url,
       type:"POST",
       data:{
         "_token": "{{ csrf_token() }}",

@@ -55,8 +55,9 @@ class AdminController extends Controller
         $data['email'] = $request->email;
         $data['password'] = $request->password;
         $data['phone'] = $request->phone;
+        $data['type'] = $request->categeory;
         $data['address'] = $request->address;
-        $data['status'] = $request->status;
+     
         if($data->save()){
         return redirect('users')->with('message', 'Supervisor created successfully !');
     }
@@ -201,11 +202,21 @@ class AdminController extends Controller
     }
 
          public function insert_title(Request $request){
+            // echo "<pre>";
+            // print_r($request->all());die;
                 $title = $request->input('title');
                 $data=array('title'=>$title);
-                DB::table('custom_title')->insert($data);    
-                return redirect('report_title')->with('message', 'Title Created!');            
+                $save = DB::table('custom_title')->insert($data);    
+                if($save){
+                    echo json_encode(['message'=>'Title Created Successfully!']);
+                }
+    
+                else{
+                    echo json_encode(['message'=>'Some error!']);
+                }         
     } 
+
+
     public function report_title(){
         $data = DB::table('custom_title')->select('id','title')->get();
         return view('admin.report_title',compact('data'));
@@ -234,5 +245,14 @@ class AdminController extends Controller
         return redirect('locations')->with('message', 'Location created successfully !');
     }
     }
+
+    // public function delete_title($id){
+       
+    //     // echo "<pre>";
+    //     // print_r($data);die;
+    //   DB::delete('delete from custom_title where id = ?', [$id]);
+    //     return redirect('report_title')->with('message', 'Deleted Title Successfully!');
+
+    // }
     
 }
