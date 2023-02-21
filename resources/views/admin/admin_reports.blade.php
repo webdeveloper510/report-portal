@@ -213,10 +213,10 @@
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
                                     class="hide-menu">Supervisor</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports Record</span></a></li>
+                                    <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports Record</span></a></li>
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Report Title</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Access</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/locations" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Location</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Report Title</span></a></li>
                         
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="f5d8 mdi-animation"></i><span class="hide-menu">Reports</span></a></li> -->
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -388,101 +388,73 @@
                 <div class="col-sm-12 ">
                     <div class="card">
                         <div class="card-body">
-                        <form action="{{ URL('/') }}" method="POST" class="row">
-                                @csrf
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4 mx-1">
-                                    <div class="mb-0 row mt-4">
-                                        <div class="col-sm-4"></div>
-                                        <div class="col-sm-4 mb-3 ">
-                                            <img class="report" src="<?php echo URL::to('/'); ?>/public/assets/images/report.jpg" />
-                                        </div>
-                                        <h4 class="text-center">Report List</h4>
+                            <form action="{{ URL('/') }}" method="POST" class="row">
+                                    @csrf
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-4 mx-1">
+                                        <div class="mb-0 row mt-4">
+                                            <div class="col-sm-4"></div>
+                                            <div class="col-sm-4 mb-3 ">
+                                                <img class="report" src="<?php echo URL::to('/'); ?>/public/assets/images/report.jpg" />
+                                            </div>
+                                            <h4 class="text-center">Report List</h4>
 
-                                        <div class="col-sm-4"></div>
+                                            <div class="col-sm-4"></div>
+                                        </div>
+                                        <div class="p-3">
+                                            <div class="mb-3 row">
+                                                <label for="name" class="col-sm- col-form-label">Name</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="input" name="name">
+                                                </div>
+                                            </div>
+                                            <!-- <div class="mb-3 row">
+                                                <label for="email" class="col-sm- col-form-label">Email</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="input" name="email">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="password" class="col-sm- col-form-label">Password</label>
+                                                <div class="col-sm-12">
+                                                    <input type="password" class="form-control" id="input" name="password">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="phone" class="col-sm- col-form-label">Emergency Contact</label>
+                                                <div class="col-sm-12">
+                                                    <input type="number" class="form-control" id="input" name="phone">
+                                                </div>
+                                            </div> -->
+                                            <div class="mb-3 row">
+                                                <label for="title" class="col-sm- col-form-label">Title</label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control" id="input" name="title">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="address" class="col-sm- form-label">Description</label>
+                                                <textarea class="form-control" id="address" rows="3"></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="recipient-name"class="col-form-label">Report Time</label>
+                                                <input type="time" class="form-control" id="validationCustom01"  name="timestamp" required>
+                                            </div>
+                                            <!-- <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                                            </div> -->
+                                            <div class="d-grid gap-2 col-6 mx-auto mb-3">
+                                                <button href="" type="submit" class="btn btn-primary">Submit Report</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="p-3">
-                                        <div class="mb-3 row">
-                                            <label for="name" class="col-sm- col-form-label">Name</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="name">
-                                            </div>
-                                        </div>
-                                        <!-- <div class="mb-3 row">
-                                            <label for="email" class="col-sm- col-form-label">Email</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="email">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="password" class="col-sm- col-form-label">Password</label>
-                                            <div class="col-sm-12">
-                                                <input type="password" class="form-control" id="input" name="password">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="phone" class="col-sm- col-form-label">Emergency Contact</label>
-                                            <div class="col-sm-12">
-                                                <input type="number" class="form-control" id="input" name="phone">
-                                            </div>
-                                        </div> -->
-                                        <div class="mb-3 row">
-                                            <label for="title" class="col-sm- col-form-label">Title</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="title">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="address" class="col-sm- form-label">Description</label>
-                                            <textarea class="form-control" id="address" rows="3"></textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="recipient-name"class="col-form-label">Report Time</label>
-                                            <input type="time" class="form-control" id="validationCustom01"  name="timestamp" required>
-                                        </div>
-                                        <!-- <div class="mb-3 form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                                        </div> -->
-                                        <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                            <button href="" type="submit" class="btn btn-primary">Submit Report</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4"></div>
+                                    <div class="col-md-4"></div>
                             </form>
-                            <!-- <h4 class="card-title">Supervisor List</h4> -->
-                            <!-- <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
-                            <!-- <div class="table-responsive"> -->
-                                <!-- <table class="table user-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Email</th>
-                                            <th class="border-top-0">Password</th>
-                                            <th class="border-top-0">Phone</th>
-                                            <th class="border-top-0">Address</th>
-                                            <th class="border-top-0">Status</th>
-                                            <th class="border-top-0">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>           
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>                                  
-                                        </tr>      
-                                    </tbody>
-                                </table> -->
-                        <!-- </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
             <!-- ============================================================== -->
             <!-- End PAge Content -->
             <!-- ============================================================== -->

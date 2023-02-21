@@ -184,10 +184,10 @@ label.col-sm-4.col-form-label {
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
                                     class="hide-menu">Supervisor</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports Record</span></a></li>
+                                    <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports Record</span></a></li>
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Report Title</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Access</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/locations" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Location</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Report Title</span></a></li>
 
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i
@@ -280,18 +280,16 @@ label.col-sm-4.col-form-label {
                                                                 <div class="col-md-12">
                                                                 <input type="hidden" class="form-control" id="hidden" value="">
                                                                     <div class="mb-3 row">
-                                                                        <!-- <p class="me-auto">Report Title</p> -->
+                                                                       
                                                                         <label for="input" class="col-sm-4  col-form-label">Report Title</label>
                                                                         <div class="col-sm-">
                                                                             <textarea type="text" id="show_data" class="form-control" rows="3" name="title"></textarea>
                                                                         </div>
                                                                     </div>                                                                       
-                                                                        <input type="hidden" name="status" value="supervisor"></input>
-                                                                        
-                                                                
+                                                                    <input type="hidden" name="status" value="supervisor"></input>
                                                                 </div>
                                                                 <!-- <div class="col-md-2"></div> -->
-                                                            <!-- </form> -->
+                                                            
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
                                                                 <button type="submit" class="btn btn-primary btn1">Submit</button>
@@ -300,14 +298,14 @@ label.col-sm-4.col-form-label {
                                                 </div>
                                             </div>
                                         </div>
-                        </form>
-                            <div class="row">
-                                <div class="col-sm-6"></div>
-                                <div class="col-sm-6">
-                
-                                </div>
+                                    </form>
+                                    <div class="row">
+                                        <div class="col-sm-6"></div>
+                                        <div class="col-sm-6">
+                        
+                                        </div>
 
-                            </div>
+                                    </div>
 
                     </div>
                 </div>
@@ -338,13 +336,11 @@ label.col-sm-4.col-form-label {
                                             <th class="border-top-0">Sr. No</th>
                                             <th class="border-top-0">Report Title</th>
                                             <th class="border-top-0">Action</th>
-                                            
-                                            <!-- <th class="border-top-0">Manage Access</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
                                          <!-- <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
+                                            <div class="modal-dialog"> 
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="Report_user">edit Report Title
@@ -370,7 +366,7 @@ label.col-sm-4.col-form-label {
                                                                 
                                                                 </div>
                                                                
-                                                            <!-- </form>
+                                                             </form>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
                                                                 <button type="submit" class="btn btn-primary btn1">Submit</button>

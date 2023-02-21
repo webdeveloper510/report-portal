@@ -45,7 +45,11 @@
         body {
             background-color: whitesmoke !important;
         }
-
+        
+        .manage_control {
+            background: white !important;
+            width: 100% !important;
+        }
 
         .col-sm-4 {
             text-align: center !important;
@@ -192,10 +196,10 @@
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
                                     class="hide-menu">Supervisor</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports Record</span></a></li>
+                                    <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports Record</span></a></li>
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Report Title</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Access</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/locations" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Location</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Report Title</span></a></li>
 
                         
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -305,91 +309,73 @@
                                 <div class="col-md-4"></div>
 
                                 <div class="col-md-4 mb-3 mx-5">
-
-                                    <div class="mb-0 row">
-                                        <div class="col-sm-4"></div>
-                                        <div class="col-sm-4 mb-3 mt-4">
-                                            <img class="manage" src="<?php echo URL::to('/'); ?>/public/assets/images/manage2.jpg" />
-                                        </div>
-                                        <h4 class="text-center">Manage Control</h4>
-                                        <div class="col-sm-4"></div>
-                                    </div>
-                                    <div class="p-3">
-
-                                        <div class="mb-3 row">
-                                            <label for="name" class="col-sm- col-form-label"><h6>Select Supervisor</h6></label>
-                                            <div class="dropdown col-sm-12">
-                                            <select class="form-select"  name="user_id" aria-label="Default select example">
-                                            @foreach($users as $user)
-                                                <option selected value="{{$user['id']}}">{{$user['name']}}</option>
-                                            @endforeach
-                                            </select>
-                                                <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
+                                    <div class="manage_control  ">
+                                        <div class="mb-0 row">
+                                            <div class="col-sm-4"></div>
+                                            <div class="col-sm-4 mb-3 mt-4">
+                                                <img class="manage" src="<?php echo URL::to('/'); ?>/public/assets/images/manage2.jpg" />
                                             </div>
+                                            <h4 class="text-center">Manage Control</h4>
+                                            <div class="col-sm-4"></div>
                                         </div>
-                                        <div class="mb-3 row">
-                                            <label for="name" class="col-sm- col-form-label"><h6>Select Locations</h6></label>
-                                            <div class="dropdown col-sm-12">
-                                            <select id="multiple-checkboxes" class="form-control"  name="location_id[]" multiple="multiple">
-                                            @foreach($locations as $location)
+                                        <div class="p-3">
+
+                                            <div class="mb-3 row">
+                                                <label for="name" class="col-sm- col-form-label"><h6>Select Supervisor</h6></label>
+                                                <div class="dropdown col-sm-12">
+                                                <select class="form-select"  name="user_id" aria-label="Default select example">
+                                                @foreach($users as $user)
+                                                    <option selected value="{{$user['id']}}">{{$user['name']}}</option>
+                                                @endforeach
+                                                </select>
+                                                    <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="name" class="col-sm- col-form-label"><h6>Select Locations</h6></label>
+                                                <div class="dropdown col-sm-12">
+                                                <select id="multiple-checkboxes" class="form-control"  name="location_id[]" multiple="multiple">
+                                                   @foreach($locations as $location)
                                                 <option value="{{$location['id']}}">{{$location['location_name']}}</option>
                                                
                                                  @endforeach
                                                
                                             </select>
-                                                <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
+                                                <!-- <select id="multiple-checkboxes" class="form-control" multiple="multiple">
+                                                    <option value="php">PHP</option>
+                                                    <option value="javascript">JavaScript</option>
+                                                    <option value="java">Java</option>
+                                                    <option value="sql">SQL</option>
+                                                    <option value="jquery">Jquery</option>
+                                                    <option value=".net">.Net</option>
+                                                </select> -->
+                                                    <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="email" class="col-sm- col-form-label"><h6>Site Access</h6></label>
-                                            <div class="col-sm-12">
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" name="site_access"   type="checkbox" id="flexSwitchCheckDefault">
+                                            <div class="mb-3 row">
+                                                <label for="email" class="col-sm- col-form-label"><h6>Site Access</h6></label>
+                                                <div class="col-sm-12">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" name="site_access"   type="checkbox" id="flexSwitchCheckDefault">
                                                 <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
-                                            </div>
+                                                </div>
                                                 <!-- <input type="text" class="form-control" value="" name="email"> -->
+
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="email" class="col-sm- col-form-label"><h6>Create Other Account</h6></label>
-                                            <div class="col-sm-12">
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input"  name="create_account"   type="checkbox" id="flexSwitchCheckDefault">
-                                                <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
+                                            <div class="mb-3 row">
+                                                <label for="email" class="col-sm- col-form-label"><h6>Create Other Account</h6></label>
+                                                <div class="col-sm-12">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input"  name="create_account"   type="checkbox" id="flexSwitchCheckDefault">
+                                                    <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
+                                                </div>
+                                                    <!-- <input type="text" class="form-control" value="" name="email"> -->
+                                                </div>
                                             </div>
-                                                <!-- <input type="text" class="form-control" value="" name="email"> -->
+                                            <div class="d-grid gap-2 col-6 mx-auto mb-3">
+                                                <button type="submit" class="btn btn-primary">Update Manage</button>
                                             </div>
-                                        </div>
-                                        <!-- <div class="mb-3 row">
-                                            <label for="password" class="col-sm- col-form-label">Password</label>
-                                            <div class="col-sm-12">
-                                                <input type="password" class="form-control" name="password" value="">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="phone" class="col-sm- col-form-label">Emergency Contact</label>
-                                            <div class="col-sm-12">
-                                                <input type="number" class="form-control" id="input" name="phone" value="">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="address" class="col-sm- form-label">Address</label>
-                                            <textarea class="form-control" id="address" rows="3" name="address"></textarea>
-                                        </div> -->
-                                        <!-- <div class="mb-3 row">
-                                            <label for="status" class="col-sm- col-form-label">Status</label>
-                                            <div class="col-sm-12">
-                                                
-                                            </div>
-                                        </div> -->
-                                        <!-- <div class="mb-3 form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                                        </div> -->
-                                        <!-- <input type="text" class="form-control mb-4" id="input" name="status" value=""> -->
-                                        
-                                        <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                            <button type="submit" class="btn btn-primary">Update Manage</button>
                                         </div>
                                     </div>
                                 </div>
