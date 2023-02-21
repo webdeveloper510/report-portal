@@ -267,7 +267,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
-                    <form action="{{ URL('/location_insert') }}" method="POST" class="">
+                    <form action="" method="POST" class="">
                             @csrf
                             <div class="text-end">
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
@@ -400,12 +400,11 @@
                                         @foreach($locations as $location)
                                         <tr>
                                             <td>{{$location['location_name']}}</td>
-                                            <td>{{$location['description']}}</td>
-                                                                                    
+                                            <td>{{$location['description']}}</td>                                        
                                             <td>
                                                <a href="{{ 'edit_location/' . $location['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
                                                <a href="{{ 'delete_location/' . $location['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                
+
                                            </td>   
                                           
                                         </tr>
