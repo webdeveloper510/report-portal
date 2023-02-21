@@ -248,12 +248,12 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Edit Supervisor</h3>
+                        <h3 class="page-title mb-0 p-0">Edit User</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Supervisor</li>
+                                    <li class="breadcrumb-item active" aria-current="page">User</li>
                                 </ol>
                             </nav>
                         </div>
@@ -297,7 +297,7 @@
                                         <div class="col-sm-4 mb-3 mt-4">
                                             <img class="supervisor" src="<?php echo URL::to('/'); ?>/public/assets/images/edit_profile1.jpg" />
                                         </div>
-                                        <h4 class="text-center">Edit Admin  Supervisor</h4>
+                                        <h4 class="text-center">Edit   User</h4>
                                         <div class="col-sm-4"></div>
                                     </div>
                                     <div class="p-3">
@@ -317,7 +317,7 @@
                                         <div class="mb-3 row">
                                             <label for="password" class="col-sm- col-form-label">Password</label>
                                             <div class="col-sm-12">
-                                                <input type="password" class="form-control" name="password" value="{{$data['password']}}">
+                                                <input type="text" class="form-control" name="password" value="{{$data['password']}}">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
@@ -331,10 +331,10 @@
                                             <div class="col-sm-12">
                                             <select class="form-select" name="categeory" aria-label="Default select example">
                                                 <option selected>Select Categeory</option>
-                                                 <option value="supervisor">supervisor</option>
-                                                 <option value="dispatcher">dispatcher</option>
-                                                <option value="client">client </option>
-                                                <option value="guard">guard  </option>
+                                                 <option value="supervisor">Supervisor</option>
+                                                 <option value="dispatcher">Dispatcher</option>
+                                                <option value="client">Client </option>
+                                                <option value="guard">Guard  </option>
                                                 </select>
                                             </div>
                                         </div>

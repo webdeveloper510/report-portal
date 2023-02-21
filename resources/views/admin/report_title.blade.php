@@ -385,7 +385,7 @@ label.col-sm-4.col-form-label {
                                             <td class="text_{{$title->id}}">{{$title->title}}</td>                                     
                                             <td>
                                              <i class="fa fa-pencil icon"   aria-hidden="true" data-id="{{$title->id}}"></i>
-                                               <a href="{{ 'delete_supervisor/' . $title->id }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                               <a href="{{ 'delete_title/' . $title->id }}"><i class="fa fa-trash-o" aria-hidden="true" data-id="{{$title->id}}"></i></a>
                                            </td>   
                                            <!-- <td>
                                            <div class="form-check form-check-inline">

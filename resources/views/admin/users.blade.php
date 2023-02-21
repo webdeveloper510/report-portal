@@ -270,13 +270,13 @@ li.breadcrumb-item.active {
                             @csrf
                             <div class="text-end">
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
-                                    Add Supervisor
+                                    Add User
                                 </button>
                                 <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="Report_user">Add Supervisor
+                                                <h5 class="modal-title" id="Report_user">Add User
                                                     </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>                        

@@ -49,4 +49,4 @@ Route::get('report_title',[AdminController::class, 'report_title']);
 // Route::view('report_title',[AdminController::class, 'report_title']);
 Route::post('insert_title', [AdminController::class, 'insert_title']);
 Route::post('edit_title/', [AdminController::class, 'edit_title']);
-// Route::get('/delete_title/{id}', [AdminController::class, 'delete_title']);
+Route::get('/delete_title/{id}', [AdminController::class, 'delete_title']);

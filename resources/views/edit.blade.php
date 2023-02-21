@@ -240,7 +240,7 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Edit Supervisor</h3>
+                        <h3 class="page-title mb-0 p-0">Edit User</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -289,7 +289,7 @@
                                         <div class="col-sm-4 mb-3 mt-4">
                                             <img class="supervisor" src="<?php echo URL::to('/'); ?>/public/assets/images/edit_profile1.jpg" />
                                         </div>
-                                        <h4 class="text-center">Update  Supervisor</h4>
+                                        <h4 class="text-center">Update  User</h4>
                                         <div class="col-sm-4"></div>
                                     </div>
                                     <div class="p-3">
@@ -309,7 +309,7 @@
                                         <div class="mb-3 row">
                                             <label for="password" class="col-sm- col-form-label">Password</label>
                                             <div class="col-sm-12">
-                                                <input type="password" class="form-control" name="password" value="{{$user['password']}}">
+                                                <input type="text" class="form-control" name="password" value="{{$user['password']}}">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
@@ -334,7 +334,7 @@
                                         <input type="hidden" class="form-control mb-4" id="input" name="status" value="{{$data['status']}}">
                                         
                                         <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                            <button type="submit" class="btn btn-primary">Update Supervisor</button>
+                                            <button type="submit" class="btn btn-primary">Update User</button>
                                         </div>                                        
                                     </div>
                                 </div>

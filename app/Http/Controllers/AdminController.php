@@ -59,7 +59,7 @@ class AdminController extends Controller
         $data['address'] = $request->address;
      
                 if($data->save()){
-                return redirect('users')->with('message', 'Supervisor created successfully !');
+                return redirect('users')->with('message', 'User created successfully !');
             }
     }
     public function get_user()
@@ -91,7 +91,7 @@ class AdminController extends Controller
         $data->address = $request->address;
         
         $data->save();
-        return redirect('users')->with('message', 'Updated Supervisor Successfully!');
+        return redirect('users')->with('message', 'Updated User Successfully!');
     }
 
     public function delete_supervisor($id)
@@ -100,7 +100,7 @@ class AdminController extends Controller
         // echo "<pre>";
         // print_r($data);die;
         $data->delete();
-        return redirect('users')->with('message', 'Deleted Supervisor Successfully!');
+        return redirect('users')->with('message', 'Deleted User Successfully!');
     }
 
 
@@ -244,13 +244,13 @@ class AdminController extends Controller
     }
     }
 
-    // public function delete_title($id){
+    public function delete_title($id){
        
-    //     // echo "<pre>";
-    //     // print_r($data);die;
-    //   DB::delete('delete from custom_title where id = ?', [$id]);
-    //     return redirect('report_title')->with('message', 'Deleted Title Successfully!');
+        // echo "<pre>";
+        // print_r($data);die;
+        DB::table('custom_title')->where('id',$id)->delete();
+        return redirect('report_title')->with('message', 'Deleted Title Successfully!');
 
-    // }
+    }
     
 }
