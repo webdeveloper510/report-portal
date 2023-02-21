@@ -55,8 +55,9 @@ class AdminController extends Controller
         $data['email'] = $request->email;
         $data['password'] = $request->password;
         $data['phone'] = $request->phone;
+        $data['type'] = $request->categeory;
         $data['address'] = $request->address;
-        $data['status'] = $request->status;
+     
         if($data->save()){
         return redirect('users')->with('message', 'Supervisor created successfully !');
     }

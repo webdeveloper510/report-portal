@@ -188,7 +188,7 @@ li.breadcrumb-item.active {
                         </li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
-                                    class="hide-menu">Supervisor</span></a></li>
+                                    class="hide-menu">Users</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports Record</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Access</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/locations" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Location</span></a></li>
@@ -255,12 +255,12 @@ li.breadcrumb-item.active {
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Supervisor List</h3>
+                        <h3 class="page-title mb-0 p-0">Users List</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="<?php echo URL::to('/'); ?>/index">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Supervisor List</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Users List</li>
                                 </ol>
                             </nav>
                         </div>
@@ -298,7 +298,7 @@ li.breadcrumb-item.active {
                                                             <div class="mb-3 row">
                                                                 <label for="password" class="col-sm-2 col-form-label">Password</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="password" class="form-control" name="password">
+                                                                    <input type="text" class="form-control" name="password">
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
@@ -307,6 +307,20 @@ li.breadcrumb-item.active {
                                                                     <input type="tel" class="form-control" name="phone">
                                                                 </div>
                                                             </div>
+
+                                                            <div class="mb-3 row">
+                                                                <label for="categeory" class="col-sm-2 col-form-label">Categeory</label>
+                                                                <div class="col-sm-10">
+                                                                <select class="form-select" name="categeory" aria-label="Default select example">
+                                                                    <option selected>Select Categeory</option>
+                                                                    <option value="supervisor">supervisor</option>
+                                                                    <option value="dispatcher">dispatcher</option>
+                                                                    <option value="client ">client </option>
+                                                                    <option value="guard  ">guard  </option>
+                                                                </select>
+                                                                </div>
+                                                            </div>
+
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm-2 col-form-label">Address</label>
                                                                 <div class="col-sm-10">
@@ -374,7 +388,7 @@ li.breadcrumb-item.active {
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Supervisor List</h4>
+                            <h4 class="card-title">Users List</h4>
                             <!-- <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
                             <div class="table-responsive">
                                 <table class="table user-table">
@@ -384,8 +398,9 @@ li.breadcrumb-item.active {
                                             <th class="border-top-0">Email</th>
                                             <th class="border-top-0">Password</th>
                                             <th class="border-top-0">Phone</th>
+                                            <th class="border-top-0">Categeory</th>
                                             <th class="border-top-0">Address</th>
-                                            <th class="border-top-0">Status</th>
+                                        
                                             <th class="border-top-0">Action</th>
                                             <!-- <th class="border-top-0">Manage Access</th> -->
                                         </tr>
@@ -397,8 +412,9 @@ li.breadcrumb-item.active {
                                             <td>{{$user['email']}}</td>
                                             <td>{{$user['password']}}</td>
                                             <td>{{$user['phone']}}</td>
+                                            <td>{{$user['type']}}</td>
                                             <td>{{$user['address']}}</td>
-                                            <td>{{$user['status']}}</td>                                          
+                                                                                 
                                             <td>
                                                <a href="{{ 'edit_supervisor/' . $user['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
                                                <a href="{{ 'delete_supervisor/' . $user['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
