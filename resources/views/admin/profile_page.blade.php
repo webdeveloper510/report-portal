@@ -32,13 +32,15 @@
     font-size: medium !important;
  }
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+    /* HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+     WARNING: Respond.js doesn't work if you view the page via file:// 
+    [if lt IE 9]
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-    <style>
+[endif] */
+
+
+
      #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
         color: #2400ff !important;
     }
@@ -51,23 +53,23 @@
         background: #2f3356 !important;
     }
 
-.card-1.text-center {
-    background:lightcoral !important;
-    margin: 28px !important;
-}
-.card-2.text-center {
-    background:coral !important;
-    margin: 28px !important;
-  
-}
-.card-3.text-center {
-    background:burlywood !important;
-    margin: 28px !important;
-}
-.footer{
-    text-align: center!important;
-    margin-top: 239px !important;
-}
+    .card-1.text-center {
+        background:lightcoral !important;
+        margin: 28px !important;
+    }
+    .card-2.text-center {
+        background:coral !important;
+        margin: 28px !important;
+    
+    }
+    .card-3.text-center {
+        background:burlywood !important;
+        margin: 28px !important;
+    }
+    .footer{
+        text-align: center!important;
+        margin-top: 239px !important;
+    }
 </style>
 </head>
 
@@ -192,10 +194,10 @@
                         </li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
-                                    class="hide-menu">Supervisor</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports Record</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Report Title</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Access</span></a></li>
+                                    class="hide-menu">Users</span></a></li>
+                                    <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-animation"></i><span class="hide-menu">Reports Record</span></a></li>
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-account-card-details"></i><span class="hide-menu">Manage Report Title</span></a></li>
+                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-airplay"></i><span class="hide-menu">Manage Access</span></a></li>
                         <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/locations" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Location</span></a></li>
 
                         <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
