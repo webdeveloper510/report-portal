@@ -41,10 +41,14 @@
         color: #2400ff !important;
     }
 
-        #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
+     #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
         color: #2400ff !important;
     }
 
+
+    .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
+        font-size: medium !important;
+    }
 
     .topbar{
         background: #2f3356 !important;
@@ -65,13 +69,13 @@
 
     .page-breadcrumb .breadcrumb .breadcrumb-item.active {
     font-size: medium !important;
-}
+    }
 
-.left-sidebar {
+    .left-sidebar {
         top: 60px !important;
     }
     
-     header.topbar1 {
+    header.topbar1 {
         background: #2f3356 !important;
     }
 
@@ -520,14 +524,6 @@
         </div>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer text-center"> © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a>
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
         <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->

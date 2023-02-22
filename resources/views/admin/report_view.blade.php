@@ -45,33 +45,11 @@
         body {
             background-color: whitesmoke !important;
         }
-/*         
-        .manage_control {
-            background: white !important;
-            width: 100% !important;
-        }
 
-        .col-sm-4 {
-            text-align: center !important;
-        }
-        
-        .dropdown .btn-group {
-            width: 100%;
-        }
+        .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
+        font-size: medium !important;
+    }
 
-        img.manage {
-            width: 100px !important;
-            height: 100px !important;
-        }
-
-        .card {
-            background: whitesmoke;
-        } */
-
-        .footer{
-            text-align: center!important;
-            margin-top: 372px !important;
-        }
          
     .left-sidebar {
         top: 52px !important;
@@ -385,14 +363,7 @@
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer"> © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a>
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
+
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->

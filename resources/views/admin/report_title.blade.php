@@ -45,36 +45,41 @@
         color: #2400ff !important;
     }
 
-
-.topbar{
-        background: #2f3356 !important;
+    .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
+        font-size: medium !important;
     }
+
+    .topbar{
+            background: #2f3356 !important;
+    }
+
     li {
-    list-style: none;
-    font-size: x-large;
-}
-.fa {
-    margin-left: 8px !important;
-}
+        list-style: none;
+        font-size: x-large;
+    }
 
-li.breadcrumb-item.active {
-    font-size: medium !important;
-}
+    .fa {
+        margin-left: 8px !important;
+    }
 
-.user-table tbody tr td {
-    text-transform: capitalize !important;
-}
+    li.breadcrumb-item.active {
+        font-size: medium !important;
+    }
 
-label.col-sm-4.col-form-label {
-    text-align: start !important;
-}
+    .user-table tbody tr td {
+        text-transform: capitalize !important;
+    }
 
-.left-sidebar {
+    label.col-sm-4.col-form-label {
+        text-align: start !important;
+    }
+
+    .left-sidebar {
         top: 60px !important;
     }
-    
-     header.topbar1 {
-        background: #2f3356 !important;
+        
+    header.topbar1 {
+         background: #2f3356 !important;
     }
 
     a.top-link {
@@ -454,14 +459,7 @@ label.col-sm-4.col-form-label {
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer text-center"> © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a>
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
+       
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->

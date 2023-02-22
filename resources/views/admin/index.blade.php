@@ -27,9 +27,9 @@
      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
      alpha/css/bootstrap.css" rel="stylesheet">
 <style>
-    /* .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
+    .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
         font-size: medium !important;
-    } */
+    }
 
     #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
         color: #2400ff !important;
@@ -56,10 +56,7 @@
             background:burlywood !important;
             margin: 28px !important;
         }
-        .footer{
-            text-align: center!important;
-            margin-top: 197px !important;
-        }
+       
 
         .left-sidebar {
             top: 52px !important;
@@ -773,14 +770,7 @@
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-             <footer class="footer "> © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com </a>
-            </footer> 
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
+            
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->

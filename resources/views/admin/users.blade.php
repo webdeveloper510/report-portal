@@ -41,13 +41,13 @@
         color: #2400ff !important;
     }
 
-        #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
+    #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
         color: #2400ff !important;
     }
 
     .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
-    font-size: medium !important;
- }
+        font-size: medium !important;
+    }
 
 
     .topbar{
@@ -58,6 +58,7 @@
         list-style: none;
         font-size: x-large;
     }
+
     .fa {
         margin-left: 8px !important;
     }
@@ -202,7 +203,7 @@
                     </ul>
                 </div>
             </nav>
-         
+            
         </header>
         
         <!-- Topbar header - style you can find in pages.scss -->
@@ -511,14 +512,7 @@
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer text-center"> © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a>
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
+       
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->

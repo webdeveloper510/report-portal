@@ -52,10 +52,7 @@
         background: #2f3356 !important;
     }
 
-    .footer{
-            text-align: center!important;
-        }
-
+   
 
     img.profile {
             width: 100px !important;
@@ -63,16 +60,14 @@
         }
 
     .card {
-        background: whitesmoke !important;
-    }
-
-    .col-md-4.mb-3.mx-5 {
         background: white !important;
     }
 
+   
+
     
     .left-sidebar {
-        top: 52px !important;
+        top: 52px !important; 
     }
     
      header.topbar1 {
@@ -450,13 +445,7 @@
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer"> © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a>
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
+       
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
