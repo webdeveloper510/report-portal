@@ -365,7 +365,7 @@
                 <p>Silvertrac Software</p>
             </div>
             <div class="sub"> 
-                <p class="">Tue Mar 13, 2018 12:08 PM</p>
+                <p class="">{{reports_view[0]['report_date']}}</p>
                 <p class="text-"><b class="me-2">Location:</b>On Site</p>
                 <p class="text-"><b  class="me-2">Unit:</b>Patrol</p>
                 <p class="text-center">Nam ut finibus quam, at venenatis sem. Donec in odio vitae tellus tincidunt dignissim. Morbi ut placerat elit. Fusce vitae tortor sed arcu tempus rhoncus ut et justo. Quisque nec urna id enim tempor dapibus at non ex. Aliquam at est libero. Donec placerat posuere venenatis. In eget eros non ipsum sodales aliquam. Vestibulum eget ullamcorper enim. In lectus dui, porta rutrum tempus ut, ornare id enim. Donec venenatis nulla id libero dictum, vitae aliquet nibh sollicitudin.</p>

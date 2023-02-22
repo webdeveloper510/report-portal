@@ -295,9 +295,14 @@ class AdminController extends Controller
 }
 
 
-public function report_view(){
-        return view('admin.report_view');
-}
+            public function report_view($id){
+                  
+         
+                $reports_view = Report::with('users')->where('id',$id)->get()->toArray();
+                // echo "<pre>";
+                // print_r($reports_view);die;
+                    return view('admin.report_view',compact('reports_view'));
+            }
 
 
    }
