@@ -225,6 +225,7 @@ class AdminController extends Controller
     public function admin_reports(){
         $data = DB::table('custom_title')->select('id','title')->get();
         $locations = Location::all();
+        // $reports = Report::all();
         $activitys = Report::with('users')->get()->toArray();
         // echo "<pre>";
         // print_r($activity);die;
@@ -274,6 +275,7 @@ class AdminController extends Controller
             $data['sub_location'] = $request->sub_location;
             $data['report_time'] = $request->report_time;
             $data['report_date'] = $request->report_date;        
+            $data['report_type'] = $request->report_type;        
             if($request->hasfile('report_photo')){
                 foreach ($request->report_photo as $image) {
                      $extension = $image->getClientOriginalExtension();
@@ -295,13 +297,21 @@ class AdminController extends Controller
 }
 
 
+
             public function report_view($id){
                   
          
                 $reports_view = Report::with('users')->where('id',$id)->get()->toArray();
                 // echo "<pre>";
-                // print_r($reports_view);die;
+                // print_r(json_decode($reports_view[0]['report_photo']));die;
                     return view('admin.report_view',compact('reports_view'));
+            }
+            public function delete_report(Request $request,$id){
+       
+                //  echo "<pre>";
+                //  print_r($request->all());die;
+                DB::table('reports')->where('id',$id)->delete();
+                return redirect('admin_reports')->with('message', 'Deleted Report Successfully!');
             }
 
 
