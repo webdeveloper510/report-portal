@@ -58,9 +58,9 @@ class AdminController extends Controller
         $data['type'] = $request->categeory;
         $data['address'] = $request->address;
      
-        if($data->save()){
-        return redirect('users')->with('message', 'Supervisor created successfully !');
-    }
+                if($data->save()){
+                return redirect('users')->with('message', 'User created successfully !');
+            }
     }
     public function get_user()
     {
@@ -80,19 +80,18 @@ class AdminController extends Controller
         return view('admin.edit', compact('data'));
     }
 
-    function Update(Request $request)
+    function update(Request $request)
     {
-        // echo "<pre>";
-        // print_r($request->all());die;
         $data = User::find($request->id);
         $data->name = $request->name;
         $data->email = $request->email;
         $data->password = $request->password;
         $data->phone = $request->phone;
+        $data->type = $request->categeory;
         $data->address = $request->address;
-        $data->status = $request->status;
+        
         $data->save();
-        return redirect('users')->with('message', 'Updated Supervisor Successfully!');
+        return redirect('users')->with('message', 'Updated User Successfully!');
     }
 
     public function delete_supervisor($id)
@@ -101,7 +100,7 @@ class AdminController extends Controller
         // echo "<pre>";
         // print_r($data);die;
         $data->delete();
-        return redirect('users')->with('message', 'Deleted Supervisor Successfully!');
+        return redirect('users')->with('message', 'Deleted User Successfully!');
     }
 
 
@@ -170,8 +169,7 @@ class AdminController extends Controller
     }
 
     public function update_locations(Request $request){
-        // echo "<pre>";
-        // print_r($request->all());die;
+     
         $data = Location::find($request->id);
         $data->location_name = $request->location_name;
         $data->description = $request->description;
@@ -246,13 +244,16 @@ class AdminController extends Controller
     }
     }
 
-    // public function delete_title($id){
+    public function delete_title($id){
        
-    //     // echo "<pre>";
-    //     // print_r($data);die;
-    //   DB::delete('delete from custom_title where id = ?', [$id]);
-    //     return redirect('report_title')->with('message', 'Deleted Title Successfully!');
+        // echo "<pre>";
+        // print_r($data);die;
+        DB::table('custom_title')->where('id',$id)->delete();
+        return redirect('report_title')->with('message', 'Deleted Title Successfully!');
 
-    // }
+    }
+    public function report_view(){
+        return view('admin.report_view');
+    }
     
 }
