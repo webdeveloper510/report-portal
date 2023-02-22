@@ -425,6 +425,20 @@
                                         <div class="modal-body">
                                             <form id="report" enctype="multipart/form-data">
                                             {{ csrf_field() }}
+                                            <div class="mb-3">
+                                                  <label for="exampleInputEmail1" class="form-label">Report Type</label>
+                                                  <select class="form-select"  name="report_title" aria-label="Default select example">
+                                                    <option selected>Select Report Type</option>
+                                                
+                                            
+                                                    <option value=" Activity Reports"> Activity Reports</option>
+                                                    <option value="  Incident Reports"> Incident Reports</option>
+                                                    <option value=" Patrol Reports"> Patrol Reports</option>
+                                                    <option value="  Parking violations"> Parking violations</option>
+                                                    <option value=" Visitor logs"> Visitor logs</option>
+                                               
+                                                  </select>
+                                                </div>
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Report Title</label>
                                                   <select class="form-select"  name="report_title" aria-label="Default select example">
@@ -550,14 +564,17 @@
                                                 <td>{{$activity['sub_location']}}</td>
                                                 <td>{{$activity['report_time']}}</td>
                                                 <td>{{$activity['report_date']}}</td>
-                                               
-                                             
-                                                <td><a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
-                                                    <i class="mdi mdi-pencil"></i>
-                                                </a>
-                                                <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
-                                                    <i class="mdi mdi-delete"></i>
-                                                </a></td>
+                                                <td>
+                                                    <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
+                                                        <i class="mdi mdi-pencil"></i>
+                                                    </a>
+                                                    <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
+                                                        <i class="mdi mdi-delete"></i>
+                                                    </a>
+                                                    <a href="{{ 'report_view/' . $activity['id'] }}">
+                                                        <i class="mdi mdi-eye"></i>
+                                                    </a>
+                                                </td>
                                             </tr>                                 
                                    
                                         </tbody>

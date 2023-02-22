@@ -411,6 +411,8 @@
                                                     <select id="multiple-checkboxes1" class="form-control" multiple="multiple">
                                                     @foreach($locations as $location)
                                                         <option value="{{$location['id']}}">{{$location['location_name']}}</option>   
+                                                       
+                                                        
                                                         @endforeach 
                                                         
                                                     </select>
