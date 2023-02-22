@@ -273,17 +273,19 @@ class AdminController extends Controller
             $data['main_location'] = $request->main_location;
             $data['sub_location'] = $request->sub_location;
             $data['report_time'] = $request->report_time;
-            $data['report_date'] = $request->report_date;
-        
+            $data['report_date'] = $request->report_date;        
             if($request->hasfile('report_photo')){
-                $file = $request->file('report_photo');
-                // echo "<pre>";
-                // print_r($file);die;
-                $extension = $file->getClientOriginalExtension();
-                $filename = time().'.'.$extension;
-                $file->move(public_path('images'), $filename);
-                $data->report_photo = $filename;
+                foreach ($request->report_photo as $image) {
+                     $extension = $image->getClientOriginalExtension();
+                     $filename = time().'.'.$extension;
+                $image->move(public_path('images'), $filename);
+                     $image_array[]  = $filename;
             }
+            // echo "<pre>";
+            // print_r($image_array);die;
+            // die;
+            $data->report_photo = json_encode($image_array);
+        }
  
             if($data->save())       
                     echo json_encode(['message'=>'Updated Successfully!']);

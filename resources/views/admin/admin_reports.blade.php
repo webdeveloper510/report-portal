@@ -302,7 +302,7 @@
                                                   <label for="exampleInputEmail1" class="form-label">Main Location</label>
                                                   <select class="form-select" name="main_location" aria-label="Default select example">
                                                   @foreach($locations as $location)
-                                                    <option selected value="{{$location['location_name']}}">{{$location['parent_location']}}</option>
+                                                    <option selected value="{{$location['parent_location']}}">{{$location['parent_location']}}</option>
                                                   @endforeach
                                                   </select>
                                                 </div>
@@ -324,7 +324,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Report Photo</label>
-                                                    <input type="file" name="report_photo" class="form-control" multiple>
+                                                    <input type="file" name="report_photo[]" class="form-control" multiple>
                                                   </div>
                                                   <input type="hidden" name="user_id" value="{{session('data')['id']}} "/>
                                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -408,14 +408,16 @@
                                         <tbody>
                                         @foreach($activitys as $activity)
                                             <tr>
-                                                <td>1</td>
-                                                <td>hii</td>
+                                                <td>{{$loop->iteration }}</td>
+                                                <td>{{$activity['users']['name']}}</td>
                                                 <td>{{$activity['report_title']}}</td>
                                                 <td>{{$activity['main_location']}}</td>
                                                 <td>{{$activity['sub_location']}}</td>
                                                 <td>{{$activity['report_time']}}</td>
                                                 <td>{{$activity['report_date']}}</td>
-                                                <td>{{$activity['report_photo']}}</td>
+                                                <td>                                                    
+                                                    <img  width="50px" height="50px" src="http://localhost/report-portal/public/images/{{$activity['report_photo']}}"/>
+                                                </td>
                                              
                                                 <td><a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
                                                     <i class="mdi mdi-pencil"></i>
@@ -423,87 +425,8 @@
                                                 <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
                                                     <i class="mdi mdi-delete"></i>
                                                 </a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Deshmukh</td>
-                                                <td>{{$activity['report_title']}}</td>
-                                                <td>{{$activity['main_location']}}</td>
-                                                <td>{{$activity['sub_location']}}</td>
-                                                <td>{{$activity['report_time']}}</td>
-                                                <td>{{$activity['report_date']}}</td>
-                                                <td>{{$activity['report_photo']}}</td>
-                                                <td><a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
-                                                    <i class="mdi mdi-pencil"></i>
-                                                </a>
-                                                <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
-                                                    <i class="mdi mdi-delete"></i>
-                                                </a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Sanghani</td>
-                                                <td>{{$activity['report_title']}}</td>
-                                                <td>{{$activity['main_location']}}</td>
-                                                <td>{{$activity['sub_location']}}</td>
-                                                <td>{{$activity['report_time']}}</td>
-                                                <td>{{$activity['report_date']}}</td>
-                                                <td>{{$activity['report_photo']}}</td>
-                                                <td><a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
-                                                    <i class="mdi mdi-pencil"></i>
-                                                </a>
-                                                <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
-                                                    <i class="mdi mdi-delete"></i>
-                                                </a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Roshan</td>
-                                                <td>{{$activity['report_title']}}</td>
-                                                <td>{{$activity['main_location']}}</td>
-                                                <td>{{$activity['sub_location']}}</td>
-                                                <td>{{$activity['report_time']}}</td>
-                                                <td>{{$activity['report_date']}}</td>
-                                                <td>{{$activity['report_photo']}}</td>
-                                                <td><a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
-                                                    <i class="mdi mdi-pencil"></i>
-                                                </a>
-                                                <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
-                                                    <i class="mdi mdi-delete"></i>
-                                                </a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Joshi</td>
-                                                <td>{{$activity['report_title']}}</td>
-                                                <td>{{$activity['main_location']}}</td>
-                                                <td>{{$activity['sub_location']}}</td>
-                                                <td>{{$activity['report_time']}}</td>
-                                                <td>{{$activity['report_date']}}</td>
-                                                <td>{{$activity['report_photo']}}</td>
-                                                <td><a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
-                                                    <i class="mdi mdi-pencil"></i>
-                                                </a>
-                                                <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
-                                                    <i class="mdi mdi-delete"></i>
-                                                </a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Nigam</td>
-                                                <td>{{$activity['report_title']}}</td>
-                                                <td>{{$activity['main_location']}}</td>
-                                                <td>{{$activity['sub_location']}}</td>
-                                                <td>{{$activity['report_time']}}</td>
-                                                <td>{{$activity['report_date']}}</td>
-                                                <td>{{$activity['report_photo']}}</td>
-                                                <td><a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
-                                                    <i class="mdi mdi-pencil"></i>
-                                                </a>
-                                                <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
-                                                    <i class="mdi mdi-delete"></i>
-                                                </a></td>
-                                            </tr>
+                                            </tr>                                 
+                                   
                                         </tbody>
                                         @endforeach
                                     </table>
@@ -562,9 +485,7 @@
             $(document).ready(function(){
               $('#report').on('submit', function(event){
                     event.preventDefault();
-
                     var url = 'http://localhost/report-portal/insert_activity'
-
                     $.ajax({
                         url: url,
                         method: 'POST',
