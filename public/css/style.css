@@ -9185,7 +9185,7 @@ Main sidebar
   position: absolute;
   width: 250px;
   height: 100%;
-  top: 0px;
+  /* top: 0px; */
   z-index: 10;
   padding-top: 64px;
   background: #fff;

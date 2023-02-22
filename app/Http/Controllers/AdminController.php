@@ -294,6 +294,12 @@ class AdminController extends Controller
      
 }
 
+
+public function report_view(){
+        return view('admin.report_view');
+}
+
+
    }
     
 
