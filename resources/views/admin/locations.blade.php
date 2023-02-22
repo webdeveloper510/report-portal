@@ -306,75 +306,7 @@
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar" data-sidebarbg="skin6">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <!-- User Profile-->
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/index" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-gauge"></i><span
-                                    class="hide-menu">Dashboard</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/profile_page" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false">
-                                <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">Profile</span></a>
-                        </li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
-                                    class="hide-menu">Users</span></a></li>
-                                    <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-animation"></i><span class="hide-menu">Reports Record</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-account-card-details"></i><span class="hide-menu">Manage Report Title</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-airplay"></i><span class="hide-menu">Manage Access</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/locations" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Location</span></a></li>
-                        <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i
-                                    class="mdi me-2 mdi-emoticon"></i><span class="hide-menu">Icon</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/google_map" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span
-                                    class="hide-menu">Google Map</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/blank" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i
-                                    class="mdi me-2 mdi-book-open-variant"></i><span class="hide-menu">Blank</span></a>
-                        </li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/error" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-help-circle"></i><span
-                                    class="hide-menu">Error 404</span></a>
-                        </li> -->
-
-                        <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/user_list" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-help-circle"></i><span
-                                    class="hide-menu">Supervisor</span></a>
-                        </li> -->
-
-                        <!-- <li class="text-center p-20 upgrade-btn">
-                            <a href="https://www.wrappixel.com/templates/materialpro/"
-                                class="btn btn-warning text-white mt-4" target="_blank">Upgrade to
-                                Pro</a>
-                        </li> -->
-                    </ul>
-
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-            <div class="sidebar-footer">
-                <div class="row">
-                    <div class="col-4 link-wrap">
-                        <!-- item-->
-                        <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Settings"><i class="ti-settings"></i></a>
-                    </div>
-                    <div class="col-4 link-wrap">
-                        <!-- item-->
-                        <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i class="mdi mdi-gmail"></i></a>
-                    </div>
-                    <div class="col-4 link-wrap">
-                        <!-- item-->
-                        <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="mdi mdi-power"></i></a>
-                    </div>
-                </div>
-            </div>
-        </aside>
+        @include('admin.sidebar')
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -417,23 +349,42 @@
                                                     <div class="row">                                            
                                                         <div class="col-md-12">
                                                             <div class="mb-3 row">
+                                                            <label for="input" class="col-sm-4  col-form-label">Parent Location </label>
+                                                            <div class="col-sm- mb-3">
+                                                            <input type="text" class="form-control" name="parent_location">
+                                                            </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
                                                                 <label for="input" class="col-sm-4  col-form-label">Main Location </label>
                                                                 <div class="col-sm-">
-                                                                    <input type="text" class="form-control" name="location_name">
+                                                                <select class="form-select" name="location_name" aria-label="Default select example">
+                                                                    <option selected>Select Main Location</option>
+                                                                    <option value="onsite">On Site</option>
+                                                                    <option value="eastparkinglot">East Parking Lot</option>
+                                                                    <option value="ParkingGarage">Parking Garage</option>
+                                                                    <option value="SouthParkingLot">South Parking Lot</option>
+                                                                    <option value="WestParkingLot">West Parking Lot</option>
+                                                                    <option value="LoadingDock">Loading Dock</option>
+                                                                    <option value="DisposalArea">Disposal Area</option>
+                                                                    <option value="Perimeter">Perimeter</option>
+                                                                    <option value="FiveBelow">Five Below</option>
+                                                                </select>
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-4  col-form-label">Sub Location </label>
+                                                                <label for="input" class="col-sm-12 col-form-label text-left">Sub Location</label>
                                                                 <div class="col-sm-">
-                                                                    <input type="text" class="form-control" name="location_name">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-2 col-form-label text-left">Description</label>
-                                                                <div class="col-sm-">
-                                                                    <textarea type="text" class="form-control" rows="3" name="description"></textarea>
+                                                                 <div class="mb-3 row">
+                                                                    <div class="col-sm-12">
+                                                                      <input type="text" class="form-control mt-2">
+                                                                    </div>
+                                                                   
+                                                                 </div>
                                                                 </div>
                                                             </div> 
+                                                            <div id="main">
+
+                                                            </div>
                                                             <!-- <div class="mb-3 row">
                                                                 <label for="email" class="col-sm-2 col-form-label">Email</label>
                                                                 <div class="col-sm-10">
@@ -527,7 +478,8 @@
                                 <table class="table user-table">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">Location</th>
+                                            <th class="border-top-0">Main Location</th>
+                                            <th class="border-top-0">Sub Location</th>
                                             <th class="border-top-0">Description</th>
                                             
                                             <th class="border-top-0">Action</th>
@@ -538,6 +490,7 @@
                                         @foreach($locations as $location)
                                         <tr>
                                             <td>{{$location['location_name']}}</td>
+                                            <td>hshgdh</td>
                                             <td>{{$location['description']}}</td>                                        
                                             <td>
                                                <a href="{{ 'edit_location/' . $location['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
@@ -601,6 +554,7 @@
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    
     <script>
   @if(Session::has('message'))
   toastr.options =
@@ -619,6 +573,16 @@
   }
         toastr.error("{{ session('error') }}");
   @endif
+
+  $(document).ready(function(){
+  $("#add").click(function(){
+    $("#main").append('<div class="col-sm- main"><div class="mb-3 row"><div class="col-sm-10"><input type="text" class="form-control mt-2"></div><label for="staticEmail" class="col-sm-2 col-form-label"><button type="button" class="btn btn-outline-primary" id="remove">X</button></label></div></div>');
+  });
+  $("#remove").click(function(){
+    $(this).parent().parent().remove();
+    
+  });
+});
 </script>
 </body>
 

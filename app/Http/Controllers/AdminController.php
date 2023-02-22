@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AddUser;
 use App\Models\User;
+use App\Models\Report;
 use App\Models\Location;
 use App\Models\AccessWebsite;
 use DB;
@@ -167,7 +168,7 @@ class AdminController extends Controller
         $locations = Location::all();
         return view('admin.locations',compact('locations'));
     }
-
+    
     public function update_locations(Request $request){
      
         $data = Location::find($request->id);
@@ -218,6 +219,17 @@ class AdminController extends Controller
     public function report_title(){
         $data = DB::table('custom_title')->select('id','title')->get();
         return view('admin.report_title',compact('data'));
+     
+    }
+
+    public function admin_reports(){
+        $data = DB::table('custom_title')->select('id','title')->get();
+        $locations = Location::all();
+        $activitys = Report::with('users')->get()->toArray();
+        // echo "<pre>";
+        // print_r($activity);die;
+        return view('admin.admin_reports',compact('data','locations','activitys'));
+        
     }
     public function edit_title(Request $request){
         // echo "<pre>";
@@ -244,16 +256,49 @@ class AdminController extends Controller
     }
     }
 
-    public function delete_title($id){
+    public function delete_title(Request $request,$id){
        
         // echo "<pre>";
-        // print_r($data);die;
         DB::table('custom_title')->where('id',$id)->delete();
         return redirect('report_title')->with('message', 'Deleted Title Successfully!');
+    }
 
+   public function insert_activity(Request $request){
+    // echo "<pre>";
+    // print_r($request->all());die;
+
+            $data = new Report;
+            $data['report_title'] = $request->report_title;
+            $data['user_id'] = $request->user_id;
+            $data['main_location'] = $request->main_location;
+            $data['sub_location'] = $request->sub_location;
+            $data['report_time'] = $request->report_time;
+            $data['report_date'] = $request->report_date;        
+            if($request->hasfile('report_photo')){
+                foreach ($request->report_photo as $image) {
+                     $extension = $image->getClientOriginalExtension();
+                     $filename = time().'.'.$extension;
+                $image->move(public_path('images'), $filename);
+                     $image_array[]  = $filename;
+            }
+            // echo "<pre>";
+            // print_r($image_array);die;
+            // die;
+            $data->report_photo = json_encode($image_array);
+        }
+ 
+            if($data->save())       
+                    echo json_encode(['message'=>'Updated Successfully!']);
+             else
+               echo json_encode(['message'=>'Some error!']);          
+        
     }
-    public function report_view(){
+
+public function report_view(){
         return view('admin.report_view');
-    }
-    
 }
+
+
+   }
+    
+
