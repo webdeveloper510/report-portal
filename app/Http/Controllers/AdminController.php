@@ -291,12 +291,8 @@ class AdminController extends Controller
                     echo json_encode(['message'=>'Updated Successfully!']);
              else
                echo json_encode(['message'=>'Some error!']);
-                
-        
+     
 }
-
-
-
 
    }
     

@@ -401,7 +401,6 @@
                                                 <th class="border-top-0">Sub Location</th>
                                                 <th class="border-top-0">Report Time</th>
                                                 <th class="border-top-0">Report Date</th>
-                                                <th class="border-top-0">Report Images</th>
                                                 <th class="border-top-0">Action</th>
                                             </tr>
                                         </thead>
@@ -415,9 +414,7 @@
                                                 <td>{{$activity['sub_location']}}</td>
                                                 <td>{{$activity['report_time']}}</td>
                                                 <td>{{$activity['report_date']}}</td>
-                                                <td>                                                    
-                                                    <img  width="50px" height="50px" src="http://localhost/report-portal/public/images/{{$activity['report_photo']}}"/>
-                                                </td>
+                                              
                                              
                                                 <td><a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
                                                     <i class="mdi mdi-pencil"></i>
@@ -426,7 +423,6 @@
                                                     <i class="mdi mdi-delete"></i>
                                                 </a></td>
                                             </tr>                                 
-                                   
                                         </tbody>
                                         @endforeach
                                     </table>
@@ -504,13 +500,10 @@
                         },
                         error: function(response) {
                             //$('.error').remove();
-                       
                         }
                     });
                 });
-
             });
         </script>
 </body>
-
 </html>
