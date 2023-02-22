@@ -105,6 +105,10 @@
         color: #ffffff !important;
         font-size: small;
     }
+
+    i.mdi.mdi-eye {
+    color: slategrey !important;
+}
 </style>
 </head>
 
@@ -571,7 +575,7 @@
                                                     <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
                                                         <i class="mdi mdi-delete"></i>
                                                     </a>
-                                                    <a href="{{ 'report_view/' . $activity['id'] }}">
+                                                    <a href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
                                                         <i class="mdi mdi-eye"></i>
                                                     </a>
                                                 </td>
