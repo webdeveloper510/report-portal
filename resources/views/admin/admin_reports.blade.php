@@ -95,16 +95,17 @@
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
-    <div class="preloader">
+    <!-- <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
-    </div>
+    </div> -->
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
@@ -114,21 +115,17 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a href="<?php echo URL::to('/'); ?>/index" class="navbar-brand ms-4">
+                    <a class="navbar-brand ms-4" href="index.html">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="<?php echo URL::to('/'); ?>/public/assets/images/logo-light-icon.png" alt="homepage" class="dark-logo" />
+                            <img src="../assets/images/logo-light-icon.png" alt="homepage" class="dark-logo" />
 
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span class="logo-text">
-                            <!-- dark Logo text -->
-                            <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/logo-light-text.png" alt="homepage" class="dark-logo" /> -->
-
-                        </span>
+                      
                     </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -163,12 +160,6 @@
                                 <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
                                     class="srh-btn"><i class="ti-close"></i></a> </form>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-muted " href=""><i class=""></i>Phone: 9876543210</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-muted" href=""><i class=""></i>Email: rohit@gmail.com</a>
-                        </li>
                     </ul>
 
                     <!-- ============================================================== -->
@@ -179,12 +170,10 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                          <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark">
-                                <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                 {{session('data')['name']}} 
+                            <a class="nav-link text-muted waves-effect waves-dark" href="pages-profile.html"  role="button">
+                                <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2">Markarn Doe
                             </a>
-                            <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark ">Logout</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
+                            
                         </li>
                     </ul>
                 </div>
@@ -196,77 +185,51 @@
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar" data-sidebarbg="skin6">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <!-- User Profile-->
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/index" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-gauge"></i><span
-                                    class="hide-menu">Dashboard</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/profile_page" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false">
-                                <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">Profile</span></a>
-                        </li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-table"></i><span
-                                    class="hide-menu">Supervisor</span></a></li>
-                                    <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Reports Record</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Report Title</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Manage Access</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/locations" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Location</span></a></li>
-                        
-                        <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="f5d8 mdi-animation"></i><span class="hide-menu">Reports</span></a></li> -->
-                        <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/icon_materiale" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i
-                                    class="mdi me-2 mdi-emoticon"></i><span class="hide-menu">Icon</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/google_map" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span
-                                    class="hide-menu">Google Map</span></a></li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/blank" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i
-                                    class="mdi me-2 mdi-book-open-variant"></i><span class="hide-menu">Blank</span></a>
-                        </li>
-                        <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/error" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-help-circle"></i><span
-                                    class="hide-menu">Error 404</span></a>
-                        </li> -->
+        @include('admin.sidebar')
 
-                        <!-- <li class="sidebar-item"> <a href="<?php echo URL::to('/'); ?>/user_list" class="sidebar-link waves-effect waves-dark sidebar-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-help-circle"></i><span
-                                    class="hide-menu">Supervisor</span></a>
-                        </li> -->
-
-                        <!-- <li class="text-center p-20 upgrade-btn">
-                            <a href="https://www.wrappixel.com/templates/materialpro/"
-                                class="btn btn-warning text-white mt-4" target="_blank">Upgrade to
-                                Pro</a>
-                        </li> -->
-                    </ul>
-
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-            <div class="sidebar-footer">
-                <div class="row">
-                    <div class="col-4 link-wrap">
-                        <!-- item-->
-                        <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Settings"><i class="ti-settings"></i></a>
+        <!-- Edit List Modal -->
+        <div class="modal fade" id="editlist" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Sidebar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Sidebar Title 1 </label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1">
                     </div>
-                    <div class="col-4 link-wrap">
-                        <!-- item-->
-                        <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i class="mdi mdi-gmail"></i></a>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput2" class="form-label">Sidebar Title 2</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput2">
                     </div>
-                    <div class="col-4 link-wrap">
-                        <!-- item-->
-                        <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="mdi mdi-power"></i></a>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput3" class="form-label">Sidebar Title 3</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput3">
                     </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput4" class="form-label">Sidebar Title 4</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput4" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput5" class="form-label">Sidebar Title 5</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput5">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput6" class="form-label">Sidebar Title 6</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput6">
+                    </div>
+                </form>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
-        </aside>
+            </div>
+        </div>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -280,207 +243,300 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0"> Reports  List </h3>
+                        <h3 class="page-title mb-0 p-0">Report</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Reports List</li>
+                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Report Table</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
-                        <form action="{{ route('add.user') }}" method="POST">
-                            @csrf
-                            <div class="text-end">
-                                <!-- <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
-                                    Add Supervisor
-                                </button> -->
-                                <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="Report_user">Add Supervisor
-                                                    </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>                        
-                                                <div class="modal-body">                                                  
-                                                        <div class="col-md-12">
-                                                            <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-2 col-form-label">Name</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="name">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="email" class="col-sm-2 col-form-label">Email</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="email">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="mb-3 row">
-                                                                <label for="password" class="col-sm-2 col-form-label">Password</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="password" class="form-control" name="password">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="email" class="col-sm-2 col-form-label">Phone</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="tel" class="form-control" name="phone">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-2 col-form-label">Address</label>
-                                                                <div class="col-sm-10">
-                                                                    <textarea type="text" class="form-control" rows="3" name="address"></textarea>
-                                                                </div>
-                                                            </div>                                                                       
-                                                                <input type="hidden" name="status" value="supervisor"></input>
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <button>Submit</button>
-                                                                    </div>
-                                                                    <div class="col"></div>
-                                                                </div>                                                       
-                                                            <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-2 col-form-label">Status</label>
-                                                                <input type="hidden" class="form-control" name="status" value="supervisor">
-                                                                <div class="col-sm-10">
-                                                                    <select class="form-select" aria-label="Default select example">
-                                                                        <option selected>status</option>
-                                                                        <option value="1">Admin</option>
-                                                                        <option value="2">user</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-2"></div>
-                                                    </form>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
-                                                        <button type="submit" class="btn btn-primary btn1">Submit</button>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                </div>
-                             </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
-        <div class="container-fluid">
-            <!-- ============================================================== -->
-            <!-- Start Page Content -->
-            <!-- ============================================================== -->
-            <div class="row">
-                
-                <!-- column -->
-                <div class="col-sm-12 ">
-                    <div class="card">
-                        <div class="card-body">
-                            <form action="{{ URL('/') }}" method="POST" class="row">
-                                    @csrf
-                                    <div class="col-md-4"></div>
-                                    <div class="col-md-4 mx-1">
-                                        <div class="mb-0 row mt-4">
-                                            <div class="col-sm-4"></div>
-                                            <div class="col-sm-4 mb-3 ">
-                                                <img class="report" src="<?php echo URL::to('/'); ?>/public/assets/images/report.jpg" />
-                                            </div>
-                                            <h4 class="text-center">Report List</h4>
-
-                                            <div class="col-sm-4"></div>
-                                        </div>
-                                        <div class="p-3">
-                                            <div class="mb-3 row">
-                                                <label for="name" class="col-sm- col-form-label">Name</label>
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="input" name="name">
-                                                </div>
-                                            </div>
-                                            <!-- <div class="mb-3 row">
-                                                <label for="email" class="col-sm- col-form-label">Email</label>
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="input" name="email">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                                <label for="password" class="col-sm- col-form-label">Password</label>
-                                                <div class="col-sm-12">
-                                                    <input type="password" class="form-control" id="input" name="password">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                                <label for="phone" class="col-sm- col-form-label">Emergency Contact</label>
-                                                <div class="col-sm-12">
-                                                    <input type="number" class="form-control" id="input" name="phone">
-                                                </div>
-                                            </div> -->
-                                            <div class="mb-3 row">
-                                                <label for="title" class="col-sm- col-form-label">Title</label>
-                                                <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="input" name="title">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="address" class="col-sm- form-label">Description</label>
-                                                <textarea class="form-control" id="address" rows="3"></textarea>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="recipient-name"class="col-form-label">Report Time</label>
-                                                <input type="time" class="form-control" id="validationCustom01"  name="timestamp" required>
-                                            </div>
-                                            <!-- <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                                            </div> -->
-                                            <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                                <button href="" type="submit" class="btn btn-primary">Submit Report</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4"></div>
-                            </form>
+                        <div class="text-end upgrade-btn">
+                            <a href=""  data-bs-toggle="modal" data-bs-target="#add"
+                                class="btn btn-danger d-none d-md-inline-block text-white" target="_blank">Add Report</a>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- ============================================================== -->
-            <!-- End PAge Content -->
+            <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
-            <!-- Right sidebar -->
+            <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <!-- .right-sidebar -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Report Table</h4>
+                                <!-- <h6 class="card-subtitle">Add class <code>Report table</code></h6> -->
+                                <!-- Add Modal -->
+                                <div class="modal fade" id="add" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="editModalLabel">Add Report </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="report" enctype="multipart/form-data">
+                                            {{ csrf_field() }}
+                                                <div class="mb-3">
+                                                  <label for="exampleInputEmail1" class="form-label">Report Title</label>
+                                                  <select class="form-select"  name="report_title" aria-label="Default select example">
+                                                    <option selected>Select Report Title</option>
+                                                    @foreach($data as $title)
+                                                    <option selected value="{{$title->id}}">{{$title->title}}</option>
+                                                    @endforeach
+                                                  </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                  <label for="exampleInputEmail1" class="form-label">Main Location</label>
+                                                  <select class="form-select" name="main_location" aria-label="Default select example">
+                                                  @foreach($locations as $location)
+                                                    <option selected value="{{$location['location_name']}}">{{$location['parent_location']}}</option>
+                                                  @endforeach
+                                                  </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                  <label for="exampleInputEmail1" class="form-label">Sub Location</label>
+                                                  <select class="form-select" name="sub_location" aria-label="Default select example">
+                                                  @foreach($locations as $location)
+                                                    <option selected value="{{$location['location_name']}}">{{$location['location_name']}}</option>
+                                                  @endforeach
+                                                  </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                  <label class="form-label">Report Time</label>
+                                                  <input type="time"  name="report_time" class="form-control">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Report Date</label>
+                                                    <input type="date" name="report_date" class="form-control">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Report Photo</label>
+                                                    <input type="file" name="report_photo" class="form-control" multiple>
+                                                  </div>
+                                                  <input type="hidden" name="user_id" value="{{session('data')['id']}} "/>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                              </form>
+                                        </div>
+                                       
+                                    </div>
+                                    </div>
+                                </div>
+                                <!-- Edit Modal -->
+                                    <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="editModalLabel">Edit Report </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="mb-3">
+                                                      <label for="exampleInputEmail1" class="form-label">Report Title</label>
+                                                      <select class="form-select" aria-label="Default select example">
+                                                        <option selected>Select Report Title</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                      </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                      <label class="form-label">Report Time</label>
+                                                      <input type="time" class="form-control">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Report Date</label>
+                                                        <input type="date" class="form-control">
+                                                      </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Report Photo</label>
+                                                        <input type="file"  name="report_photo" class="form-control" multiple>
+                                                      </div>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                  </form>
+                                            </div>
+                                           
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <!-- delete Modal -->
+                                    <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            
+                                            <div class="modal-body text-center pt-5">
+                                           <h3>Are you sure?</h3>
+                                           <p>Do you really want to delete these records?<br/>
+                                            This process cannot be undone.</p>
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-danger btn-lg">Delete</button>
+                                            </div>
+                                            </div>
+                                            
+                                        </div>
+                                        </div>
+                                    </div>
+                                <div class="table-responsive">
+                                    <table class="table user-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0">#</th>
+                                                <th class="border-top-0">Report Name</th>
+                                                <th class="border-top-0">Report Title</th>
+                                                <th class="border-top-0">Main Location</th>
+                                                <th class="border-top-0">Sub Location</th>
+                                                <th class="border-top-0">Report Time</th>
+                                                <th class="border-top-0">Report Date</th>
+                                                <th class="border-top-0">Report Images</th>
+                                                <th class="border-top-0">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($activitys as $activity)
+                                            <tr>
+                                                <td>1</td>
+                                                <td>hii</td>
+                                                <td>{{$activity['report_title']}}</td>
+                                                <td>{{$activity['main_location']}}</td>
+                                                <td>{{$activity['sub_location']}}</td>
+                                                <td>{{$activity['report_time']}}</td>
+                                                <td>{{$activity['report_date']}}</td>
+                                                <td>{{$activity['report_photo']}}</td>
+                                             
+                                                <td><a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
+                                                    <i class="mdi mdi-pencil"></i>
+                                                </a>
+                                                <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
+                                                    <i class="mdi mdi-delete"></i>
+                                                </a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Deshmukh</td>
+                                                <td>{{$activity['report_title']}}</td>
+                                                <td>{{$activity['main_location']}}</td>
+                                                <td>{{$activity['sub_location']}}</td>
+                                                <td>{{$activity['report_time']}}</td>
+                                                <td>{{$activity['report_date']}}</td>
+                                                <td>{{$activity['report_photo']}}</td>
+                                                <td><a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
+                                                    <i class="mdi mdi-pencil"></i>
+                                                </a>
+                                                <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
+                                                    <i class="mdi mdi-delete"></i>
+                                                </a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Sanghani</td>
+                                                <td>{{$activity['report_title']}}</td>
+                                                <td>{{$activity['main_location']}}</td>
+                                                <td>{{$activity['sub_location']}}</td>
+                                                <td>{{$activity['report_time']}}</td>
+                                                <td>{{$activity['report_date']}}</td>
+                                                <td>{{$activity['report_photo']}}</td>
+                                                <td><a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
+                                                    <i class="mdi mdi-pencil"></i>
+                                                </a>
+                                                <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
+                                                    <i class="mdi mdi-delete"></i>
+                                                </a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>Roshan</td>
+                                                <td>{{$activity['report_title']}}</td>
+                                                <td>{{$activity['main_location']}}</td>
+                                                <td>{{$activity['sub_location']}}</td>
+                                                <td>{{$activity['report_time']}}</td>
+                                                <td>{{$activity['report_date']}}</td>
+                                                <td>{{$activity['report_photo']}}</td>
+                                                <td><a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
+                                                    <i class="mdi mdi-pencil"></i>
+                                                </a>
+                                                <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
+                                                    <i class="mdi mdi-delete"></i>
+                                                </a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>Joshi</td>
+                                                <td>{{$activity['report_title']}}</td>
+                                                <td>{{$activity['main_location']}}</td>
+                                                <td>{{$activity['sub_location']}}</td>
+                                                <td>{{$activity['report_time']}}</td>
+                                                <td>{{$activity['report_date']}}</td>
+                                                <td>{{$activity['report_photo']}}</td>
+                                                <td><a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
+                                                    <i class="mdi mdi-pencil"></i>
+                                                </a>
+                                                <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
+                                                    <i class="mdi mdi-delete"></i>
+                                                </a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>Nigam</td>
+                                                <td>{{$activity['report_title']}}</td>
+                                                <td>{{$activity['main_location']}}</td>
+                                                <td>{{$activity['sub_location']}}</td>
+                                                <td>{{$activity['report_time']}}</td>
+                                                <td>{{$activity['report_date']}}</td>
+                                                <td>{{$activity['report_photo']}}</td>
+                                                <td><a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
+                                                    <i class="mdi mdi-pencil"></i>
+                                                </a>
+                                                <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
+                                                    <i class="mdi mdi-delete"></i>
+                                                </a></td>
+                                            </tr>
+                                        </tbody>
+                                        @endforeach
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
             <!-- ============================================================== -->
-            <!-- End Right sidebar -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            
+            <!-- ============================================================== -->
+            <!-- End footer -->
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Container fluid  -->
+        <!-- End Page wrapper  -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer"> © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a>
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
@@ -502,25 +558,38 @@
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script>
-  @if(Session::has('message'))
-  toastr.options =
-  {
-    "closeButton" : true,
-    "progressBar" : true
-  }
-        toastr.success("{{ session('message') }}");
-  @endif
+    <script type="text/javascript">
+            $(document).ready(function(){
+              $('#report').on('submit', function(event){
+                    event.preventDefault();
 
-  @if(Session::has('error'))
-  toastr.options =
-  {
-    "closeButton" : true,
-    "progressBar" : true
-  }
-        toastr.error("{{ session('error') }}");
-  @endif
-</script>
+                    var url = 'http://localhost/report-portal/insert_activity'
+
+                    $.ajax({
+                        url: url,
+                        method: 'POST',
+                        data: new FormData(this),
+                        dataType: 'JSON',
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success:function(response)
+                        {
+                            toastr.options =  {
+                                "closeButton" : true,
+                                "progressBar" : true
+                            }
+                            toastr.success(response.message);
+                        },
+                        error: function(response) {
+                            //$('.error').remove();
+                       
+                        }
+                    });
+                });
+
+            });
+        </script>
 </body>
 
 </html>
