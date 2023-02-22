@@ -52,11 +52,7 @@
         background: #2f3356 !important;
     }
 
-    .footer{
-        text-align: center!important;
-        margin-top: 0px !important;
-    }
-
+   
 
     img.profile {
             width: 100px !important;
@@ -64,16 +60,14 @@
         }
 
     .card {
-        background: whitesmoke !important;
-    }
-
-    .col-md-4.mb-3.mx-5 {
         background: white !important;
     }
 
+   
+
     
     .left-sidebar {
-        top: 52px !important;
+        top: 52px !important; 
     }
     
      header.topbar1 {
@@ -349,7 +343,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+       
         <!-- ============================================================== -->
         <!-- End Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
@@ -362,24 +356,35 @@
             <!-- ============================================================== -->
             <div class="row">
                 <!-- column -->
-                <div class="col-sm-12">
+                    <div class="col-lg-4 col-xlg-3 col-md-5">
+                        <div class="card">
+                            <div class="card-body profile-card">
+                                <center class="mt-4">  <img class="profile" src="<?php echo URL::to('/'); ?>/public/assets/images/profiel.png" width="150" />
+                                    <h4 class="card-title mt-2">Hanna Gover</h4>
+                                    <h6 class="card-subtitle">Account Manager </h6>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
                     <div class="card">
                         <div class="card-body">
                             <form action="{{ URL('/update_profile') }}" method="POST" class="row ">
                                 @csrf
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4 mb-3 mx-5">
-                                    <div class="mb-0 row">
-                                        <div class="col-sm-4"></div>
-                                        <div class="col-sm-4 mb-3 mt-4">
-                                            <img class="profile" src="<?php echo URL::to('/'); ?>/public/assets/images/profiel.png" />
-                                        </div>
-                                        <h4 class="text-center">Admin Profile</h4>
-                                        <div class="col-sm-4"></div>
-                                    </div>
+                               
+                                <div class="col-md-12">
+                                   
                                     <input type="hidden" class="form-control"  name="id" value="{{session('data')['id']}}">
                                     <div class="p-3">
                                     
+                                        <div class="mb-3 row">
+                                            <label for="file" class="col-sm- col-form-label">Upload Profile Image</label>
+                                            <div class="col-sm-12">
+                                                <input type="file" class="form-control" id="file" name="file" >
+                                            </div>
+                                        </div>
                                         <div class="mb-3 row">
                                             <label for="name" class="col-sm- col-form-label">Name</label>
                                             <div class="col-sm-12">
@@ -419,7 +424,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4"></div>
+                                
                             </form>
                         </div>
                     </div>
@@ -440,13 +445,7 @@
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer"> © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a>
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
+       
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->

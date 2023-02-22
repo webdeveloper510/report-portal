@@ -38,6 +38,11 @@
         color: #2400ff !important;
     }
 
+    .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
+        font-size: medium !important;
+    }
+
+
         .topbar{
             background: #2f3356 !important;
        }
@@ -62,10 +67,6 @@
         img.manage {
             width: 100px !important;
             height: 100px !important;
-        }
-
-        .footer {
-            text-align: center !important;
         }
 
         .card {
@@ -466,14 +467,7 @@
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer"> © 2021 Material Pro Admin by <a href="https://www.wrappixel.com/">wrappixel.com</a>
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
+        
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->

@@ -77,9 +77,7 @@
         height: 80px !important;
     }
 
-    .footer {
-        text-align: center !important;
-    }
+    
 
     .card {
          background: whitesmoke;
@@ -105,6 +103,10 @@
         color: #ffffff !important;
         font-size: small;
     }
+
+    i.mdi.mdi-eye {
+    color: slategrey !important;
+}
 </style>
 </head>
 
@@ -571,7 +573,7 @@
                                                     <a href="{{ 'delete_report/' . $activity['id'] }}">
                                                         <i class="mdi mdi-delete"></i>
                                                     </a>
-                                                    <a href="{{ 'report_view/' . $activity['id'] }}">
+                                                    <a href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
                                                         <i class="mdi mdi-eye"></i>
                                                         
                                                     </a>
@@ -599,13 +601,7 @@
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
+           
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
