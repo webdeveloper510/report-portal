@@ -429,18 +429,16 @@
                                             {{ csrf_field() }}
                                             <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Report Type</label>
-                                                  <select class="form-select"  name="report_title" aria-label="Default select example">
+                                                  <select class="form-select"  name="report_type" aria-label="Default select example">
                                                     <option selected>Select Report Type</option>
-                                                
-                                            
                                                     <option value=" Activity Reports"> Activity Reports</option>
                                                     <option value="  Incident Reports"> Incident Reports</option>
                                                     <option value=" Patrol Reports"> Patrol Reports</option>
                                                     <option value="  Parking violations"> Parking violations</option>
                                                     <option value=" Visitor logs"> Visitor logs</option>
-                                               
                                                   </select>
                                                 </div>
+                                                activitys
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Report Title</label>
                                                   <select class="form-select"  name="report_title" aria-label="Default select example">
@@ -525,7 +523,7 @@
                                         </div>
                                     </div>
                                     <!-- delete Modal -->
-                                    <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <!-- <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             
@@ -541,7 +539,7 @@
                                             
                                         </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 <div class="table-responsive">
                                     <table class="table user-table">
                                         <thead>
@@ -553,6 +551,7 @@
                                                 <th class="border-top-0">Sub Location</th>
                                                 <th class="border-top-0">Report Time</th>
                                                 <th class="border-top-0">Report Date</th>
+                                                <th class="border-top-0">Report Type</th>
                                                 <th class="border-top-0">Action</th>
                                             </tr>
                                         </thead>
@@ -566,19 +565,22 @@
                                                 <td>{{$activity['sub_location']}}</td>
                                                 <td>{{$activity['report_time']}}</td>
                                                 <td>{{$activity['report_date']}}</td>
-                                                <td>
-                                                    <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
-                                                        <i class="mdi mdi-pencil"></i>
-                                                    </a>
-                                                    <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
-                                                        <i class="mdi mdi-delete"></i>
-                                                    </a>
-                                                    <a  class="h3" href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
-                                                        <i class="mdi mdi-eye"></i>
-                                                    </a>
+                                                <td>{{$activity['report_type']}}</td>
+                                                <td >
+                                                    <div class="d-flex">
+                                                        <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
+                                                            <i class="mdi mdi-pencil"></i>
+                                                        </a>
+                                                        <a class="h3" href="{{ 'delete_report/' . $activity['id'] }}">
+                                                            <i class="mdi mdi-delete"></i>
+                                                        </a>
+                                                        <a class="h3" href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
+                                                            <i class="mdi mdi-eye"></i>
+                                                            
+                                                        </a>
+                                                    </div>
                                                 </td>
                                             </tr>                                 
-                                   
                                         </tbody>
                                         @endforeach
                                     </table>
@@ -642,21 +644,19 @@
                         processData: false,
                         success:function(response)
                         {
+                            $('#add').modal('hide');
                             toastr.options =  {
                                 "closeButton" : true,
-                                "progressBar" : true
+                                "progressBar" : true,
                             }
                             toastr.success(response.message);
                         },
                         error: function(response) {
                             //$('.error').remove();
-                       
                         }
                     });
                 });
-
             });
         </script>
 </body>
-
 </html>
