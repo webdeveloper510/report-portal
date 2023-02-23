@@ -311,9 +311,13 @@ class AdminController extends Controller
                 //  echo "<pre>";
                 //  print_r($request->all());die;
                 DB::table('reports')->where('id',$id)->delete();
-                return redirect('admin_reports')->with('message', 'Deleted Report Successfully!');
+                return redirect('.admin_reports')->with('message', 'Deleted Report Successfully!');
             }
 
+
+            public function report_date(){
+                return view('admin.report_date');
+            }
 
    }
     
