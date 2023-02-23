@@ -223,13 +223,20 @@ class AdminController extends Controller
     }
 
     public function admin_reports(){
-        $data = DB::table('custom_title')->select('id','title')->get();
-        $locations = Location::all();
-        // $reports = Report::all();
-        $activitys = Report::with('users')->get()->toArray();
-        // echo "<pre>";
-        // print_r($activity);die;
-        return view('admin.admin_reports',compact('data','locations','activitys'));
+        $reports_view = Report::whereBetween('report_date',['2023-02-23', '2023-02-25'])->get()->toArray();
+        echo "<pre>";
+        print_r($reports_view);die;
+        return view('admin.admin_reports',compact('reports_view',));
+
+
+
+        // $data = DB::table('custom_title')->select('id','title')->get();
+        // $locations = Location::all();
+        // // $reports = Report::all();
+        // $activitys = Report::with('users')->get()->toArray();
+        // // echo "<pre>";
+        // // print_r($activity);die;
+        // return view('admin.admin_reports',compact('data','locations','activitys'));
         
     }
     public function edit_title(Request $request){
@@ -313,6 +320,19 @@ class AdminController extends Controller
                 DB::table('reports')->where('id',$id)->delete();
                 return redirect('admin_reports')->with('message', 'Deleted Report Successfully!');
             }
+
+           
+            // public function get_report(){
+        
+            //     $reports_view = Report::whereBetween('report_date',['2023-02-23', '2023-02-24'])->get()->toArray();
+            //     echo "<pre>";
+            //     print_r($reports_view);die;
+            //     return view('admin.admin_reports',compact('reports_view',));
+            // }
+
+
+
+            
 
 
    }
