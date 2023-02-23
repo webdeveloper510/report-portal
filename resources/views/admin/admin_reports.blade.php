@@ -566,17 +566,19 @@
                                                 <td>{{$activity['report_time']}}</td>
                                                 <td>{{$activity['report_date']}}</td>
                                                 <td>{{$activity['report_type']}}</td>
-                                                <td class="d-flex">
-                                                    <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
-                                                        <i class="mdi mdi-pencil"></i>
-                                                    </a>
-                                                    <a href="{{ 'delete_report/' . $activity['id'] }}">
-                                                        <i class="mdi mdi-delete"></i>
-                                                    </a>
-                                                    <a href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
-                                                        <i class="mdi mdi-eye"></i>
-                                                        
-                                                    </a>
+                                                <td >
+                                                    <div class="d-flex">
+                                                        <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
+                                                            <i class="mdi mdi-pencil"></i>
+                                                        </a>
+                                                        <a class="h3" href="{{ 'delete_report/' . $activity['id'] }}">
+                                                            <i class="mdi mdi-delete"></i>
+                                                        </a>
+                                                        <a class="h3" href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
+                                                            <i class="mdi mdi-eye"></i>
+                                                            
+                                                        </a>
+                                                    </div>
                                                 </td>
                                             </tr>                                 
                                         </tbody>
@@ -642,9 +644,10 @@
                         processData: false,
                         success:function(response)
                         {
+                            $('#add').modal('hide');
                             toastr.options =  {
                                 "closeButton" : true,
-                                "progressBar" : true
+                                "progressBar" : true,
                             }
                             toastr.success(response.message);
                         },

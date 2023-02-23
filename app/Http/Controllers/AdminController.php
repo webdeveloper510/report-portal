@@ -290,7 +290,7 @@ class AdminController extends Controller
         }
  
             if($data->save())       
-                    echo json_encode(['message'=>'Updated Successfully!']);
+                    echo json_encode(['message'=>'Report Successfully!']);
              else
                echo json_encode(['message'=>'Some error!']);
      
