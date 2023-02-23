@@ -381,7 +381,7 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Report</h3>
+                        <h3 class="page-title mb-0 p-0 ">Report Table</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -573,7 +573,7 @@
                                                     <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#delete">
                                                         <i class="mdi mdi-delete"></i>
                                                     </a>
-                                                    <a href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
+                                                    <a  class="h3" href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
                                                         <i class="mdi mdi-eye"></i>
                                                     </a>
                                                 </td>
