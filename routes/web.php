@@ -53,5 +53,5 @@ Route::get('/delete_title/{id}', [AdminController::class, 'delete_title']);
 Route::get('/delete_report/{id}', [AdminController::class, 'delete_report']);
 Route::post('insert_activity', [AdminController::class, 'insert_activity']);
 Route::get('report_view/{id}',[AdminController::class, 'report_view']);
-// Route::get('get_report',[AdminController::class, 'get_report']);
-
+Route::get('report_date',[AdminController::class, 'report_date']);
+Route::post('filter_data',[AdminController::class, 'filter_data']);
