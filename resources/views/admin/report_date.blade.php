@@ -114,10 +114,23 @@
 
 
 img.report_logo {
-    width: 100%;
-    height: 100px;
-    background:whitesmoke !important;
+    width: 100% !important;
+    height: 50px !important;
 }
+
+.level.me-2 {
+    background: green !important;
+}
+
+
+p.num.my-1 {
+    color: #8a2be3 !important;
+}
+
+.sub_header {
+    background: #d6d6d6 !important;
+}
+
 </style>
 </head>
 
@@ -392,12 +405,12 @@ img.report_logo {
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0 ">Report Table</h3>
+                        <h3 class="page-title mb-0 p-0 ">Report Tables</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Report Table</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Report Tables</li>
                                 </ol>
                             </nav>
                         </div>
@@ -417,7 +430,8 @@ img.report_logo {
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-               <div class="row">
+
+               <div class="row mt-5">
                     <div class="col-md-4">
                         <div class="">
                             <img src="public/assets/images/report_date_logo.jpg" class="report_logo"/>
@@ -431,57 +445,62 @@ img.report_logo {
                     </div>
                     <div class="col-md-4">
                         <div class="text-end">
-                            <p class=""><b>Start: </b>{{$filter_data['start_date']}}</p>
+                            <p class="mb-0"><b>Start: </b>{{$filter_data['start_date']}}</p>
                              <p class=""><b>End: </b>{{$filter_data['end_date']}}</p>
                         </div>
                     </div>
                </div>
-               @foreach($reports as $report)
-               <div class="report-view">
+               @foreach($reports as $report)        
+               <div class="report-view mt-1">
                    <div class="header-table">
-                       <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class=""><p>{{$report['report_date']}}</p></div>
+                        <div class="sub_header">
+                            <div class="row g-0 mx-2">
+                                    <div class="col-md-4">
+                                        <div class=""><p class="my-1">Tue Mar 13, 2018 12:08 PM</p></div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="text-center"><p class="my-1">(S) Officer Arrived On Duty</p></div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- <div class="text-end"><p class="num my-1">293742753</p></div> -->
+                                    </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="text-center"><p>(S) Officer Arrived On Duty</p></div>
-                            </div>
-                          
-                       </div>
+                        </div>
                    </div>
                    <div class="report-body">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <div class="">
-                                    <p class="mb-1">Commercial Property</p>
-                                    <p class="mb-1">5412 Beach Boulevard</p>
-                                    <p class="mb-1"><b>Location: </b> {{$report['sub_location']}} </p>
+                                <div class="mx-2">
+                                    <p class="mb-0">Commercial Property</p>
+                                    <p class="mb-0">5412 Beach Boulevard</p>
+                                    <p class="mb-0"><b>Location: </b>{{$report['sub_location']}}</p>
                                     <p><b>Unit: </b>{{$report['main_location']}}</p>
-                                    <p class="mb-1">{{$report['users']['name']}}</p>
-                                    <div class="">
-                                    {{$report['report_date']}}
-                                        
+                                    <p class=" mb-1">{{$report['users']['name']}}</p>
+                                    <div class="level me-2">
+                                        <p class="text-white  mx-2">(S) Level 3</p>
                                     </div>
-                                    
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="text-">
+                                <div class="text- ">
                                     <p>Reported: Officer arrived on duty and checked in at the property securityoffice. Keys and radio equipment received along with past down ordersfrom past shift officer. Radio and equipment were found fully charged andavailable for my daily activity shift report.</p>
                                 </div>
                             </div>
-                               @foreach (json_decode($report['report_photo']) as $member)
-                                <div class="col-md-4">
-                                                <div class="text-end">
-                                                    <img src="{{ URL::asset('public/images/'.$member)}}" class=""/>
-                                                </div>
-                                            </div>
-                                 @endforeach
-                    
+                            <div class="col-md-4">
+                                <div class="text-end ">
+                                @foreach (json_decode($report['report_photo']) as $member)
+                                    <img src="{{ URL::asset('public/images/'.$member)}}"/> 
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                    </div>
                </div>
                @endforeach
+
+             
+
+              
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -496,11 +515,7 @@ img.report_logo {
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
-            
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
