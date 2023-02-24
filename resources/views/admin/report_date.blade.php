@@ -114,10 +114,23 @@
 
 
 img.report_logo {
-    width: 100%;
-    height: 100px;
-    background:whitesmoke !important;
+    width: 100% !important;
+    height: 50px !important;
 }
+
+.level.me-2 {
+    background: green !important;
+}
+
+
+p.num.my-1 {
+    color: #8a2be3 !important;
+}
+
+.sub_header {
+    background: #d6d6d6 !important;
+}
+
 </style>
 </head>
 
@@ -392,21 +405,17 @@ img.report_logo {
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0 ">Report Table</h3>
+                        <h3 class="page-title mb-0 p-0 ">Report Tables</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Report Table</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Report Tables</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
-                    <div class="col-md-6 col-4 align-self-center">
-                        <div class="text-end upgrade-btn">
-                            <a href=""  data-bs-toggle="modal" data-bs-target="#add"
-                                class="btn btn-danger d-none d-md-inline-block text-white" target="_blank">Add Report</a>
-                        </div>
+                    <div class="col-md-6  col-4 align-self-center ">
                     </div>
                 </div>
             </div>
@@ -420,7 +429,8 @@ img.report_logo {
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-               <div class="row">
+
+               <div class="row mt-5">
                     <div class="col-md-4">
                         <div class="">
                             <img src="public/assets/images/report_date_logo.jpg" class="report_logo"/>
@@ -428,53 +438,144 @@ img.report_logo {
                     </div>
                     <div class="col-md-4">
                         <div class="text-center">
-                            <h4>Daily Activity Report</h4>
+                            <h3 class="mb-2">Daily Activity Report</h3>
                             <p>Silvertrac Software</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="text-end">
-                            <p class=""><b>Start: </b>Mar 13, 2018 08:47 AM</p>
+                            <p class="mb-0"><b>Start: </b>Mar 13, 2018 08:47 AM</p>
                             <p class=""><b>End: </b>Mar 15, 2018 08:47 AM</p>
                         </div>
                     </div>
                </div>
-               <div class="report-view">
+               <div class="report-view mt-1">
                    <div class="header-table">
-                       <div class="row g-0">
+                        <div class="sub_header">
+                            <div class="row g-0 mx-2">
+                                    <div class="col-md-4">
+                                        <div class=""><p class="my-1">Tue Mar 13, 2018 12:08 PM</p></div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="text-center"><p class="my-1">(S) Officer Arrived On Duty</p></div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="text-end"><p class="num my-1">293742753</p></div>
+                                    </div>
+                            </div>
+                        </div>
+                   </div>
+                   <div class="report-body">
+                        <div class="row g-0">
                             <div class="col-md-4">
-                                <div class=""><p>Tue Mar 13, 2018 12:08 PM</p></div>
+                                <div class="mx-2">
+                                    <p class="mb-0">Commercial Property</p>
+                                    <p class="mb-0">5412 Beach Boulevard</p>
+                                    <p class="mb-0"><b>Location: </b>On Site  </p>
+                                    <p><b>Unit: </b>Patrol</p>
+                                    <p class=" mb-1">Makena Anderson</p>
+                                    <div class="level me-2">
+                                        <p class="text-white  mx-2">(S) Level 3</p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="text-center"><p>(S) Officer Arrived On Duty</p></div>
+                                <div class="text- ">
+                                    <p>Reported: Officer arrived on duty and checked in at the property securityoffice. Keys and radio equipment received along with past down ordersfrom past shift officer. Radio and equipment were found fully charged andavailable for my daily activity shift report.</p>
+                                </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="text-end"><p class="">193742753</p></div>
+                                <div class="text-end ">
+                                    <img src="public/assets/images/report_dat.jpg" class=""/>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+               </div>
+
+               <div class="report-view mt-1">
+                   <div class="header-table ">
+                        <div class="sub_header">
+                            <div class="row g-0 mx-2">
+                                <div class="col-md-4">
+                                    <div class=""><p class="my-1">Tue Mar 13, 2018 12:08 PM</p></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-center"><p class="my-1">(S) Officer Arrived On Duty</p></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-end"><p class="num my-1">293742753</p></div>
+                                </div>
+                            </div>
+                        </div>   
+                   </div>
+                   <div class="report-body">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <div class="mx-2">
+                                    <p class="mb-0">Commercial Property</p>
+                                    <p class="mb-0">5412 Beach Boulevard</p>
+                                    <p class="mb-0"><b>Location: </b>On Site  </p>
+                                    <p><b>Unit: </b>Patrol</p>
+                                    <p class=" mb-1">Makena Anderson</p>
+                                    <div class="level me-2">
+                                        <p class="text-white  mx-2">(S) Level 3</p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text- ">
+                                    <p>Reported: Officer arrived on duty and checked in at the property securityoffice. Keys and radio equipment received along with past down ordersfrom past shift officer. Radio and equipment were found fully charged andavailable for my daily activity shift report.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-end ">
+                                    <img src="public/assets/images/report_dat.jpg" class=""/>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+               </div>
+
+               <div class="report-view mt-1">
+                   <div class="header-table">
+                       <div class="sub_header">
+                            <div class="row g-0 mx-2">
+                                <div class="col-md-4">
+                                    <div class=""><p class="my-1">Tue Mar 13, 2018 12:08 PM</p></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-center"><p class="my-1">(S) Officer Arrived On Duty</p></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-end"><p class="num my-1">293742753</p></div>
+                                </div>
                             </div>
                        </div>
                    </div>
                    <div class="report-body">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <div class="">
-                                    <p class="mb-1">Commercial Property</p>
-                                    <p class="mb-1">5412 Beach Boulevard</p>
-                                    <p class="mb-1"><b>Location: </b>On Site  </p>
+                                <div class="mx-2">
+                                    <p class="mb-0">Commercial Property</p>
+                                    <p class="mb-0">5412 Beach Boulevard</p>
+                                    <p class="mb-0"><b>Location: </b>On Site  </p>
                                     <p><b>Unit: </b>Patrol</p>
-                                    <p class="mb-1">Makena Anderson</p>
-                                    <div class="">
-                                        <p class="bg-green">(S) Level 3</p>
+                                    <p class=" mb-1">Makena Anderson</p>
+                                    <div class="level me-2">
+                                        <p class="text-white  mx-2">(S) Level 3</p>
                                     </div>
                                     
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="text-">
+                                <div class="text- ">
                                     <p>Reported: Officer arrived on duty and checked in at the property securityoffice. Keys and radio equipment received along with past down ordersfrom past shift officer. Radio and equipment were found fully charged andavailable for my daily activity shift report.</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="text-end">
+                                <div class="text-end ">
                                     <img src="public/assets/images/report_dat.jpg" class=""/>
                                 </div>
                             </div>
@@ -495,11 +596,7 @@ img.report_logo {
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
-            
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
