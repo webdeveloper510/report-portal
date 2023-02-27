@@ -54,9 +54,9 @@
             text-align: center !important;
         }
 
-        img.location {
-            width: 80px !important;
-            height: 80px !important;
+        img.location2 {
+            width: 100px !important;
+            height: 100px !important;
         }
 
        
@@ -367,7 +367,7 @@
                                     <div class="mb-0 row">
                                         <div class="col-sm-4"></div>
                                         <div class="col-sm-4 mb-3 mt-4">
-                                            <img class="location" src="<?php echo URL::to('/'); ?>/public/assets/images/location.png" />
+                                            <img class="location2" src="<?php echo URL::to('/'); ?>/public/assets/images/location2.png" />
                                         </div>
                                         <h4 class="text-center">Edit User  Location</h4>
                                         <div class="col-sm-4"></div>
