@@ -77,8 +77,6 @@
         height: 80px !important;
     }
 
-    
-
     .card {
          background: whitesmoke;
     }
@@ -130,6 +128,17 @@ p.num.my-1 {
 .sub_header {
     background: #d6d6d6 !important;
 }
+
+
+img.four_images {
+    width: 100% !important;
+    height: 77px !important;
+}
+
+ /* img.four_images:hover {
+   width: 100% !important;
+    height: 100% !important;
+} */
 
 </style>
 </head>
@@ -484,10 +493,29 @@ p.num.my-1 {
                                     <p>Reported: Officer arrived on duty and checked in at the property securityoffice. Keys and radio equipment received along with past down ordersfrom past shift officer. Radio and equipment were found fully charged andavailable for my daily activity shift report.</p>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="text-end ">
-                                    <img src="public/assets/images/report_dat.jpg" class=""/>
-                                </div>
+                            <div class="col-md-4" >
+                                <div class="row g-2">
+                                            <div class="col-6">
+                                                <div class="">
+                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="">
+                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="">
+                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="">
+                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                </div>
+                                           </div>
+                                </div>    
                             </div>
                         </div>
                    </div>
@@ -530,9 +558,28 @@ p.num.my-1 {
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="text-end ">
-                                    <img src="public/assets/images/report_dat.jpg" class=""/>
-                                </div>
+                            <div class="row g-2">
+                                            <div class="col-6">
+                                                <div class="">
+                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="">
+                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="">
+                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="">
+                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                </div>
+                                            </div>
+                                </div>    
                             </div>
                         </div>
                    </div>
@@ -575,9 +622,28 @@ p.num.my-1 {
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="text-end ">
-                                    <img src="public/assets/images/report_dat.jpg" class=""/>
-                                </div>
+                            <div class="row g-2">
+                                            <div class="col-6">
+                                                <div class="">
+                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="">
+                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="">
+                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="">
+                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                </div>
+                                            </div>
+                                </div>    
                             </div>
                         </div>
                    </div>

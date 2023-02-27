@@ -431,8 +431,8 @@
                                         </div>
                                         <div class="modal-body">
                                             <form id="report" enctype="multipart/form-data">
-                                            {{ csrf_field() }}
-                                            <div class="mb-3">
+                                                 {{ csrf_field() }}
+                                                <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Report Type</label>
                                                   <select class="form-select"  name="report_type" aria-label="Default select example">
                                                     <option selected>Select Report Type</option>
@@ -443,7 +443,7 @@
                                                     <option value=" Visitor logs"> Visitor logs</option>
                                                   </select>
                                                 </div>
-                                                activitys
+                                                
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Report Title</label>
                                                   <select class="form-select"  name="report_title" aria-label="Default select example">
@@ -482,8 +482,10 @@
                                                     <input type="file" name="report_photo[]" class="form-control" multiple>
                                                 </div>
                                                   <input type="hidden" name="user_id" value="{{session('data')['id']}} "/>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                              </form>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-primary col-6">Submit</button>
+                                                </div>
+                                            </form>
                                         </div>
                                        
                                     </div>
@@ -520,7 +522,9 @@
                                                         <label class="form-label">Report Photo</label>
                                                         <input type="file"  name="report_photo" class="form-control" multiple>
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-primary col-6">Submit</button>
+                                                    </div>
                                                   </form>
                                             </div>
                                            
@@ -609,11 +613,19 @@
                                             <input type="date" class="form-control" >
                                         </div>
                                         <div class="mb-3">
+                                            <label class="form-label">Start Time</label>
+                                            <input type="time" class="form-control" >
+                                        </div>
+                                        <div class="mb-3">
                                             <label  class="form-label">End Date</label>
                                             <input type="date" class="form-control" >
                                         </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">End Time</label>
+                                            <input type="time" class="form-control" >
+                                        </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <a href="http://localhost/report-portal/report_date"  class="btn btn-primary col-6 ">Submit</a>
                                         </div>
                                      </form>
                                     </div>
