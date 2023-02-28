@@ -424,7 +424,8 @@ img.four_images {
                             </nav>
                         </div>
                     </div>
-                    <div class="col-md-6  col-4 align-self-center ">
+                    <div class="col-md-6 col-4 align-self-center">
+                        
                     </div>
                 </div>
             </div>
@@ -447,17 +448,18 @@ img.four_images {
                     </div>
                     <div class="col-md-4">
                         <div class="text-center">
-                            <h3 class="mb-2">Daily Activity Report</h3>
-                            <p>Silvertrac Software</p>
+                            <h4>Daily Activity Report</h4>
+                            
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="text-end">
-                            <p class="mb-0"><b>Start: </b>Mar 13, 2018 08:47 AM</p>
-                            <p class=""><b>End: </b>Mar 15, 2018 08:47 AM</p>
+                            <p class="mb-0"><b>Start: </b>{{$filter_data['start_date']}}</p>
+                             <p class=""><b>End: </b>{{$filter_data['end_date']}}</p>
                         </div>
                     </div>
                </div>
+               @foreach($reports as $report)        
                <div class="report-view mt-1">
                    <div class="header-table">
                         <div class="sub_header">
@@ -480,9 +482,9 @@ img.four_images {
                                 <div class="mx-2">
                                     <p class="mb-0">Commercial Property</p>
                                     <p class="mb-0">5412 Beach Boulevard</p>
-                                    <p class="mb-0"><b>Location: </b>On Site  </p>
-                                    <p><b>Unit: </b>Patrol</p>
-                                    <p class=" mb-1">Makena Anderson</p>
+                                    <p class="mb-0"><b>Location: </b>{{$report['sub_location']}}</p>
+                                    <p><b>Unit: </b>{{$report['main_location']}}</p>
+                                    <p class=" mb-1">{{$report['users']['name']}}</p>
                                     <div class="level me-2">
                                         <p class="text-white  mx-2">(S) Level 3</p>
                                     </div>
@@ -495,159 +497,38 @@ img.four_images {
                             </div>
                             <div class="col-md-4" >
                                 <div class="row g-2">
+                                @foreach (json_decode($report['report_photo']) as $member)
                                             <div class="col-6">
                                                 <div class="">
-                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                    <img src="{{ URL::asset('public/images/'.$member)}}"  class="four_images"/> 
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-6">
+                                                <div class="">
+                                                    <img src="{{ URL::asset('public/images/'.$member)}}"  class="four_images"/> 
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="">
-                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                    <img src="{{ URL::asset('public/images/'.$member)}}"  class="four_images"/> 
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="">
-                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
+                                                    <img src="{{ URL::asset('public/images/'.$member)}}"  class="four_images"/> 
                                                 </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="">
-                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
-                                                </div>
-                                           </div>
+                                            </div> -->
+                                @endforeach 
                                 </div>    
-                            </div>
+                         
                         </div>
                    </div>
                </div>
+               @endforeach
 
-               <div class="report-view mt-1">
-                   <div class="header-table ">
-                        <div class="sub_header">
-                            <div class="row g-0 mx-2">
-                                <div class="col-md-4">
-                                    <div class=""><p class="my-1">Tue Mar 13, 2018 12:08 PM</p></div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="text-center"><p class="my-1">(S) Officer Arrived On Duty</p></div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="text-end"><p class="num my-1">293742753</p></div>
-                                </div>
-                            </div>
-                        </div>   
-                   </div>
-                   <div class="report-body">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="mx-2">
-                                    <p class="mb-0">Commercial Property</p>
-                                    <p class="mb-0">5412 Beach Boulevard</p>
-                                    <p class="mb-0"><b>Location: </b>On Site  </p>
-                                    <p><b>Unit: </b>Patrol</p>
-                                    <p class=" mb-1">Makena Anderson</p>
-                                    <div class="level me-2">
-                                        <p class="text-white  mx-2">(S) Level 3</p>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="text- ">
-                                    <p>Reported: Officer arrived on duty and checked in at the property securityoffice. Keys and radio equipment received along with past down ordersfrom past shift officer. Radio and equipment were found fully charged andavailable for my daily activity shift report.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                            <div class="row g-2">
-                                            <div class="col-6">
-                                                <div class="">
-                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="">
-                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="">
-                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="">
-                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
-                                                </div>
-                                            </div>
-                                </div>    
-                            </div>
-                        </div>
-                   </div>
-               </div>
+             
 
-               <div class="report-view mt-1">
-                   <div class="header-table">
-                       <div class="sub_header">
-                            <div class="row g-0 mx-2">
-                                <div class="col-md-4">
-                                    <div class=""><p class="my-1">Tue Mar 13, 2018 12:08 PM</p></div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="text-center"><p class="my-1">(S) Officer Arrived On Duty</p></div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="text-end"><p class="num my-1">293742753</p></div>
-                                </div>
-                            </div>
-                       </div>
-                   </div>
-                   <div class="report-body">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <div class="mx-2">
-                                    <p class="mb-0">Commercial Property</p>
-                                    <p class="mb-0">5412 Beach Boulevard</p>
-                                    <p class="mb-0"><b>Location: </b>On Site  </p>
-                                    <p><b>Unit: </b>Patrol</p>
-                                    <p class=" mb-1">Makena Anderson</p>
-                                    <div class="level me-2">
-                                        <p class="text-white  mx-2">(S) Level 3</p>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="text- ">
-                                    <p>Reported: Officer arrived on duty and checked in at the property securityoffice. Keys and radio equipment received along with past down ordersfrom past shift officer. Radio and equipment were found fully charged andavailable for my daily activity shift report.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                            <div class="row g-2">
-                                            <div class="col-6">
-                                                <div class="">
-                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="">
-                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="">
-                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="">
-                                                    <img src="public/assets/images/report_dat.jpg" class="four_images"/>
-                                                </div>
-                                            </div>
-                                </div>    
-                            </div>
-                        </div>
-                   </div>
-               </div>
+              
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

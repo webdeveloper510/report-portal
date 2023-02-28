@@ -9,6 +9,8 @@ use App\Models\Report;
 use App\Models\Location;
 use App\Models\AccessWebsite;
 use DB;
+use Session;
+
 class AdminController extends Controller
 {
     //
@@ -223,12 +225,10 @@ class AdminController extends Controller
     }
 
     public function admin_reports(){
+     
         $data = DB::table('custom_title')->select('id','title')->get();
         $locations = Location::all();
-        // $reports = Report::all();
         $activitys = Report::with('users')->get()->toArray();
-        // echo "<pre>";
-        // print_r($activity);die;
         return view('admin.admin_reports',compact('data','locations','activitys'));
         
     }
@@ -294,31 +294,38 @@ class AdminController extends Controller
              else
                echo json_encode(['message'=>'Some error!']);
      
-}
+    }
 
 
 
             public function report_view($id){
-                  
-         
                 $reports_view = Report::with('users')->where('id',$id)->get()->toArray();
                 // echo "<pre>";
                 // print_r(json_decode($reports_view[0]['report_photo']));die;
                     return view('admin.report_view',compact('reports_view'));
             }
-            public function delete_report(Request $request,$id){
-       
-                //  echo "<pre>";
-                //  print_r($request->all());die;
+            public function delete_report(Request $request,$id){      
                 DB::table('reports')->where('id',$id)->delete();
-                return redirect('.admin_reports')->with('message', 'Deleted Report Successfully!');
+                return redirect('admin_reports')->with('message', 'Deleted Report Successfully!');
             }
-
-
+           
             public function report_date(){
-                return view('admin.report_date');
-            }
+                $filter_data = Session::get('filter'); 
+                // print_r($filter_data);die;   
+                $reports = Report::with('users')->whereBetween('report_date', [$filter_data['start_date'], $filter_data['end_date']])->get()->toArray();
+                return view('admin.report_date',compact('reports','filter_data'));
+            }            
 
+            public function filter_data(Request $request){               
+                $filter['start_date'] = $request->start_date;
+                $filter['end_date'] = $request->end_date;
+                Session::put('filter', $filter);
+                return redirect('report_date');
+
+
+            }
+           
+            
    }
     
 

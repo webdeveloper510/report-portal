@@ -37,14 +37,13 @@
      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
      alpha/css/bootstrap.css" rel="stylesheet">
 <style>
- #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
+    #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
         color: #2400ff !important;
     }
 
-        #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
+    #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
         color: #2400ff !important;
     }
-
 
     .topbar{
         background: #2f3356 !important;
@@ -87,9 +86,9 @@
     font-size: medium !important;
 }
 
-/* .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
+.topbar .top-navbar .navbar-nav>.nav-item .nav-link{
     font-size: medium !important;
- } */
+ }
  
    .left-sidebar {
         top: 52px !important;
@@ -105,7 +104,7 @@
     }
 
     i.mdi.mdi-eye {
-    color: slategrey !important;
+    color: #54667a !important;
   }
 
   i.mdi.mdi-eye:hover {
@@ -502,13 +501,42 @@
                                             <div class="modal-body">
                                                 <form>
                                                     <div class="mb-3">
+                                                        <label class="form-label">Report Type</label>
+                                                        <select class="form-select"  name="report_type" aria-label="Default select example">
+                                                            <option selected>Select Report Type</option>
+                                                            <option value=" Activity Reports"> Activity Reports</option>
+                                                            <option value="  Incident Reports"> Incident Reports</option>
+                                                            <option value=" Patrol Reports"> Patrol Reports</option>
+                                                            <option value="  Parking violations"> Parking violations</option>
+                                                            <option value=" Visitor logs"> Visitor logs</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
                                                       <label for="exampleInputEmail1" class="form-label">Report Title</label>
-                                                      <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Select Report Title</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                      </select>
+                                                        <select class="form-select" aria-label="Default select example">
+                                                            <option selected>Select Report Title</option>
+                                                            <option value="1">One</option>
+                                                            <option value="2">Two</option>
+                                                            <option value="3">Three</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                      <label class="form-label">Main Location</label>
+                                                        <select class="form-select" aria-label="Default select example">
+                                                            <option selected>Select Main Location</option>
+                                                            <option value="1">One</option>
+                                                            <option value="2">Two</option>
+                                                            <option value="3">Three</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                      <label class="form-label">Sub Location</label>
+                                                        <select class="form-select" aria-label="Default select example">
+                                                            <option selected>Select Sub Location</option>
+                                                            <option value="1">One</option>
+                                                            <option value="2">Two</option>
+                                                            <option value="3">Three</option>
+                                                        </select>
                                                     </div>
                                                     <div class="mb-3">
                                                       <label class="form-label">Report Time</label>
@@ -568,7 +596,7 @@
                                         @foreach($activitys as $activity)
                                             <tr>
                                                 <td>{{$loop->iteration }}</td>
-                                                <td>{{$activity['users']['name']}}</td>
+                                                <td>{{$activity['users']['name']}}</td> 
                                                 <td>{{$activity['report_title']}}</td>
                                                 <td>{{$activity['main_location']}}</td>
                                                 <td>{{$activity['sub_location']}}</td>
@@ -590,8 +618,9 @@
                                                     </div>
                                                 </td>
                                             </tr>                                 
-                                        </tbody>
+                                      
                                         @endforeach
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -607,10 +636,11 @@
                                         <h3>Report Filter</h3>
                                     </div>
                                     <div class="card-body">
-                                     <form>
+                                     <form action="{{ URL('/filter_data') }}" method="POST">
+                                     @csrf
                                         <div class="mb-3">
                                             <label class="form-label">Start Date</label>
-                                            <input type="date" class="form-control" >
+                                            <input type="date" name="start_date" class="form-control" >
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Start Time</label>
@@ -618,14 +648,14 @@
                                         </div>
                                         <div class="mb-3">
                                             <label  class="form-label">End Date</label>
-                                            <input type="date" class="form-control" >
+                                            <input type="date" name="end_date" class="form-control" >
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">End Time</label>
                                             <input type="time" class="form-control" >
                                         </div>
                                         <div class="text-center">
-                                            <a href="http://localhost/report-portal/report_date"  class="btn btn-primary col-6 ">Submit</a>
+                                            <button type="submit"  class="btn btn-primary col-6 ">Submit</button>
                                         </div>
                                      </form>
                                     </div>
