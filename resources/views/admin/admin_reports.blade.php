@@ -471,7 +471,8 @@
                                                 </div>
                                                 <div class="mb-3">
                                                   <label class="form-label">Report Time</label>
-                                                  <input type="time"  name="report_time" class="form-control">
+                                                  <input type="time"  name="report_time" value="" id="timeInput" onChange="onTimeChange()" class="form-control">
+                                                  <input type="hidden" name="meridian" value="" id="meridian"/>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Report Date</label>
@@ -482,7 +483,9 @@
                                                     <input type="file" name="report_photo[]" class="form-control" multiple>
                                                 </div>
                                                   <input type="hidden" name="user_id" value="{{session('data')['id']}} "/>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                  <div class="text-center">
+                                                    <button type="submit" class="btn btn-primary col-6">Submit</button>
+                                                    </div>
                                               </form>
                                         </div>
                                        
@@ -506,10 +509,10 @@
                                                     <div class="mb-3">
                                                       <label for="exampleInputEmail1" class="form-label">Report Title</label>
                                                       <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Select Report Title</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
+                                                        <!-- <option selected>Select Report Title</option> -->
+                                                        @foreach($data as $title)
+                                                             <option id="" value="{{$title->id}}">{{$title->title}}</option>
+                                                        @endforeach
                                                       </select>
                                                     </div>
                                                     <div class="mb-3">
@@ -536,7 +539,9 @@
                                                         <label class="form-label">Report Photo</label>
                                                         <input type="file"  name="report_photo" class="form-control" multiple>
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-primary col-6">Submit</button>
+                                                    </div>
                                                   </form>
                                             </div>
                                            
@@ -589,7 +594,7 @@
                                                 <td>{{$activity['report_type']}}</td>
                                                 <td >
                                                     <div class="d-flex">
-                                                        <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
+                                                        <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit" onclick="return runMyFunction({{json_encode($activity)}});">
                                                             <i class="mdi mdi-pencil"></i>
                                                         </a>
                                                         <a class="h3" href="{{ 'delete_report/' . $activity['id'] }}">
@@ -627,11 +632,19 @@
                                             <input type="date" name="start_date" class="form-control" >
                                         </div>
                                         <div class="mb-3">
+                                            <label class="form-label">Start Time</label>
+                                            <input type="time" class="form-control" >
+                                        </div>
+                                        <div class="mb-3">
                                             <label  class="form-label">End Date</label>
                                             <input type="date" name="end_date" class="form-control" >
                                         </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">End Time</label>
+                                            <input type="time" class="form-control" >
+                                        </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        <a href="http://localhost/report-portal/report_date" type="submit" class="btn btn-primary col-6">Submit</a>
                                         </div>
                                      </form>
                                     </div>
@@ -708,7 +721,34 @@
                         }
                     });
                 });
-            });
+                        });
+
+                        var inputEle = document.getElementById('timeInput');
+                        function onTimeChange() {
+                        var timeSplit = inputEle.value.split(':'),
+                            hours,
+                            minutes,
+                            meridian;
+                        hours = timeSplit[0];
+                        minutes = timeSplit[1];
+                        if (hours > 12) {
+                            meridian = 'PM';
+                            hours -= 12;
+                        } else if (hours < 12) {
+                            meridian = 'AM';
+                            if (hours == 0) {               
+                            hours = 12;
+                            }
+                        } else {
+                            meridian = 'PM';
+                        }
+                        $("#meridian").val(meridian);
+                        }
+                        function runMyFunction(data){
+                            console.log(data);
+                            // $("#time").val(data.report_time)
+                            // $('#date').val(data.report_date)
+                        }
         </script>
 </body>
 </html>

@@ -63,7 +63,7 @@ class AdminController extends Controller
      
                 if($data->save()){
                 return redirect('users')->with('message', 'User created successfully !');
-            }
+                 }
     }
     public function get_user()
     {
@@ -273,7 +273,7 @@ class AdminController extends Controller
             $data['user_id'] = $request->user_id;
             $data['main_location'] = $request->main_location;
             $data['sub_location'] = $request->sub_location;
-            $data['report_time'] = $request->report_time;
+            $data['report_time'] = $request->report_time." ".$request->meridian;
             $data['report_date'] = $request->report_date;        
             $data['report_type'] = $request->report_type;        
             if($request->hasfile('report_photo')){
@@ -295,8 +295,6 @@ class AdminController extends Controller
                echo json_encode(['message'=>'Some error!']);
      
 }
-
-
 
             public function report_view($id){
                   
@@ -326,8 +324,7 @@ class AdminController extends Controller
 
 
             }
-           
-            
+        
    }
     
 

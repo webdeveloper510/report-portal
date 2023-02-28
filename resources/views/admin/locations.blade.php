@@ -359,10 +359,10 @@
                                                             </div>
                                                             </div>
                                                             <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-4  col-form-label">Main Location </label>
+                                                                <label for="input" class="col-sm-4  col-form-label">Sub Location </label>
                                                                 <div class="col-sm-">
                                                                 <select class="form-select" name="location_name" aria-label="Default select example">
-                                                                    <option selected>Select Main Location</option>
+                                                                    <option selected>Select Sub Location</option>
                                                                     <option value="onsite">On Site</option>
                                                                     <option value="eastparkinglot">East Parking Lot</option>
                                                                     <option value="ParkingGarage">Parking Garage</option>

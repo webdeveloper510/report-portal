@@ -456,7 +456,7 @@ p.num.my-1 {
                         <div class="sub_header">
                             <div class="row g-0 mx-2">
                                     <div class="col-md-4">
-                                        <div class=""><p class="my-1">Tue Mar 13, 2018 12:08 PM</p></div>
+                                        <div class=""><p class="my-1">{{$report['report_date']}}, {{$report['report_time']}}</p></div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="text-center"><p class="my-1">(S) Officer Arrived On Duty</p></div>
@@ -487,8 +487,8 @@ p.num.my-1 {
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="text-end ">
-                                @foreach (json_decode($report['report_photo']) as $member)
+                                <div class="text-endss">
+                                @foreach(json_decode($report['report_photo']) as $member)
                                     <img src="{{ URL::asset('public/images/'.$member)}}"/> 
                                     @endforeach
                                 </div>
@@ -537,6 +537,6 @@ p.num.my-1 {
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    
+   
 </body>
 </html>
