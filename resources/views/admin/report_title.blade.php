@@ -417,7 +417,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
                                         @foreach($data as $title)
                                         <tr>
                                         <td>{{$loop->iteration}}</td>
@@ -514,10 +513,10 @@
     let id = $('#hidden').val(); 
     let url = ''
     if(id){
-         url = "http://localhost/report-portal/edit_title";
+         url = "https://www.codenomad.net/report-portal/edit_title";
     }   
     else{
-         url = "http://localhost/report-portal/insert_title";
+         url = "https://www.codenomad.net/report-portal/insert_title";
     } 
     $.ajax({
       url: url,

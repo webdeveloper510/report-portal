@@ -130,6 +130,17 @@ p.num.my-1 {
 .sub_header {
     background: #d6d6d6 !important;
 }
+/*img.four_images {*/
+/* width: 100% !important;*/
+/*height: 77px !important;*/
+/*}*/
+
+/* img.four_images:hover {
+width: 100% !important;
+height: 100% !important;
+} */
+
+
 
 </style>
 </head>
@@ -488,9 +499,15 @@ p.num.my-1 {
                             </div>
                             <div class="col-md-4">
                                 <div class="text-end ">
+                                    
                                 @foreach (json_decode($report['report_photo']) as $member)
-                                    <img src="{{ URL::asset('public/images/'.$member)}}"/> 
+                                   <div class="col">
+                                                <div class="">
+                                        <img src="https://www.codenomad.net/report-portal/public/images/{{$member}}" class="four_images"/> 
+                                   </div>
+                                   </div>
                                     @endforeach
+                                   
                                 </div>
                             </div>
                         </div>

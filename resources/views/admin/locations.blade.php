@@ -335,7 +335,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
-                    <form action="" method="POST" class="">
+                    <form action="{{ route('location.insert') }}" method="POST" class="">
                             @csrf
                             <div class="text-end">
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
@@ -359,10 +359,10 @@
                                                             </div>
                                                             </div>
                                                             <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-4  col-form-label">Main Location </label>
+                                                                <label for="input" class="col-sm-4  col-form-label">Sub Location </label>
                                                                 <div class="col-sm-">
                                                                 <select class="form-select" name="location_name" aria-label="Default select example">
-                                                                    <option selected>Select Main Location</option>
+                                                                    <option selected>Select Sub Location</option>
                                                                     <option value="onsite">On Site</option>
                                                                     <option value="eastparkinglot">East Parking Lot</option>
                                                                     <option value="ParkingGarage">Parking Garage</option>
@@ -376,16 +376,12 @@
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-12 col-form-label text-left">Sub Location</label>
-                                                                <div class="col-sm-">
-                                                                 <div class="mb-3 row">
-                                                                    <div class="col-sm-12">
-                                                                      <input type="text" class="form-control mt-2">
-                                                                    </div>
-                                                                   
-                                                                 </div>
+                                                                <label for="input" class="col-sm- col-form-label">Description</label>
+                                                                <div class="col-sm-12">
+                                                                    <textarea type="text" class="form-control" rows="3" name="description"></textarea>
                                                                 </div>
-                                                            </div> 
+                                                            </div>
+                                                      
                                                             <div id="main">
 
                                                             </div>
@@ -482,9 +478,10 @@
                                 <table class="table user-table">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">Main Location</th>
+                                            
                                             <th class="border-top-0">Sub Location</th>
                                             <th class="border-top-0">Description</th>
+                                            <th class="border-top-0">Parent Location</th>
                                             
                                             <th class="border-top-0">Action</th>
                                             
@@ -494,8 +491,8 @@
                                         @foreach($locations as $location)
                                         <tr>
                                             <td>{{$location['location_name']}}</td>
-                                            <td>hshgdh</td>
-                                            <td>{{$location['description']}}</td>                                        
+                                            <td>{{$location['description']}}</td>  
+                                            <td>{{$location['parent_location']}}</td> 
                                             <td>
                                                <a href="{{ 'edit_location/' . $location['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
                                                <a href="{{ 'delete_location/' . $location['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>

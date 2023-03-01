@@ -105,7 +105,7 @@
     }
 
     i.mdi.mdi-eye {
-    color: slategrey !important;
+     color: #54667a !important;
   }
 
   i.mdi.mdi-eye:hover {
@@ -436,11 +436,11 @@
                                                   <label for="exampleInputEmail1" class="form-label">Report Type</label>
                                                   <select class="form-select"  name="report_type" aria-label="Default select example">
                                                     <option selected>Select Report Type</option>
-                                                    <option value=" Activity Reports"> Activity Reports</option>
-                                                    <option value="  Incident Reports"> Incident Reports</option>
-                                                    <option value=" Patrol Reports"> Patrol Reports</option>
-                                                    <option value="  Parking violations"> Parking violations</option>
-                                                    <option value=" Visitor logs"> Visitor logs</option>
+                                                    <option value="Activity Reports"> Activity Reports</option>
+                                                    <option value="Incident Reports"> Incident Reports</option>
+                                                    <option value="Patrol Reports"> Patrol Reports</option>
+                                                    <option value="Parking violations"> Parking violations</option>
+                                                    <option value="Visitor logs"> Visitor logs</option>
                                                   </select>
                                                 </div>
                                                 
@@ -471,18 +471,21 @@
                                                 </div>
                                                 <div class="mb-3">
                                                   <label class="form-label">Report Time</label>
-                                                  <input type="time"  name="report_time" class="form-control">
+                                                  <input type="time"  name="report_time" value="" id="timeInput" onChange="onTimeChange()" class="form-control">
+                                                  <input type="hidden" name="meridian" value="" id="meridian"/>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Report Date</label>
-                                                    <input type="date" name="report_date" class="form-control">
+                                                    <input type="date" value="{{$location['report_date']}}" name="report_date" class="form-control">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Report Photo</label>
                                                     <input type="file" name="report_photo[]" class="form-control" multiple>
                                                 </div>
                                                   <input type="hidden" name="user_id" value="{{session('data')['id']}} "/>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                  <div class="text-center">
+                                                    <button type="submit" class="btn btn-primary col-6">Submit</button>
+                                                    </div>
                                               </form>
                                         </div>
                                        
@@ -499,17 +502,14 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form>
-                                                <div class="mb-3">
-                                                      <label class="form-label">Report Name</label>
-                                                      <input type="text"  name="report_name" class="form-control">
-                                                    </div>
+                                
                                                     <div class="mb-3">
                                                       <label for="exampleInputEmail1" class="form-label">Report Title</label>
                                                       <select class="form-select" aria-label="Default select example">
                                                         <option selected>Select Report Title</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
+                                                           @foreach($data as $title)
+                                                             <option value="{{$title->id}}">{{$title->title}}</option>
+                                                        @endforeach
                                                       </select>
                                                     </div>
                                                     <div class="mb-3">
@@ -518,25 +518,27 @@
                                                     </div>
                                                     <div class="mb-3">
                                                       <label class="form-label">Sub Location</label>
-                                                      <input type="text" name="sub_location" class="form-control">
+                                                      <input type="text" name="sub_location" value="" class="form-control">
                                                     </div>
                                                     <div class="mb-3">
                                                       <label class="form-label">Report Time</label>
-                                                      <input type="time" class="form-control">
+                                                      <input type="time" value="" id="time" name="report_time" class="form-control">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label">Report Date</label>
-                                                        <input type="date" class="form-control">
+                                                        <input type="date" value="" id="date" class="form-control">
                                                       </div>
                                                       <div class="mb-3">
                                                       <label class="form-label">Report Type</label>
-                                                      <input type="text" name="report_type" class="form-control">
+                                                      <input type="text" value="" name="report_type" class="form-control">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label">Report Photo</label>
-                                                        <input type="file"  name="report_photo" class="form-control" multiple>
+                                                        <input type="file" value="" name="report_photo" class="form-control" multiple>
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-primary col-6">Submit</button>
+                                                    </div>
                                                   </form>
                                             </div>
                                            
@@ -566,7 +568,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="border-top-0">#</th>
-                                                <th class="border-top-0">Report Name</th>
+                                                <th class="border-top-0">User Name</th>
                                                 <th class="border-top-0">Report Title</th>
                                                 <th class="border-top-0">Main Location</th>
                                                 <th class="border-top-0">Sub Location</th>
@@ -589,7 +591,7 @@
                                                 <td>{{$activity['report_type']}}</td>
                                                 <td >
                                                     <div class="d-flex">
-                                                        <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
+                                                        <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit" onclick="return runMyFunction({{json_encode($activity)}});">
                                                             <i class="mdi mdi-pencil"></i>
                                                         </a>
                                                         <a class="h3" href="{{ 'delete_report/' . $activity['id'] }}">
@@ -627,11 +629,19 @@
                                             <input type="date" name="start_date" class="form-control" >
                                         </div>
                                         <div class="mb-3">
+                                            <label class="form-label">Start Time</label>
+                                            <input type="time" class="form-control" >
+                                        </div>
+                                        <div class="mb-3">
                                             <label  class="form-label">End Date</label>
                                             <input type="date" name="end_date" class="form-control" >
                                         </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">End Time</label>
+                                            <input type="time" class="form-control" >
+                                        </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button  type="submit" class="btn btn-primary col-6">Submit</button>
                                         </div>
                                      </form>
                                     </div>
@@ -685,7 +695,7 @@
             $(document).ready(function(){
               $('#report').on('submit', function(event){
                     event.preventDefault();
-                    var url = 'http://localhost/report-portal/insert_activity'
+                    var url = 'https://www.codenomad.net/report-portal/insert_activity'
                     $.ajax({
                         url: url,
                         method: 'POST',
@@ -708,7 +718,34 @@
                         }
                     });
                 });
-            });
+                        });
+            var inputEle = document.getElementById('timeInput');
+            function onTimeChange() {
+            var timeSplit = inputEle.value.split(':'),
+                hours,
+                minutes,
+                meridian;
+            hours = timeSplit[0];
+            minutes = timeSplit[1];
+            if (hours > 12) {
+                meridian = 'PM';
+                hours -= 12;
+            } else if (hours < 12) {
+                meridian = 'AM';
+                if (hours == 0) {               
+                hours = 12;
+                }
+            } else {
+                meridian = 'PM';
+            }
+            $("#meridian").val(meridian);
+            }
+            
+            function runMyFunction(data){
+                console.log(data);
+                // $("#time").val(data.report_time)
+                // $('#date').val(data.report_date)
+            }
         </script>
 </body>
 </html>

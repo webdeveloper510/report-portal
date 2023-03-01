@@ -48,6 +48,12 @@ class AdminController extends Controller
     {
         return view('user_list');
     }
+    public function index(){
+        $count = User::get()->count();
+        $report = Report::get()->count();
+
+        return view('admin.index',compact('count','report'));
+    }
 
     public function add_user(Request $request)
     {
@@ -174,6 +180,7 @@ class AdminController extends Controller
     public function update_locations(Request $request){
      
         $data = Location::find($request->id);
+         $data['parent_location'] = $request->parent_location;
         $data->location_name = $request->location_name;
         $data->description = $request->description;
         $data->save();
@@ -229,6 +236,7 @@ class AdminController extends Controller
         $data = DB::table('custom_title')->select('id','title')->get();
         $locations = Location::all();
         $activitys = Report::with('users')->get()->toArray();
+     
         return view('admin.admin_reports',compact('data','locations','activitys'));
         
     }
@@ -249,8 +257,10 @@ class AdminController extends Controller
 
     public function locations_insert(Request $request){
         $data = new Location;
+          $data['parent_location'] = $request->parent_location;
         $data['location_name'] = $request->location_name;
         $data['description'] = $request->description;
+      
        
         if($data->save()){
         return redirect('locations')->with('message', 'Location created successfully !');
