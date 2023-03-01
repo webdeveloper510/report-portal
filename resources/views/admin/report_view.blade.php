@@ -349,7 +349,7 @@
                 <p class="text-center">Nam ut finibus quam, at venenatis sem. Donec in odio vitae tellus tincidunt dignissim. Morbi ut placerat elit. Fusce vitae tortor sed arcu tempus rhoncus ut et justo. Quisque nec urna id enim tempor dapibus at non ex. Aliquam at est libero. Donec placerat posuere venenatis. In eget eros non ipsum sodales aliquam. Vestibulum eget ullamcorper enim. In lectus dui, porta rutrum tempus ut, ornare id enim. Donec venenatis nulla id libero dictum, vitae aliquet nibh sollicitudin.</p>
                 @foreach (json_decode($reports_view[0]['report_photo']) as $member)
                 <img src="{{ URL::asset('public/images/'.$member)}}"/> 
-                 @endforeach
+                @endforeach
                 
                 
             </div>

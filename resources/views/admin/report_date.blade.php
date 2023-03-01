@@ -77,8 +77,6 @@
         height: 80px !important;
     }
 
-    
-
     .card {
          background: whitesmoke;
     }
@@ -141,6 +139,17 @@ height: 100% !important;
 } */
 
 
+
+
+img.four_images {
+    width: 100% !important;
+    height: 77px !important;
+}
+
+ /* img.four_images:hover {
+   width: 100% !important;
+    height: 100% !important;
+} */
 
 </style>
 </head>
@@ -467,13 +476,13 @@ height: 100% !important;
                         <div class="sub_header">
                             <div class="row g-0 mx-2">
                                     <div class="col-md-4">
-                                        <div class=""><p class="my-1">Tue Mar 13, 2018 12:08 PM</p></div>
+                                        <div class=""><p class="my-1">{{$report['report_date']}}, {{$report['report_time']}}</p></div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="text-center"><p class="my-1">(S) Officer Arrived On Duty</p></div>
                                     </div>
                                     <div class="col-md-4">
-                                        <!-- <div class="text-end"><p class="num my-1">293742753</p></div> -->
+                                        <div class="text-end"><p class="num my-1">293742753</p></div>
                                     </div>
                             </div>
                         </div>
@@ -498,14 +507,10 @@ height: 100% !important;
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="text-end ">
-                                    
-                                @foreach (json_decode($report['report_photo']) as $member)
-                                   <div class="col">
-                                                <div class="">
-                                        <img src="https://www.codenomad.net/report-portal/public/images/{{$member}}" class="four_images"/> 
-                                   </div>
-                                   </div>
+
+                                <div class="text-endss">
+                                @foreach(json_decode($report['report_photo']) as $member)
+                                    <img src="{{ URL::asset('public/images/'.$member)}}"/> 
                                     @endforeach
                                    
                                 </div>
@@ -554,6 +559,6 @@ height: 100% !important;
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    
+   
 </body>
 </html>

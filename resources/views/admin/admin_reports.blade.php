@@ -37,14 +37,13 @@
      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
      alpha/css/bootstrap.css" rel="stylesheet">
 <style>
- #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
+    #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
         color: #2400ff !important;
     }
 
-        #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
+    #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
         color: #2400ff !important;
     }
-
 
     .topbar{
         background: #2f3356 !important;
@@ -87,9 +86,9 @@
     font-size: medium !important;
 }
 
-/* .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
+.topbar .top-navbar .navbar-nav>.nav-item .nav-link{
     font-size: medium !important;
- } */
+ }
  
    .left-sidebar {
         top: 52px !important;
@@ -106,6 +105,7 @@
 
     i.mdi.mdi-eye {
      color: #54667a !important;
+
   }
 
   i.mdi.mdi-eye:hover {
@@ -431,8 +431,8 @@
                                         </div>
                                         <div class="modal-body">
                                             <form id="report" enctype="multipart/form-data">
-                                            {{ csrf_field() }}
-                                            <div class="mb-3">
+                                                 {{ csrf_field() }}
+                                                <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Report Type</label>
                                                   <select class="form-select"  name="report_type" aria-label="Default select example">
                                                     <option selected>Select Report Type</option>
@@ -483,10 +483,13 @@
                                                     <input type="file" name="report_photo[]" class="form-control" multiple>
                                                 </div>
                                                   <input type="hidden" name="user_id" value="{{session('data')['id']}} "/>
+
                                                   <div class="text-center">
                                                     <button type="submit" class="btn btn-primary col-6">Submit</button>
                                                     </div>
                                               </form>
+
+    
                                         </div>
                                        
                                     </div>
@@ -502,19 +505,31 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form>
-                                
                                                     <div class="mb-3">
                                                       <label for="exampleInputEmail1" class="form-label">Report Title</label>
                                                       <select class="form-select" aria-label="Default select example">
                                                         <option selected>Select Report Title</option>
                                                            @foreach($data as $title)
                                                              <option value="{{$title->id}}">{{$title->title}}</option>
-                                                        @endforeach
-                                                      </select>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Report Type</label>
+                                                        <select class="form-select" id="report_type" name="report_type" aria-label="Default select example">
+                                                            <option >Select Report Type</option>
+                                                            <option value="Activity Reports"> Activity Reports</option>
+                                                            <option value="Incident Reports"> Incident Reports</option>
+                                                            <option value="Patrol Reports"> Patrol Reports</option>
+                                                            <option value="Parking violations"> Parking violations</option>
+                                                            <option value="Visitor logs"> Visitor logs</option>
+                                                        </select>
                                                     </div>
+                                       
                                                     <div class="mb-3">
                                                       <label class="form-label">Main Location</label>
-                                                      <input type="text"  name="main_location"  value="" class="form-control">
+                                                        <select class="form-select" id="parent_loc" aria-label="Default select example">
+                                                        @foreach($locations as $location)
+                                                            <option selected value="{{$location['parent_location']}}">{{$location['parent_location']}}</option>
+                                                        @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="mb-3">
                                                       <label class="form-label">Sub Location</label>
@@ -532,6 +547,20 @@
                                                       <label class="form-label">Report Type</label>
                                                       <input type="text" value="" name="report_type" class="form-control">
                                                     </div>
+                                                        <select class="form-select" id="sub_loc" aria-label="Default select example">
+                                                        @foreach($locations as $location)
+                                                            <option selected value="{{$location['location_name']}}">{{$location['location_name']}}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                      <label class="form-label">Report Time</label>
+                                                      <input type="time"  id="time" name="report_time" value="" class="form-control">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Report Date</label>
+                                                        <input type="date" id="date" class="form-control">
+                                                      </div>
                                                     <div class="mb-3">
                                                         <label class="form-label">Report Photo</label>
                                                         <input type="file" value="" name="report_photo" class="form-control" multiple>
@@ -539,6 +568,7 @@
                                                     <div class="text-center">
                                                         <button type="submit" class="btn btn-primary col-6">Submit</button>
                                                     </div>
+
                                                   </form>
                                             </div>
                                            
@@ -642,6 +672,7 @@
                                         </div>
                                         <div class="text-center">
                                         <button  type="submit" class="btn btn-primary col-6">Submit</button>
+
                                         </div>
                                      </form>
                                     </div>
@@ -744,11 +775,24 @@
             $("#meridian").val(meridian);
             }
             
-            function runMyFunction(data){
-                console.log(data);
-                // $("#time").val(data.report_time)
-                // $('#date').val(data.report_date)
-            }
+        
+
+        function runMyFunction(data){
+            console.log(data)
+            let time = data.report_time.split(':');
+            console.log(time)
+            let str = time[1].replace("AM",'');
+      
+            $("#time").attr({'value': time[0] + ':' +str.trim() })
+            $('#date').val(data.report_date)
+            $('#report_type').val(data.report_type);
+            $('#report_title').val(data.report_title);
+            $('#parent_loc').val(data.main_location);
+            $('#sub_loc').val(data.sub_location);
+        }
+
+
+                        
         </script>
 </body>
 </html>

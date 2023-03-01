@@ -335,7 +335,8 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
-                    <form action="{{ route('location.insert') }}" method="POST" class="">
+
+                    <form action="{{ URL('/location_insert') }}" method="POST">
                             @csrf
                             <div class="text-end">
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
@@ -382,6 +383,48 @@
                                                                 </div>
                                                             </div>
                                                       
+
+                                                            <div class="mb- row">
+                                                                <label for="input" class="col-sm-4  col-form-label">Parent Location </label>
+                                                                <div class="col-sm- mb-3">
+                                                                <input type="text" class="form-control" name="parent_location">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="input" class="col-sm-4  col-form-label">Sub Location </label>
+                                                                <div class="col-sm-">
+                                                                    <select class="form-select" name="location_name" aria-label="Default select example">
+                                                                        <option selected>Select Main Location</option>
+                                                                        <option value="onsite">On Site</option>
+                                                                        <option value="eastparkinglot">East Parking Lot</option>
+                                                                        <option value="ParkingGarage">Parking Garage</option>
+                                                                        <option value="SouthParkingLot">South Parking Lot</option>
+                                                                        <option value="WestParkingLot">West Parking Lot</option>
+                                                                        <option value="LoadingDock">Loading Dock</option>
+                                                                        <option value="DisposalArea">Disposal Area</option>
+                                                                        <option value="Perimeter">Perimeter</option>
+                                                                        <option value="FiveBelow">Five Below</option>
+                                                                    </select>
+                                                                </div> 
+                                                            </div>
+                                                            <!-- <div class="mb-0 row">
+                                                                <label for="input" class="col-sm-12 col-form-label text-left">Sub Location</label>
+                                                                <div class="col-sm-">
+                                                                 <div class="mb-3 row">
+                                                                    <div class="col-sm-12">
+                                                                      <input type="text" class="form-control mt-2">
+                                                                    </div>
+                                                                   
+                                                                 </div>
+                                                                </div>
+                                                            </div>  -->
+                                                            <div class="mb-3 row">
+                                                                <label for="input" class="col-sm-4 col-form-label">Description</label>
+                                                                <div class="col-sm-">
+                                                                    <textarea type="text" class="form-control" rows="3" name="description"></textarea>
+                                                                </div>
+                                                            </div>  
+                                                             
                                                             <div id="main">
 
                                                             </div>
@@ -480,6 +523,7 @@
                                         <tr>
                                             
                                             <th class="border-top-0">Sub Location</th>
+                                            <th class="border-top-0">parent Location</th>
                                             <th class="border-top-0">Description</th>
                                             <th class="border-top-0">Parent Location</th>
                                             
@@ -491,8 +535,9 @@
                                         @foreach($locations as $location)
                                         <tr>
                                             <td>{{$location['location_name']}}</td>
-                                            <td>{{$location['description']}}</td>  
-                                            <td>{{$location['parent_location']}}</td> 
+
+                                            <td>{{$location['parent_location']}}</td>
+                                            <td>{{$location['description']}}</td>                                        
                                             <td>
                                                <a href="{{ 'edit_location/' . $location['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
                                                <a href="{{ 'delete_location/' . $location['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
