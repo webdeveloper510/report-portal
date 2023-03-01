@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 
 Route::view('index','admin.index');
-
+Route::get('index',[AdminController::class, 'index']);
 Route::get('profile_page', [AdminController::class, 'profile_page']);
 Route::get('users', [AdminController::class, 'basic_table']);
 Route::get('profile_page', [AdminController::class, 'profile_page']);
@@ -38,8 +38,9 @@ Route::get('/edit_supervisor/{id}', [AdminController::class, 'ShowData']);
 Route::get('admin_login', [AdminController::class, 'admin_login']);
 Route::post('login', [AdminController::class, 'login']);
 Route::post('deny_access',[AdminController::class, 'deny_access']);
-Route::post('location_insert',[AdminController::class, 'locations_insert']);
+Route::post('location_insert',[AdminController::class, 'locations_insert'])->name('location.insert');
 Route::get('admin_reports',[AdminController::class, 'admin_reports']);
+Route::post('edit_reports',[AdminController::class, 'edit_report']);
 Route::get('manage_access',[AdminController::class, 'manage_access']);
 Route::get('locations',[AdminController::class, 'locations']);
 Route::get('edit_location/{id}',[AdminController::class, 'edit_location']);

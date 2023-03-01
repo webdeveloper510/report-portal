@@ -375,11 +375,13 @@
                                     <div class="p-3">
                                                 <input type="hidden" class="form-control"  name="id" value="{{$data['id']}}">
                                         <div class="mb-3 row">
-                                            <label for="name" class="col-sm- col-form-label">Sub Location</label>
+                                            <label for="name" class="col-sm- col-form-label"> Sub Location</label>
+
                                             <div class="col-sm-12">
                                                 <input type="text" class="form-control" id="input" name="location_name" value="{{$data['location_name']}}">
                                             </div>
                                         </div>
+
                                         <div class="mb-3 row">
                                             <label for="name" class="col-sm- col-form-label">Parent Location</label>
                                             <div class="col-sm-12">

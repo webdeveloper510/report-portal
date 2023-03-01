@@ -83,13 +83,13 @@
                                     <div class="p-3">
                                         <div class="d-flex ">
                                             <div class="form-check ">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                <input class="form-check-input" type="radio" name="type" value="admin" id="flexRadioDefault1">
                                                 <label class="form-check-label" for="flexRadioDefault1">
                                                 Admin Access
                                                 </label>
                                             </div>
                                             <div class="form-check mx-4">
-                                                <input class="form-check-input " type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                <input class="form-check-input " type="radio" name="type" value="user" id="flexRadioDefault1">
                                                 <label class="form-check-label" for="flexRadioDefault1">
                                                 Supervisor Access
                                                 </label>

@@ -104,7 +104,8 @@
     }
 
     i.mdi.mdi-eye {
-    color: #54667a !important;
+     color: #54667a !important;
+
   }
 
   i.mdi.mdi-eye:hover {
@@ -435,11 +436,11 @@
                                                   <label for="exampleInputEmail1" class="form-label">Report Type</label>
                                                   <select class="form-select"  name="report_type" aria-label="Default select example">
                                                     <option selected>Select Report Type</option>
-                                                    <option value=" Activity Reports"> Activity Reports</option>
-                                                    <option value="  Incident Reports"> Incident Reports</option>
-                                                    <option value=" Patrol Reports"> Patrol Reports</option>
-                                                    <option value="  Parking violations"> Parking violations</option>
-                                                    <option value=" Visitor logs"> Visitor logs</option>
+                                                    <option value="Activity Reports"> Activity Reports</option>
+                                                    <option value="Incident Reports"> Incident Reports</option>
+                                                    <option value="Patrol Reports"> Patrol Reports</option>
+                                                    <option value="Parking violations"> Parking violations</option>
+                                                    <option value="Visitor logs"> Visitor logs</option>
                                                   </select>
                                                 </div>
                                                 
@@ -475,17 +476,20 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Report Date</label>
-                                                    <input type="date" name="report_date" class="form-control">
+                                                    <input type="date" value="{{$location['report_date']}}" name="report_date" class="form-control">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Report Photo</label>
                                                     <input type="file" name="report_photo[]" class="form-control" multiple>
                                                 </div>
                                                   <input type="hidden" name="user_id" value="{{session('data')['id']}} "/>
-                                                <div class="text-center">
+
+                                                  <div class="text-center">
                                                     <button type="submit" class="btn btn-primary col-6">Submit</button>
-                                                </div>
-                                            </form>
+                                                    </div>
+                                              </form>
+
+    
                                         </div>
                                        
                                     </div>
@@ -500,8 +504,17 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form>
+                                                <form id="update_report">
+                                                {{ csrf_field() }}
                                                     <div class="mb-3">
+                                                      <label for="exampleInputEmail1"  class="form-label">Report Title</label>
+                                                      <select class="form-select" id="report_title"  name="report_title" aria-label="Default select example">
+                                                        <option selected>Select Report Title</option>
+                                                           @foreach($data as $title)
+                                                             <option value="{{$title->id}}">{{$title->title}}</option>
+                                                            @endforeach
+                                                   </select>
+                                                  <div class="mb-3">
                                                         <label class="form-label">Report Type</label>
                                                         <select class="form-select" id="report_type" name="report_type" aria-label="Default select example">
                                                             <option >Select Report Type</option>
@@ -512,18 +525,10 @@
                                                             <option value="Visitor logs"> Visitor logs</option>
                                                         </select>
                                                     </div>
-                                                    <div class="mb-3">
-                                                      <label for="exampleInputEmail1" class="form-label">Report Title</label>
-                                                      <select class="form-select" id="report_title" aria-label="Default select example">
-                                                        <!-- <option selected>Select Report Title</option> -->
-                                                        @foreach($data as $title)
-                                                             <option  value="{{$title->id}}">{{$title->title}}</option>
-                                                        @endforeach
-                                                      </select>
-                                                    </div>
+                                       
                                                     <div class="mb-3">
                                                       <label class="form-label">Main Location</label>
-                                                        <select class="form-select" id="parent_loc" aria-label="Default select example">
+                                                        <select class="form-select" id="parent_loc" name="main_location" aria-label="Default select example">
                                                         @foreach($locations as $location)
                                                             <option selected value="{{$location['parent_location']}}">{{$location['parent_location']}}</option>
                                                         @endforeach
@@ -531,7 +536,7 @@
                                                     </div>
                                                     <div class="mb-3">
                                                       <label class="form-label">Sub Location</label>
-                                                        <select class="form-select" id="sub_loc" aria-label="Default select example">
+                                                      <select class="form-select" id="sub_loc" name="sub_location" aria-label="Default select example">
                                                         @foreach($locations as $location)
                                                             <option selected value="{{$location['location_name']}}">{{$location['location_name']}}</option>
                                                         @endforeach
@@ -539,19 +544,20 @@
                                                     </div>
                                                     <div class="mb-3">
                                                       <label class="form-label">Report Time</label>
-                                                      <input type="time"  id="time" name="report_time" value="" class="form-control">
+                                                      <input type="time" value="" id="time" name="report_time" class="form-control">
+                                                      <input type="hidden" name="meridian" value="" id="meridian"/>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label class="form-label">Report Date</label>
-                                                        <input type="date" id="date" class="form-control">
+                                                        <input type="date" value="" id="date" name="report_date" class="form-control">
                                                       </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Report Photo</label>
-                                                        <input type="file"  name="report_photo" class="form-control" multiple>
+                                                      <input type="hidden" id="user_id" name="user_id" value=" "/>
+                                                      <input type="hidden" id="hidden" name="id" value="{{session('data')['id']}} "/>
                                                     </div>
                                                     <div class="text-center">
                                                         <button type="submit" class="btn btn-primary col-6">Submit</button>
                                                     </div>
+
                                                   </form>
                                             </div>
                                            
@@ -654,7 +660,8 @@
                                             <input type="time" class="form-control" >
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit"  class="btn btn-primary col-6 ">Submit</button>
+                                        <button  type="submit" class="btn btn-primary col-6">Submit</button>
+
                                         </div>
                                      </form>
                                     </div>
@@ -725,6 +732,9 @@
                                 "progressBar" : true,
                             }
                             toastr.success(response.message);
+                            setTimeout(function(){
+                                location.reload();
+                            },3000)
                         },
                         error: function(response) {
                             //$('.error').remove();
@@ -732,28 +742,29 @@
                     });
                 });
                         });
-
-                        var inputEle = document.getElementById('timeInput');
-                        function onTimeChange() {
-                        var timeSplit = inputEle.value.split(':'),
-                            hours,
-                            minutes,
-                            meridian;
-                        hours = timeSplit[0];
-                        minutes = timeSplit[1];
-                        if (hours > 12) {
-                            meridian = 'PM';
-                            hours -= 12;
-                        } else if (hours < 12) {
-                            meridian = 'AM';
-                            if (hours == 0) {               
-                            hours = 12;
-                            }
-                        } else {
-                            meridian = 'PM';
-                        }
-                        $("#meridian").val(meridian);
-                        }
+            var inputEle = document.getElementById('timeInput');
+            function onTimeChange() {
+            var timeSplit = inputEle.value.split(':'),
+                hours,
+                minutes,
+                meridian;
+            hours = timeSplit[0];
+            minutes = timeSplit[1];
+            if (hours > 12) {
+                meridian = 'PM';
+                hours -= 12;
+            } else if (hours < 12) {
+                meridian = 'AM';
+                if (hours == 0) {               
+                hours = 12;
+                }
+            } else {
+                meridian = 'PM';
+            }
+            $("#meridian").val(meridian);
+            }
+            
+        
 
         function runMyFunction(data){
             console.log(data)
@@ -767,9 +778,42 @@
             $('#report_title').val(data.report_title);
             $('#parent_loc').val(data.main_location);
             $('#sub_loc').val(data.sub_location);
+            $('#hidden').val(data.id);
+            $('#user_id').val(data.user_id);
 
 
         }
+
+        $(document).ready(function(){
+              $('#update_report').on('submit', function(event){
+                    event.preventDefault();
+                    var url = 'http://localhost/report-portal/edit_reports'
+                    $.ajax({
+                        url: url,
+                        method: 'POST',
+                        data: new FormData(this),
+                        dataType: 'JSON',
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success:function(response)
+                        {
+                            $('#add').modal('hide');
+                            toastr.options =  {
+                                "closeButton" : true,
+                                "progressBar" : true,
+                            }
+                            toastr.success(response.message);
+                            setTimeout(function(){
+                                location.reload();
+                            },3000)
+                        },
+                        error: function(response) {
+                            //$('.error').remove();
+                        }
+                    });
+                });
+                        });
                
         </script>
 </body>

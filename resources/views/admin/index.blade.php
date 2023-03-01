@@ -335,7 +335,7 @@
                             <div class="col-sm-4 card-1 text-center" style="width: 18rem;">
                                 <div class="card-body">
                                     <h5 class="card-title">Total Reports</h5>
-                                    <p class="card-text">1</p>
+                                    <p class="card-text">{{$report}}</p>
                                     <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div
@@ -352,8 +352,8 @@
                         <!-- <div  class="col-sm-4"> -->
                             <div class="col-sm-3 card-3 text-center" style="width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Total Supervisor</h5>
-                                    <p class="card-text">3</p>
+                                    <h5 class="card-title">Total User</h5>
+                                    <p class="card-text">{{$count}}</p>
                                     <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div

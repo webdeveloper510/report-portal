@@ -128,6 +128,17 @@ p.num.my-1 {
 .sub_header {
     background: #d6d6d6 !important;
 }
+/*img.four_images {*/
+/* width: 100% !important;*/
+/*height: 77px !important;*/
+/*}*/
+
+/* img.four_images:hover {
+width: 100% !important;
+height: 100% !important;
+} */
+
+
 
 
 img.four_images {
@@ -496,10 +507,12 @@ img.four_images {
                                 </div>
                             </div>
                             <div class="col-md-4">
+
                                 <div class="text-endss">
                                 @foreach(json_decode($report['report_photo']) as $member)
                                     <img src="{{ URL::asset('public/images/'.$member)}}"/> 
                                     @endforeach
+                                   
                                 </div>
                             </div>
                         </div>
