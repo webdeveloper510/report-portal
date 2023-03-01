@@ -712,6 +712,9 @@
                                 "progressBar" : true,
                             }
                             toastr.success(response.message);
+                            setTimeout(function(){
+                                location.reload();
+                            },3000)
                         },
                         error: function(response) {
                             //$('.error').remove();

@@ -64,10 +64,10 @@ class AdminController extends Controller
         $data['email'] = $request->email;
         $data['password'] = $request->password;
         $data['phone'] = $request->phone;
+        $data['profile'] = '';
         $data['type'] = $request->categeory;
         $data['address'] = $request->address;
-     
-                if($data->save()){
+        if($data->save()){
                 return redirect('users')->with('message', 'User created successfully !');
             }
     }
@@ -124,7 +124,7 @@ class AdminController extends Controller
 
         // echo "<pre>"; 
         // print_r($request->all());die;
-        $login = User::where(['email' => $request['email'], 'password' => $request['password']])->first();
+        $login = User::where(['email' => $request['email'], 'password' => $request['password'],'type'=>'admin'])->first();
 
         $request->session()->put('data',$login);
         
@@ -199,6 +199,14 @@ class AdminController extends Controller
         // echo "<pre>";
         // print_r($request->all());die;
         $data = User::find($request->id);
+        $data->profile = '';
+          if($request->hasfile('file')){
+              
+            $extension = $request->file->getClientOriginalExtension();
+             $filename = time().'.'.$extension;
+            $request->file->move(public_path('profile'), $filename);
+            $data->profile = $filename;
+         }
         $data->name = $request->name;
         $data->email = $request->email;
         $data->password = $request->password;

@@ -425,7 +425,7 @@
                                         <input type="hidden" class="form-control mb-4" id="input" name="status" value="{{$data['status']}}">
                                         
                                         <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                            <button type="submit" class="btn btn-primary">Update Supervisor</button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                         </div>                                        
                                     </div>
                                 </div>
