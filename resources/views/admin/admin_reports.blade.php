@@ -768,12 +768,9 @@
             $('#parent_loc').val(data.main_location);
             $('#sub_loc').val(data.sub_location);
 
-            
 
         }
-
-
-                        
+               
         </script>
 </body>
 </html>
