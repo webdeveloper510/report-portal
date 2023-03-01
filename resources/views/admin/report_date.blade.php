@@ -518,7 +518,9 @@ img.four_images {
                                                     <img src="{{ URL::asset('public/images/'.$member)}}"  class="four_images"/> 
                                                 </div>
                                             </div> -->
-                                @endforeach 
+                                @endforeach
+
+                                
                                 </div>    
                          
                         </div>

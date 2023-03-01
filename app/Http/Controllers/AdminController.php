@@ -229,6 +229,7 @@ class AdminController extends Controller
         $data = DB::table('custom_title')->select('id','title')->get();
         $locations = Location::all();
         $activitys = Report::with('users')->get()->toArray();
+        //print_r($activitys);die;
         return view('admin.admin_reports',compact('data','locations','activitys'));
         
     }
@@ -280,7 +281,7 @@ class AdminController extends Controller
                 foreach ($request->report_photo as $image) {
                      $extension = $image->getClientOriginalExtension();
                      $filename = time().'.'.$extension;
-                $image->move(public_path('images'), $filename);
+                     $image->move(public_path('images'), $filename);
                      $image_array[]  = $filename;
             }
             // echo "<pre>";

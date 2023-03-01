@@ -437,7 +437,7 @@
                                                     <option selected>Select Report Type</option>
                                                     <option value=" Activity Reports"> Activity Reports</option>
                                                     <option value="  Incident Reports"> Incident Reports</option>
-                                                    <option value=" Patrol Reports"> Patrol Reports</option>
+                                                    <option value=" Patrol Reports"> Petrol Reports</option>
                                                     <option value="  Parking violations"> Parking violations</option>
                                                     <option value=" Visitor logs"> Visitor logs</option>
                                                   </select>
@@ -506,7 +506,7 @@
                                                             <option selected>Select Report Type</option>
                                                             <option value=" Activity Reports"> Activity Reports</option>
                                                             <option value="  Incident Reports"> Incident Reports</option>
-                                                            <option value=" Patrol Reports"> Patrol Reports</option>
+                                                            <option value=" Patrol Reports"> Petrol Reports</option>
                                                             <option value="  Parking violations"> Parking violations</option>
                                                             <option value=" Visitor logs"> Visitor logs</option>
                                                         </select>
@@ -553,7 +553,7 @@
                                                     <div class="text-center">
                                                         <button type="submit" class="btn btn-primary col-6">Submit</button>
                                                     </div>
-                                                  </form>
+                                                </form>
                                             </div>
                                            
                                         </div>
@@ -596,7 +596,7 @@
                                         @foreach($activitys as $activity)
                                             <tr>
                                                 <td>{{$loop->iteration }}</td>
-                                                <td>{{$activity['users']['name']}}</td> 
+                                                <td>{{isset($activity['users'])? $activity['users']['name'] : ''}}</td> 
                                                 <td>{{$activity['report_title']}}</td>
                                                 <td>{{$activity['main_location']}}</td>
                                                 <td>{{$activity['sub_location']}}</td>
