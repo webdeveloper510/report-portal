@@ -54,9 +54,9 @@
             text-align: center !important;
         }
 
-        img.location {
-            width: 80px !important;
-            height: 80px !important;
+        img.location2 {
+            width: 100px !important;
+            height: 100px !important;
         }
 
        
@@ -367,7 +367,7 @@
                                     <div class="mb-0 row">
                                         <div class="col-sm-4"></div>
                                         <div class="col-sm-4 mb-3 mt-4">
-                                            <img class="location" src="<?php echo URL::to('/'); ?>/public/assets/images/location.png" />
+                                            <img class="location2" src="<?php echo URL::to('/'); ?>/public/assets/images/location2.png" />
                                         </div>
                                         <h4 class="text-center">Edit User  Location</h4>
                                         <div class="col-sm-4"></div>
@@ -375,9 +375,15 @@
                                     <div class="p-3">
                                                 <input type="hidden" class="form-control"  name="id" value="{{$data['id']}}">
                                         <div class="mb-3 row">
-                                            <label for="name" class="col-sm- col-form-label">Location</label>
+                                            <label for="name" class="col-sm- col-form-label">Sub Location</label>
                                             <div class="col-sm-12">
                                                 <input type="text" class="form-control" id="input" name="location_name" value="{{$data['location_name']}}">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="name" class="col-sm- col-form-label">Parent Location</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control"  name="parent_location" value="{{$data['parent_location']}}">
                                             </div>
                                         </div>
                                         <div class="mb-3">

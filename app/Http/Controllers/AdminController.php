@@ -250,6 +250,7 @@ class AdminController extends Controller
     public function locations_insert(Request $request){
         $data = new Location;
         $data['location_name'] = $request->location_name;
+        $data['parent_location'] = $request->parent_location;
         $data['description'] = $request->description;
        
         if($data->save()){
@@ -294,11 +295,9 @@ class AdminController extends Controller
              else
                echo json_encode(['message'=>'Some error!']);
      
-}
+    }
 
             public function report_view($id){
-                  
-         
                 $reports_view = Report::with('users')->where('id',$id)->get()->toArray();
                 // echo "<pre>";
                 // print_r(json_decode($reports_view[0]['report_photo']));die;
@@ -310,13 +309,13 @@ class AdminController extends Controller
             }
            
             public function report_date(){
-                $filter_data = Session::get('filter');    
+                $filter_data = Session::get('filter'); 
+                // print_r($filter_data);die;   
                 $reports = Report::with('users')->whereBetween('report_date', [$filter_data['start_date'], $filter_data['end_date']])->get()->toArray();
                 return view('admin.report_date',compact('reports','filter_data'));
             }            
 
             public function filter_data(Request $request){               
-
                 $filter['start_date'] = $request->start_date;
                 $filter['end_date'] = $request->end_date;
                 Session::put('filter', $filter);

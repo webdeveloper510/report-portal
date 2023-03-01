@@ -77,8 +77,6 @@
         height: 80px !important;
     }
 
-    
-
     .card {
          background: whitesmoke;
     }
@@ -130,6 +128,17 @@ p.num.my-1 {
 .sub_header {
     background: #d6d6d6 !important;
 }
+
+
+img.four_images {
+    width: 100% !important;
+    height: 77px !important;
+}
+
+ /* img.four_images:hover {
+   width: 100% !important;
+    height: 100% !important;
+} */
 
 </style>
 </head>
@@ -462,7 +471,7 @@ p.num.my-1 {
                                         <div class="text-center"><p class="my-1">(S) Officer Arrived On Duty</p></div>
                                     </div>
                                     <div class="col-md-4">
-                                        <!-- <div class="text-end"><p class="num my-1">293742753</p></div> -->
+                                        <div class="text-end"><p class="num my-1">293742753</p></div>
                                     </div>
                             </div>
                         </div>

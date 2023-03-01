@@ -48,6 +48,9 @@
         margin-top: 15px !important;
         background: white !important;
         width: 35% !important;
+        /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.4);
+       
         }
 
         .col-sm-4 {
@@ -324,7 +327,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">User</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Edit User</li>
                                 </ol>
                             </nav>
                         </div>
@@ -368,7 +371,7 @@
                                         <div class="col-sm-4 mb-3 mt-4">
                                             <img class="supervisor" src="<?php echo URL::to('/'); ?>/public/assets/images/edit_profile1.jpg" />
                                         </div>
-                                        <h4 class="text-center">Edit   User</h4>
+                                        <h4 class="text-center">Edit  User</h4>
                                         <div class="col-sm-4"></div>
                                     </div>
                                     <div class="p-3">
