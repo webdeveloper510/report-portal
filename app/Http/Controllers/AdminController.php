@@ -120,12 +120,8 @@ class AdminController extends Controller
 
 
     public function login(Request $request)
-    { 
-
-        // echo "<pre>"; 
-        // print_r($request->all());die;
+    {        
         $login = User::where(['email' => $request['email'], 'password' => $request['password'],'type'=>'admin'])->first();
-
         $request->session()->put('data',$login);
         
         if ($login) {
@@ -329,7 +325,7 @@ class AdminController extends Controller
         $data->report_date = $request->report_date;        
         $data->report_type = $request->report_type;         
         if($data->save())
-             echo json_encode(['message'=>'Report Successfully!']);
+             echo json_encode(['message'=>'Update Report Successfully!']);
         else
         echo json_encode(['message'=>'Some error!']);
         //return redirect('admin.admin_reports')->with('message', 'Updated Report Successfully!');
@@ -341,9 +337,13 @@ class AdminController extends Controller
                 // print_r(json_decode($reports_view[0]['report_photo']));die;
                     return view('admin.report_view',compact('reports_view'));
             }
-            public function delete_report(Request $request,$id){      
-                DB::table('reports')->where('id',$id)->delete();
-                return redirect('admin_reports')->with('message', 'Deleted Report Successfully!');
+            public function delete_report(Request $request,$id){ 
+               // print_r($id);die;     
+                $delete = DB::table('reports')->where('id',$id)->delete();
+                if($delete)
+                   echo json_encode(['message'=>'Delete Report Successfully!']);
+                else
+                   echo json_encode(['message'=>'Some Error!']);
             }
            
             public function report_date(){

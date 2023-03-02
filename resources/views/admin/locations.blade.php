@@ -384,29 +384,8 @@
                                                             </div>
                                                       
 
-                                                            <div class="mb- row">
-                                                                <label for="input" class="col-sm-4  col-form-label">Parent Location </label>
-                                                                <div class="col-sm- mb-3">
-                                                                <input type="text" class="form-control" name="parent_location">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-4  col-form-label">Sub Location </label>
-                                                                <div class="col-sm-">
-                                                                    <select class="form-select" name="location_name" aria-label="Default select example">
-                                                                        <option selected>Select Main Location</option>
-                                                                        <option value="onsite">On Site</option>
-                                                                        <option value="eastparkinglot">East Parking Lot</option>
-                                                                        <option value="ParkingGarage">Parking Garage</option>
-                                                                        <option value="SouthParkingLot">South Parking Lot</option>
-                                                                        <option value="WestParkingLot">West Parking Lot</option>
-                                                                        <option value="LoadingDock">Loading Dock</option>
-                                                                        <option value="DisposalArea">Disposal Area</option>
-                                                                        <option value="Perimeter">Perimeter</option>
-                                                                        <option value="FiveBelow">Five Below</option>
-                                                                    </select>
-                                                                </div> 
-                                                            </div>
+                                                           
+                                                         
                                                             <!-- <div class="mb-0 row">
                                                                 <label for="input" class="col-sm-12 col-form-label text-left">Sub Location</label>
                                                                 <div class="col-sm-">
@@ -418,12 +397,7 @@
                                                                  </div>
                                                                 </div>
                                                             </div>  -->
-                                                            <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-4 col-form-label">Description</label>
-                                                                <div class="col-sm-">
-                                                                    <textarea type="text" class="form-control" rows="3" name="description"></textarea>
-                                                                </div>
-                                                            </div>  
+                                                             
                                                              
                                                             <div id="main">
 
@@ -525,7 +499,7 @@
                                             <th class="border-top-0">Sub Location</th>
                                             <th class="border-top-0">parent Location</th>
                                             <th class="border-top-0">Description</th>
-                                            <th class="border-top-0">Parent Location</th>
+                                          
                                             
                                             <th class="border-top-0">Action</th>
                                             

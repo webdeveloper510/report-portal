@@ -565,7 +565,7 @@
                                         </div>
                                     </div>
                                     <!-- delete Modal -->
-                                    <!-- <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             
@@ -575,13 +575,13 @@
                                             This process cannot be undone.</p>
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-danger btn-lg">Delete</button>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger btn-lg" onclick="return ReportDelete()">Delete</button>
                                             </div>
                                             </div>
                                             
                                         </div>
                                         </div>
-                                    </div> -->
+                                    </div>
                                 <div class="table-responsive">
                                     <table class="table user-table">
                                         <thead>
@@ -613,10 +613,10 @@
                                                         <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit" onclick="return runMyFunction({{json_encode($activity)}});">
                                                             <i class="mdi mdi-pencil"></i>
                                                         </a>
-                                                        <a class="h3" href="{{ 'delete_report/' . $activity['id'] }}">
+                                                        <a class="h3"  data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteReport({{$activity['id']}});">
                                                             <i class="mdi mdi-delete"></i>
                                                         </a>
-                                                        <a class="h3" href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
+                                                        <a class="h3"  href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
                                                             <i class="mdi mdi-eye"></i>
                                                             
                                                         </a>
@@ -707,114 +707,13 @@
     <script src="<?php echo URL::to('/'); ?>/public/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
-   
+   <script src="<?php echo URL::to('/'); ?>/public/js/main.js"></script>
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    
     <script type="text/javascript">
-            $(document).ready(function(){
-              $('#report').on('submit', function(event){
-                    event.preventDefault();
-                    var url = 'http://localhost/report-portal/insert_activity'
-                    $.ajax({
-                        url: url,
-                        method: 'POST',
-                        data: new FormData(this),
-                        dataType: 'JSON',
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                        success:function(response)
-                        {
-                            $('#add').modal('hide');
-                            toastr.options =  {
-                                "closeButton" : true,
-                                "progressBar" : true,
-                            }
-                            toastr.success(response.message);
-                            setTimeout(function(){
-                                location.reload();
-                            },3000)
-                        },
-                        error: function(response) {
-                            //$('.error').remove();
-                        }
-                    });
-                });
-                        });
-            var inputEle = document.getElementById('timeInput');
-            function onTimeChange() {
-            var timeSplit = inputEle.value.split(':'),
-                hours,
-                minutes,
-                meridian;
-            hours = timeSplit[0];
-            minutes = timeSplit[1];
-            if (hours > 12) {
-                meridian = 'PM';
-                hours -= 12;
-            } else if (hours < 12) {
-                meridian = 'AM';
-                if (hours == 0) {               
-                hours = 12;
-                }
-            } else {
-                meridian = 'PM';
-            }
-            $("#meridian").val(meridian);
-            }
-            
-        
-
-        function runMyFunction(data){
-            console.log(data)
-            let time = data.report_time.split(':');
-            console.log(time)
-            let str = time[1].replace("AM",'');
-      
-            $("#time").attr({'value': time[0] + ':' +str.trim() })
-            $('#date').val(data.report_date)
-            $('#report_type').val(data.report_type);
-            $('#report_title').val(data.report_title);
-            $('#parent_loc').val(data.main_location);
-            $('#sub_loc').val(data.sub_location);
-            $('#hidden').val(data.id);
-            $('#user_id').val(data.user_id);
-
-
-        }
-
-        $(document).ready(function(){
-              $('#update_report').on('submit', function(event){
-                    event.preventDefault();
-                    var url = 'http://localhost/report-portal/edit_reports'
-                    $.ajax({
-                        url: url,
-                        method: 'POST',
-                        data: new FormData(this),
-                        dataType: 'JSON',
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                        success:function(response)
-                        {
-                            $('#add').modal('hide');
-                            toastr.options =  {
-                                "closeButton" : true,
-                                "progressBar" : true,
-                            }
-                            toastr.success(response.message);
-                            setTimeout(function(){
-                                location.reload();
-                            },3000)
-                        },
-                        error: function(response) {
-                            //$('.error').remove();
-                        }
-                    });
-                });
-                        });
-               
+     
         </script>
 </body>
 </html>
