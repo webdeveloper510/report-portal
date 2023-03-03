@@ -137,10 +137,10 @@
                                 <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
                                     class="srh-btn"><i class="ti-close"></i></a> </form>
                         </li> -->
-                        <li class="sidebar-item mt-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1"> <a href="tel:9876543210" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-phone"></i><span
                                     class="hide-menu ">Phone: 9876543210</span></a></li>
-                        <li class="sidebar-item mt-1 mx-4"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-4"> <a href="mailto:rohit@gmail.com" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-email"></i><span
                                     class="hide-menu ">Email: rohit@gmail.com</span></a></li>
                         <!-- <li class="nav-item ">
@@ -158,18 +158,18 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.facebook.com" target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-facebook-box"></i><span
                                     class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.instagram.com" target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-instagram"></i><span
                                     class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="http://m.me" target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-facebook-messenger"></i><span
                                     class="hide-menu "></span></a></li>  
-                        <li class="sidebar-item mt-1 mx-1 "> <a href="" class="top-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-file-powerpoint-box"></i><span
-                                    class="hide-menu "></span></a></li>                      
+                        <li class="sidebar-item mt-1 mx-1 "> <a href="https://twitter.com" class="top-link"
+                                 aria-expanded="false"><i class="mdi me-2 mdi-twitter"></i><span
+                                    class="hide-menu "></span></a></li>                  
                         <!-- <li class="nav-item dropdown">
                           <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark"> -->
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->

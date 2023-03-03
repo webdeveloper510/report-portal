@@ -44,17 +44,15 @@
     }
 
         .card-1.text-center {
-            background:lightcoral !important;
-            margin: 28px !important;
+            background:lightcoral !important;  
         }
+
         .card-2.text-center {
             background:coral !important;
-            margin: 28px !important;
-        
         }
+
         .card-3.text-center {
             background:burlywood !important;
-            margin: 28px !important;
         }
        
 
@@ -69,6 +67,8 @@
             color: #ffffff !important;
             font-size: small;
         }
+
+        
 </style>
 </head>
 
@@ -145,10 +145,10 @@
                                 <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
                                     class="srh-btn"><i class="ti-close"></i></a> </form>
                         </li> -->
-                        <li class="sidebar-item mt-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1"> <a href="tel:9876543210" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-phone"></i><span
                                     class="hide-menu ">Phone: 9876543210</span></a></li>
-                        <li class="sidebar-item mt-1 mx-4"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-4"> <a href="mailto:rohit@gmail.com" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-email"></i><span
                                     class="hide-menu ">Email: rohit@gmail.com</span></a></li>
                         <!-- <li class="nav-item ">
@@ -166,17 +166,17 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.facebook.com" target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-facebook-box"></i><span
                                     class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.instagram.com" target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-instagram"></i><span
                                     class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="http://m.me" target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-facebook-messenger"></i><span
                                     class="hide-menu "></span></a></li>  
-                        <li class="sidebar-item mt-1 mx-1 "> <a href="" class="top-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-file-powerpoint-box"></i><span
+                        <li class="sidebar-item mt-1 mx-1 "> <a href="https://twitter.com" class="top-link"
+                                 aria-expanded="false"><i class="mdi me-2 mdi-twitter"></i><span
                                     class="hide-menu "></span></a></li>                      
                         <!-- <li class="nav-item dropdown">
                           <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark"> -->
@@ -308,9 +308,7 @@
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <div class="page-breadcrumb">
-
                 <div class="row align-items-center">
-                
                     <div class="col-md-6 col-8 align-self-center">
                         <h3 class="page-title mb-0 p-0">Dashboard</h3>
                         <div class="d-flex align-items-center">
@@ -329,36 +327,34 @@
                         </div> -->
                     </div>
                 </div>  
-                <div class="row ">
-                        <!-- <div class="col-md-2"></div> -->
-                        <!-- <div class="col-sm-4"> -->
-                            <div class="col-sm-4 card-1 text-center" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Total Reports</h5>
-                                    <p class="card-text">1</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div
-                        <!-- </div> 
-                        <!-- <div  class="col-sm-4"> -->
-                            <div class="col-sm-4  card-2 text-center" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Upcomming Reports</h5>
-                                    <p class="card-text">2</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div
-                        <!-- </div> 
-                        <!-- <div  class="col-sm-4"> -->
-                            <div class="col-sm-3 card-3 text-center" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Total Supervisor</h5>
-                                    <p class="card-text">3</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div
-                         </div> 
-                        <!-- <div class="col-md-2"></div> -->
+                <div class="row g-2 mt-5">
+                    <div class="col-sm-4">
+                        <div class="card-1 text-center">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Reports</h5>
+                                <p class="card-text">{{$report}}</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>                      
+                    <div class="col-sm-4">
+                        <div class="card-2 text-center">
+                            <div class="card-body">
+                                <h5 class="card-title">Upcomming Reports</h5>
+                                <p class="card-text">2</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card-3 text-center">
+                            <div class="card-body">
+                                <h5 class="card-title">Total User</h5>
+                                <p class="card-text">{{$count}}</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>                
                 </div>          
             </div>
             

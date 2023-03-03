@@ -49,6 +49,12 @@ class AdminController extends Controller
         return view('user_list');
     }
 
+    public function index(){
+        $count = User::get()->count();
+        $report = Report::get()->count();
+        return view('admin.index',compact('count','report'));
+    }
+
     public function add_user(Request $request)
     {
         // echo "<pre>";
@@ -58,12 +64,12 @@ class AdminController extends Controller
         $data['email'] = $request->email;
         $data['password'] = $request->password;
         $data['phone'] = $request->phone;
+        $data['profile'] = '';
         $data['type'] = $request->categeory;
         $data['address'] = $request->address;
-     
-                if($data->save()){
+        if($data->save()){
                 return redirect('users')->with('message', 'User created successfully !');
-            }
+                 }
     }
     public function get_user()
     {
@@ -118,7 +124,7 @@ class AdminController extends Controller
 
         // echo "<pre>"; 
         // print_r($request->all());die;
-        $login = User::where(['email' => $request['email'], 'password' => $request['password']])->first();
+        $login = User::where(['email' => $request['email'], 'password' => $request['password'],'type'=>'admin'])->first();
 
         $request->session()->put('data',$login);
         
@@ -174,6 +180,7 @@ class AdminController extends Controller
     public function update_locations(Request $request){
      
         $data = Location::find($request->id);
+         $data['parent_location'] = $request->parent_location;
         $data->location_name = $request->location_name;
         $data->description = $request->description;
         $data->save();
@@ -192,6 +199,14 @@ class AdminController extends Controller
         // echo "<pre>";
         // print_r($request->all());die;
         $data = User::find($request->id);
+        $data->profile = '';
+          if($request->hasfile('file')){
+              
+            $extension = $request->file->getClientOriginalExtension();
+             $filename = time().'.'.$extension;
+            $request->file->move(public_path('profile'), $filename);
+            $data->profile = $filename;
+         }
         $data->name = $request->name;
         $data->email = $request->email;
         $data->password = $request->password;
@@ -250,8 +265,11 @@ class AdminController extends Controller
 
     public function locations_insert(Request $request){
         $data = new Location;
+          $data['parent_location'] = $request->parent_location;
         $data['location_name'] = $request->location_name;
+        $data['parent_location'] = $request->parent_location;
         $data['description'] = $request->description;
+      
        
         if($data->save()){
         return redirect('locations')->with('message', 'Location created successfully !');
@@ -274,13 +292,13 @@ class AdminController extends Controller
             $data['user_id'] = $request->user_id;
             $data['main_location'] = $request->main_location;
             $data['sub_location'] = $request->sub_location;
-            $data['report_time'] = $request->report_time;
+            $data['report_time'] = $request->report_time." ".$request->meridian;
             $data['report_date'] = $request->report_date;        
             $data['report_type'] = $request->report_type;        
             if($request->hasfile('report_photo')){
                 foreach ($request->report_photo as $image) {
-                     $extension = $image->getClientOriginalExtension();
-                     $filename = time().'.'.$extension;
+                     $name = $image->getClientOriginalName();
+                     $filename = time().'.'.$name;
                      $image->move(public_path('images'), $filename);
                      $image_array[]  = $filename;
             }
@@ -296,8 +314,6 @@ class AdminController extends Controller
                echo json_encode(['message'=>'Some error!']);
      
     }
-
-
 
             public function report_view($id){
                 $reports_view = Report::with('users')->where('id',$id)->get()->toArray();
@@ -322,11 +338,12 @@ class AdminController extends Controller
                 $filter['end_date'] = $request->end_date;
                 Session::put('filter', $filter);
                 return redirect('report_date');
-
-
             }
-           
-            
+
+            // public function new_page(){
+            //     return view('admin.new_page');
+            // }
+        
    }
     
 

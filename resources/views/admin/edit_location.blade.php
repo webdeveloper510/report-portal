@@ -153,10 +153,10 @@
                                 <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
                                     class="srh-btn"><i class="ti-close"></i></a> </form>
                         </li> -->
-                        <li class="sidebar-item mt-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1"> <a href="tel:9876543210" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-phone"></i><span
                                     class="hide-menu ">Phone: 9876543210</span></a></li>
-                        <li class="sidebar-item mt-1 mx-4"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-4"> <a href="mailto:rohit@gmail.com" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-email"></i><span
                                     class="hide-menu ">Email: rohit@gmail.com</span></a></li>
                         <!-- <li class="nav-item ">
@@ -174,18 +174,18 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.facebook.com" target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-facebook-box"></i><span
                                     class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.instagram.com" target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-instagram"></i><span
                                     class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="http://m.me" target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-facebook-messenger"></i><span
                                     class="hide-menu "></span></a></li>  
-                        <li class="sidebar-item mt-1 mx-1 "> <a href="" class="top-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-file-powerpoint-box"></i><span
-                                    class="hide-menu "></span></a></li>                      
+                                    <li class="sidebar-item mt-1 mx-1 "> <a href="https://twitter.com" class="top-link"
+                                 aria-expanded="false"><i class="mdi me-2 mdi-twitter"></i><span
+                                    class="hide-menu "></span></a></li>                   
                         <!-- <li class="nav-item dropdown">
                           <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark"> -->
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
@@ -369,13 +369,20 @@
                                         <div class="col-sm-4 mb-3 mt-4">
                                             <img class="location2" src="<?php echo URL::to('/'); ?>/public/assets/images/location2.png" />
                                         </div>
-                                        <h4 class="text-center">Edit User  Location</h4>
+                                        <h4 class="text-center">Edit User Location</h4>
                                         <div class="col-sm-4"></div>
                                     </div>
                                     <div class="p-3">
-                                                <input type="hidden" class="form-control"  name="id" value="{{$data['id']}}">
+                                        <input type="hidden" class="form-control"  name="id" value="{{$data['id']}}">
                                         <div class="mb-3 row">
-                                            <label for="name" class="col-sm- col-form-label">Location</label>
+                                            <label for="name" class="col-sm- col-form-label">Parent Location</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control"  name="parent_location" value="{{$data['parent_location']}}">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="name" class="col-sm- col-form-label"> Sub Location</label>
+
                                             <div class="col-sm-12">
                                                 <input type="text" class="form-control" id="input" name="location_name" value="{{$data['location_name']}}">
                                             </div>

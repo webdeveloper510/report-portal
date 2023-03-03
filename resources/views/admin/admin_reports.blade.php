@@ -104,7 +104,8 @@
     }
 
     i.mdi.mdi-eye {
-    color: #54667a !important;
+     color: #54667a !important;
+
   }
 
   i.mdi.mdi-eye:hover {
@@ -185,10 +186,10 @@
                                 <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
                                     class="srh-btn"><i class="ti-close"></i></a> </form>
                         </li> -->
-                        <li class="sidebar-item mt-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1"> <a href="tel:9876543210" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-phone"></i><span
                                     class="hide-menu ">Phone: 9876543210</span></a></li>
-                        <li class="sidebar-item mt-1 mx-4"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-4"> <a href="mailto:rohit@gmail.com" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-email"></i><span
                                     class="hide-menu ">Email: rohit@gmail.com</span></a></li>
                         <!-- <li class="nav-item ">
@@ -206,18 +207,18 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.facebook.com"  target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-facebook-box"></i><span
                                     class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.instagram.com"  target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-instagram"></i><span
                                     class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="http://m.me"  target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-facebook-messenger"></i><span
                                     class="hide-menu "></span></a></li>  
-                        <li class="sidebar-item mt-1 mx-1 "> <a href="" class="top-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-file-powerpoint-box"></i><span
-                                    class="hide-menu "></span></a></li>                      
+                                    <li class="sidebar-item mt-1 mx-1 "> <a href="https://twitter.com" class="top-link"
+                                 aria-expanded="false"><i class="mdi me-2 mdi-twitter"></i><span
+                                    class="hide-menu "></span></a></li>                       
                         <!-- <li class="nav-item dropdown">
                           <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark"> -->
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
@@ -470,21 +471,25 @@
                                                 </div>
                                                 <div class="mb-3">
                                                   <label class="form-label">Report Time</label>
-                                                  <input type="time"  name="report_time" class="form-control">
+                                                  <input type="time"  name="report_time" value="" id="timeInput" onChange="onTimeChange()" class="form-control">
+                                                  <input type="hidden" name="meridian" value="" id="meridian"/>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Report Date</label>
-                                                    <input type="date" name="report_date" class="form-control">
+                                                    <input type="date" value="{{$location['report_date']}}" name="report_date" class="form-control">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Report Photo</label>
                                                     <input type="file" name="report_photo[]" class="form-control" multiple>
                                                 </div>
                                                   <input type="hidden" name="user_id" value="{{session('data')['id']}} "/>
-                                                <div class="text-center">
+
+                                                  <div class="text-center">
                                                     <button type="submit" class="btn btn-primary col-6">Submit</button>
-                                                </div>
-                                            </form>
+                                                    </div>
+                                              </form>
+
+    
                                         </div>
                                        
                                     </div>
@@ -493,70 +498,67 @@
                                 <!-- Edit Modal -->
                                     <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="editModalLabel">Edit Report </h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="editModalLabel">Edit Report </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Report Type</label>
+                                                            <select class="form-select"  name="report_type" aria-label="Default select example">
+                                                                <option selected>Select Report Type</option>
+                                                                <option value=" Activity Reports"> Activity Reports</option>
+                                                                <option value="  Incident Reports"> Incident Reports</option>
+                                                                <option value=" Patrol Reports"> Petrol Reports</option>
+                                                                <option value="  Parking violations"> Parking violations</option>
+                                                                <option value=" Visitor logs"> Visitor logs</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="exampleInputEmail1" class="form-label">Report Title</label>
+                                                            <select class="form-select" aria-label="Default select example">
+                                                                <option selected>Select Report Title</option>
+                                                            @foreach($data as $title)
+                                                                <option value="{{$title->id}}">{{$title->title}}</option>
+                                                            @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Main Location</label>
+                                                            <select class="form-select" id="parent_loc" aria-label="Default select example">
+                                                            @foreach($locations as $location)
+                                                                <option selected value="{{$location['parent_location']}}">{{$location['parent_location']}}</option>
+                                                            @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Sub Location</label>
+                                                            <select class="form-select" id="sub_loc" aria-label="Default select example">
+                                                            @foreach($locations as $location)
+                                                                <option selected value="{{$location['location_name']}}">{{$location['location_name']}}</option>
+                                                            @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Report Time</label>
+                                                            <input type="time" value="" id="time" name="report_time" class="form-control">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Report Date</label>
+                                                            <input type="date" value="" id="date" class="form-control">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Report Photo</label>
+                                                            <input type="file" value="" name="report_photo" class="form-control" multiple>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <button type="submit" class="btn btn-primary col-6">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                </div>  
                                             </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Report Type</label>
-                                                        <select class="form-select"  name="report_type" aria-label="Default select example">
-                                                            <option selected>Select Report Type</option>
-                                                            <option value=" Activity Reports"> Activity Reports</option>
-                                                            <option value="  Incident Reports"> Incident Reports</option>
-                                                            <option value=" Patrol Reports"> Petrol Reports</option>
-                                                            <option value="  Parking violations"> Parking violations</option>
-                                                            <option value=" Visitor logs"> Visitor logs</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                      <label for="exampleInputEmail1" class="form-label">Report Title</label>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option selected>Select Report Title</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                      <label class="form-label">Main Location</label>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option selected>Select Main Location</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                      <label class="form-label">Sub Location</label>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option selected>Select Sub Location</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                      <label class="form-label">Report Time</label>
-                                                      <input type="time" class="form-control">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Report Date</label>
-                                                        <input type="date" class="form-control">
-                                                      </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Report Photo</label>
-                                                        <input type="file"  name="report_photo" class="form-control" multiple>
-                                                    </div>
-                                                    <div class="text-center">
-                                                        <button type="submit" class="btn btn-primary col-6">Submit</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                           
-                                        </div>
                                         </div>
                                     </div>
                                     <!-- delete Modal -->
@@ -582,7 +584,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="border-top-0">#</th>
-                                                <th class="border-top-0">Report Name</th>
+                                                <th class="border-top-0">User Name</th>
                                                 <th class="border-top-0">Report Title</th>
                                                 <th class="border-top-0">Main Location</th>
                                                 <th class="border-top-0">Sub Location</th>
@@ -593,33 +595,31 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($activitys as $activity)
-                                            <tr>
-                                                <td>{{$loop->iteration }}</td>
-                                                <td>{{isset($activity['users'])? $activity['users']['name'] : ''}}</td> 
-                                                <td>{{$activity['report_title']}}</td>
-                                                <td>{{$activity['main_location']}}</td>
-                                                <td>{{$activity['sub_location']}}</td>
-                                                <td>{{$activity['report_time']}}</td>
-                                                <td>{{$activity['report_date']}}</td>
-                                                <td>{{$activity['report_type']}}</td>
-                                                <td >
-                                                    <div class="d-flex">
-                                                        <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit">
-                                                            <i class="mdi mdi-pencil"></i>
-                                                        </a>
-                                                        <a class="h3" href="{{ 'delete_report/' . $activity['id'] }}">
-                                                            <i class="mdi mdi-delete"></i>
-                                                        </a>
-                                                        <a class="h3" href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
-                                                            <i class="mdi mdi-eye"></i>
-                                                            
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>                                 
-                                      
-                                        @endforeach
+                                            @foreach($activitys as $activity)
+                                                <tr>
+                                                    <td>{{$loop->iteration }}</td>
+                                                    <td>{{isset($activity['users'])? $activity['users']['name'] : ''}}</td> 
+                                                    <td>{{$activity['report_title']}}</td>
+                                                    <td>{{$activity['main_location']}}</td>
+                                                    <td>{{$activity['sub_location']}}</td>
+                                                    <td>{{$activity['report_time']}}</td>
+                                                    <td>{{$activity['report_date']}}</td>
+                                                    <td>{{$activity['report_type']}}</td>
+                                                    <td >
+                                                        <div class="d-flex">
+                                                            <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit" onclick="return runMyFunction({{json_encode($activity)}});">
+                                                                <i class="mdi mdi-pencil"></i>
+                                                            </a>
+                                                            <a class="h3" href="{{ 'delete_report/' . $activity['id'] }}">
+                                                                <i class="mdi mdi-delete"></i>
+                                                            </a>
+                                                            <a class="h3" href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
+                                                                <i class="mdi mdi-eye"></i>                                                              
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>                                 
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -655,7 +655,8 @@
                                             <input type="time" class="form-control" >
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit"  class="btn btn-primary col-6 ">Submit</button>
+                                        <button  type="submit" class="btn btn-primary col-6">Submit</button>
+
                                         </div>
                                      </form>
                                     </div>
@@ -726,13 +727,51 @@
                                 "progressBar" : true,
                             }
                             toastr.success(response.message);
+                            setTimeout(function(){
+                                location.reload();
+                            },3000)
                         },
                         error: function(response) {
                             //$('.error').remove();
                         }
                     });
                 });
-            });
-        </script>
+                        });
+            var inputEle = document.getElementById('timeInput');
+            function onTimeChange() {
+            var timeSplit = inputEle.value.split(':'),
+                hours,
+                minutes,
+                meridian;
+            hours = timeSplit[0];
+            minutes = timeSplit[1];
+            if (hours > 12) {
+                meridian = 'PM';
+                hours -= 12;
+            } else if (hours < 12) {
+                meridian = 'AM';
+                if (hours == 0) {               
+                hours = 12;
+                }
+            } else {
+                meridian = 'PM';
+            }
+            $("#meridian").val(meridian);
+            }
+            
+        function runMyFunction(data){
+            console.log(data)
+            let time = data.report_time.split(':');
+            console.log(time)
+            let str = time[1].replace("AM",'');
+      
+            $("#time").attr({'value': time[0] + ':' +str.trim() })
+            $('#date').val(data.report_date)
+            $('#report_type').val(data.report_type);
+            $('#report_title').val(data.report_title);
+            $('#parent_loc').val(data.main_location);
+            $('#sub_loc').val(data.sub_location);
+        }                    
+    </script>
 </body>
 </html>
