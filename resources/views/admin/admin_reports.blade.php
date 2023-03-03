@@ -601,7 +601,7 @@
                                         @foreach($activitys as $activity)
                                             <tr>
                                                 <td>{{$loop->iteration }}</td>
-                                                <td>{{$activity['users']['name']}}</td> 
+                                                <td>{{$activity['users'] ? $activity['users']['name']:''}}</td> 
                                                 <td>{{$activity['report_title']}}</td>
                                                 <td>{{$activity['main_location']}}</td>
                                                 <td>{{$activity['sub_location']}}</td>

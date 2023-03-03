@@ -15,7 +15,7 @@
 var delete_id=''  
     $('#report').on('submit', function(event){
       event.preventDefault();
-      var url = 'http://localhost/report-portal/insert_activity'
+      var url = '<?php echo URL::to('/'); ?>/report-portal/insert_activity'
       $.ajax({
           url: url,
           method: 'POST',
@@ -85,7 +85,7 @@ var delete_id=''
 
           $('#update_report').on('submit', function(event){
             event.preventDefault();
-            var url = 'http://localhost/report-portal/edit_reports'
+            var url = '<?php echo URL::to('/'); ?>/report-portal/edit_reports'
             $.ajax({
                 url: url,
                 method: 'POST',
@@ -120,7 +120,7 @@ var delete_id=''
 
       function DataDelete(table){
         $.ajax({
-           url: "http://localhost/report-portal/delete_data/"+delete_id+'/'+table,
+           url: "<?php echo URL::to('/'); ?>/report-portal/delete_data/"+delete_id+'/'+table,
            type: 'GET',
            dataType: 'json', // added data type
            success: function(res) {                   
@@ -140,7 +140,7 @@ var delete_id=''
 
    function delete_location(){
     $.ajax({
-       url: "http://localhost/report-portal/delete_location/"+delete_id,
+       url: "<?php echo URL::to('/'); ?>/report-portal/delete_location/"+delete_id,
        type: 'GET',
        dataType: 'json', // added data type
        success: function(res) {                   
@@ -183,10 +183,10 @@ let title = $('#show_data').val();
 let id = $('#hidden').val(); 
 let url = ''
 if(id){
-     url = "http://localhost/report-portal/edit_title";
+     url = "<?php echo URL::to('/'); ?>/report-portal/edit_title";
 }   
 else{
-     url = "http://localhost/report-portal/insert_title";
+     url = "<?php echo URL::to('/'); ?>/report-portal/insert_title";
 } 
 $.ajaxSetup({
     headers:

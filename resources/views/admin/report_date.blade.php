@@ -495,7 +495,7 @@ img.four_images {
                                     <p class="mb-0">5412 Beach Boulevard</p>
                                     <p class="mb-0"><b>Location: </b>{{$report['sub_location']}}</p>
                                     <p><b>Unit: </b>{{$report['main_location']}}</p>
-                                    <p class=" mb-1">{{$report['users']['name']}}</p>
+                                    <p class=" mb-1">{{$report['users'] ? $report['users']['name']:''}}</p>
                                     <div class="level me-2">
                                         <p class="text-white  mx-2">(S) Level 3</p>
                                     </div>

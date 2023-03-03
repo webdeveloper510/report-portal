@@ -243,6 +243,8 @@ class AdminController extends Controller
         $data = DB::table('custom_title')->select('id','title')->get();
         $locations = Location::all();
         $activitys = Report::with('users')->get()->toArray();
+        // echo "<pre>";
+        // print_r($activitys);die;
      
         return view('admin.admin_reports',compact('data','locations','activitys'));
         
