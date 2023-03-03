@@ -112,15 +112,15 @@ var delete_id=''
             });
         });
 
-    function deleteReport(id){
+    function deleteData(id){
           delete_id = id;
       }
 
         // *---------------------------------------------------DELETE REPORT----------------------------------------------//
 
-      function ReportDelete(){
+      function DataDelete(table){
         $.ajax({
-           url: "http://localhost/report-portal/delete_report/"+delete_id,
+           url: "http://localhost/report-portal/delete_data/"+delete_id+'/'+table,
            type: 'GET',
            dataType: 'json', // added data type
            success: function(res) {                   
@@ -135,5 +135,84 @@ var delete_id=''
            }
        });
    }
-	 
+
+
+
+   function delete_location(){
+    $.ajax({
+       url: "http://localhost/report-portal/delete_location/"+delete_id,
+       type: 'GET',
+       dataType: 'json', // added data type
+       success: function(res) {                   
+       toastr.options =  {
+                   "closeButton" : true,
+                   "progressBar" : true,
+               }
+               toastr.success(res.message);
+               setTimeout(function(){
+                   location.reload();
+               },3000)
+       }
+   });
+}
+//-------------------------------------------------Report Title----------------------------------------//
+$(document).ready(function(){
+    $(".icon").click(function(){
+        let id = $(this).attr('data-id');
+        console.log(id)
+        let text = $('.text_'+id).text()
+        $('#show_data').val(text)
+        $("#update_data").removeAttr('action')
+        $("#Report_user").text('Edit Report');
+        $("#hidden").val(id);
+        $("#Report").modal('show');
+    });
+
+
+    $('.add_report').click(function(){
+        $('#show_data').val('')
+        $("#Report_user").text('Add Report');
+        $("#Report").modal('show');
+    })
+});
+
+
+$('#update_data').on('submit',function(e){
+e.preventDefault();    
+let title = $('#show_data').val();
+let id = $('#hidden').val(); 
+let url = ''
+if(id){
+     url = "http://localhost/report-portal/edit_title";
+}   
+else{
+     url = "http://localhost/report-portal/insert_title";
+} 
+$.ajaxSetup({
+    headers:
+    {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+$.ajax({
+  url: url,
+  type:"POST",
+  data:{
+    title:title,
+    id:id,
+
+  },
+  success:function(response){
+        let done = JSON.parse(response);
+        toastr.options =  {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+    toastr.success(done.message);
+  },
+   error: function(response) {
+  
+  },
+  });
+});
 

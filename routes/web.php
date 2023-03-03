@@ -51,7 +51,7 @@ Route::get('report_title',[AdminController::class, 'report_title']);
 Route::post('insert_title', [AdminController::class, 'insert_title']);
 Route::post('edit_title/', [AdminController::class, 'edit_title']);
 Route::get('/delete_title/{id}', [AdminController::class, 'delete_title']);
-Route::get('/delete_report/{id}', [AdminController::class, 'delete_report']);
+Route::get('/delete_data/{id}/{table}', [AdminController::class, 'delete_data']);
 Route::post('insert_activity', [AdminController::class, 'insert_activity']);
 Route::get('report_view/{id}',[AdminController::class, 'report_view']);
 Route::get('report_date',[AdminController::class, 'report_date']);

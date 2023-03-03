@@ -186,10 +186,13 @@ class AdminController extends Controller
     public function delete_location($id){
 
         $data = Location::find($id);
-        $data->delete();
-        return redirect('locations')->with('message', 'Location Delete Successfully!');
+        if($data)
+                   echo json_encode(['message'=>'Delete Location Successfully!']);
+                else
+                   echo json_encode(['message'=>'Some Error!']);
+            }
 
-    }
+    
 
     public function update_profile(Request $request){
         // echo "<pre>";
@@ -226,14 +229,14 @@ class AdminController extends Controller
                 else{
                     echo json_encode(['message'=>'Some error!']);
                 }         
-    } 
+          } 
 
 
-    public function report_title(){
-        $data = DB::table('custom_title')->select('id','title')->get();
-        return view('admin.report_title',compact('data'));
-     
-    }
+        public function report_title(){
+            $data = DB::table('custom_title')->select('id','title')->get();
+            return view('admin.report_title',compact('data'));
+        
+        }
 
     public function admin_reports(){
      
@@ -337,11 +340,11 @@ class AdminController extends Controller
                 // print_r(json_decode($reports_view[0]['report_photo']));die;
                     return view('admin.report_view',compact('reports_view'));
             }
-            public function delete_report(Request $request,$id){ 
+            public function delete_data(Request $request,$id,$tbl){ 
                // print_r($id);die;     
-                $delete = DB::table('reports')->where('id',$id)->delete();
+                $delete = DB::table($tbl)->where('id',$id)->delete();
                 if($delete)
-                   echo json_encode(['message'=>'Delete Report Successfully!']);
+                   echo json_encode(['message'=>'Delete  Successfully!']);
                 else
                    echo json_encode(['message'=>'Some Error!']);
             }

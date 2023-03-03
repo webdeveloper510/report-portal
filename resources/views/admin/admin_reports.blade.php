@@ -476,7 +476,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Report Date</label>
-                                                    <input type="date" value="{{$location['report_date']}}" name="report_date" class="form-control">
+                                                    <input type="date" value="" name="report_date" class="form-control">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Report Photo</label>
@@ -575,7 +575,7 @@
                                             This process cannot be undone.</p>
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger btn-lg" onclick="return ReportDelete()">Delete</button>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger btn-lg" onclick="return DataDelete('reports')">Delete</button>
                                             </div>
                                             </div>
                                             
@@ -613,7 +613,7 @@
                                                         <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit" onclick="return runMyFunction({{json_encode($activity)}});">
                                                             <i class="mdi mdi-pencil"></i>
                                                         </a>
-                                                        <a class="h3"  data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteReport({{$activity['id']}});">
+                                                        <a class="h3"  data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData({{$activity['id']}});">
                                                             <i class="mdi mdi-delete"></i>
                                                         </a>
                                                         <a class="h3"  href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
