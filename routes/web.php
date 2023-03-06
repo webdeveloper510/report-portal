@@ -21,7 +21,6 @@ Route::get('/', function () {
 
 Route::view('index','admin.index');
 Route::get('index',[AdminController::class, 'index']);
-Route::get('profile_page', [AdminController::class, 'profile_page']);
 Route::get('users', [AdminController::class, 'basic_table']);
 Route::get('profile_page', [AdminController::class, 'profile_page']);
 Route::get('icon_materiale', [AdminController::class, 'icon_materiale']);
