@@ -376,13 +376,28 @@
                                                                 </select>
                                                                 </div>
                                                             </div>
-                                                            
                                                             <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-4 col-form-label">Description</label>
-                                                                <div class="col-sm-">
+                                                                <label for="input" class="col-sm- col-form-label">Description</label>
+                                                                <div class="col-sm-12">
                                                                     <textarea type="text" class="form-control" rows="3" name="description"></textarea>
                                                                 </div>
-                                                            </div>  
+                                                            </div>
+                                                      
+
+                                                           
+                                                         
+                                                            <!-- <div class="mb-0 row">
+                                                                <label for="input" class="col-sm-12 col-form-label text-left">Sub Location</label>
+                                                                <div class="col-sm-">
+                                                                 <div class="mb-3 row">
+                                                                    <div class="col-sm-12">
+                                                                      <input type="text" class="form-control mt-2">
+                                                                    </div>
+                                                                   
+                                                                 </div>
+                                                                </div>
+                                                            </div>  -->
+                                                             
                                                              
                                                             <div id="main">
 
@@ -483,7 +498,7 @@
                                             
                                             <th class="border-top-0">Sub Location</th>
                                             <th class="border-top-0">parent Location</th>
-                                            <th class="border-top-0">Description</th>
+                                            <th class="border-top-0">Description</th>    
                                             <th class="border-top-0">Action</th>
                                             
                                         </tr>
@@ -496,14 +511,39 @@
                                             <td>{{$location['description']}}</td>                                        
                                             <td>
                                                <a href="{{ 'edit_location/' . $location['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
-                                               <a href="{{ 'delete_location/' . $location['id'] }}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                               <a class="h3" data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData({{$location['id']}});">
+                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                </a>
+
                                            </td>   
+
+                                           
                                           
                                         </tr>
                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
+
+                              <!-- delete Modal -->
+                              <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            
+                                            <div class="modal-body text-center pt-5">
+                                           <h3>Are you sure?</h3>
+                                           <p>Do you really want to delete these records?<br/>
+                                            This process cannot be undone.</p>
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger btn-lg" onclick="return DataDelete('locations')">Delete</button>
+                                            </div>
+                                            </div>
+                                            
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -543,40 +583,9 @@
     <script src="<?php echo URL::to('/'); ?>/public/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
-   
+    <script src="<?php echo URL::to('/'); ?>/public/js/main.js"></script>
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    
-    <script>
-  @if(Session::has('message'))
-  toastr.options =
-  {
-    "closeButton" : true,
-    "progressBar" : true
-  }
-        toastr.success("{{ session('message') }}");
-  @endif
-
-  @if(Session::has('error'))
-  toastr.options =
-  {
-    "closeButton" : true,
-    "progressBar" : true
-  }
-        toastr.error("{{ session('error') }}");
-  @endif
-
-  $(document).ready(function(){
-  $("#add").click(function(){
-    $("#main").append('<div class="col-sm- main"><div class="mb-3 row"><div class="col-sm-10"><input type="text" class="form-control mt-2"></div><label for="staticEmail" class="col-sm-2 col-form-label"><button type="button" class="btn btn-outline-primary" id="remove">X</button></label></div></div>');
-  });
-  $("#remove").click(function(){
-    $(this).parent().parent().remove();
-    
-  });
-});
-</script>
 </body>
-
 </html>

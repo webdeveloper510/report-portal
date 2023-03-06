@@ -120,12 +120,8 @@ class AdminController extends Controller
 
 
     public function login(Request $request)
-    { 
-
-        // echo "<pre>"; 
-        // print_r($request->all());die;
+    {        
         $login = User::where(['email' => $request['email'], 'password' => $request['password'],'type'=>'admin'])->first();
-
         $request->session()->put('data',$login);
         
         if ($login) {
@@ -190,10 +186,13 @@ class AdminController extends Controller
     public function delete_location($id){
 
         $data = Location::find($id);
-        $data->delete();
-        return redirect('locations')->with('message', 'Location Delete Successfully!');
+        if($data)
+                   echo json_encode(['message'=>'Delete Location Successfully!']);
+                else
+                   echo json_encode(['message'=>'Some Error!']);
+            }
 
-    }
+    
 
     public function update_profile(Request $request){
         // echo "<pre>";
@@ -230,21 +229,23 @@ class AdminController extends Controller
                 else{
                     echo json_encode(['message'=>'Some error!']);
                 }         
-    } 
+          } 
 
 
-    public function report_title(){
-        $data = DB::table('custom_title')->select('id','title')->get();
-        return view('admin.report_title',compact('data'));
-     
-    }
+        public function report_title(){
+            $data = DB::table('custom_title')->select('id','title')->get();
+            return view('admin.report_title',compact('data'));
+        
+        }
 
     public function admin_reports(){
      
         $data = DB::table('custom_title')->select('id','title')->get();
         $locations = Location::all();
         $activitys = Report::with('users')->get()->toArray();
-        //print_r($activitys);die;
+        // echo "<pre>";
+        // print_r($activitys);die;
+     
         return view('admin.admin_reports',compact('data','locations','activitys'));
         
     }
@@ -315,15 +316,39 @@ class AdminController extends Controller
      
     }
 
+    function edit_report(Request $request)
+    {
+     
+        $data = Report::find($request->id);
+        // echo "<pre>";
+        // print_r($request->all());die;
+        $data->report_title = $request->report_title;
+        $data->user_id= $request->user_id;
+        $data->main_location = $request->main_location;
+        $data->sub_location = $request->sub_location;
+        $data->report_time = $request->report_time." ".$request->meridian;
+        $data->report_date = $request->report_date;        
+        $data->report_type = $request->report_type;         
+        if($data->save())
+             echo json_encode(['message'=>'Update Report Successfully!']);
+        else
+        echo json_encode(['message'=>'Some error!']);
+        //return redirect('admin.admin_reports')->with('message', 'Updated Report Successfully!');
+    }
+
             public function report_view($id){
                 $reports_view = Report::with('users')->where('id',$id)->get()->toArray();
                 // echo "<pre>";
                 // print_r(json_decode($reports_view[0]['report_photo']));die;
                     return view('admin.report_view',compact('reports_view'));
             }
-            public function delete_report(Request $request,$id){      
-                DB::table('reports')->where('id',$id)->delete();
-                return redirect('admin_reports')->with('message', 'Deleted Report Successfully!');
+            public function delete_data(Request $request,$id,$tbl){ 
+               // print_r($id);die;     
+                $delete = DB::table($tbl)->where('id',$id)->delete();
+                if($delete)
+                   echo json_encode(['message'=>'Delete  Successfully!']);
+                else
+                   echo json_encode(['message'=>'Some Error!']);
             }
            
             public function report_date(){
@@ -340,10 +365,6 @@ class AdminController extends Controller
                 return redirect('report_date');
             }
 
-            // public function new_page(){
-            //     return view('admin.new_page');
-            // }
         
    }
-    
 

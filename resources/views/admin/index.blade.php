@@ -81,8 +81,7 @@
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
-    </div>
-    
+    </div> 
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
@@ -800,6 +799,7 @@
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
     <script>
   @if(Session::has('message'))
   toastr.options =
@@ -819,6 +819,7 @@
         toastr.error("{{ session('error') }}");
   @endif
 </script>
+  
 </body>
 
 

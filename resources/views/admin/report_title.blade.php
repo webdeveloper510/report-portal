@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, materialpro admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, materialpro admin lite design, materialpro admin lite dashboard bootstrap 5 dashboard template">
     <meta name="description" content="Material Pro Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
@@ -345,7 +346,6 @@
                                     Add Report Title
                                 </button>
                                 <form  id="update_data">
-                            @csrf
                                         <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -356,7 +356,7 @@
                                                     </div>                        
                                                         <div class="modal-body">                                                  
                                                                 <div class="col-md-12">
-                                                                <input type="hidden" class="form-control" id="hidden" value="">
+                                                                   <input type="hidden" class="form-control" id="hidden" value="">
                                                                     <div class="mb-3 row">
                                                                        
                                                                         <label for="input" class="col-sm-4  col-form-label">Report Title</label>
@@ -385,10 +385,10 @@
 
                                     </div>
 
-                    </div>
+                            </div>
+                        </div>
                 </div>
             </div>
-        </div>
         <!-- ============================================================== -->
         <!-- End Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
@@ -423,7 +423,7 @@
                                             <td class="text_{{$title->id}}">{{$title->title}}</td>                                     
                                             <td>
                                              <i class="fa fa-pencil icon"   aria-hidden="true" data-id="{{$title->id}}"></i>
-                                               <a href="{{ 'delete_title/' . $title->id }}"><i class="fa fa-trash-o" aria-hidden="true" data-id="{{$title->id}}"></i></a>
+                                               <a data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData({{$title->id}});"><i class="fa fa-trash-o" aria-hidden="true" data-id=""></i></a>
                                            </td>   
                                            <!-- <td>
                                            <div class="form-check form-check-inline">
@@ -434,11 +434,30 @@
                                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                             </div>
-                                           </td>   -->
+                                           </td> -->
                                         </tr>
                                        @endforeach
                                     </tbody>
                                 </table>
+                                    <!-- delete Modal -->
+                              <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            
+                                            <div class="modal-body text-center pt-5">
+                                           <h3>Are you sure?</h3>
+                                           <p>Do you really want to delete these records?<br/>
+                                            This process cannot be undone.</p>
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger btn-lg" onclick="return DataDelete('custom_title')">Delete</button>
+                                            </div>
+                                            </div>
+                                            
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -480,86 +499,13 @@
     <script src="<?php echo URL::to('/'); ?>/public/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
+    <script src="<?php echo URL::to('/'); ?>/public/js/main.js"></script>
    
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-<script>
-    $(document).ready(function(){
-        $(".icon").click(function(){
-            let id = $(this).attr('data-id');
-            console.log(id)
-            let text = $('.text_'+id).text()
-            $('#show_data').val(text)
-            $("#update_data").removeAttr('action')
-            $("#Report_user").text('Edit Report');
-            $("#hidden").val(id);
-            $("#Report").modal('show');
-        });
 
-
-        $('.add_report').click(function(){
-            $('#show_data').val('')
-            $("#Report_user").text('Add Report');
-            $("#Report").modal('show');
-        })
-    });
-
-
-    $('#update_data').on('submit',function(e){
-    e.preventDefault();    
-    let title = $('#show_data').val();
-    let id = $('#hidden').val(); 
-    let url = ''
-    if(id){
-         url = "https://www.codenomad.net/report-portal/edit_title";
-    }   
-    else{
-         url = "https://www.codenomad.net/report-portal/insert_title";
-    } 
-    $.ajax({
-      url: url,
-      type:"POST",
-      data:{
-        "_token": "{{ csrf_token() }}",
-        title:title,
-        id:id,
-   
-      },
-      success:function(response){
-            let done = JSON.parse(response);
-            toastr.options =  {
-            "closeButton" : true,
-            "progressBar" : true
-        }
-        toastr.success(done.message);
-      },
-       error: function(response) {
-      
-      },
-      });
-    });
-</script>
-    <script>
-  @if(Session::has('message'))
-  toastr.options =
-  {
-    "closeButton" : true,
-    "progressBar" : true
-  }
-        toastr.success("{{ session('message') }}");
-  @endif
-
-  @if(Session::has('error'))
-  toastr.options =
-  {
-    "closeButton" : true,
-    "progressBar" : true
-  }
-        toastr.error("{{ session('error') }}");
-  @endif
-</script>
 </body>
 
 </html>
