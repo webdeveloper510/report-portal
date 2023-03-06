@@ -419,6 +419,20 @@
                                                     </select>
                                                     <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
                                                 </div>
+                                                <div class="mb-3 row">
+                                                <label for="report_access" class="col-sm- col-form-label"><h6>Report Access</h6></label>
+                                                </div>
+                                                <div class="mb-3 d-flex">
+                                                    <input type="checkbox" id="vehicle1" name="create" class=" ms-2" value="Create">
+                                                    <label for="vehicle1" class="ps-2 m-0" >Create</label>
+                                                    <input type="checkbox" id="vehicle2" class="ms-2" name="edit" value="Edit">
+                                                    <label for="vehicle2" class="ps-2 m-0">Edit</label>
+                                                    <input type="checkbox" id="vehicle3" class="ms-2" name="delete" value="Delete">
+                                                    <label for="vehicle2" class="ps-2 m-0">Delete</label>
+                                                    <input type="checkbox" id="vehicle3" class="ms-2" name="view" value="View">
+                                                    <label for="vehicle2" class="ps-2 m-0">View</label>
+
+                                                 </div>
                                             
                                             <div class="mb-3 row">
                                                 <label for="email" class="col-sm- col-form-label"><h6>Site Access</h6></label>

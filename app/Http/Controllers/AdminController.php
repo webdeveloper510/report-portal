@@ -62,8 +62,7 @@ class AdminController extends Controller
 
     public function add_user(Request $request)
     {
-        echo "<pre>";
-        print_r($request->all());die;
+   
         $data = new User;
         $data['name'] = $request->name;
         $data['email'] = $request->email;

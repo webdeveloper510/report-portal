@@ -592,6 +592,7 @@
                                                 <th class="border-top-0">Report Time</th>
                                                 <th class="border-top-0">Report Date</th>
                                                 <th class="border-top-0">Report Type</th>
+                                                <th class="border-top-0">Report Permission</th>
                                                 <th class="border-top-0">Action</th>
                                             </tr>
                                         </thead>
@@ -606,6 +607,18 @@
                                                 <td>{{$activity['report_time']}}</td>
                                                 <td>{{$activity['report_date']}}</td>
                                                 <td>{{$activity['report_type']}}</td>
+                                                <td >
+                                                    <div class="d-flex">
+                                                    <input type="checkbox" id="vehicle1" name="create" class=" ms-2" value="Create">
+                                                    <label for="vehicle1" class="ps-2 m-0" >Create</label>
+                                                    <input type="checkbox" id="vehicle2" class="ms-2" name="edit" value="Edit">
+                                                    <label for="vehicle2" class="ps-2 m-0">Edit</label>
+                                                    <input type="checkbox" id="vehicle3" class="ms-2" name="delete" value="Delete">
+                                                    <label for="vehicle2" class="ps-2 m-0">Delete</label>
+                                                    <input type="checkbox" id="vehicle3" class="ms-2" name="delete" value="Delete">
+                                                    <label for="vehicle2" class="ps-2 m-0">View</label>
+                                                    </div>
+                                                </td>
                                                 <td >
                                                     <div class="d-flex">
                                                         <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit" onclick="return runMyFunction({{json_encode($activity)}});">
