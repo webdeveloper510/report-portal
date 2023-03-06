@@ -474,7 +474,25 @@
     <script src="<?php echo URL::to('/'); ?>/public/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
+<script>
+  @if(Session::has('message'))
+  toastr.options =
+  {
+    "closeButton" : true,
+    "progressBar" : true
+  }
+        toastr.success("{{ session('message') }}");
+  @endif
 
+  @if(Session::has('error'))
+  toastr.options =
+  {
+    "closeButton" : true,
+    "progressBar" : true
+  }
+        toastr.error("{{ session('error') }}");
+  @endif
+</script>
 
 </body>
 

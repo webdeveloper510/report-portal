@@ -13,7 +13,7 @@
   })(jQuery);
 /**------------------------------------------------------------Add Report ----------------------------------------------------*/
 var delete_id='' 
-let base_url = 'https://quickreportingsystems.com/report-portal'
+let base_url = window.location.origin+'/report-portal'
     $('#report').on('submit', function(event){
       event.preventDefault();
       var url = base_url+'/insert_activity'
