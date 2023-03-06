@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -337,9 +338,7 @@
                             <div class="col-sm-6">
 
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -359,9 +358,9 @@
                     <div class="col-lg-4 col-xlg-3 col-md-5">
                         <div class="card">
                             <div class="card-body profile-card">
-                                <center class="mt-4">  <img class="profile" src="<?php echo URL::to('/'); ?>/public/assets/images/profiel.png" width="150" />
-                                    <h4 class="card-title mt-2">Hanna Gover</h4>
-                                    <h6 class="card-subtitle">Account Manager </h6>
+                                <center class="mt-4">  <img class="profile" src="{{session('data')['profile']}}"  width="150"  />
+                                    <h4 class="card-title mt-2">{{session('data')['name']}}</h4>
+                                    <!-- <h6 class="card-subtitle">Account Manager </h6> -->
                                 </center>
                             </div>
                         </div>
@@ -382,7 +381,7 @@
                                         <div class="mb-3 row">
                                             <label for="file" class="col-sm- col-form-label">Upload Profile Image</label>
                                             <div class="col-sm-12">
-                                                <input type="file" class="form-control" id="file" name="file" >
+                                                <input type="file" class="form-control" id="file" name="file">
                                             </div>
                                         </div>
                                         <div class="mb-3 row">

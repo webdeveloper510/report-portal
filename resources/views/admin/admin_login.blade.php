@@ -11,6 +11,15 @@
     <meta name="robots" content="noindex,nofollow">
     <title>Admin Panel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
+    <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
+     
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo URL::to('/'); ?>/public/assets/images/favicon.png">
     <!-- Custom CSS -->
@@ -76,7 +85,7 @@
                                         <div class="col-sm-4 mb-0">
                                             <img class="icon" src="<?php echo URL::to('/'); ?>/public/assets/images/login-icon.png" />
                                         </div>
-                                        <h4 class="text-center ">Login Admin</h4>
+                                        <h4 class="text-center ">Login</h4>
 
                                         <div class="col-sm-4"></div>
                                     </div>
@@ -138,7 +147,26 @@
     <script src="<?php echo URL::to('/'); ?>/public/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+  @if(Session::has('message'))
+  toastr.options =
+  {
+    "closeButton" : true,
+    "progressBar" : true
+  }
+        toastr.success("{{ session('message') }}");
+  @endif
 
+  @if(Session::has('error'))
+  toastr.options =
+  {
+    "closeButton" : true,
+    "progressBar" : true
+  }
+        toastr.error("{{ session('error') }}");
+  @endif
+</script>
 
 </body>
 

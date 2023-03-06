@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::group(['middleware' => 'usersession'], function () {
 Route::get('index',[AdminController::class, 'index']);
 Route::get('users', [AdminController::class, 'basic_table']);
 Route::get('profile_page', [AdminController::class, 'profile_page']);
@@ -33,8 +33,7 @@ Route::post('/update', [AdminController::class, 'update']);
 Route::get('/delete_supervisor/{id}', [AdminController::class, 'delete_supervisor']);
 Route::get('/delete_location/{id}', [AdminController::class, 'delete_location']);
 Route::get('/edit_supervisor/{id}', [AdminController::class, 'ShowData']);
-Route::get('admin_login', [AdminController::class, 'admin_login']);
-Route::post('login', [AdminController::class, 'login']);
+
 Route::post('deny_access',[AdminController::class, 'deny_access']);
 Route::post('location_insert',[AdminController::class, 'locations_insert'])->name('location.insert');
 Route::get('admin_reports',[AdminController::class, 'admin_reports']);
@@ -54,4 +53,9 @@ Route::post('insert_activity', [AdminController::class, 'insert_activity']);
 Route::get('report_view/{id}',[AdminController::class, 'report_view']);
 Route::get('report_date',[AdminController::class, 'report_date']);
 Route::post('filter_data',[AdminController::class, 'filter_data']);
+});
+Route::get('admin_login', [AdminController::class, 'admin_login']);
+
+Route::post('login', [AdminController::class, 'login']);
+Route::get('logout',[AdminController::class, 'logout']);
 // Route::get('new_page',[AdminController::class, 'new_page']);
