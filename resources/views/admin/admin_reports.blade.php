@@ -224,7 +224,7 @@
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
                                  <!-- {{session('data')['name']}}  -->
                             <!-- </a>
-                            <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark ">Logout</a>
+                           <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark "><i class="mdi mdi-power"></i></a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li> -->
                     </ul>
