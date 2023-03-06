@@ -48,10 +48,10 @@ class AdminController extends Controller
     {
         return view('user_list');
     }
+
     public function index(){
         $count = User::get()->count();
         $report = Report::get()->count();
-
         return view('admin.index',compact('count','report'));
     }
 
@@ -298,9 +298,9 @@ class AdminController extends Controller
             $data['report_type'] = $request->report_type;        
             if($request->hasfile('report_photo')){
                 foreach ($request->report_photo as $image) {
-                     $extension = $image->getClientOriginalExtension();
-                     $filename = time().'.'.$extension;
-                $image->move(public_path('images'), $filename);
+                     $name = $image->getClientOriginalName();
+                     $filename = time().'.'.$name;
+                     $image->move(public_path('images'), $filename);
                      $image_array[]  = $filename;
             }
             // echo "<pre>";
@@ -363,9 +363,8 @@ class AdminController extends Controller
                 $filter['end_date'] = $request->end_date;
                 Session::put('filter', $filter);
                 return redirect('report_date');
-
-
             }
+
         
    }
 

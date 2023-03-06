@@ -128,25 +128,44 @@ p.num.my-1 {
 .sub_header {
     background: #d6d6d6 !important;
 }
-/*img.four_images {*/
-/* width: 100% !important;*/
-/*height: 77px !important;*/
-/*}*/
+
+
+img.four_images {
+width: 100% !important;
+height: 77px !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* .zoom {
+  
+  background-color: green;
+  transition: transform .2s;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+} */
+
+/* .zoom:hover { */
+  /* -ms-transform: scale(1.5);       IE 9 */
+  /* -webkit-transform: scale(1.5);           Safari 3-8 */
+  /* transform: scale(1.5);  */
+/* } */
+
 
 /* img.four_images:hover {
 width: 100% !important;
 height: 100% !important;
 } */
 
-
-
-
-img.four_images {
+/* img {
     width: 100% !important;
     height: 77px !important;
-}
+} */
 
- /* img.four_images:hover {
+ /* img:hover {
    width: 100% !important;
     height: 100% !important;
 } */
@@ -225,10 +244,10 @@ img.four_images {
                                 <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
                                     class="srh-btn"><i class="ti-close"></i></a> </form>
                         </li> -->
-                        <li class="sidebar-item mt-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1"> <a href="tel:9876543210" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-phone"></i><span
                                     class="hide-menu ">Phone: 9876543210</span></a></li>
-                        <li class="sidebar-item mt-1 mx-4"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-4"> <a href="mailto:rohit@gmail.com" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-email"></i><span
                                     class="hide-menu ">Email: rohit@gmail.com</span></a></li>
                         <!-- <li class="nav-item ">
@@ -246,24 +265,24 @@ img.four_images {
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.facebook.com" target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-facebook-box"></i><span
                                     class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.instagram.com" target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-instagram"></i><span
                                     class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="http://m.me" target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-facebook-messenger"></i><span
                                     class="hide-menu "></span></a></li>  
-                        <li class="sidebar-item mt-1 mx-1 "> <a href="" class="top-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-file-powerpoint-box"></i><span
-                                    class="hide-menu "></span></a></li>                      
+                        <li class="sidebar-item mt-1 mx-1 "> <a href="https://twitter.com" class="top-link"
+                                 aria-expanded="false"><i class="mdi me-2 mdi-twitter"></i><span
+                                    class="hide-menu "></span></a></li>                                
                         <!-- <li class="nav-item dropdown">
                           <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark"> -->
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
                                  <!-- {{session('data')['name']}}  -->
                             <!-- </a>
-                            <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark ">Logout</a>
+                           <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark "><i class="mdi mdi-power"></i></a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li> -->
                     </ul>
@@ -502,20 +521,29 @@ img.four_images {
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="text- ">
+                                <div class="text ">
                                     <p>Reported: Officer arrived on duty and checked in at the property securityoffice. Keys and radio equipment received along with past down ordersfrom past shift officer. Radio and equipment were found fully charged andavailable for my daily activity shift report.</p>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-
-                                <div class="text-endss">
-                                @foreach(json_decode($report['report_photo']) as $member)
+                            <div class="col-md-4" >
+                                <div class="row g-2">
+                                    @foreach (json_decode($report['report_photo']) as $member)
+                                            <div class="col-6">
+                                                <div class="">
+                                                    <img src="{{ URL::asset('public/images/'.$member)}}"  class="four_images"/> 
+                                                </div>
+                                            </div>
+                                     @endforeach
+                                </div>    
+            
+                            <!-- <div class="col-md-4">
+                                <div class="text-end">
+                                    @foreach(json_decode($report['report_photo']) as $member)
                                     <img src="{{ URL::asset('public/images/'.$member)}}"/> 
-                                    @endforeach
-                                   
+                                     @endforeach  
                                 </div>
+                            </div> -->
                             </div>
-                        </div>
                    </div>
                </div>
                @endforeach

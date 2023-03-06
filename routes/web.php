@@ -19,7 +19,6 @@ Route::get('/', function () {
 });
 
 
-Route::view('index','admin.index');
 Route::get('index',[AdminController::class, 'index']);
 Route::get('users', [AdminController::class, 'basic_table']);
 Route::get('profile_page', [AdminController::class, 'profile_page']);
@@ -55,3 +54,4 @@ Route::post('insert_activity', [AdminController::class, 'insert_activity']);
 Route::get('report_view/{id}',[AdminController::class, 'report_view']);
 Route::get('report_date',[AdminController::class, 'report_date']);
 Route::post('filter_data',[AdminController::class, 'filter_data']);
+// Route::get('new_page',[AdminController::class, 'new_page']);

@@ -31,7 +31,7 @@
         .col-md-4.mb-0.mx-0 {
             margin-top: 60px !important;
             background: white !important;
-            width: 35% !important;
+           
             margin-right: 10px !important;
          }
 
@@ -48,6 +48,7 @@
             background: whitesmoke;
             padding-bottom: 55px !important;
             margin-top: 8px !important;
+            min-height: 94vh !important;
         }
     </style>
 </head>
@@ -83,8 +84,8 @@
                                     <div class="p-3">
                                         <div class="d-flex ">
                                             <div class="form-check ">
-                                                <input class="form-check-input" type="radio" name="type" value="admin" id="flexRadioDefault1">
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                <input class="form-check-input " type="radio" name="type" value="admin" id="flexRadioDefault1" checked>
+                                                <label class="form-check-label " for="flexRadioDefault1">
                                                 Admin Access
                                                 </label>
                                             </div>

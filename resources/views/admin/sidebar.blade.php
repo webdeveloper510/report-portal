@@ -53,19 +53,19 @@
             <!-- End Sidebar scroll-->
             <div class="sidebar-footer">
                 <div class="row">
-                    <div class="col-4 link-wrap">
+                    <!-- <div class="col-4 link-wrap"> -->
                         <!-- item-->
-                        <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Settings"><i
-                                class="ti-settings"></i></a>
-                    </div>
-                    <div class="col-4 link-wrap">
+                        <!-- <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Settings"><i
+                                class="ti-settings"></i></a> -->
+                    <!-- </div> -->
+                    <!-- <div class="col-4 link-wrap"> -->
                         <!-- item-->
-                        <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i
-                                class="mdi mdi-gmail"></i></a>
-                    </div>
-                    <div class="col-4 link-wrap">
+                        <!-- <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i
+                                class="mdi mdi-gmail"></i></a> -->
+                    <!-- </div> -->
+                    <div class="col-12 link-wrap">
                         <!-- item-->
-                        <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i
+                        <a href="http://localhost/report-portal/admin_login" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i
                                 class="mdi mdi-power"></i></a>
                     </div>
                 </div>
