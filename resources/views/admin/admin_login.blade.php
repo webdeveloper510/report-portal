@@ -11,6 +11,13 @@
     <meta name="robots" content="noindex,nofollow">
     <title>Admin Panel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
+    <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+   
+     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet"> -->
+
+
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo URL::to('/'); ?>/public/assets/images/favicon.png">
     <!-- Custom CSS -->
@@ -31,7 +38,7 @@
         .col-md-4.mb-0.mx-0 {
             margin-top: 60px !important;
             background: white !important;
-            width: 35% !important;
+           
             margin-right: 10px !important;
          }
 
@@ -48,6 +55,7 @@
             background: whitesmoke;
             padding-bottom: 55px !important;
             margin-top: 8px !important;
+            min-height: 94vh !important;
         }
     </style>
 </head>
@@ -75,7 +83,7 @@
                                         <div class="col-sm-4 mb-0">
                                             <img class="icon" src="<?php echo URL::to('/'); ?>/public/assets/images/login-icon.png" />
                                         </div>
-                                        <h4 class="text-center ">Login Admin</h4>
+                                        <h4 class="text-center ">Login</h4>
 
                                         <div class="col-sm-4"></div>
                                     </div>
@@ -83,8 +91,8 @@
                                     <div class="p-3">
                                         <div class="d-flex ">
                                             <div class="form-check ">
-                                                <input class="form-check-input" type="radio" name="type" value="admin" id="flexRadioDefault1">
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                <input class="form-check-input " type="radio" name="type" value="admin" id="flexRadioDefault1" checked>
+                                                <label class="form-check-label " for="flexRadioDefault1">
                                                 Admin Access
                                                 </label>
                                             </div>
@@ -137,8 +145,27 @@
     <script src="<?php echo URL::to('/'); ?>/public/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+  @if(Session::has('message'))
+  toastr.options =
+  {
+    "closeButton" : true,
+    "progressBar" : true
+  }
+        toastr.success("{{ session('message') }}");
+  @endif
 
-
+  @if(Session::has('error'))
+  toastr.options =
+  {
+    "closeButton" : true,
+    "progressBar" : true
+  }
+        toastr.error("{{ session('error') }}");
+  @endif
+</script>
 </body>
 
 </html>

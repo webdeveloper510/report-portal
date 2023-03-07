@@ -186,10 +186,10 @@
                                 <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
                                     class="srh-btn"><i class="ti-close"></i></a> </form>
                         </li> -->
-                        <li class="sidebar-item mt-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1"> <a href="tel:9876543210" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-phone"></i><span
                                     class="hide-menu ">Phone: 9876543210</span></a></li>
-                        <li class="sidebar-item mt-1 mx-4"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-4"> <a href="mailto:rohit@gmail.com" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-email"></i><span
                                     class="hide-menu ">Email: rohit@gmail.com</span></a></li>
                         <!-- <li class="nav-item ">
@@ -207,24 +207,24 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.facebook.com"  target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-facebook-box"></i><span
                                     class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.instagram.com"  target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-instagram"></i><span
                                     class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="http://m.me"  target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-facebook-messenger"></i><span
                                     class="hide-menu "></span></a></li>  
-                        <li class="sidebar-item mt-1 mx-1 "> <a href="" class="top-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-file-powerpoint-box"></i><span
-                                    class="hide-menu "></span></a></li>                      
+                                    <li class="sidebar-item mt-1 mx-1 "> <a href="https://twitter.com" class="top-link"
+                                 aria-expanded="false"><i class="mdi me-2 mdi-twitter"></i><span
+                                    class="hide-menu "></span></a></li>                       
                         <!-- <li class="nav-item dropdown">
                           <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark"> -->
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
                                  <!-- {{session('data')['name']}}  -->
                             <!-- </a>
-                            <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark ">Logout</a>
+                           <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark "><i class="mdi mdi-power"></i></a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li> -->
                     </ul>
@@ -436,11 +436,11 @@
                                                   <label for="exampleInputEmail1" class="form-label">Report Type</label>
                                                   <select class="form-select"  name="report_type" aria-label="Default select example">
                                                     <option selected>Select Report Type</option>
-                                                    <option value="Activity Reports"> Activity Reports</option>
-                                                    <option value="Incident Reports"> Incident Reports</option>
-                                                    <option value="Patrol Reports"> Patrol Reports</option>
-                                                    <option value="Parking violations"> Parking violations</option>
-                                                    <option value="Visitor logs"> Visitor logs</option>
+                                                    <option value=" Activity Reports"> Activity Reports</option>
+                                                    <option value="  Incident Reports"> Incident Reports</option>
+                                                    <option value=" Patrol Reports"> Petrol Reports</option>
+                                                    <option value="  Parking violations"> Parking violations</option>
+                                                    <option value=" Visitor logs"> Visitor logs</option>
                                                   </select>
                                                 </div>
                                                 
@@ -498,72 +498,70 @@
                                 <!-- Edit Modal -->
                                     <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="editModalLabel">Edit Report </h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form id="update_report">
-                                                {{ csrf_field() }}
-                                                    <div class="mb-3">
-                                                      <label for="exampleInputEmail1"  class="form-label">Report Title</label>
-                                                      <select class="form-select" id="report_title"  name="report_title" aria-label="Default select example">
-                                                        <option selected>Select Report Title</option>
-                                                           @foreach($data as $title)
-                                                             <option value="{{$title->id}}">{{$title->title}}</option>
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="editModalLabel">Edit Report </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Report Type</label>
+                                                            <select class="form-select"  name="report_type" aria-label="Default select example">
+                                                                <option selected>Select Report Type</option>
+                                                                <option value=" Activity Reports"> Activity Reports</option>
+                                                                <option value="  Incident Reports"> Incident Reports</option>
+                                                                <option value=" Patrol Reports"> Petrol Reports</option>
+                                                                <option value="  Parking violations"> Parking violations</option>
+                                                                <option value=" Visitor logs"> Visitor logs</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="exampleInputEmail1" class="form-label">Report Title</label>
+                                                            <select class="form-select" aria-label="Default select example">
+                                                                <option selected>Select Report Title</option>
+                                                            @foreach($data as $title)
+                                                                <option value="{{$title->id}}">{{$title->title}}</option>
                                                             @endforeach
-                                                   </select>
-                                                  <div class="mb-3">
-                                                        <label class="form-label">Report Type</label>
-                                                        <select class="form-select" id="report_type" name="report_type" aria-label="Default select example">
-                                                            <option >Select Report Type</option>
-                                                            <option value="Activity Reports"> Activity Reports</option>
-                                                            <option value="Incident Reports"> Incident Reports</option>
-                                                            <option value="Patrol Reports"> Patrol Reports</option>
-                                                            <option value="Parking violations"> Parking violations</option>
-                                                            <option value="Visitor logs"> Visitor logs</option>
-                                                        </select>
-                                                    </div>
-                                       
-                                                    <div class="mb-3">
-                                                      <label class="form-label">Main Location</label>
-                                                        <select class="form-select" id="parent_loc" name="main_location" aria-label="Default select example">
-                                                        @foreach($locations as $location)
-                                                            <option selected value="{{$location['parent_location']}}">{{$location['parent_location']}}</option>
-                                                        @endforeach
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                      <label class="form-label">Sub Location</label>
-                                                      <select class="form-select" id="sub_loc" name="sub_location" aria-label="Default select example">
-                                                        @foreach($locations as $location)
-                                                            <option selected value="{{$location['location_name']}}">{{$location['location_name']}}</option>
-                                                        @endforeach
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                      <label class="form-label">Report Time</label>
-                                                      <input type="time" value="" id="time" name="report_time" class="form-control">
-                                                      <input type="hidden" name="meridian" value="" id="meridian"/>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Report Date</label>
-                                                        <input type="date" value="" id="date" name="report_date" class="form-control">
-                                                      </div>
-                                                      <input type="hidden" id="user_id" name="user_id" value=" "/>
-                                                      <input type="hidden" id="hidden" name="id" value="{{session('data')['id']}} "/>
-                                                    </div>
-                                                    <div class="text-center">
-                                                        <button type="submit" class="btn btn-primary col-6">Submit</button>
-                                                    </div>
-
-                                                  </form>
+                                                            </select>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Main Location</label>
+                                                            <select class="form-select" id="parent_loc" aria-label="Default select example">
+                                                            @foreach($locations as $location)
+                                                                <option selected value="{{$location['parent_location']}}">{{$location['parent_location']}}</option>
+                                                            @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Sub Location</label>
+                                                            <select class="form-select" id="sub_loc" aria-label="Default select example">
+                                                            @foreach($locations as $location)
+                                                                <option selected value="{{$location['location_name']}}">{{$location['location_name']}}</option>
+                                                            @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Report Time</label>
+                                                            <input type="time" value="" id="time" name="report_time" class="form-control">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Report Date</label>
+                                                            <input type="date" value="" id="date" class="form-control">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Report Photo</label>
+                                                            <input type="file" value="" name="report_photo" class="form-control" multiple>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <button type="submit" class="btn btn-primary col-6">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                </div>         
                                             </div>
-                                           
-                                        </div>
                                         </div>
                                     </div>
+                                <!-- </div> -->
                                     <!-- delete Modal -->
                                     <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -594,6 +592,7 @@
                                                 <th class="border-top-0">Report Time</th>
                                                 <th class="border-top-0">Report Date</th>
                                                 <th class="border-top-0">Report Type</th>
+                                                <th class="border-top-0">Report Permission</th>
                                                 <th class="border-top-0">Action</th>
                                             </tr>
                                         </thead>
@@ -608,6 +607,18 @@
                                                 <td>{{$activity['report_time']}}</td>
                                                 <td>{{$activity['report_date']}}</td>
                                                 <td>{{$activity['report_type']}}</td>
+                                                <td >
+                                                    <div class="d-flex">
+                                                    <input type="checkbox" id="vehicle1" name="create" class=" ms-2" value="Create">
+                                                    <label for="vehicle1" class="ps-2 m-0" >Create</label>
+                                                    <input type="checkbox" id="vehicle2" class="ms-2" name="edit" value="Edit">
+                                                    <label for="vehicle2" class="ps-2 m-0">Edit</label>
+                                                    <input type="checkbox" id="vehicle3" class="ms-2" name="delete" value="Delete">
+                                                    <label for="vehicle2" class="ps-2 m-0">Delete</label>
+                                                    <input type="checkbox" id="vehicle3" class="ms-2" name="delete" value="Delete">
+                                                    <label for="vehicle2" class="ps-2 m-0">View</label>
+                                                    </div>
+                                                </td>
                                                 <td >
                                                     <div class="d-flex">
                                                         <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit" onclick="return runMyFunction({{json_encode($activity)}});">
@@ -711,7 +722,9 @@
 	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script>
+
+    
+   <script>
   @if(Session::has('message'))
   toastr.options =
   {

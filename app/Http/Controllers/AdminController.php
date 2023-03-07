@@ -13,6 +13,11 @@ use Session;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+      
+    }
+
     //
     public function profile_page()
     {
@@ -48,17 +53,16 @@ class AdminController extends Controller
     {
         return view('user_list');
     }
+
     public function index(){
         $count = User::get()->count();
         $report = Report::get()->count();
-
         return view('admin.index',compact('count','report'));
     }
 
     public function add_user(Request $request)
     {
-        // echo "<pre>";
-        // print_r($request->all());die;
+   
         $data = new User;
         $data['name'] = $request->name;
         $data['email'] = $request->email;
@@ -68,8 +72,8 @@ class AdminController extends Controller
         $data['type'] = $request->categeory;
         $data['address'] = $request->address;
         if($data->save()){
-                return redirect('users')->with('message', 'User created successfully !');
-                 }
+            return redirect('users')->with('message', 'User created successfully !');
+         }
     }
     public function get_user()
     {
@@ -123,7 +127,8 @@ class AdminController extends Controller
     {        
         $login = User::where(['email' => $request['email'], 'password' => $request['password'],'type'=>'admin'])->first();
         $request->session()->put('data',$login);
-        
+        // echo "<pre>";
+        // print_r($login);die;
         if ($login) {
             return redirect('index')->with('message', 'Login successfully !!');
         } else {
@@ -298,9 +303,9 @@ class AdminController extends Controller
             $data['report_type'] = $request->report_type;        
             if($request->hasfile('report_photo')){
                 foreach ($request->report_photo as $image) {
-                     $extension = $image->getClientOriginalExtension();
-                     $filename = time().'.'.$extension;
-                $image->move(public_path('images'), $filename);
+                     $name = $image->getClientOriginalName();
+                     $filename = time().'.'.$name;
+                     $image->move(public_path('images'), $filename);
                      $image_array[]  = $filename;
             }
             // echo "<pre>";
@@ -363,9 +368,13 @@ class AdminController extends Controller
                 $filter['end_date'] = $request->end_date;
                 Session::put('filter', $filter);
                 return redirect('report_date');
-
-
             }
+            public function logout(){
+                Session::flush();
+                Session::forget('data');
+                return redirect('admin_login');
+            }
+
         
    }
 
