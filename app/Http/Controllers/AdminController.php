@@ -150,23 +150,35 @@ class AdminController extends Controller
     }
 
     public function deny_access(Request $request){
-
+        // echo "<pre>";
+        // print_r($request->all());die;
         $count = AccessWebsite::where(['user_id'=>$request->user_id])->count();
-        //echo $count;die;
+        // echo $count;die;
         if($count>0){
             $data['site_access'] =$request->site_access=='on' ?  1 : 0;
             $data['location_id'] =json_encode($request->location_id);
-          $data['create_account'] =$request->create_account=='on' ?  1 : 0;
+            $data['control_users'] =json_encode($request->users_id);
+            $data['create_account'] =$request->create_account=='on' ?  1 : 0;
+            $data['create_report'] = $request->create==1 ?  1 : 0;
+            $data['view_report'] = $request->view==1 ?  1 : 0;
+            $data['edit_report'] = $request->edit==1 ?  1 : 0;
+            $data['delete_report'] = $request->delete==1 ?  1 : 0;
+            $data['company_name'] = $request->company_name;
             $update = AccessWebsite::where('user_id', $request->user_id)->update($data);
             if($update){
-                return redirect('manage_access')->with('message', 'Changes Successfully!');
+                return redirect('manage_access')->with('message', 'Changes Updated Successfully!');
             }
         }else{
-            $data = new AccessWebsite;
+        $data = new AccessWebsite;
         $data['site_access'] = $request->site_access=='on' ?  1 : 0;
         $data['user_id'] = $request->user_id;
         $data['location_id'] =json_encode($request->location_id);
         $data['create_account'] = $request->create_account=='on' ?  1 : 0;
+        $data['create_report'] = $request->create==1 ?  1 : 0;
+        $data['view_report'] = $request->view==1 ?  1 : 0;
+        $data['edit_report'] = $request->edit==1 ?  1 : 0;
+        $data['delete_report'] = $request->delete==1 ?  1 : 0;
+        $data['company_name'] = $request->company_name;
         if($data->save()){
             return redirect('manage_access')->with('message', 'Changes Successfully!');
         }
