@@ -60,9 +60,6 @@
             background: white !important;
         }
 
-
-
-
         .left-sidebar {
             top: 52px !important;
         }
@@ -319,9 +316,7 @@
                             <div class="col-sm-6">
 
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -341,9 +336,10 @@
                     <div class="col-lg-4 col-xlg-3 col-md-5">
                         <div class="card">
                             <div class="card-body profile-card">
-                                <center class="mt-4"> <img class="profile" src="<?php echo URL::to('/'); ?>/public/assets/images/profiel.png" width="150" />
-                                    <h4 class="card-title mt-2">Hanna Gover</h4>
-                                    <h6 class="card-subtitle">Account Manager </h6>
+                                <center class="mt-4">  
+                                    <img class="profile" src="{{session('data')['profile']}}"  width="150"  />
+                                    <h4 class="card-title mt-2">{{session('data')['name']}}</h4>
+                                    <!-- <h6 class="card-subtitle">Account Manager </h6> -->
                                 </center>
                             </div>
                         </div>
@@ -351,21 +347,20 @@
                     <!-- Column -->
                     <!-- Column -->
                     <div class="col-lg-8 col-xlg-9 col-md-7">
-                        <div class="card">
-                            <div class="card-body">
-                                <form action="{{ URL('/update_profile') }}" enctype="multipart/form-data" method="POST" class="row ">
-                                    @csrf
-
-                                    <div class="col-md-12">
-
-                                        <input type="hidden" class="form-control" name="id" value="{{session('data')['id']}}">
-                                        <div class="p-3">
-
-                                            <div class="mb-3 row">
-                                                <label for="file" class="col-sm- col-form-label">Upload Profile Image</label>
-                                                <div class="col-sm-12">
-                                                    <input type="file" class="form-control" id="file" name="file">
-                                                </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="{{ URL('/update_profile') }}" enctype="multipart/form-data" method="POST" class="row ">
+                                @csrf
+                               
+                                <div class="col-md-12">
+                                   
+                                    <input type="hidden" class="form-control"  name="id" value="{{session('data')['id']}}">
+                                    <div class="p-3">
+                                    
+                                        <div class="mb-3 row">
+                                            <label for="file" class="col-sm- col-form-label">Upload Profile Image</label>
+                                            <div class="col-sm-12">
+                                                <input type="file" class="form-control" id="file" name="file">
                                             </div>
                                             <div class="mb-3 row">
                                                 <label for="name" class="col-sm- col-form-label">Name</label>

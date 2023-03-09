@@ -345,16 +345,118 @@
                     <div class="col-md-6 col-4 align-self-center">
 
                     <form action="" method="POST">
-                       
                             <div class="text-end">
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
                                     Add Company Details
                                 </button>
+                                <!-- Add Modal -->
                                 <div class="modal fade " id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog p-4">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="">Add Company Details
+                                                    </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>                        
+                                                <div class="modal-body">   
+                                                    <div class="row">                                            
+                                                        <div class="col-md-12">
+                                                            <div class="mb-2 row">
+                                                                <label for="input" class="col-sm-4  col-form-label"> Company Name </label>
+                                                                <div class="col-sm-">
+                                                                    <input type="text" class="form-control" name="company_name ">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-0 row">
+                                                                <label for="input" class="col-sm- col-form-label">Description</label>
+                                                                <div class="col-sm-12">
+                                                                    <textarea type="text" class="form-control" rows="5" name="description"></textarea>
+                                                                </div>
+                                                            </div>
+                                                      
+
+                                                           
+                                                         
+                                                            <!-- <div class="mb-0 row">
+                                                                <label for="input" class="col-sm-12 col-form-label text-left">Sub Location</label>
+                                                                <div class="col-sm-">
+                                                                 <div class="mb-3 row">
+                                                                    <div class="col-sm-12">
+                                                                      <input type="text" class="form-control mt-2">
+                                                                    </div>
+                                                                   
+                                                                 </div>
+                                                                </div>
+                                                            </div>  -->
+                                                             
+                                                             
+                                                            <div id="main">
+
+                                                            </div>
+                                                            <!-- <div class="mb-3 row">
+                                                                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control" name="email">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="mb-3 row">
+                                                                <label for="password" class="col-sm-2 col-form-label">Password</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="password" class="form-control" name="password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="email" class="col-sm-2 col-form-label">Phone</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="tel" class="form-control" name="phone">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="input" class="col-sm-2 col-form-label">Address</label>
+                                                                <div class="col-sm-10">
+                                                                    <textarea type="text" class="form-control" rows="3" name="address"></textarea>
+                                                                </div>
+                                                            </div>                                                                       
+                                                                <input type="hidden" name="status" value="supervisor"></input> -->
+                                                                <!-- <div class="row">
+                                                                    <div class="col">
+                                                                        <button>Submit</button>
+                                                                    </div>
+                                                                    <div class="col"></div>
+                                                                </div> -->
+
+                                                              
+                                                            
+                                                            <!-- <div class="mb-3 row">
+                                                                <label for="input" class="col-sm-2 col-form-label">Status</label>
+                                                                <input type="hidden" class="form-control" name="status" value="supervisor">
+                                                                <div class="col-sm-10">
+                                                                    <select class="form-select" aria-label="Default select example">
+                                                                        <option selected>status</option>
+                                                                        <option value="1">Admin</option>
+                                                                        <option value="2">user</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div> -->
+                                                        </div>
+                                                        <!-- <div class="col-md-2"></div> -->
+                                                        <!-- </form> -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                                                            <button type="submit" class="btn btn-primary btn1">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>   
+                                        </div>
+                                    </div>
+                                </div>
+                                 <!-- Edit Modal -->
+                                 <div class="modal fade " id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog p-4">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="">Edit Company Details
                                                     </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>                        
@@ -496,9 +598,10 @@
                                     <tbody>    
                                         <tr>
                                             <td>Abc</td>
-                                            <td>Details</td>                                       
+                                            <td>Details</td>  
                                             <td>
-                                               <a href=""><i class="fa fa-pencil"  aria-hidden="true"></i></a>
+                                               <a href="" data-bs-toggle="modal" data-bs-target="#edit" ><i class="fa fa-pencil"  aria-hidden="true"></i>                            
+                                            </a>
                                                <a class="h3" data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData();">
                                                  <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </a>

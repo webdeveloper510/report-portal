@@ -13,6 +13,11 @@ use Session;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+      
+    }
+
     //
     public function profile_page()
     {
@@ -57,8 +62,7 @@ class AdminController extends Controller
 
     public function add_user(Request $request)
     {
-        // echo "<pre>";
-        // print_r($request->all());die;
+   
         $data = new User;
         $data['name'] = $request->name;
         $data['email'] = $request->email;
@@ -68,8 +72,8 @@ class AdminController extends Controller
         $data['type'] = $request->categeory;
         $data['address'] = $request->address;
         if($data->save()){
-                return redirect('users')->with('message', 'User created successfully !');
-                 }
+            return redirect('users')->with('message', 'User created successfully !');
+         }
     }
     public function get_user()
     {
@@ -123,7 +127,8 @@ class AdminController extends Controller
     {        
         $login = User::where(['email' => $request['email'], 'password' => $request['password'],'type'=>'admin'])->first();
         $request->session()->put('data',$login);
-        
+        // echo "<pre>";
+        // print_r($login);die;
         if ($login) {
             return redirect('index')->with('message', 'Login successfully !!');
         } else {
@@ -145,23 +150,35 @@ class AdminController extends Controller
     }
 
     public function deny_access(Request $request){
-
+        // echo "<pre>";
+        // print_r($request->all());die;
         $count = AccessWebsite::where(['user_id'=>$request->user_id])->count();
-        //echo $count;die;
+        // echo $count;die;
         if($count>0){
             $data['site_access'] =$request->site_access=='on' ?  1 : 0;
             $data['location_id'] =json_encode($request->location_id);
-          $data['create_account'] =$request->create_account=='on' ?  1 : 0;
+            $data['control_users'] =json_encode($request->users_id);
+            $data['create_account'] =$request->create_account=='on' ?  1 : 0;
+            $data['create_report'] = $request->create==1 ?  1 : 0;
+            $data['view_report'] = $request->view==1 ?  1 : 0;
+            $data['edit_report'] = $request->edit==1 ?  1 : 0;
+            $data['delete_report'] = $request->delete==1 ?  1 : 0;
+            $data['company_name'] = $request->company_name;
             $update = AccessWebsite::where('user_id', $request->user_id)->update($data);
             if($update){
-                return redirect('manage_access')->with('message', 'Changes Successfully!');
+                return redirect('manage_access')->with('message', 'Changes Updated Successfully!');
             }
         }else{
-            $data = new AccessWebsite;
+        $data = new AccessWebsite;
         $data['site_access'] = $request->site_access=='on' ?  1 : 0;
         $data['user_id'] = $request->user_id;
         $data['location_id'] =json_encode($request->location_id);
         $data['create_account'] = $request->create_account=='on' ?  1 : 0;
+        $data['create_report'] = $request->create==1 ?  1 : 0;
+        $data['view_report'] = $request->view==1 ?  1 : 0;
+        $data['edit_report'] = $request->edit==1 ?  1 : 0;
+        $data['delete_report'] = $request->delete==1 ?  1 : 0;
+        $data['company_name'] = $request->company_name;
         if($data->save()){
             return redirect('manage_access')->with('message', 'Changes Successfully!');
         }
@@ -363,6 +380,11 @@ class AdminController extends Controller
                 $filter['end_date'] = $request->end_date;
                 Session::put('filter', $filter);
                 return redirect('report_date');
+            }
+            public function logout(){
+                Session::flush();
+                Session::forget('data');
+                return redirect('admin_login');
             }
 
             public function company_details(){

@@ -9,6 +9,9 @@
         $('#multiple-checkboxes1').multiselect({
           includeSelectAllOption: true,
         });
+        $('#multiple_user-checkboxes').multiselect({
+            includeSelectAllOption: true,
+          });
     });
   })(jQuery);
 /**------------------------------------------------------------Add Report ----------------------------------------------------*/

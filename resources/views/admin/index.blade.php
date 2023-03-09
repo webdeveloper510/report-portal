@@ -177,14 +177,7 @@
                         <li class="sidebar-item mt-1 mx-1 "> <a href="https://twitter.com" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-twitter"></i><span
                                     class="hide-menu "></span></a></li>                      
-                        <!-- <li class="nav-item dropdown">
-                          <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark"> -->
-                                <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                 <!-- {{session('data')['name']}}  -->
-                            <!-- </a>
-                           <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark "><i class="mdi mdi-power"></i></a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
-                        </li> -->
+                     
                     </ul>
                 </div>
             </nav>
@@ -280,9 +273,9 @@
                         <li class="nav-item dropdown">
                           <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark">
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                 {{session('data')['name']}} 
+                                 {{session('data') ? session('data')['name'] : ''}} 
                             </a>
-                           <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark "><i class="mdi mdi-power"></i></a>
+                           <a href="<?php echo URL::to('/'); ?>/logout" class="nav-link dropdown-toggle text-muted waves-effect waves-dark "><i class="mdi mdi-power"></i></a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>

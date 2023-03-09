@@ -384,10 +384,11 @@
                                                                 <div class="col-sm-10">
                                                                 <select class="form-select" name="categeory" aria-label="Default select example">
                                                                     <option selected>Select Categeory</option>
-                                                                    <option value="supervisor">supervisor</option>
-                                                                    <option value="dispatcher">dispatcher</option>
-                                                                    <option value="client ">client </option>
-                                                                    <option value="guard  ">guard  </option>
+                                                                    <option value="supervisor">Supervisor</option>
+                                                                    <option value="dispatcher">Dispatcher</option>
+                                                                    <option value="client">Client </option>
+                                                                    <option value="guard">Guard  </option>
+                                                                    <option value="admin">Admin  </option>
                                                                 </select>
                                                                 </div>
                                                             </div>

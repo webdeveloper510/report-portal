@@ -371,7 +371,6 @@
                             <form action="{{ URL('/deny_access') }}" method="POST" class="row ">
                                 @csrf
                                 <div class="col-md-4"></div>
-
                                 <div class="col-md-4 mb-3 mx-5">
                                     <div class="manage_control  ">
                                         <div class="mb-0 row">
@@ -383,7 +382,6 @@
                                             <div class="col-sm-4"></div>
                                         </div>
                                         <div class="p-3">
-
                                             <div class="mb-3 row">
                                                 <label for="name" class="col-sm- col-form-label"><h6>Select Supervisor</h6></label>
                                                 <div class="dropdown col-sm-12">
@@ -393,6 +391,12 @@
                                                 @endforeach
                                                 </select>
                                                     <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="company_name" class="col-sm- col-form-label"><h6>Company Name</h6></label>
+                                                <div class="dropdown col-sm-12">
+                                                <input type="text" id="" class="form-control" name="company_name" value="">
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
@@ -412,14 +416,24 @@
                                                     <select id="multiple-checkboxes1" class="form-control" multiple="multiple">
                                                     @foreach($locations as $location)
                                                         <option value="{{$location['id']}}">{{$location['location_name']}}</option>   
-                                                       
-                                                        
                                                         @endforeach 
                                                         
                                                     </select>
                                                     <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
                                                 </div>
-                                            
+                                                <div class="mb-3 row">
+                                                <label for="report_access" class="col-sm- col-form-label"><h6>Report Access</h6></label>
+                                                </div>
+                                                <div class="mb-3 d-flex">
+                                                    <input type="checkbox" id="" name="create" class="ms-2" value="1">
+                                                    <label for="vehicle1" class="ps-2 m-0" >Create</label>
+                                                    <input type="checkbox" id="" class="ms-2" name="edit" value="1">
+                                                    <label for="vehicle2" class="ps-2 m-0">Edit</label>
+                                                    <input type="checkbox" id="" class="ms-2" name="delete" value="1">
+                                                    <label for="vehicle2" class="ps-2 m-0">Delete</label>
+                                                    <input type="checkbox" id="" class="ms-2" name="view" value="1">
+                                                    <label for="vehicle2" class="ps-2 m-0">View</label>
+                                                 </div>
                                             <div class="mb-3 row">
                                                 <label for="email" class="col-sm- col-form-label"><h6>Site Access</h6></label>
                                                 <div class="col-sm-12">
@@ -428,7 +442,6 @@
                                                 <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
                                                 </div>
                                                 <!-- <input type="text" class="form-control" value="" name="email"> -->
-
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
@@ -439,6 +452,16 @@
                                                     <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
                                                 </div>
                                                     <!-- <input type="text" class="form-control" value="" name="email"> -->
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="name" class="col-sm- col-form-label"><h6>User Supervision</h6></label>
+                                                <div class="dropdown col-sm-12">
+                                                    <select id="multiple_user-checkboxes" class="form-control" name="users_id[]" multiple="multiple">
+                                                    @foreach($users as $user)
+                                                    <option value="{{$user['id']}}">{{$user['name']}}</option>
+                                                    @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="d-grid gap-2 col-6 mx-auto mb-3">
