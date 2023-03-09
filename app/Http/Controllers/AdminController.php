@@ -365,6 +365,9 @@ class AdminController extends Controller
                 return redirect('report_date');
             }
 
+            public function company_details(){
+                return view('admin.company_details');
+            }
         
    }
 

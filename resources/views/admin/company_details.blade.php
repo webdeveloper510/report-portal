@@ -2,6 +2,7 @@
 <html dir="ltr" lang="en">
 
 <head>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
@@ -16,70 +17,81 @@
     <!-- Custom CSS -->
     <link href="<?php echo URL::to('/'); ?>/public/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-    <style>
- .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
+
+<link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
+<style>
+     #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
+        color: #2400ff !important;
+    }
+
+     #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
+        color: #2400ff !important;
+    }
+
+
+    .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
+        font-size: medium !important;
+    }
+
+    .topbar{
+        background: #2f3356 !important;
+    }
+
+    li {
+        list-style: none;
+        font-size: x-large;
+    }
+
+    .fa {
+        margin-left: 8px !important;
+    }
+
+    .col-form-label{
+        text-align: left !important;
+    }
+
+    .page-breadcrumb .breadcrumb .breadcrumb-item.active {
     font-size: medium !important;
- }
-
-    #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
-        color: #2400ff !important;
     }
 
-        #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
-        color: #2400ff !important;
+    .left-sidebar {
+        top: 60px !important;
+    }
+    
+    header.topbar1 {
+        background: #2f3356 !important;
     }
 
-        .topbar{
-            background: #2f3356 !important;
-       }
-
-        body {
-            background-color: whitesmoke !important;
-        }
-
-        .col-md-4.mb-3.mx-5 {
-            margin-top: 15px !important;
-            background: white !important;
-            width: 35% !important;
-            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.4);
-        }
-
-        .col-sm-4 {
-            text-align: center !important;
-        }
-
-        img.location2 {
-            width: 100px !important;
-            height: 100px !important;
-        }
-
-       
-
-        .card {
-            background: whitesmoke;
-        }
+    a.top-link {
+        color: #ffffff !important;
+        font-size: small;
+    }
 
 
-        .left-sidebar {
-        top: 52px !important;
-        }
-        
-        header.topbar1 {
-            background: #2f3356 !important;
-        }
-
-        a.top-link {
-            color: #ffffff !important;
-            font-size: small;
-        }
-    </style>
+    a {
+        color: #1e88e5 !important;
+    }
+    a:hover {
+        color: #7460ee !important;
+    }
+</style>
 </head>
 
 <body>
@@ -96,8 +108,7 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-        <!-- ============================================================== -->
-        <!-- Start Topbar header -->
+       <!-- Start Topbar header -->
         <!-- ============================================================== -->
         <header class="topbar1 " data-navbarbg="skin6">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark mx-5">
@@ -181,12 +192,12 @@
                         <li class="sidebar-item mt-1 mx-1"> <a href="https://www.instagram.com" target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-instagram"></i><span
                                     class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="http://m.me" target="_blank" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="http://m.me" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-facebook-messenger"></i><span
                                     class="hide-menu "></span></a></li>  
                                     <li class="sidebar-item mt-1 mx-1 "> <a href="https://twitter.com" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-twitter"></i><span
-                                    class="hide-menu "></span></a></li>                   
+                                    class="hide-menu "></span></a></li>                      
                         <!-- <li class="nav-item dropdown">
                           <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark"> -->
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
@@ -226,7 +237,7 @@
                             <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/logo-light-text.png" alt="homepage" class="dark-logo" /> -->
 
                         </span>
-                    </a>
+                    </a>  
                     <!-- ============================================================== -->
                     <!-- End Logo -->
                     <!-- ============================================================== -->
@@ -321,23 +332,134 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Edit Location</h3>
+                        <h3 class="page-title mb-0 p-0">Company Details</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                                    <li class="breadcrumb-item"><a href="<?php echo URL::to('/'); ?>/index">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Company Details</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
 
+                    <form action="" method="POST">
+                       
+                            <div class="text-end">
+                                <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
+                                    Add Company Details
+                                </button>
+                                <div class="modal fade " id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog p-4">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="">Add Company Details
+                                                    </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>                        
+                                                <div class="modal-body">   
+                                                    <div class="row">                                            
+                                                        <div class="col-md-12">
+                                                            <div class="mb-2 row">
+                                                                <label for="input" class="col-sm-4  col-form-label"> Company Name </label>
+                                                                <div class="col-sm-">
+                                                                    <input type="text" class="form-control" name="company_name ">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-0 row">
+                                                                <label for="input" class="col-sm- col-form-label">Description</label>
+                                                                <div class="col-sm-12">
+                                                                    <textarea type="text" class="form-control" rows="5" name="description"></textarea>
+                                                                </div>
+                                                            </div>
+                                                      
+
+                                                           
+                                                         
+                                                            <!-- <div class="mb-0 row">
+                                                                <label for="input" class="col-sm-12 col-form-label text-left">Sub Location</label>
+                                                                <div class="col-sm-">
+                                                                 <div class="mb-3 row">
+                                                                    <div class="col-sm-12">
+                                                                      <input type="text" class="form-control mt-2">
+                                                                    </div>
+                                                                   
+                                                                 </div>
+                                                                </div>
+                                                            </div>  -->
+                                                             
+                                                             
+                                                            <div id="main">
+
+                                                            </div>
+                                                            <!-- <div class="mb-3 row">
+                                                                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control" name="email">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="mb-3 row">
+                                                                <label for="password" class="col-sm-2 col-form-label">Password</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="password" class="form-control" name="password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="email" class="col-sm-2 col-form-label">Phone</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="tel" class="form-control" name="phone">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="input" class="col-sm-2 col-form-label">Address</label>
+                                                                <div class="col-sm-10">
+                                                                    <textarea type="text" class="form-control" rows="3" name="address"></textarea>
+                                                                </div>
+                                                            </div>                                                                       
+                                                                <input type="hidden" name="status" value="supervisor"></input> -->
+                                                                <!-- <div class="row">
+                                                                    <div class="col">
+                                                                        <button>Submit</button>
+                                                                    </div>
+                                                                    <div class="col"></div>
+                                                                </div> -->
+
+                                                              
+                                                            
+                                                            <!-- <div class="mb-3 row">
+                                                                <label for="input" class="col-sm-2 col-form-label">Status</label>
+                                                                <input type="hidden" class="form-control" name="status" value="supervisor">
+                                                                <div class="col-sm-10">
+                                                                    <select class="form-select" aria-label="Default select example">
+                                                                        <option selected>status</option>
+                                                                        <option value="1">Admin</option>
+                                                                        <option value="2">user</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div> -->
+                                                        </div>
+                                                        <!-- <div class="col-md-2"></div> -->
+                                                        <!-- </form> -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                                                            <button type="submit" class="btn btn-primary btn1">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>   
+                                        </div>
+                                    </div>
+                                </div>
+                        </form>
                         <div class="row">
                             <div class="col-sm-6"></div>
                             <div class="col-sm-6">
+               
                             </div>
+
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -353,85 +475,58 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="row">
-
+                
                 <!-- column -->
-                <div class="col-sm-12 ">
-                    <div class="card ">
-                        <div class="card-body  ">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Company Details </h4>
+                            <!-- <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
+                            <div class="table-responsive">
+                                <table class="table user-table">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th class="border-top-0">Company Name</th>
+                                            <th class="border-top-0">Description</th>    
+                                            <th class="border-top-0">Action</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>    
+                                        <tr>
+                                            <td>Abc</td>
+                                            <td>Details</td>                                       
+                                            <td>
+                                               <a href=""><i class="fa fa-pencil"  aria-hidden="true"></i></a>
+                                               <a class="h3" data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData();">
+                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                </a>
+                                           </td>     
+                                        </tr>     
+                                    </tbody>
+                                </table>
+                            </div>
 
-                            <form action="{{ URL('/update_locations') }}" method="POST" class="row ">
-                                @csrf
-                                <div class="col-md-4"></div>
-
-                                <div class="col-md-4 mb-3 mx-5">
-
-                                    <div class="mb-0 row">
-                                        <div class="col-sm-4"></div>
-                                        <div class="col-sm-4 mb-3 mt-4">
-                                            <img class="location2" src="<?php echo URL::to('/'); ?>/public/assets/images/location2.png" />
-                                        </div>
-                                        <h4 class="text-center">Edit User Location</h4>
-                                        <div class="col-sm-4"></div>
-                                    </div>
-                                    <div class="p-3">
-                                        <input type="hidden" class="form-control"  name="id" value="{{$data['id']}}">
-                                        <div class="mb-3 row">
-                                            <label for="name" class="col-sm- col-form-label">Parent Location</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" class="form-control"  name="parent_location" value="{{$data['parent_location']}}">
+                              <!-- delete Modal -->
+                              <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            
+                                            <div class="modal-body text-center pt-5">
+                                           <h3>Are you sure?</h3>
+                                           <p>Do you really want to delete these records?<br/>
+                                            This process cannot be undone.</p>
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger btn-lg" onclick="return DataDelete('locations')">Delete</button>
                                             </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="name" class="col-sm- col-form-label"> Sub Location</label>
-
-                                            <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="location_name" value="{{$data['location_name']}}">
                                             </div>
+                                            
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="address" class="col-sm- form-label">Description</label>
-                                            <textarea class="form-control" id="address" rows="3" value="{{$data['description']}}" name="description">{{$data['description']}}</textarea>
                                         </div>
-                                        <!-- <div class="mb-3 row">
-                                            <label for="email" class="col-sm- col-form-label">Email</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" class="form-control" value="" name="email">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="password" class="col-sm- col-form-label">Password</label>
-                                            <div class="col-sm-12">
-                                                <input type="password" class="form-control" name="password" value="">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label for="phone" class="col-sm- col-form-label">Emergency Contact</label>
-                                            <div class="col-sm-12">
-                                                <input type="number" class="form-control" id="input" name="phone" value="">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="address" class="col-sm- form-label">Address</label>
-                                            <textarea class="form-control" id="address" rows="3" name="address"></textarea>
-                                        </div> -->
-                                        <!-- <div class="mb-3 row">
-                                            <label for="status" class="col-sm- col-form-label">Status</label>
-                                            <div class="col-sm-12">
-                                            </div>
-                                        </div> -->
-                                        <!-- <div class="mb-3 form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                                        </div> -->
-                                        <!-- <input type="hidden" class="form-control mb-4" id="input" name="status" value=""> -->
-                                        
-                                        <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                         <button type="submit" class="btn btn-primary">Update Location</button>
-                                        </div>                                        
                                     </div>
                                 </div>
-                                <div class="col-md-4"></div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -450,7 +545,6 @@
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
-       
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
@@ -472,6 +566,10 @@
     <script src="<?php echo URL::to('/'); ?>/public/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
+    <script src="<?php echo URL::to('/'); ?>/public/js/main.js"></script>
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script>
   @if(Session::has('message'))
   toastr.options =
@@ -491,8 +589,5 @@
         toastr.error("{{ session('error') }}");
   @endif
 </script>
-
-
 </body>
-
 </html>

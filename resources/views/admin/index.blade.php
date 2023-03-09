@@ -348,7 +348,7 @@
                     <div class="col-sm-4">
                         <div class="card-3 text-center">
                             <div class="card-body">
-                                <h5 class="card-title">Total User</h5>
+                                <h5 class="card-title">Total Users</h5>
                                 <p class="card-text">{{$count}}</p>
                                 <a href="#" class="btn btn-primary">Go somewhere</a>
                             </div>

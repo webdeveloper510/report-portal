@@ -55,4 +55,4 @@ Route::post('insert_activity', [AdminController::class, 'insert_activity']);
 Route::get('report_view/{id}',[AdminController::class, 'report_view']);
 Route::get('report_date',[AdminController::class, 'report_date']);
 Route::post('filter_data',[AdminController::class, 'filter_data']);
-// Route::get('new_page',[AdminController::class, 'new_page']);
+Route::view('company_details','admin.company_details');
