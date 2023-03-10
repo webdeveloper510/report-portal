@@ -20,7 +20,7 @@
 var delete_id=''  
 var base_url =  window.location.origin+'/report-portal';
     $('#report').on('submit', function(event){
-        console.log('yeee');
+       
       event.preventDefault();
       var url = base_url+'/insert_activity'
       $.ajax({

@@ -63,3 +63,4 @@ Route::get('company_details',[AdminController::class, 'get_company']);
 Route::post('edit_company',[AdminController::class, 'update_company']);
 
 
+

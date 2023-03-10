@@ -248,11 +248,12 @@ class AdminController extends Controller
      
         $data = DB::table('custom_title')->select('id','title')->get();
         $locations = Location::all();
+         $company = CompanyDetails::all();
         $activitys = Report::with('users')->get()->toArray();
         // echo "<pre>";
         // print_r($activitys);die;
      
-        return view('admin.admin_reports',compact('data','locations','activitys'));
+        return view('admin.admin_reports',compact('data','locations','activitys','company'));
         
     }
     public function edit_title(Request $request){
@@ -296,6 +297,8 @@ class AdminController extends Controller
 
             $data = new Report;
             $data['report_title'] = $request->report_title;
+             $data['company_id'] = $request->company;
+             $data['level'] = $request->level;
             $data['user_id'] = $request->user_id;
             $data['main_location'] = $request->main_location;
             $data['sub_location'] = $request->sub_location;
@@ -383,6 +386,14 @@ class AdminController extends Controller
                 $data['company_name'] = $request->company_name;
                 $data['description'] = $request->description;
                 
+                if($request->hasfile('logo')){
+                 foreach ($request->logo as $image) {
+                 $name = $image->getClientOriginalName();
+                 $filename = time().'.'.$name;
+                 $image->move(public_path('images'), $filename);
+            
+              }
+        }
                 if($data->save())
                      echo json_encode(['message'=>'Company Save  Successfully!']);
                 else
@@ -409,6 +420,7 @@ class AdminController extends Controller
                    echo json_encode(['message'=>'Some Error!']);
            
         }
+     
 
         
    }

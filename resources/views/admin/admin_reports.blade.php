@@ -436,18 +436,30 @@
                                                   <label for="exampleInputEmail1" class="form-label">Report Type</label>
                                                   <select class="form-select"  name="report_type" aria-label="Default select example">
                                                     <option selected>Select Report Type</option>
-                                                    <option value=" Activity Reports"> Activity Reports</option>
-                                                    <option value="  Incident Reports"> Incident Reports</option>
-                                                    <option value=" Patrol Reports"> Petrol Reports</option>
-                                                    <option value="  Parking violations"> Parking violations</option>
-                                                    <option value=" Visitor logs"> Visitor logs</option>
+                                                    <option value="Activity Reports">Activity Reports</option>
+                                                    <option value="Incident Reports">Incident Reports</option>
+                                                    <option value="Patrol Reports">Petrol Reports</option>
+                                                    <option value="Parking violations">Parking violations</option>
+                                                    <option value="Visitor logs">Visitor logs</option>
                                                   </select>
                                                 </div>
                                                    <div class="mb-3">
-                                                  <label for="exampleInputEmail1" class="form-label">Company Id</label>
+                                                  <label for="exampleInputEmail1" class="form-label">Company Name</label>
                                                   <select class="form-select"  name="company" aria-label="Default select example">
-                                                    <option selected>Select Report Title</option>
-                                                    <option selected value=""></option>
+                                                    <option selected>Select Company Name</option>
+                                                     @foreach($company as $value)
+                                                    <option  value="{{$value->id}}">{{$value->company_name}}</option>
+                                                    @endforeach
+                                                  </select>
+                                                </div>
+                                                
+                                                <div class="mb-3">
+                                                  <label for="exampleInputEmail1" class="form-label">Level</label>
+                                                  <select class="form-select"  name="level" aria-label="Default select example">
+                                                    <option selected>Select Lavel</option>
+                                                    <option  value="level1">Level1</option>
+                                                    <option  value="level2">Level2</option>
+                                                    <option  value="level3">Level3</option>
                                                   </select>
                                                 </div>
                                                 

@@ -344,7 +344,7 @@
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
 
-                    <form id="company">
+                    <form id="company" enctype="multipart/form-data">
                         @csrf
                             <div class="text-end">
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
@@ -368,6 +368,15 @@
                                                                     <input type="text" class="form-control" name="company_name">
                                                                 </div>
                                                             </div>
+                                                            
+                                                            <div class="mb-2 row">
+                                                                <label for="input" class="col-sm-4  col-form-label"> Logo </label>
+                                                                <div class="col-sm-">
+                                                                   <input type="file"  name="logo" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            
                                                             <div class="mb-0 row">
                                                                 <label for="input" class="col-sm- col-form-label">Description</label>
                                                                 <div class="col-sm-12">
@@ -484,7 +493,7 @@
                                                <a href="" data-bs-toggle="modal" data-bs-target="#edit" onclick="showCompany({{$value}})">
                                                    <i class="fa fa-pencil"  aria-hidden="true"></i>                            
                                             </a>
-                                               <a class="h3" data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData();">
+                                               <a class="h3" data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData({{$value['id']}});">
                                                  <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </a>
                                            </td>     
@@ -505,7 +514,7 @@
                                             This process cannot be undone.</p>
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger btn-lg" onclick="return DataDelete('locations')">Delete</button>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger btn-lg" onclick="return DataDelete('company_details')">Delete</button>
                                             </div>
                                             </div>
                                             
