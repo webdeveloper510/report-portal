@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\AddUser;
 use App\Models\User;
 use App\Models\Report;
+use App\Models\CompanyDetails;
 use App\Models\Location;
 use App\Models\AccessWebsite;
 use DB;
@@ -374,6 +375,40 @@ class AdminController extends Controller
                 Session::forget('data');
                 return redirect('admin_login');
             }
+            
+             public function company_details(Request $request)
+     {
+           
+                $data = new CompanyDetails;
+                $data['company_name'] = $request->company_name;
+                $data['description'] = $request->description;
+                
+                if($data->save())
+                     echo json_encode(['message'=>'Company Save  Successfully!']);
+                else
+                   echo json_encode(['message'=>'Some Error!']);
+                 
+    }
+    
+    
+        public function get_company(){
+            $data = CompanyDetails::all();
+              return view('admin.company_details',compact('data'));
+              
+        }
+        
+         function update_company(Request $request)
+        {
+          
+            $data = CompanyDetails::find($request->id);
+            $data->company_name = $request->company_name;
+            $data->description = $request->description;
+             if($data->save())
+                     echo json_encode(['message'=>'Company Save  Successfully!']);
+                else
+                   echo json_encode(['message'=>'Some Error!']);
+           
+        }
 
         
    }

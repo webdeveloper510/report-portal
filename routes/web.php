@@ -58,4 +58,8 @@ Route::get('admin_login', [AdminController::class, 'admin_login']);
 
 Route::post('login', [AdminController::class, 'login']);
 Route::get('logout',[AdminController::class, 'logout']);
-// Route::get('new_page',[AdminController::class, 'new_page']);
+Route::post('company_details', [AdminController::class, 'company_details'])->name('company.details');
+Route::get('company_details',[AdminController::class, 'get_company']);
+Route::post('edit_company',[AdminController::class, 'update_company']);
+
+

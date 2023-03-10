@@ -9,6 +9,9 @@
         $('#multiple-checkboxes1').multiselect({
           includeSelectAllOption: true,
         });
+        $('#multiple_user-checkboxes').multiselect({
+            includeSelectAllOption: true,
+          });
     });
   })(jQuery);
 /**------------------------------------------------------------Add Report ----------------------------------------------------*/
@@ -45,6 +48,7 @@ var base_url =  window.location.origin+'/report-portal';
           }
       });
   });
+
 
     
   var inputEle = document.getElementById('timeInput');
@@ -219,4 +223,70 @@ $.ajax({
   },
   });
 });
-
+//----------------------------------------------------------Company Details-----------------------------------------------//
+var base_url =  window.location.origin+'/report-portal';
+    $('#company').on('submit', function(event){
+     
+      event.preventDefault();
+      var url = base_url+'/company_details'
+      $.ajax({
+          url: url,
+          method: 'POST',
+          data: new FormData(this),
+          dataType: 'JSON',
+          contentType: false,
+          cache: false,
+          processData: false,
+          success:function(response)
+          {
+              $('#add').modal('hide');
+              toastr.options =  {
+                  "closeButton" : true,
+                  "progressBar" : true,
+              }
+              toastr.success(response.message);
+              setTimeout(function(){
+                  location.reload();
+              },3000)
+          },
+          error: function(response) {
+              //$('.error').remove();
+          }
+      });
+  });
+    $('#editData').on('submit', function(event){
+      event.preventDefault();
+      var url = base_url+'/edit_company'
+      $.ajax({
+          url: url,
+          method: 'POST',
+          data: new FormData(this),
+          dataType: 'JSON',
+          contentType: false,
+          cache: false,
+          processData: false,
+          success:function(response)
+          {
+              console.log(response)
+            toastr.options =  {
+                  "closeButton" : true,
+                  "progressBar" : true,
+              }
+              toastr.success(response.message);
+              setTimeout(function(){
+                  location.reload();
+              },3000)
+          },
+          error: function(response) {
+              //$('.error').remove();
+          }
+      });
+  });
+function showCompany(data){
+    console.log(data)
+    //let obj = JSON.parse(data);
+    //console.log(obj)
+    $('.company_name').val(data.company_name)
+    $('.description').val(data.description)
+    $('.hidden').val(data.id)
+}

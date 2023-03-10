@@ -2,6 +2,7 @@
 <html dir="ltr" lang="en">
 
 <head>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
@@ -11,74 +12,70 @@
     <meta name="robots" content="noindex,nofollow">
     <title>Admin Panel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
-    <link rel="stylesheet" type="text/css" 
-     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo URL::to('/'); ?>/public/assets/images/favicon.png">
     <!-- Custom CSS -->
     <link href="<?php echo URL::to('/'); ?>/public/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-     <script src="<?php echo URL::to('/'); ?>/public/js/popper.js"></script>
+    <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-    <style>
- /* .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
-    font-size: medium !important;
- } */
 
-    #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
+<link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
+<style>
+     #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
         color: #2400ff !important;
     }
 
-        #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
+     #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
         color: #2400ff !important;
     }
+
 
     .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
         font-size: medium !important;
     }
 
+    .topbar{
+        background: #2f3356 !important;
+    }
 
-        .topbar{
-            background: #2f3356 !important;
-       }
+    li {
+        list-style: none;
+        font-size: x-large;
+    }
 
-        body {
-            background-color: whitesmoke !important;
-        }
-        
-        .manage_control {
-            background: white !important;
-            width: 100% !important;
-        }
+    .fa {
+        margin-left: 8px !important;
+    }
 
-        .col-sm-4 {
-            text-align: center !important;
-        }
-        
-        .dropdown .btn-group {
-            width: 100%;
-        }
+    .col-form-label{
+        text-align: left !important;
+    }
 
-        img.manage {
-            width: 100px !important;
-            height: 100px !important;
-        }
+    .page-breadcrumb .breadcrumb .breadcrumb-item.active {
+    font-size: medium !important;
+    }
 
-        .card {
-            background: whitesmoke;
-        }
-
-         
     .left-sidebar {
-        top: 52px !important;
+        top: 60px !important;
     }
     
-     header.topbar1 {
+    header.topbar1 {
         background: #2f3356 !important;
     }
 
@@ -86,7 +83,15 @@
         color: #ffffff !important;
         font-size: small;
     }
-    </style>
+
+
+    a {
+        color: #1e88e5 !important;
+    }
+    a:hover {
+        color: #7460ee !important;
+    }
+</style>
 </head>
 
 <body>
@@ -103,7 +108,7 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-        <!-- Start Topbar header -->
+       <!-- Start Topbar header -->
         <!-- ============================================================== -->
         <header class="topbar1 " data-navbarbg="skin6">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark mx-5">
@@ -187,12 +192,12 @@
                         <li class="sidebar-item mt-1 mx-1"> <a href="https://www.instagram.com" target="_blank" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-instagram"></i><span
                                     class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="http://m.me" target="_blank" class="top-link"
+                        <li class="sidebar-item mt-1 mx-1"> <a href="http://m.me" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-facebook-messenger"></i><span
                                     class="hide-menu "></span></a></li>  
                                     <li class="sidebar-item mt-1 mx-1 "> <a href="https://twitter.com" class="top-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-twitter"></i><span
-                                    class="hide-menu "></span></a></li>                    
+                                    class="hide-menu "></span></a></li>                      
                         <!-- <li class="nav-item dropdown">
                           <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark"> -->
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
@@ -232,7 +237,7 @@
                             <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/logo-light-text.png" alt="homepage" class="dark-logo" /> -->
 
                         </span>
-                    </a>
+                    </a>  
                     <!-- ============================================================== -->
                     <!-- End Logo -->
                     <!-- ============================================================== -->
@@ -327,30 +332,121 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Manage  Access</h3>
+                        <h3 class="page-title mb-0 p-0">Company Details</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Manage Access</li>
+                                    <li class="breadcrumb-item"><a href="<?php echo URL::to('/'); ?>/index">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Company Details</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                     <div class="col-md-6 col-4 align-self-center">
 
-                        <div class="row">
-                            <div class="col-sm-6"></div>
-                            <div class="col-sm-6">
+                    <form id="company">
+                        @csrf
+                            <div class="text-end">
+                                <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
+                                    Add Company Details
+                                </button>
+                                <!-- Add Modal -->
+                                <div class="modal fade " id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog p-4">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="">Add Company Details
+                                                    </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>                        
+                                                <div class="modal-body">   
+                                                    <div class="row">                                            
+                                                        <div class="col-md-12">
+                                                            <div class="mb-2 row">
+                                                                <label for="input" class="col-sm-4  col-form-label"> Company Name </label>
+                                                                <div class="col-sm-">
+                                                                    <input type="text" class="form-control" name="company_name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-0 row">
+                                                                <label for="input" class="col-sm- col-form-label">Description</label>
+                                                                <div class="col-sm-12">
+                                                                    <textarea type="text" class="form-control" rows="5" name="description"></textarea>
+                                                                </div>
+                                                            </div>
+                                                      
 
-                            </div>
+                                                            </div> 
+                                                             
+                                                             
+                                                            <div id="main">
 
-                        </div>
+                                                            </div>
+             
+                                                        </div>
+                                                        <!-- <div class="col-md-2"></div> -->
+                                                        <!-- </form> -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                                                            <button type="submit" class="btn btn-primary btn1">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>   
+                                        </div>
+                                    </div>
+                                </div>
+                                     </form>
+                                 <!-- Edit Modal -->
+                                 <div class="modal fade " id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog p-4">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="">Edit Company Details
+                                                    </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>   
+                                            <form id="editData">
+                                            @csrf
+                                                <div class="modal-body">   
+                                                    <div class="row">                                            
+                                                        <div class="col-md-12">
+                                                            <div class="mb-2 row">
+                                                                <label for="input" class="col-sm-4  col-form-label"> Company Name </label>
+                                                                <div class="col-sm-">
+                                                                    <input type="text" class="form-control company_name" value=""  name="company_name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-0 row">
+                                                                <label for="input" class="col-sm- col-form-label">Description</label>
+                                                                <div class="col-sm-12">
+                                                                    <textarea type="text" class="form-control description" value="" rows="5" name="description"></textarea>
+                                                                </div>
+                                                            </div>
+                               
+                                                             
+                                                             
+                                                            <div id="main">
+
+                                                            </div>
+                                       
+                                                        </div>
+                                   
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                                                             <input type="hidden" class="form-control hidden" value=""  name="id">
+                                                            <button type="submit" class="btn btn-primary btn1">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                         </form>  
+                                        </div>
+                                    </div>
+                                </div>
+
 
                     </div>
                 </div>
             </div>
-        </div>
         <!-- ============================================================== -->
         <!-- End Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
@@ -362,116 +458,61 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="row">
-
+                
                 <!-- column -->
-                <div class="col-sm-12 ">
-                    <div class="card ">
-                        <div class="card-body  ">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Company Details </h4>
+                            <!-- <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
+                            <div class="table-responsive">
+                                <table class="table user-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top-0">Company Name</th>
+                                            <th class="border-top-0">Description</th>    
+                                            <th class="border-top-0">Action</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>  
+                                    @foreach($data as $value)
+                                        <tr>
+                                            <td>{{$value->company_name}}</td>
+                                            <td>{{$value->description}}</td>  
+                                            <td>
+                                               <a href="" data-bs-toggle="modal" data-bs-target="#edit" onclick="showCompany({{$value}})">
+                                                   <i class="fa fa-pencil"  aria-hidden="true"></i>                            
+                                            </a>
+                                               <a class="h3" data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData();">
+                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                </a>
+                                           </td>     
+                                        </tr>  
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
 
-                            <form action="{{ URL('/deny_access') }}" method="POST" class="row ">
-                                @csrf
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4 mb-3 mx-5">
-                                    <div class="manage_control  ">
-                                        <div class="mb-0 row">
-                                            <div class="col-sm-4"></div>
-                                            <div class="col-sm-4 mb-3 mt-4">
-                                                <img class="manage" src="<?php echo URL::to('/'); ?>/public/assets/images/manage2.jpg" />
+                              <!-- delete Modal -->
+                              <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            
+                                            <div class="modal-body text-center pt-5">
+                                           <h3>Are you sure?</h3>
+                                           <p>Do you really want to delete these records?<br/>
+                                            This process cannot be undone.</p>
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger btn-lg" onclick="return DataDelete('locations')">Delete</button>
                                             </div>
-                                            <h4 class="text-center">Manage Control</h4>
-                                            <div class="col-sm-4"></div>
+                                            </div>
+                                            
                                         </div>
-                                        <div class="p-3">
-                                            <div class="mb-3 row">
-                                                <label for="name" class="col-sm- col-form-label"><h6>Select Supervisor</h6></label>
-                                                <div class="dropdown col-sm-12">
-                                                <select class="form-select"  name="user_id" aria-label="Default select example">
-                                                @foreach($users as $user)
-                                                    <option selected value="{{$user['id']}}">{{$user['name']}}</option>
-                                                @endforeach
-                                                </select>
-                                                    <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                                <label for="company_name" class="col-sm- col-form-label"><h6>Company Name</h6></label>
-                                                <div class="dropdown col-sm-12">
-                                                <input type="text" id="" class="form-control" name="company_name" value="">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                                <label for="name" class="col-sm- col-form-label"><h6>Main Locations</h6></label>
-                                                <div class="dropdown col-sm-12">
-                                                    <select id="multiple-checkboxes" class="form-control"  name="location_id[]" multiple="multiple">
-                                                        @foreach($locations as $location)
-                                                        <option value="{{$location['id']}}">{{$location['parent_location']}}</option>   
-                                                        @endforeach 
-                                                    </select>
-                                                   
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                                <label for="name" class="col-sm- col-form-label"><h6>Sub Locations</h6></label>
-                                                <div class="mb-3 dropdown col-sm-12">                                                    
-                                                    <select id="multiple-checkboxes1" class="form-control" multiple="multiple">
-                                                    @foreach($locations as $location)
-                                                        <option value="{{$location['id']}}">{{$location['location_name']}}</option>   
-                                                        @endforeach 
-                                                        
-                                                    </select>
-                                                    <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
-                                                </div>
-                                                <div class="mb-3 row">
-                                                <label for="report_access" class="col-sm- col-form-label"><h6>Report Access</h6></label>
-                                                </div>
-                                                <div class="mb-3 d-flex">
-                                                    <input type="checkbox" id="" name="create" class="ms-2" value="1">
-                                                    <label for="vehicle1" class="ps-2 m-0" >Create</label>
-                                                    <input type="checkbox" id="" class="ms-2" name="edit" value="1">
-                                                    <label for="vehicle2" class="ps-2 m-0">Edit</label>
-                                                    <input type="checkbox" id="" class="ms-2" name="delete" value="1">
-                                                    <label for="vehicle2" class="ps-2 m-0">Delete</label>
-                                                    <input type="checkbox" id="" class="ms-2" name="view" value="1">
-                                                    <label for="vehicle2" class="ps-2 m-0">View</label>
-                                                 </div>
-                                            <div class="mb-3 row">
-                                                <label for="email" class="col-sm- col-form-label"><h6>Site Access</h6></label>
-                                                <div class="col-sm-12">
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input" name="site_access"   type="checkbox" id="flexSwitchCheckDefault">
-                                                <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
-                                                </div>
-                                                <!-- <input type="text" class="form-control" value="" name="email"> -->
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                                <label for="email" class="col-sm- col-form-label"><h6>Create Other Account</h6></label>
-                                                <div class="col-sm-12">
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input"  name="create_account"   type="checkbox" id="flexSwitchCheckDefault">
-                                                    <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
-                                                </div>
-                                                    <!-- <input type="text" class="form-control" value="" name="email"> -->
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                                <label for="name" class="col-sm- col-form-label"><h6>User Supervision</h6></label>
-                                                <div class="dropdown col-sm-12">
-                                                    <select id="multiple_user-checkboxes" class="form-control" name="users_id[]" multiple="multiple">
-                                                    @foreach($users as $user)
-                                                    <option value="{{$user['id']}}">{{$user['name']}}</option>
-                                                    @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                                <button type="submit" class="btn btn-primary">Update Manage</button>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4"></div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -490,7 +531,6 @@
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
-        
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
@@ -502,21 +542,19 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="<?php echo URL::to('/'); ?>/public/js/jquery.min.js"></script>
-    <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/plugins/jquery/dist/jquery.min.js"></script> -->
+    <script src="<?php echo URL::to('/'); ?>/public/assets/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo URL::to('/'); ?>/public/js/app-style-switcher.js"></script>
     <!--Wave Effects -->
-    <script src="<?php echo URL::to('/'); ?>/public/js/bootstrap-multiselect.js"></script>
-    
-    <script src="<?php echo URL::to('/'); ?>/public/js/main.js"></script>
-    <script src="<?php echo URL::to('/'); ?>/public/js/bootstrap.min.js"></script>
     <script src="<?php echo URL::to('/'); ?>/public/js/waves.js"></script>
     <!--Menu sidebar -->
     <script src="<?php echo URL::to('/'); ?>/public/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
+    <script src="<?php echo URL::to('/'); ?>/public/js/main.js"></script>
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script>
   @if(Session::has('message'))
@@ -537,7 +575,5 @@
         toastr.error("{{ session('error') }}");
   @endif
 </script>
-
 </body>
-
 </html>

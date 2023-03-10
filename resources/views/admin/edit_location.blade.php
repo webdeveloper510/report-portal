@@ -48,6 +48,7 @@
             margin-top: 15px !important;
             background: white !important;
             width: 35% !important;
+            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.4);
         }
 
         .col-sm-4 {

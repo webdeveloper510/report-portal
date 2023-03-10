@@ -83,6 +83,13 @@
         color: #ffffff !important;
         font-size: small;
     }
+    
+    a {
+        color: #1e88e5 !important;
+    }
+    a:hover {
+        color: #7460ee !important;
+    }
 </style>
 </head>
 

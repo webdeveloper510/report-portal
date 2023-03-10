@@ -443,6 +443,13 @@
                                                     <option value=" Visitor logs"> Visitor logs</option>
                                                   </select>
                                                 </div>
+                                                   <div class="mb-3">
+                                                  <label for="exampleInputEmail1" class="form-label">Company Id</label>
+                                                  <select class="form-select"  name="company" aria-label="Default select example">
+                                                    <option selected>Select Report Title</option>
+                                                    <option selected value=""></option>
+                                                  </select>
+                                                </div>
                                                 
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Report Title</label>
