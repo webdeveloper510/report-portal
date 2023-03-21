@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCompanyField extends Migration
+class Description extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddCompanyField extends Migration
      */
     public function up()
     {
-        Schema::table('access_websites', function (Blueprint $table) {
-            $table->string('company_name');
+        Schema::table('reports', function (Blueprint $table) {
+             $table->string('description');
         });
     }
 
@@ -25,7 +25,7 @@ class AddCompanyField extends Migration
      */
     public function down()
     {
-        Schema::table('access_websites', function (Blueprint $table) {
+        Schema::table('reports', function (Blueprint $table) {
             //
         });
     }

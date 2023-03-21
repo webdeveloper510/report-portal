@@ -13,6 +13,8 @@
     <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
     <link rel="stylesheet" type="text/css" 
      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
    
      <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
      alpha/css/bootstrap.css" rel="stylesheet"> -->
@@ -57,6 +59,14 @@
             margin-top: 8px !important;
             min-height: 94vh !important;
         }
+        
+        .toast-success {
+    background-color: #51a351 !important;
+    }
+    
+    .toast-error {
+        background-color: #bd362f !important;
+    }
     </style>
 </head>
 <body>
@@ -90,17 +100,19 @@
                                    
                                     <div class="p-3">
                                         <div class="d-flex ">
-                                            <div class="form-check ">
-                                                <input class="form-check-input " type="radio" name="type" value="admin" id="flexRadioDefault1" checked>
-                                                <label class="form-check-label " for="flexRadioDefault1">
-                                                Admin Access
-                                                </label>
-                                            </div>
-                                            <div class="form-check mx-4">
-                                                <input class="form-check-input " type="radio" name="type" value="user" id="flexRadioDefault1">
-                                                <label class="form-check-label" for="flexRadioDefault1">
-                                                Supervisor Access
-                                                </label>
+                                          
+                                             <div class="mb-3 row">
+                                                <label for="categeory" class="form-label">User Type</label>
+                                            
+                                                    <select class="form-select" name="type" aria-label="Default select example">
+                                                    <option selected>Select Categeory</option>
+                                                    <option value="supervisor">Supervisor</option>
+                                                    <option value="dispatcher">Dispatcher</option>
+                                                    <option value="client">Client </option>
+                                                    <option value="guard">Guard  </option>
+                                                    <option value="admin">Admin  </option>
+                                                    </select>
+                                              
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
@@ -147,7 +159,7 @@
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script>
+   <script>
   @if(Session::has('message'))
   toastr.options =
   {

@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, materialpro admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, materialpro admin lite design, materialpro admin lite dashboard bootstrap 5 dashboard template">
     <meta name="description" content="Material Pro Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
@@ -396,12 +397,18 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="col-md-6 col-4 align-self-center">
-                        <div class="text-end upgrade-btn">
+                    <div class="col-md-6 d-flex col-4 align-self-center" style="{{$permissions[0]->create_report==1 ? 'display:block':'display:none'}}">
+                     
+                        <div class="text-end mx-auto upgrade-btn me-2">
                             <a href=""  data-bs-toggle="modal" data-bs-target="#add"
-                                class="btn btn-danger d-none d-md-inline-block text-white" target="_blank">Add Report</a>
+                                class="btn btn-success d-none d-md-inline-block text-white" target="_blank">Add Report</a>
+                        </div>
+                         <div class="text-end end_shift ">
+                            <a href=""  data-bs-toggle="modal" data-bs-target=""
+                                class="btn btn-danger d-none d-md-inline-block text-white" target="_blank">End Shift</a>
                         </div>
                     </div>
+                      
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -445,7 +452,8 @@
                                                 </div>
                                                    <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Company Name</label>
-                                                  <select class="form-select"  name="company" aria-label="Default select example">
+                                                   <select class="form-select"  name="company_id" aria-label="Default select example">
+
                                                     <option selected>Select Company Name</option>
                                                      @foreach($company as $value)
                                                     <option  value="{{$value->id}}">{{$value->company_name}}</option>
@@ -474,7 +482,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Main Location</label>
-                                                  <select class="form-select" name="main_location" aria-label="Default select example">
+                                                   <select class="form-select"  name="main_location" aria-label="Default select example">
                                                   @foreach($locations as $location)
                                                     <option selected value="{{$location['parent_location']}}">{{$location['parent_location']}}</option>
                                                   @endforeach
@@ -482,7 +490,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Sub Location</label>
-                                                  <select class="form-select" name="sub_location" aria-label="Default select example">
+                                                   <select class="form-select"  name="sub_location" aria-label="Default select example">
                                                   @foreach($locations as $location)
                                                     <option selected value="{{$location['location_name']}}">{{$location['location_name']}}</option>
                                                   @endforeach
@@ -493,10 +501,17 @@
                                                   <input type="time"  name="report_time" value="" id="timeInput" onChange="onTimeChange()" class="form-control">
                                                   <input type="hidden" name="meridian" value="" id="meridian"/>
                                                 </div>
+                                                 <div class="mb-3">
+                                                          <label for="input" class="col-sm- col-form-label">Description</label>
+                                                                <div class="col-sm-12">
+                                                                    <textarea type="text" class="form-control" rows="3" name="description"></textarea>
+                                                                </div>
+                                                         </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Report Date</label>
                                                     <input type="date" value="" name="report_date" class="form-control">
                                                 </div>
+                                                
                                                 <div class="mb-3">
                                                     <label class="form-label">Report Photo</label>
                                                     <input type="file" name="report_photo[]" class="form-control" multiple>
@@ -526,18 +541,18 @@
                                                     <form>
                                                         <div class="mb-3">
                                                             <label class="form-label">Report Type</label>
-                                                            <select class="form-select"  name="report_type" aria-label="Default select example">
+                                                            <select class="form-select"  name="report_type" id="report_type" aria-label="Default select example">
                                                                 <option selected>Select Report Type</option>
-                                                                <option value=" Activity Reports"> Activity Reports</option>
-                                                                <option value="  Incident Reports"> Incident Reports</option>
-                                                                <option value=" Patrol Reports"> Petrol Reports</option>
-                                                                <option value="  Parking violations"> Parking violations</option>
-                                                                <option value=" Visitor logs"> Visitor logs</option>
+                                                                <option value="Activity Reports"> Activity Reports</option>
+                                                                <option value="Incident Reports"> Incident Reports</option>
+                                                                <option value="Patrol Reports"> Petrol Reports</option>
+                                                                <option value="Parking violations"> Parking violations</option>
+                                                                <option value="Visitor logs"> Visitor logs</option>
                                                             </select>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="exampleInputEmail1" class="form-label">Report Title</label>
-                                                            <select class="form-select" aria-label="Default select example">
+                                                            <select class="form-select" id="report_title" aria-label="Default select example">
                                                                 <option selected>Select Report Title</option>
                                                             @foreach($data as $title)
                                                                 <option value="{{$title->id}}">{{$title->title}}</option>
@@ -568,6 +583,12 @@
                                                             <label class="form-label">Report Date</label>
                                                             <input type="date" value="" id="date" class="form-control">
                                                         </div>
+                                                        <div class="mb-3">
+                                                          <label for="input" class="col-sm- col-form-label">Description</label>
+                                                                <div class="col-sm-12">
+                                                                    <textarea type="text" class="form-control" rows="3"  id="desc" name="description"></textarea>
+                                                                </div>
+                                                         </div>
                                                         <div class="mb-3">
                                                             <label class="form-label">Report Photo</label>
                                                             <input type="file" value="" name="report_photo" class="form-control" multiple>
@@ -611,7 +632,8 @@
                                                 <th class="border-top-0">Report Time</th>
                                                 <th class="border-top-0">Report Date</th>
                                                 <th class="border-top-0">Report Type</th>
-                                                <th class="border-top-0">Report Permission</th>
+                                                <th class="border-top-0"  style="{{ $login['type']=='client' ? 'display:none':'display:block'}}">Assign to the client</th>
+                                                <!--<th class="border-top-0">Report Permission</th>-->
                                                 <th class="border-top-0">Action</th>
                                             </tr>
                                         </thead>
@@ -620,34 +642,38 @@
                                             <tr>
                                                 <td>{{$loop->iteration }}</td>
                                                 <td>{{$activity['users'] ? $activity['users']['name']:''}}</td> 
-                                                <td>{{$activity['report_title']}}</td>
+                                                <td>{{$activity['title']}}</td>
                                                 <td>{{$activity['main_location']}}</td>
                                                 <td>{{$activity['sub_location']}}</td>
                                                 <td>{{$activity['report_time']}}</td>
                                                 <td>{{$activity['report_date']}}</td>
                                                 <td>{{$activity['report_type']}}</td>
-                                                <td >
-                                                    <div class="d-flex">
-                                                    <input type="checkbox" id="vehicle1" name="create" class=" ms-2" value="Create">
-                                                    <label for="vehicle1" class="ps-2 m-0" >Create</label>
-                                                    <input type="checkbox" id="vehicle2" class="ms-2" name="edit" value="Edit">
-                                                    <label for="vehicle2" class="ps-2 m-0">Edit</label>
-                                                    <input type="checkbox" id="vehicle3" class="ms-2" name="delete" value="Delete">
-                                                    <label for="vehicle2" class="ps-2 m-0">Delete</label>
-                                                    <input type="checkbox" id="vehicle3" class="ms-2" name="delete" value="Delete">
-                                                    <label for="vehicle2" class="ps-2 m-0">View</label>
-                                                    </div>
-                                                </td>
+                                                <td><select class="form-select assign_client" data-id="{{$activity['id']}}" name="assign_client" style="{{ $login['type']=='client' ? 'display:none':'display:block'}}">
+                                                    <option>Select</option>
+                                                    <option value="1" <?php echo $activity['assign_client']==1? 'selected':'';?>>Yes</option>
+                                                    <option value="0" <?php echo $activity['assign_client']==0? 'selected':'';?>>No</option>
+                                                  </select></td>
+                                                    <!--<div class="d-flex">-->
+                                                    <!--<input type="checkbox" id="vehicle1" name="create" class=" ms-2" value="Create">-->
+                                                    <!--<label for="vehicle1" class="ps-2 m-0" >Create</label>-->
+                                                    <!--<input type="checkbox" id="vehicle2" class="ms-2" name="edit" value="Edit">-->
+                                                    <!--<label for="vehicle2" class="ps-2 m-0">Edit</label>-->
+                                                    <!--<input type="checkbox" id="vehicle3" class="ms-2" name="delete" value="Delete">-->
+                                                    <!--<label for="vehicle2" class="ps-2 m-0">Delete</label>-->
+                                                    <!--<input type="checkbox" id="vehicle3" class="ms-2" name="delete" value="Delete">-->
+                                                    <!--<label for="vehicle2" class="ps-2 m-0">View</label>-->
+                                                    <!--</div>-->
+                                                
                                                 <td >
                                                     <div class="d-flex">
                                                         <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit" onclick="return runMyFunction({{json_encode($activity)}});">
-                                                            <i class="mdi mdi-pencil"></i>
+                                                            <i class="mdi mdi-pencil" style="{{$permissions[0]->edit_report==1 ? 'display:block':'display:none'}}"></i>
                                                         </a>
                                                         <a class="h3"  data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData({{$activity['id']}});">
-                                                            <i class="mdi mdi-delete"></i>
+                                                            <i class="mdi mdi-delete" style="{{$permissions[0]->delete_report==1 ? 'display:block':'display:none'}}"></i>
                                                         </a>
                                                         <a class="h3"  href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
-                                                            <i class="mdi mdi-eye"></i>
+                                                            <i class="mdi mdi-eye" style="{{$permissions[0]->view_report==1 ? 'display:block':'display:none'}}"></i>
                                                             
                                                         </a>
                                                     </div>

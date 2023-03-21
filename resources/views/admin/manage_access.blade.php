@@ -383,20 +383,29 @@
                                         </div>
                                         <div class="p-3">
                                             <div class="mb-3 row">
-                                                <label for="name" class="col-sm- col-form-label"><h6>Select Supervisor</h6></label>
+                                                <label for="name" class="col-sm- col-form-label"><h6>Select User</h6></label>
                                                 <div class="dropdown col-sm-12">
                                                 <select class="form-select"  name="user_id" aria-label="Default select example">
                                                 @foreach($users as $user)
-                                                    <option selected value="{{$user['id']}}">{{$user['name']}}</option>
+                                                    <option value="{{$user['id']}}">{{$user['name']}}</option>
                                                 @endforeach
                                                 </select>
                                                     <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
                                                 </div>
                                             </div>
-                                            <div class="mb-3 row">
-                                                <label for="company_name" class="col-sm- col-form-label"><h6>Company Name</h6></label>
+                                            
+                                              <div class="mb-3 row">
+                                                <label for="name" class="col-sm- col-form-label"><h6>Parent Location</h6></label>
                                                 <div class="dropdown col-sm-12">
-                                                <input type="text" id="" class="form-control" name="company_name" value="">
+                                                <select class="form-select"  name="parent_location" aria-label="Default select example">
+                                                     <option selected>Select Company Name</option>
+                                                    @foreach($company as $value)
+                                                    <option  value="{{$value->id}}">{{$value->company_name}}</option>
+                                                    @endforeach
+                                                    
+                                             
+                                                </select>
+                                                    <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">

@@ -9,8 +9,11 @@ use App\Models\Report;
 use App\Models\CompanyDetails;
 use App\Models\Location;
 use App\Models\AccessWebsite;
+use Illuminate\Support\Facades\Hash;
 use DB;
 use Session;
+use Mail;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -68,6 +71,7 @@ class AdminController extends Controller
         $data['name'] = $request->name;
         $data['email'] = $request->email;
         $data['password'] = $request->password;
+        $data['bcrypt_password'] = Hash::make($request->password);
         $data['phone'] = $request->phone;
         $data['profile'] = '';
         $data['type'] = $request->categeory;
@@ -100,10 +104,10 @@ class AdminController extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
         $data->password = $request->password;
+        $data->bcrypt_password = Hash::make($request->password);
         $data->phone = $request->phone;
-        $data->type = $request->categeory;
+        //$data->type = $request->categeory;
         $data->address = $request->address;
-        
         $data->save();
         return redirect('users')->with('message', 'Updated User Successfully!');
     }
@@ -126,23 +130,29 @@ class AdminController extends Controller
 
     public function login(Request $request)
     {        
-        $login = User::where(['email' => $request['email'], 'password' => $request['password'],'type'=>'admin'])->first();
-        $request->session()->put('data',$login);
         // echo "<pre>";
+        // print_r($request->all());die;
+       // echo $request['type'];die;
+        $login = User::where(['email' => $request['email'], 'password' => $request['password'],'type'=>$request->type])->first();
         // print_r($login);die;
+        $request->session()->put('data',$login);
         if ($login) {
             return redirect('index')->with('message', 'Login successfully !!');
         } else {
-            return redirect('admin_login')->with('message', 'Your email or password is incorrect please try again ! ');
+            return redirect('admin_login')->with('error', 'Your email or password is incorrect please try again ! ');
         }
     }
 
     public function manage_access(){
        
         $users = User::all();
+        $company = CompanyDetails::all();
 
-      $locations = Location::all();
-        return view('admin.manage_access', compact('users','locations'));
+      $locations = Location::all()->toArray();
+     
+    //   echo "<pre>";
+    //   print_r($locations);die;
+        return view('admin.manage_access', compact('users','locations','company'));
     }
 
     public function edit_location($id){
@@ -155,8 +165,10 @@ class AdminController extends Controller
         $count = AccessWebsite::where(['user_id'=>$request->user_id])->count();
         //echo $count;die;
         if($count>0){
+            $data['company_id'] =$request->parent_location;
             $data['site_access'] =$request->site_access=='on' ?  1 : 0;
             $data['location_id'] =json_encode($request->location_id);
+            $data['control_users'] =json_encode($request->users_id);
           $data['create_account'] =$request->create_account=='on' ?  1 : 0;
             $update = AccessWebsite::where('user_id', $request->user_id)->update($data);
             if($update){
@@ -164,13 +176,15 @@ class AdminController extends Controller
             }
         }else{
             $data = new AccessWebsite;
-        $data['site_access'] = $request->site_access=='on' ?  1 : 0;
-        $data['user_id'] = $request->user_id;
-        $data['location_id'] =json_encode($request->location_id);
-        $data['create_account'] = $request->create_account=='on' ?  1 : 0;
-        if($data->save()){
-            return redirect('manage_access')->with('message', 'Changes Successfully!');
-        }
+            $data['company_id'] =$request->parent_location;
+            $data['control_users'] =json_encode($request->users_id);
+            $data['site_access'] = $request->site_access=='on' ?  1 : 0;
+            $data['user_id'] = $request->user_id;
+            $data['location_id'] =json_encode($request->location_id);
+            $data['create_account'] = $request->create_account=='on' ?  1 : 0;
+            if($data->save()){
+                return redirect('manage_access')->with('message', 'Changes Successfully!');
+            }
     }
 
 }
@@ -206,9 +220,8 @@ class AdminController extends Controller
         $data = User::find($request->id);
         $data->profile = '';
           if($request->hasfile('file')){
-              
-            $extension = $request->file->getClientOriginalExtension();
-             $filename = time().'.'.$extension;
+            $extension = $request->file->getClientOriginalName();
+            $filename = time().'.'.$extension;
             $request->file->move(public_path('profile'), $filename);
             $data->profile = $filename;
          }
@@ -218,6 +231,8 @@ class AdminController extends Controller
         $data->phone = $request->phone;
         $data->address = $request->address;
         $data->save();
+        
+        session()->put('data', $data);
         return redirect('profile_page')->with('message', 'Profile Updated Successfully!');
         
     }
@@ -245,15 +260,35 @@ class AdminController extends Controller
         }
 
     public function admin_reports(){
-     
+        $login = Session::get('data');
+       // print_r($filter_data['type']);die;
         $data = DB::table('custom_title')->select('id','title')->get();
-        $locations = Location::all();
-         $company = CompanyDetails::all();
-        $activitys = Report::with('users')->get()->toArray();
-        // echo "<pre>";
-        // print_r($activitys);die;
-     
-        return view('admin.admin_reports',compact('data','locations','activitys','company'));
+        $permissions = AccessWebsite::where('user_id',$login['id'])->get();
+         $company='';
+         if($login['type']=='admin'){
+         $activitys = Report::select('reports.*', 'custom_title.title')
+            ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
+            ->with('users')->get()->toArray();
+          $locations = Location::all();
+           $company = CompanyDetails::all();
+         }
+         else{
+             if($login['type']=='client'){
+             $activitys = Report::select('reports.*', 'custom_title.title')
+            ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
+            ->with('users')->where('assign_client','=',1)->get()->toArray();
+              $company = CompanyDetails::where('id',$permissions[0]->company_id);
+              $locations = Location::whereIn('id',json_decode($permissions[0]->location_id));
+             }else{
+                  $activitys = Report::select('reports.*', 'custom_title.title')
+            ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
+            ->with('users')->where('user_id',$login['id'])->get()->toArray();
+              $company = CompanyDetails::where('id',$permissions[0]->company_id);
+              $locations = Location::whereIn('id',json_decode($permissions[0]->location_id));
+             }
+           
+          }
+           return view('admin.admin_reports',compact('data','locations','activitys','login','company','permissions'));
         
     }
     public function edit_title(Request $request){
@@ -297,12 +332,13 @@ class AdminController extends Controller
 
             $data = new Report;
             $data['report_title'] = $request->report_title;
-             $data['company_id'] = $request->company;
+             $data['company_id'] = $request->company_id;
              $data['level'] = $request->level;
             $data['user_id'] = $request->user_id;
             $data['main_location'] = $request->main_location;
             $data['sub_location'] = $request->sub_location;
             $data['report_time'] = $request->report_time." ".$request->meridian;
+             $data['description'] = $request->description;
             $data['report_date'] = $request->report_date;        
             $data['report_type'] = $request->report_type;        
             if($request->hasfile('report_photo')){
@@ -336,6 +372,7 @@ class AdminController extends Controller
         $data->main_location = $request->main_location;
         $data->sub_location = $request->sub_location;
         $data->report_time = $request->report_time." ".$request->meridian;
+        $data->description = $request->description;
         $data->report_date = $request->report_date;        
         $data->report_type = $request->report_type;         
         if($data->save())
@@ -386,14 +423,14 @@ class AdminController extends Controller
                 $data['company_name'] = $request->company_name;
                 $data['description'] = $request->description;
                 
-                if($request->hasfile('logo')){
-                 foreach ($request->logo as $image) {
-                 $name = $image->getClientOriginalName();
-                 $filename = time().'.'.$name;
-                 $image->move(public_path('images'), $filename);
+        //         if($request->hasfile('logo')){
+        //          foreach ($request->logo as $image) {
+        //          $name = $image->getClientOriginalName();
+        //          $filename = time().'.'.$name;
+        //          $image->move(public_path('images'), $filename);
             
-              }
-        }
+        //       }
+        // }
                 if($data->save())
                      echo json_encode(['message'=>'Company Save  Successfully!']);
                 else
@@ -418,8 +455,40 @@ class AdminController extends Controller
                      echo json_encode(['message'=>'Company Save  Successfully!']);
                 else
                    echo json_encode(['message'=>'Some Error!']);
-           
         }
+        
+        
+        function sendEmailWithPdf(){
+            $data["email"] = "ritesh@codenomad.net";
+            $data["title"] = "This is a test email with pdf file";
+            $data["body"] = "Test email";
+      
+            $pdf = PDF::loadView('emails.sendEmailWithPdf', $data);
+      
+            Mail::send('emails.myTestMail', $data, function($message)use($data, $pdf) {
+                $message->to($data["email"], $data["email"])
+                        ->subject($data["title"])
+                        ->attachData($pdf->output(), "text.pdf");
+            });
+      
+            dd('Mail sent successfully');
+              
+            }
+            
+            
+     function AssignValueToClient(Request $request){
+        //  echo "<pre>";
+        //  print_r($request->all());die;
+         $id = $request->id;
+         $value = $request->value;
+         $update = Report::where('id', $id)->update(['assign_client'=>$value]);
+         
+         if($update)
+                echo json_encode(['message'=>'Report has been assigned Successfully!']);
+             else
+                echo json_encode(['message'=>'Some Error!']);
+         
+     }     
      
 
         

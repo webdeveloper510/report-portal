@@ -62,5 +62,8 @@ Route::post('company_details', [AdminController::class, 'company_details'])->nam
 Route::get('company_details',[AdminController::class, 'get_company']);
 Route::post('edit_company',[AdminController::class, 'update_company']);
 
+Route::get('send-email-with-pdf',[AdminController::class,'sendEmailWithPdf']);
+Route::post('assign-client', [AdminController::class,'AssignValueToClient']);
+
 
 

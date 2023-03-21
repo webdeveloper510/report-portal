@@ -337,7 +337,7 @@
                         <div class="card">
                             <div class="card-body profile-card">
                                 <center class="mt-4">  
-                                    <img class="profile" src="{{session('data')['profile']}}"  width="150"  />
+                                    <img class="profile" src="{{ asset('public/profile/' . session('data')['profile']) }}"  width="150"  />
                                     <h4 class="card-title mt-2">{{session('data')['name']}}</h4>
                                     <!-- <h6 class="card-subtitle">Account Manager </h6> -->
                                 </center>

@@ -20,7 +20,7 @@
 var delete_id=''  
 var base_url =  window.location.origin+'/report-portal';
     $('#report').on('submit', function(event){
-       
+        console.log('yeeee')
       event.preventDefault();
       var url = base_url+'/insert_activity'
       $.ajax({
@@ -33,6 +33,7 @@ var base_url =  window.location.origin+'/report-portal';
           processData: false,
           success:function(response)
           {
+             // console.log(response);return false;
               $('#add').modal('hide');
               toastr.options =  {
                   "closeButton" : true,
@@ -74,7 +75,7 @@ var base_url =  window.location.origin+'/report-portal';
             }
             
             function runMyFunction(data){
-              console.log(data)
+            //   console.log(data);return false;
               let time = data.report_time.split(':');
               console.log(time)
               let str = time[1].replace("AM",'');
@@ -86,6 +87,7 @@ var base_url =  window.location.origin+'/report-portal';
               $('#parent_loc').val(data.main_location);
               $('#sub_loc').val(data.sub_location);
               $('#hidden').val(data.id);
+              $('#desc').html(data.description);
               $('#user_id').val(data.user_id);  
           }
 
@@ -282,6 +284,44 @@ var base_url =  window.location.origin+'/report-portal';
           }
       });
   });
+  
+  
+  
+//-------------------------Assign to Client----------------------------------------//  
+    $('.assign_client').on('change', function() {
+   
+     var value = $(this).val();
+     var data_id = $(this).attr("data-id");
+     var url = base_url+'/assign-client';
+     $.ajaxSetup({
+    headers:
+        {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+      $.ajax({
+          
+          url: url,
+          method: 'POST',
+          data: {value:value, id:data_id},
+          success:function(response)
+          {
+            //   console.log(response);return false;
+            let done = JSON.parse(response);
+            toastr.options =  {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+        toastr.success(done.message);
+      },
+       error: function(response) {
+      
+  },
+      });
+    });
+
+
+
 function showCompany(data){
     console.log(data)
     //let obj = JSON.parse(data);

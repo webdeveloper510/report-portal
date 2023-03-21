@@ -67,9 +67,6 @@
         font-size: medium !important;
     }
 
-    .user-table tbody tr td {
-        text-transform: capitalize !important;
-    }
 
     .left-sidebar {
         top: 60px !important;

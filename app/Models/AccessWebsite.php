@@ -9,4 +9,6 @@ class AccessWebsite extends Model
 {
     use HasFactory;
     protected $table = "access_websites";
+    
+  
 }
