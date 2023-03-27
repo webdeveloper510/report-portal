@@ -28,7 +28,7 @@ class AdminController extends Controller
         return view('admin.profile_page');
     }
 
-    public function basic_table()
+    public function getUsers()
     {
         return view('users');
     }
@@ -59,8 +59,8 @@ class AdminController extends Controller
     }
 
     public function index(){
-        $count = User::get()->count();
-        $report = Report::get()->count();
+        $count = User::where('type', '!=', 'admin')->get()->count();
+        $report = Report::where('user_id', '!=', 1)->get()->count();
         return view('admin.index',compact('count','report'));
     }
 
@@ -129,17 +129,13 @@ class AdminController extends Controller
 
 
     public function login(Request $request)
-    {        
-        // echo "<pre>";
-        // print_r($request->all());die;
-       // echo $request['type'];die;
+    {    
         $login = User::where(['email' => $request['email'], 'password' => $request['password'],'type'=>$request->type])->first();
-        // print_r($login);die;
         $request->session()->put('data',$login);
         if ($login) {
             return redirect('index')->with('message', 'Login successfully !!');
         } else {
-            return redirect('admin_login')->with('error', 'Your email or password is incorrect please try again ! ');
+            return redirect('login')->with('error', 'Your email or password is incorrect please try again ! ');
         }
     }
 
@@ -169,6 +165,7 @@ class AdminController extends Controller
             $data['site_access'] =$request->site_access=='on' ?  1 : 0;
             $data['location_id'] =json_encode($request->location_id);
             $data['control_users'] =json_encode($request->users_id);
+            $data['report_assign'] =$request->report_assign;
           $data['create_account'] =$request->create_account=='on' ?  1 : 0;
             $update = AccessWebsite::where('user_id', $request->user_id)->update($data);
             if($update){
@@ -181,6 +178,7 @@ class AdminController extends Controller
             $data['site_access'] = $request->site_access=='on' ?  1 : 0;
             $data['user_id'] = $request->user_id;
             $data['location_id'] =json_encode($request->location_id);
+            $data['report_assign'] =$request->report_assign;
             $data['create_account'] = $request->create_account=='on' ?  1 : 0;
             if($data->save()){
                 return redirect('manage_access')->with('message', 'Changes Successfully!');
@@ -207,7 +205,7 @@ class AdminController extends Controller
 
         $data = Location::find($id);
         if($data)
-                   echo json_encode(['message'=>'Delete Location Successfully!']);
+                   echo json_encode(['message'=>'Location deleted Successfully!']);
                 else
                    echo json_encode(['message'=>'Some Error!']);
             }
@@ -264,19 +262,30 @@ class AdminController extends Controller
        // print_r($filter_data['type']);die;
         $data = DB::table('custom_title')->select('id','title')->get();
         $permissions = AccessWebsite::where('user_id',$login['id'])->get();
+       
          $company='';
          if($login['type']=='admin'){
-         $activitys = Report::select('reports.*', 'custom_title.title')
-            ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
+         $activitys = Report::select('reports.*', 'custom_title.title','locations.location_name','locations.parent_location')
+          ->leftjoin('locations', 'locations.id', '=', 'reports.main_location')
+            ->leftjoin('custom_title', 'custom_title.id', '=', 'reports.report_title')
             ->with('users')->get()->toArray();
+            // echo "<pre>";
+            // print_r($activitys);die;
           $locations = Location::all();
+        //   echo "<pre>";
+        //   print_r($locations);die;
            $company = CompanyDetails::all();
          }
          else{
              if($login['type']=='client'){
-             $activitys = Report::select('reports.*', 'custom_title.title')
+             $activitys = Report::select('reports.*', 'custom_title.title','locations.location_name','locations.parent_location')
             ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
-            ->with('users')->where('assign_client','=',1)->get()->toArray();
+             ->join('locations', 'locations.id', '=', 'reports.main_location')
+            ->with('users')->whereIn('main_location',json_decode($permissions[0]->location_id))
+            ->where('company_id',$permissions[0]->company_id)
+            ->get()->toArray();
+            // echo "<pre>";
+            //  print_r($activitys);die;
               $company = CompanyDetails::where('id',$permissions[0]->company_id);
               $locations = Location::whereIn('id',json_decode($permissions[0]->location_id));
              }else{
@@ -332,6 +341,7 @@ class AdminController extends Controller
 
             $data = new Report;
             $data['report_title'] = $request->report_title;
+             $data['address'] = $request->address;
              $data['company_id'] = $request->company_id;
              $data['level'] = $request->level;
             $data['user_id'] = $request->user_id;
@@ -365,10 +375,10 @@ class AdminController extends Controller
     {
      
         $data = Report::find($request->id);
-        // echo "<pre>";
-        // print_r($request->all());die;
+        //print_r($request->all());die;
         $data->report_title = $request->report_title;
         $data->user_id= $request->user_id;
+        $data->address = $request->address;
         $data->main_location = $request->main_location;
         $data->sub_location = $request->sub_location;
         $data->report_time = $request->report_time." ".$request->meridian;
@@ -383,9 +393,11 @@ class AdminController extends Controller
     }
 
             public function report_view($id){
-                $reports_view = Report::with('users')->where('id',$id)->get()->toArray();
+                $reports_view = Report::select('reports.*','locations.location_name','locations.parent_location')
+               ->join('locations', 'locations.id', '=', 'reports.main_location')
+                ->where('reports.id',$id)->with('users')->get()->toArray();
                 // echo "<pre>";
-                // print_r(json_decode($reports_view[0]['report_photo']));die;
+                // print_r($reports_view);die;
                     return view('admin.report_view',compact('reports_view'));
             }
             public function delete_data(Request $request,$id,$tbl){ 
@@ -400,11 +412,18 @@ class AdminController extends Controller
             public function report_date(){
                 $filter_data = Session::get('filter'); 
                 // print_r($filter_data);die;   
-                $reports = Report::with('users')->whereBetween('report_date', [$filter_data['start_date'], $filter_data['end_date']])->get()->toArray();
+                $reports = Report::select('reports.*','locations.location_name','locations.parent_location')
+                ->join('locations', 'locations.id', '=', 'reports.main_location')
+                ->where(['main_location'=>$filter_data['main_location'],'company_id'=>$filter_data['company_id']])
+                ->whereBetween('report_date', [$filter_data['start_date'], $filter_data['end_date']])->with('users')->get()->toArray();
                 return view('admin.report_date',compact('reports','filter_data'));
+            //   echo "<pre>";
+            //   print_r($reports);die;
             }            
 
-            public function filter_data(Request $request){               
+            public function filter_data(Request $request){ 
+                $filter['main_location'] = $request->main_location;
+                 $filter['company_id'] = $request->company_id;
                 $filter['start_date'] = $request->start_date;
                 $filter['end_date'] = $request->end_date;
                 Session::put('filter', $filter);
@@ -413,24 +432,28 @@ class AdminController extends Controller
             public function logout(){
                 Session::flush();
                 Session::forget('data');
-                return redirect('admin_login');
+                return redirect('login');
             }
             
              public function company_details(Request $request)
      {
-           
+        //  echo "<pre>";
+        //  print_r($request->all());die;
                 $data = new CompanyDetails;
                 $data['company_name'] = $request->company_name;
+                $data['address'] = '';
+                $data['main_location'] = json_encode($request->main_location);
+                $data['sub_location'] = '';
                 $data['description'] = $request->description;
                 
-        //         if($request->hasfile('logo')){
-        //          foreach ($request->logo as $image) {
-        //          $name = $image->getClientOriginalName();
-        //          $filename = time().'.'.$name;
-        //          $image->move(public_path('images'), $filename);
-            
-        //       }
-        // }
+                $data['logo'] = '';
+                if($request->hasfile('logo')){
+                $extension = $request->file('logo')->getClientOriginalName();
+                $filename = time().'.'.$extension;
+                $request->logo->move(public_path('images'), $filename);
+                $data['logo'] = $filename;
+         }
+        
                 if($data->save())
                      echo json_encode(['message'=>'Company Save  Successfully!']);
                 else
@@ -440,16 +463,41 @@ class AdminController extends Controller
     
     
         public function get_company(){
-            $data = CompanyDetails::all();
-              return view('admin.company_details',compact('data'));
+            $get_locations = Location::all();
+            // echo "<pre>";
+            // print_r(($get_locations->toArray()));die;
+            
+            $final_location = CompanyDetails::all();
+            
+            $final_data =[];
+            foreach ($final_location as $location) {
+                $final_array['id']= $location->id;
+                $final_array['company_name']= $location->company_name;
+                $final_array['description']= $location->description;
+                $details = json_decode($location->main_location);
+             
+                $locations = Location::select("parent_location")
+                    ->whereIn('id', $details)
+                    ->get()->toArray();
+                
+                $final_array['location'] = collect($locations)->pluck('parent_location')->implode(', ');
+                array_push($final_data,$final_array);
+            } 
+            
+          return view('admin.company_details',compact('locations','final_data','get_locations'));
               
         }
         
          function update_company(Request $request)
         {
+            // echo "<pre>";
+            // print_r($request->all());die;
           
             $data = CompanyDetails::find($request->id);
             $data->company_name = $request->company_name;
+            $data->address = '';
+            $data->main_location = $request->main_location;
+            $data->sub_location = '';
             $data->description = $request->description;
              if($data->save())
                      echo json_encode(['message'=>'Company Save  Successfully!']);
@@ -463,10 +511,10 @@ class AdminController extends Controller
             $data["title"] = "This is a test email with pdf file";
             $data["body"] = "Test email";
       
-            $pdf = PDF::loadView('emails.sendEmailWithPdf', $data);
+            $pdf = PDF::loadView('emails.myTestMail', $data);
       
             Mail::send('emails.myTestMail', $data, function($message)use($data, $pdf) {
-                $message->to($data["email"], $data["email"])
+                $message->to($data["email"])
                         ->subject($data["title"])
                         ->attachData($pdf->output(), "text.pdf");
             });
@@ -476,19 +524,19 @@ class AdminController extends Controller
             }
             
             
-     function AssignValueToClient(Request $request){
-        //  echo "<pre>";
-        //  print_r($request->all());die;
-         $id = $request->id;
-         $value = $request->value;
-         $update = Report::where('id', $id)->update(['assign_client'=>$value]);
+    //  function AssignValueToClient(Request $request){
+    //     //  echo "<pre>";
+    //     //  print_r($request->all());die;
+    //      $id = $request->id;
+    //      $value = $request->value;
+    //      $update = Report::where('id', $id)->update(['assign_client'=>$value]);
          
-         if($update)
-                echo json_encode(['message'=>'Report has been assigned Successfully!']);
-             else
-                echo json_encode(['message'=>'Some Error!']);
+    //      if($update)
+    //             echo json_encode(['message'=>'Report has been assigned Successfully!']);
+    //          else
+    //             echo json_encode(['message'=>'Some Error!']);
          
-     }     
+    //  }     
      
 
         

@@ -12,6 +12,12 @@
         $('#multiple_user-checkboxes').multiselect({
             includeSelectAllOption: true,
           });
+        $('#parent_loc').multiselect({
+            includeSelectAllOption: true,
+        });
+        $('.edit').multiselect({
+            includeSelectAllOption: true,
+        });
     });
   })(jQuery);
 /**------------------------------------------------------------Add Report ----------------------------------------------------*/
@@ -20,7 +26,6 @@
 var delete_id=''  
 var base_url =  window.location.origin+'/report-portal';
     $('#report').on('submit', function(event){
-        console.log('yeeee')
       event.preventDefault();
       var url = base_url+'/insert_activity'
       $.ajax({
@@ -106,6 +111,7 @@ var base_url =  window.location.origin+'/report-portal';
                 processData: false,
                 success:function(response)
                 {
+                    console.log(response)
                     $('#add').modal('hide');
                     toastr.options =  {
                         "closeButton" : true,
@@ -230,7 +236,7 @@ var base_url =  window.location.origin+'/report-portal';
     $('#company').on('submit', function(event){
      
       event.preventDefault();
-      var url = base_url+'/company_details'
+      var url = base_url+'/company_post_details'
       $.ajax({
           url: url,
           method: 'POST',
@@ -326,7 +332,8 @@ function showCompany(data){
     console.log(data)
     //let obj = JSON.parse(data);
     //console.log(obj)
-    $('.company_name').val(data.company_name)
-    $('.description').val(data.description)
-    $('.hidden').val(data.id)
+    $('.company_name').val(data.company_name);
+    $('.description').val(data.description);
+    $('#address').text(data.address);
+    $('.hidden').val(data.id);
 }

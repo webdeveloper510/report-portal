@@ -271,7 +271,7 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                          <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark">
+                          <a href="<?php echo URL::to('/'); ?>/login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark">
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
                                  {{session('data') ? session('data')['name'] : ''}} 
                             </a>

@@ -470,6 +470,12 @@
                                                     <option  value="level3">Level3</option>
                                                   </select>
                                                 </div>
+                                                 <div class="mb-3 row">
+                                                        <label for="input" class="col-form-label">Address </label>
+                                                     <div class="col-sm- mb-3">
+                                                        <input type="text" class="form-control" name="address">
+                                                    </div>
+                                                </div>
                                                 
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Report Title</label>
@@ -484,7 +490,7 @@
                                                   <label for="exampleInputEmail1" class="form-label">Main Location</label>
                                                    <select class="form-select"  name="main_location" aria-label="Default select example">
                                                   @foreach($locations as $location)
-                                                    <option selected value="{{$location['parent_location']}}">{{$location['parent_location']}}</option>
+                                                    <option selected value="{{$location['id']}}">{{$location['parent_location']}}</option>
                                                   @endforeach
                                                   </select>
                                                 </div>
@@ -492,7 +498,7 @@
                                                   <label for="exampleInputEmail1" class="form-label">Sub Location</label>
                                                    <select class="form-select"  name="sub_location" aria-label="Default select example">
                                                   @foreach($locations as $location)
-                                                    <option selected value="{{$location['location_name']}}">{{$location['location_name']}}</option>
+                                                    <option selected value="{{$location['id']}}">{{$location['location_name']}}</option>
                                                   @endforeach
                                                   </select>
                                                 </div>
@@ -538,7 +544,8 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form>
+                                                    <form id="update_report">
+                                                           {{ csrf_field() }}
                                                         <div class="mb-3">
                                                             <label class="form-label">Report Type</label>
                                                             <select class="form-select"  name="report_type" id="report_type" aria-label="Default select example">
@@ -552,26 +559,32 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="exampleInputEmail1" class="form-label">Report Title</label>
-                                                            <select class="form-select" id="report_title" aria-label="Default select example">
+                                                            <select class="form-select" id="report_title" name="report_title" aria-label="Default select example">
                                                                 <option selected>Select Report Title</option>
                                                             @foreach($data as $title)
                                                                 <option value="{{$title->id}}">{{$title->title}}</option>
                                                             @endforeach
                                                             </select>
                                                         </div>
+                                                          <div class="mb-3 row">
+                                                                <label for="input" class="col-form-label">Address </label>
+                                                             <div class="col-sm- mb-3">
+                                                                <input type="text" class="form-control" name="address" value="{{$activitys[0]['address']}}">
+                                                            </div>
+                                                     </div>
                                                         <div class="mb-3">
                                                             <label class="form-label">Main Location</label>
-                                                            <select class="form-select" id="parent_loc" aria-label="Default select example">
+                                                            <select class="form-select" id="parent_loc" name="main_location" aria-label="Default select example">
                                                             @foreach($locations as $location)
-                                                                <option selected value="{{$location['parent_location']}}">{{$location['parent_location']}}</option>
+                                                                <option selected value="{{$location['id']}}">{{$location['parent_location']}}</option>
                                                             @endforeach
                                                             </select>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label class="form-label">Sub Location</label>
-                                                            <select class="form-select" id="sub_loc" aria-label="Default select example">
+                                                            <select class="form-select" id="sub_loc" name="sub_location" aria-label="Default select example">
                                                             @foreach($locations as $location)
-                                                                <option selected value="{{$location['location_name']}}">{{$location['location_name']}}</option>
+                                                                <option selected value="{{$location['id']}}">{{$location['location_name']}}</option>
                                                             @endforeach
                                                             </select>
                                                         </div>
@@ -581,7 +594,7 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label class="form-label">Report Date</label>
-                                                            <input type="date" value="" id="date" class="form-control">
+                                                            <input type="date" value="" id="date" name="report_date" class="form-control">
                                                         </div>
                                                         <div class="mb-3">
                                                           <label for="input" class="col-sm- col-form-label">Description</label>
@@ -589,11 +602,13 @@
                                                                     <textarea type="text" class="form-control" rows="3"  id="desc" name="description"></textarea>
                                                                 </div>
                                                          </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Report Photo</label>
-                                                            <input type="file" value="" name="report_photo" class="form-control" multiple>
-                                                        </div>
+                                                        <!--<div class="mb-3">-->
+                                                        <!--    <label class="form-label">Report Photo</label>-->
+                                                        <!--    <input type="file" value="" name="report_photo" class="form-control" multiple>-->
+                                                        <!--</div>-->
                                                         <div class="text-center">
+                                                            <input type="hidden"  name="id" value="" id="hidden"/>
+                                                            <input type="hidden"  name="user_id" value="" id="user_id"/>
                                                             <button type="submit" class="btn btn-primary col-6">Submit</button>
                                                         </div>
                                                     </form>
@@ -628,11 +643,12 @@
                                                 <th class="border-top-0">User Name</th>
                                                 <th class="border-top-0">Report Title</th>
                                                 <th class="border-top-0">Main Location</th>
+                                                  <th class="border-top-0">Address</th>
                                                 <th class="border-top-0">Sub Location</th>
+                                                
                                                 <th class="border-top-0">Report Time</th>
                                                 <th class="border-top-0">Report Date</th>
                                                 <th class="border-top-0">Report Type</th>
-                                                <th class="border-top-0"  style="{{ $login['type']=='client' ? 'display:none':'display:block'}}">Assign to the client</th>
                                                 <!--<th class="border-top-0">Report Permission</th>-->
                                                 <th class="border-top-0">Action</th>
                                             </tr>
@@ -643,16 +659,13 @@
                                                 <td>{{$loop->iteration }}</td>
                                                 <td>{{$activity['users'] ? $activity['users']['name']:''}}</td> 
                                                 <td>{{$activity['title']}}</td>
-                                                <td>{{$activity['main_location']}}</td>
-                                                <td>{{$activity['sub_location']}}</td>
+                                                <td>{{$activity['parent_location']}}</td>
+                                                 <td>{{$activity['address']}}</td>
+                                                <td>{{$activity['location_name']}}</td>
                                                 <td>{{$activity['report_time']}}</td>
                                                 <td>{{$activity['report_date']}}</td>
                                                 <td>{{$activity['report_type']}}</td>
-                                                <td><select class="form-select assign_client" data-id="{{$activity['id']}}" name="assign_client" style="{{ $login['type']=='client' ? 'display:none':'display:block'}}">
-                                                    <option>Select</option>
-                                                    <option value="1" <?php echo $activity['assign_client']==1? 'selected':'';?>>Yes</option>
-                                                    <option value="0" <?php echo $activity['assign_client']==0? 'selected':'';?>>No</option>
-                                                  </select></td>
+                                           
                                                     <!--<div class="d-flex">-->
                                                     <!--<input type="checkbox" id="vehicle1" name="create" class=" ms-2" value="Create">-->
                                                     <!--<label for="vehicle1" class="ps-2 m-0" >Create</label>-->
@@ -699,6 +712,24 @@
                                     <div class="card-body">
                                      <form action="{{ URL('/filter_data') }}" method="POST">
                                      @csrf
+                                          <div class="mb-3">
+                                                  <label for="exampleInputEmail1" class="form-label">Company Name</label>
+                                                   <select class="form-select"  name="company_id" aria-label="Default select example">
+
+                                                    <option selected>Select Company Name</option>
+                                                     @foreach($company as $value)
+                                                    <option  value="{{$value->id}}">{{$value->company_name}}</option>
+                                                    @endforeach
+                                                  </select>
+                                            </div>
+                                                <div class="mb-3">
+                                                      <label for="exampleInputEmail1" class="form-label">Main Location</label>
+                                                       <select class="form-select"  name="main_location" aria-label="Default select example">
+                                                      @foreach($locations as $location)
+                                                        <option selected value="{{$location['id']}}">{{$location['parent_location']}}</option>
+                                                      @endforeach
+                                                      </select>
+                                                </div>
                                         <div class="mb-3">
                                             <label class="form-label">Start Date</label>
                                             <input type="date" name="start_date" class="form-control" >

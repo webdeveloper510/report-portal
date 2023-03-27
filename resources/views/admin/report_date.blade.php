@@ -511,9 +511,10 @@ height: 100% !important;
                             <div class="col-md-4">
                                 <div class="mx-2">
                                     <p class="mb-0">Commercial Property</p>
-                                    <p class="mb-0">5412 Beach Boulevard</p>
-                                    <p class="mb-0"><b>Location: </b>{{$report['sub_location']}}</p>
-                                    <p><b>Unit: </b>{{$report['main_location']}}</p>
+                                    <p class="mb-0"><b>Address:</b>{{$report['address']}}</p>
+                                    <p class="mb-0"><b>Location: </b>{{$report['parent_location']}}</p>
+                                     
+                                    <p><b>Unit: </b>{{$report['location_name']}}</p>
                                     <p class=" mb-1">{{$report['users'] ? $report['users']['name']:''}}</p>
                                     <div class="level me-2">
                                         <p class="text-white  mx-2">(S) Level 3</p>

@@ -1,0 +1,3 @@
+[24-Mar-2023 17:17:38 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 130027520 bytes) in /home/wenh8y2gsojc/public_html/report-portal/app/Http/Controllers/AdminController.php on line 480
+[24-Mar-2023 17:17:41 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 130027520 bytes) in /home/wenh8y2gsojc/public_html/report-portal/app/Http/Controllers/AdminController.php on line 480
+[24-Mar-2023 17:17:43 UTC] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 130027520 bytes) in /home/wenh8y2gsojc/public_html/report-portal/app/Http/Controllers/AdminController.php on line 480

@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'usersession'], function () {
 Route::get('index',[AdminController::class, 'index']);
-Route::get('users', [AdminController::class, 'basic_table']);
+Route::get('users', [AdminController::class, 'getUsers']);
 Route::get('profile_page', [AdminController::class, 'profile_page']);
 Route::get('icon_materiale', [AdminController::class, 'icon_materiale']);
 Route::get('google_map', [AdminController::class, 'google_map']);
@@ -54,16 +54,18 @@ Route::get('report_view/{id}',[AdminController::class, 'report_view']);
 Route::get('report_date',[AdminController::class, 'report_date']);
 Route::post('filter_data',[AdminController::class, 'filter_data']);
 });
-Route::get('admin_login', [AdminController::class, 'admin_login']);
+Route::get('login', [AdminController::class, 'admin_login']);
 
 Route::post('login', [AdminController::class, 'login']);
 Route::get('logout',[AdminController::class, 'logout']);
-Route::post('company_details', [AdminController::class, 'company_details'])->name('company.details');
+Route::post('company_post_details', [AdminController::class, 'company_details'])->name('company.details');
 Route::get('company_details',[AdminController::class, 'get_company']);
 Route::post('edit_company',[AdminController::class, 'update_company']);
 
 Route::get('send-email-with-pdf',[AdminController::class,'sendEmailWithPdf']);
 Route::post('assign-client', [AdminController::class,'AssignValueToClient']);
+
+
 
 
 

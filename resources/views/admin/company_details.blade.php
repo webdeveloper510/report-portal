@@ -12,30 +12,15 @@
     <meta name="robots" content="noindex,nofollow">
     <title>Admin Panel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
+    <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo URL::to('/'); ?>/public/assets/images/favicon.png">
     <!-- Custom CSS -->
     <link href="<?php echo URL::to('/'); ?>/public/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" 
-     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
-     alpha/css/bootstrap.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+     <script src="<?php echo URL::to('/'); ?>/public/js/popper.js"></script>
 
-<link rel="stylesheet" type="text/css" 
-     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
-     alpha/css/bootstrap.css" rel="stylesheet">
-     <link rel="stylesheet" type="text/css" 
-     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
-     alpha/css/bootstrap.css" rel="stylesheet">
 <style>
      #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
         color: #2400ff !important;
@@ -49,15 +34,22 @@
     .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
         font-size: medium !important;
     }
+    .dropdown .btn-group {
+        width: 100% !important;
+    }
+    li {
+    list-style: none;
+    font-size: initial !important;
+    }
 
     .topbar{
         background: #2f3356 !important;
     }
 
-    li {
-        list-style: none;
-        font-size: x-large;
-    }
+    /*li {*/
+    /*    list-style: none;*/
+    /*    font-size: x-large;*/
+    /*}*/
 
     .fa {
         margin-left: 8px !important;
@@ -350,7 +342,9 @@
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
                                     Add Company Details
                                 </button>
-                                <!-- Add Modal -->
+
+                </div>
+                                                <!-- Add Modal -->
                                 <div class="modal fade " id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog p-4">
                                         <div class="modal-content">
@@ -360,31 +354,52 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>                        
                                                 <div class="modal-body">   
-                                                    <div class="row">                                            
-                                                        <div class="col-md-12">
-                                                            <div class="mb-2 row">
-                                                                <label for="input" class="col-sm-4  col-form-label"> Company Name </label>
-                                                                <div class="col-sm-">
+                                                
+                                                            <div class="mb-3 ">
+                                                                <label for="input" class="form-label"> Company Name </label>
+                                                                
                                                                     <input type="text" class="form-control" name="company_name">
-                                                                </div>
+                                                               
                                                             </div>
+                                                            <!--  <div class="mb-3 ">-->
+                                                            <!--    <label for="address" class="form-label">Address</label>-->
+                                                            <!--        <textarea type="text" class="form-control" rows="5" name="address"></textarea>-->
+                                                            <!--</div>-->
                                                             
-                                                            <div class="mb-2 row">
+
+                                                            
+                                                             <div class="mb-3 row">
+                                                                    <label for="name" class="col-sm- col-form-label"><h6>Main Locations</h6></label>
+                                                                    <div class="dropdown col-sm-12">
+                                                                        <select class="form-control" id="parent_loc"  name="main_location[]" multiple="multiple">
+                                                                            @foreach($get_locations as $location)
+                                                                            <option value="{{$location['id']}}">{{$location['parent_location']}}</option>   
+                                                                            @endforeach 
+                                                                        </select>
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                        
+                                                         <div class="mb-2 row">
                                                                 <label for="input" class="col-sm-4  col-form-label"> Logo </label>
                                                                 <div class="col-sm-">
                                                                    <input type="file"  name="logo" class="form-control">
                                                                 </div>
                                                             </div>
                                                             
+                                                      
                                                             
-                                                            <div class="mb-0 row">
-                                                                <label for="input" class="col-sm- col-form-label">Description</label>
-                                                                <div class="col-sm-12">
+                                                            
+                                                            <div class="mb-3 ">
+                                                                <label for="input" class="form-label">Description</label>
                                                                     <textarea type="text" class="form-control" rows="5" name="description"></textarea>
-                                                                </div>
+                                                               
                                                             </div>
                                                       
-
+                                                             <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                                                            <button type="submit" class="btn btn-primary btn1">Submit</button>
+                                                        </div>
                                                             </div> 
                                                              
                                                              
@@ -395,12 +410,9 @@
                                                         </div>
                                                         <!-- <div class="col-md-2"></div> -->
                                                         <!-- </form> -->
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
-                                                            <button type="submit" class="btn btn-primary btn1">Submit</button>
-                                                        </div>
-                                                    </div>
-                                                </div>   
+                                                       
+                                                    
+                                                    
                                         </div>
                                     </div>
                                 </div>
@@ -425,6 +437,20 @@
                                                                     <input type="text" class="form-control company_name" value=""  name="company_name">
                                                                 </div>
                                                             </div>
+                                                            
+                                                            
+                                                             <div class="mb-3 row">
+                                                                    <label for="name" class="col-sm- col-form-label">Main Locations</label>
+                                                                    <div class="dropdown col-sm-12">
+                                                                        <select class="form-control edit" id="parent_loc" name="main_location[]" multiple="multiple">
+                                                                            @foreach($get_locations as $location)
+                                                                            <option value="{{$location['id']}}">{{$location['parent_location']}}</option>   
+                                                                            @endforeach 
+                                                                        </select>
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                       
                                                             <div class="mb-0 row">
                                                                 <label for="input" class="col-sm- col-form-label">Description</label>
                                                                 <div class="col-sm-12">
@@ -432,8 +458,6 @@
                                                                 </div>
                                                             </div>
                                
-                                                             
-                                                             
                                                             <div id="main">
 
                                                             </div>
@@ -454,7 +478,6 @@
 
 
                     </div>
-                </div>
             </div>
         <!-- ============================================================== -->
         <!-- End Bread crumb and right sidebar toggle -->
@@ -479,24 +502,29 @@
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Company Name</th>
+                                             <th class="border-top-0">Main Location</th>
+                                              <!--<th class="border-top-0">Sub Location</th>-->
+                                               <!--<th class="border-top-0">Address</th>-->
                                             <th class="border-top-0">Description</th>    
                                             <th class="border-top-0">Action</th>
                                             
                                         </tr>
                                     </thead>
                                     <tbody>  
-                                    @foreach($data as $value)
+                                    @foreach($final_data as $location)
                                         <tr>
-                                            <td>{{$value->company_name}}</td>
-                                            <td>{{$value->description}}</td>  
-                                            <td>
-                                               <a href="" data-bs-toggle="modal" data-bs-target="#edit" onclick="showCompany({{$value}})">
-                                                   <i class="fa fa-pencil"  aria-hidden="true"></i>                            
+                                            <td>{{$location['company_name']}}</td>
+                                            <td>{{$location['location']}}</td>
+                                            <td>{{$location['description']}}</td> 
+                                            
+                                              <td>
+                                               <a href="" data-bs-toggle="modal" data-bs-target="#edit" onclick="showCompany({{json_encode($location)}})">
+                                            	   <i class="fa fa-pencil"  aria-hidden="true"></i>                            
                                             </a>
-                                               <a class="h3" data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData({{$value['id']}});">
-                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                </a>
-                                           </td>     
+                                               <a class="h3" data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData({{$location['id']}});">
+                                            	 <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            	</a>
+                                            </td>    
                                         </tr>  
                                         @endforeach
                                     </tbody>
@@ -551,19 +579,22 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="<?php echo URL::to('/'); ?>/public/assets/plugins/jquery/dist/jquery.min.js"></script>
+   
+     <script src="<?php echo URL::to('/'); ?>/public/js/jquery.min.js"></script>
+    <!-- <script src="<?php echo URL::to('/'); ?>/public/assets/plugins/jquery/dist/jquery.min.js"></script> -->
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo URL::to('/'); ?>/public/js/app-style-switcher.js"></script>
     <!--Wave Effects -->
+    <script src="<?php echo URL::to('/'); ?>/public/js/bootstrap-multiselect.js"></script>
+    
+    <script src="<?php echo URL::to('/'); ?>/public/js/main.js"></script>
+    <script src="<?php echo URL::to('/'); ?>/public/js/bootstrap.min.js"></script>
     <script src="<?php echo URL::to('/'); ?>/public/js/waves.js"></script>
     <!--Menu sidebar -->
     <script src="<?php echo URL::to('/'); ?>/public/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
-    <script src="<?php echo URL::to('/'); ?>/public/js/main.js"></script>
-	
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script>
   @if(Session::has('message'))

@@ -10,7 +10,7 @@
     <meta name="description" content="Material Pro Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
     <title>Admin Panel</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
+    <!--<link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />-->
     <link rel="stylesheet" type="text/css" 
      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- Favicon icon -->
@@ -471,6 +471,16 @@
                                                     <option value="{{$user['id']}}">{{$user['name']}}</option>
                                                     @endforeach
                                                     </select>
+                                                </div>
+                                            </div>
+                                                 <div class="mb-3 row">
+                                                <label for="name" class="col-sm- col-form-label"><h6>Report Assign</h6></label>
+                                                <div class="dropdown col-sm-12">
+                                                       <select class="form-select"  name="report_assign" aria-label="Default select example">
+                                                                <option value="">Choose</option>
+                                                                <option value="1">Yes</option>
+                                                                <option value="0">No</option>
+                                                      </select>
                                                 </div>
                                             </div>
                                             <div class="d-grid gap-2 col-6 mx-auto mb-3">
