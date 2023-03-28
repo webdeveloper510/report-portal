@@ -443,10 +443,13 @@ class AdminController extends Controller
             public function report_date(){
                 $filter_data = Session::get('filter'); 
                  //print_r($filter_data);die;   
-                $reports = Report::select('reports.*','locations.parent_location')
+                $reports = Report::select('reports.*','custom_title.title','locations.parent_location')
+                ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
                 ->join('locations', 'locations.id', '=', 'reports.main_location')
                 ->where(['main_location'=>$filter_data['main_location'],'company_id'=>$filter_data['company_id']])
                 ->whereBetween('report_date', [$filter_data['start_date'], $filter_data['end_date']])->with('users')->get()->toArray();
+                // echo "<pre>";
+                // print_r($reports);die;
                 return view('admin.report_date',compact('reports','filter_data'));
             //   echo "<pre>";
             //   print_r($reports);die;

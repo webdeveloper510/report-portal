@@ -515,7 +515,7 @@ height: 100% !important;
                                         <div class=""><p class="my-1">{{$report['report_date']}}, {{$report['report_time']}}</p></div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="text-center"><p class="my-1">(S) Officer Arrived On Duty</p></div>
+                                        <div class="text-center"><p class="my-1"></p>{{$report['title']}}</div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="text-end"><p class="num my-1">293742753</p></div>
@@ -540,7 +540,7 @@ height: 100% !important;
                             </div>
                             <div class="col-md-4">
                                 <div class="text ">
-                                    <p>Reported: Officer arrived on duty and checked in at the property securityoffice. Keys and radio equipment received along with past down ordersfrom past shift officer. Radio and equipment were found fully charged andavailable for my daily activity shift report.</p>
+                                    <p>{{$report['description']}}</p>
                                 </div>
                             </div>
                             <div class="col-md-4" >
