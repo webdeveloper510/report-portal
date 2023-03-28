@@ -295,6 +295,7 @@ class AdminController extends Controller
        
          }
          else{
+            $company='';
              if($login['type']=='client'){
              $activitys = Report::select('reports.*', 'custom_title.title','locations.parent_location','sub_location.sub_location')
             ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
@@ -303,14 +304,14 @@ class AdminController extends Controller
             ->with('users')->whereIn('main_location',json_decode($permissions[0]->location_id))
             ->where('company_id',$permissions[0]->company_id)
             ->get()->toArray();
-              $company = CompanyDetails::where('id',$permissions[0]->company_id);
+              $company = CompanyDetails::where('id',$permissions[0]->company_id)->get();
               $locations = Location::whereIn('id',json_decode($permissions[0]->location_id))->get();
              }else{
                   $activitys = Report::select('reports.*', 'custom_title.title','locations.parent_location')
             ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
             ->join('locations', 'locations.id', '=', 'reports.main_location')
             ->with('users')->where('user_id',$login['id'])->get()->toArray();
-            //   $company = CompanyDetails::where('id',$permissions[0]->company_id)->get()->toArray();
+             //$company = CompanyDetails::where('id',$permissions[0]->company_id)->get()->toArray();
               $company = CompanyDetails::all();
     
               $locations = Location::whereIn('id',json_decode($permissions[0]->location_id))->get();
