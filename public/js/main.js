@@ -38,7 +38,7 @@ var base_url =  window.location.origin+'/report-portal';
           processData: false,
           success:function(response)
           {
-              console.log(response);return false;
+            //   console.log(response);return false;
               $('#add').modal('hide');
               toastr.options =  {
                   "closeButton" : true,

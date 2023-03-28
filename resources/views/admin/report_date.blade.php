@@ -116,8 +116,8 @@ img.report_logo {
     height: 50px !important;
 }
 
-.level.me-2 {
-    background: green !important;
+.level.me-3 {
+    background: red !important;
 }
 
 
@@ -514,9 +514,9 @@ height: 100% !important;
                                     <p class="mb-0"><b>Address:</b>{{$report['address']}}</p>
                                     <p class="mb-0"><b>Location: </b>{{$report['parent_location']}}</p>
                                      
-                                    <p><b>Unit: </b>{{$report['location_name']}}</p>
+                                   
                                     <p class=" mb-1">{{$report['users'] ? $report['users']['name']:''}}</p>
-                                    <div class="level me-2">
+                                    <div class="level me-3">
                                         <p class="text-white  mx-2">(S) Level 3</p>
                                     </div>
                                 </div>

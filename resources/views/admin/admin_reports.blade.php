@@ -488,7 +488,7 @@
                                                 </div>
                                                 <div class="mb-3" id="other" style="display:none">
                                                   <label for="exampleInputEmail1" class="form-label">Custom Location</label>
-                                                  <input type="text" name="custom_id" value=""/>
+                                                  <input type="text" class="form-control" name="custom_id" value=""/>
                                                 </div>
                                                 
                                                 <div class="mb-3">
