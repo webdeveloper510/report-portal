@@ -530,6 +530,7 @@ height: 100% !important;
                                     <p class="mb-0">Commercial Property</p>
                                     <p class="mb-0"><b>Address:</b>{{$report['address']}}</p>
                                     <p class="mb-0"><b>Location: </b>{{$report['parent_location']}}</p>
+                                    <p class="mb-0"><b>Sub Location: </b>{{$report['sub_location']}}</p>
                                      
                                    
                                     <p class=" mb-1">{{$report['users'] ? $report['users']['name']:''}}</p>

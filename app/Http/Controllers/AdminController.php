@@ -424,7 +424,8 @@ class AdminController extends Controller
     }
 
             public function report_view($id){
-                $reports_view = Report::select('reports.*','locations.parent_location')
+                $reports_view = Report::select('reports.*','locations.parent_location','sub_location.sub_location')
+                ->join('sub_location', 'reports.sub_location', '=', 'sub_location.id')
                ->join('locations', 'locations.id', '=', 'reports.main_location')
                 ->where('reports.id',$id)->with('users')->get()->toArray();
                 // echo "<pre>";
@@ -443,8 +444,9 @@ class AdminController extends Controller
             public function report_date(){
                 $filter_data = Session::get('filter'); 
                  //print_r($filter_data);die;   
-                $reports = Report::select('reports.*','custom_title.title','locations.parent_location')
+                $reports = Report::select('reports.*','custom_title.title','locations.parent_location','sub_location.sub_location')
                 ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
+                ->join('sub_location', 'reports.sub_location', '=', 'sub_location.id')
                 ->join('locations', 'locations.id', '=', 'reports.main_location')
                 ->where(['main_location'=>$filter_data['main_location'],'company_id'=>$filter_data['company_id']])
                 ->whereBetween('report_date', [$filter_data['start_date'], $filter_data['end_date']])->with('users')->get()->toArray();
