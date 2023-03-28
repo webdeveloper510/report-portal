@@ -153,11 +153,20 @@ class AdminController extends Controller
         return view('admin.manage_access', compact('users','locations','company','sub_location'));
     }
 
-    public function edit_location($id){
+    public function edit_location($id,$sub_id){
         $data = Location::find($id);
+        $reports = Report::all()->get()->toArray();
+echo "<pre>";
+print_r($reports);die;
+         foreach ($reports as $report) {
+            $report_sub_location = $report->sub_location;         
+            }
+        
+        $locations = Report::where('sub_location', $location_id)
+                    ->get()->toArray();
         // echo "<pre>";
-        // print_r($data);die;
-        return view('admin.edit_location',compact('data'));
+        // print_r($locations);die;
+        return view('admin.edit_location',compact('data','locations'));
     }
 
     public function deny_access(Request $request){
@@ -191,8 +200,9 @@ class AdminController extends Controller
 
 }
     public function locations(){
-        $locations = Location::select('locations.*','sub_location.sub_location')->leftjoin('sub_location','sub_location.parent_location_id','=','locations.id')->get()->toArray();
-  
+        $locations = Location::select('locations.*','sub_location.sub_location','sub_location.id as sub_id')->leftjoin('sub_location','sub_location.parent_location_id','=','locations.id')->get()->toArray();
+        // echo "<pre>";
+        // print_r($locations);die;
         return view('admin.locations',compact('locations'));
     }
     
@@ -275,6 +285,10 @@ class AdminController extends Controller
           ->leftjoin('locations', 'locations.id', '=', 'reports.main_location')
             ->leftjoin('custom_title', 'custom_title.id', '=', 'reports.report_title')
             ->with('users')->get()->toArray();
+            // echo "<pre>";
+            // print_r($activitys);die;
+            // $location = Location::select('locations.*','sub_location.sub_location','sub_location.id as sub_id')->leftjoin('sub_location','sub_location.parent_location_id','=','locations.id')->get()->toArray();
+
           $locations = Location::all();
 
           $sublocation = DB::table('sub_location')->select('id','sub_location','parent_location_id')->get();

@@ -398,7 +398,16 @@
                                             <label for="address" class="col-sm- form-label">Description</label>
                                             <textarea class="form-control" id="address" rows="3" value="{{$data['description']}}" name="description">{{$data['description']}}</textarea>
                                         </div>
-                                        
+                                        <div class="mb-3 row">
+                                                <label for="name" class="col-sm- col-form-label"><h6>Sub Locations</h6></label>
+                                                <div class="mb-3 dropdown col-sm-12">                                                    
+                                                    <select id="multiple-checkboxes1" class="form-control">
+                                                    @foreach($locations as $location)
+                                                        <option value="$location['id']">{{$location['sub_location']}}</option>  
+                                                        @endforeach 
+                                                    </select>
+                                                    <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
+                                                </div>
                                         <!-- <div class="mb-3 row">
                                             <label for="email" class="col-sm- col-form-label">Email</label>
                                             <div class="col-sm-12">
