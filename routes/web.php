@@ -33,6 +33,7 @@ Route::post('/update', [AdminController::class, 'update']);
 Route::get('/delete_supervisor/{id}', [AdminController::class, 'delete_supervisor']);
 Route::get('/delete_location/{id}', [AdminController::class, 'delete_location']);
 Route::get('/edit_supervisor/{id}', [AdminController::class, 'ShowData']);
+Route::get('/get_address/{id}', [AdminController::class, 'get_address']);
 
 Route::post('deny_access',[AdminController::class, 'deny_access']);
 Route::post('location_insert',[AdminController::class, 'locations_insert'])->name('location.insert');
@@ -64,6 +65,7 @@ Route::post('edit_company',[AdminController::class, 'update_company']);
 
 Route::get('send-email-with-pdf',[AdminController::class,'sendEmailWithPdf']);
 Route::post('assign-client', [AdminController::class,'AssignValueToClient']);
+Route::post('sub_location', [AdminController::class,'sub_location']);
 
 
 

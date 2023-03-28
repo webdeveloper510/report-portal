@@ -470,11 +470,25 @@
                                                     <option  value="level3">Level3</option>
                                                   </select>
                                                 </div>
-                                                 <div class="mb-3 row">
-                                                        <label for="input" class="col-form-label">Address </label>
-                                                     <div class="col-sm- mb-3">
-                                                        <input type="text" class="form-control" name="address">
-                                                    </div>
+
+                                                <div class="mb-3">
+                                                  <label for="exampleInputEmail1" class="form-label">Main Location</label>
+                                                    <!-- <input type="text" class="form-control" name="main_location" value="{{$locations[0]['parent_location']}}" /> -->
+                                                    <select class="form-select"  name="main_location" onchange="get_address(this)" aria-label="Default select example">
+                                                    @foreach($locations as $location)
+                                                        <option selected value="{{$location['id']}}">{{$location['parent_location']}}</option>
+                                                    @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                  <label for="exampleInputEmail1" class="form-label">Sub Location</label>
+                                                        <select class="form-select"  name="sub_location"  onchange="input_show(this)" id="sub_location" aria-label="Default select example">
+                                                            <option value="">Select Sub Location</option>
+                                                        </select>
+                                                </div>
+                                                <div class="mb-3" id="other" style="display:none">
+                                                  <label for="exampleInputEmail1" class="form-label">Custom Location</label>
+                                                  <input type="text" name="custom_id" value=""/>
                                                 </div>
                                                 
                                                 <div class="mb-3">
@@ -486,22 +500,14 @@
                                                     @endforeach
                                                   </select>
                                                 </div>
-                                                <div class="mb-3">
-                                                  <label for="exampleInputEmail1" class="form-label">Main Location</label>
-                                                   <select class="form-select"  name="main_location" aria-label="Default select example">
-                                                  @foreach($locations as $location)
-                                                    <option selected value="{{$location['id']}}">{{$location['parent_location']}}</option>
-                                                  @endforeach
-                                                  </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                  <label for="exampleInputEmail1" class="form-label">Sub Location</label>
-                                                   <select class="form-select"  name="sub_location" aria-label="Default select example">
-                                                  @foreach($locations as $location)
-                                                    <option selected value="{{$location['id']}}">{{$location['location_name']}}</option>
-                                                  @endforeach
-                                                  </select>
-                                                </div>
+                                               
+                                                
+                                                <div class="mb-3 row">
+                                                    <label for="input" class="col-sm- col-form-label">Address</label>
+                                                    <div class="col-sm-12">
+                                                        <textarea type="text" class="form-control" rows="3" id="add" name="address"></textarea>
+                                                    </div>
+                                                 </div>
                                                 <div class="mb-3">
                                                   <label class="form-label">Report Time</label>
                                                   <input type="time"  name="report_time" value="" id="timeInput" onChange="onTimeChange()" class="form-control">
@@ -566,12 +572,7 @@
                                                             @endforeach
                                                             </select>
                                                         </div>
-                                                          <div class="mb-3 row">
-                                                                <label for="input" class="col-form-label">Address </label>
-                                                             <div class="col-sm- mb-3">
-                                                                <input type="text" class="form-control" name="address" value="{{$activitys[0]['address']}}">
-                                                            </div>
-                                                     </div>
+                                                   
                                                         <div class="mb-3">
                                                             <label class="form-label">Main Location</label>
                                                             <select class="form-select" id="parent_loc" name="main_location" aria-label="Default select example">
@@ -580,14 +581,21 @@
                                                             @endforeach
                                                             </select>
                                                         </div>
-                                                        <div class="mb-3">
+                                                        <!-- <div class="mb-3">
                                                             <label class="form-label">Sub Location</label>
                                                             <select class="form-select" id="sub_loc" name="sub_location" aria-label="Default select example">
                                                             @foreach($locations as $location)
                                                                 <option selected value="{{$location['id']}}">{{$location['location_name']}}</option>
                                                             @endforeach
                                                             </select>
+                                                        </div> -->
+                                                        
+                                                     <div class="mb-3 row">
+                                                        <label for="input" class="col-sm- col-form-label">Address</label>
+                                                        <div class="col-sm-12">
+                                                            <textarea type="text" class="form-control" rows="3"  name="address">{{ $activitys[0]['address'] }}</textarea>
                                                         </div>
+                                                    </div>
                                                         <div class="mb-3">
                                                             <label class="form-label">Report Time</label>
                                                             <input type="time" value="" id="time" name="report_time" class="form-control">
@@ -645,7 +653,6 @@
                                                 <th class="border-top-0">Main Location</th>
                                                   <th class="border-top-0">Address</th>
                                                 <th class="border-top-0">Sub Location</th>
-                                                
                                                 <th class="border-top-0">Report Time</th>
                                                 <th class="border-top-0">Report Date</th>
                                                 <th class="border-top-0">Report Type</th>
@@ -661,7 +668,7 @@
                                                 <td>{{$activity['title']}}</td>
                                                 <td>{{$activity['parent_location']}}</td>
                                                  <td>{{$activity['address']}}</td>
-                                                <td>{{$activity['location_name']}}</td>
+                                                 <td>{{$activity['sub_location']}}</td>
                                                 <td>{{$activity['report_time']}}</td>
                                                 <td>{{$activity['report_date']}}</td>
                                                 <td>{{$activity['report_type']}}</td>

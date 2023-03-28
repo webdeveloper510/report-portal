@@ -381,17 +381,24 @@
                                                 <input type="text" class="form-control"  name="parent_location" value="{{$data['parent_location']}}">
                                             </div>
                                         </div>
-                                        <div class="mb-3 row">
+                                        <!-- <div class="mb-3 row">
                                             <label for="name" class="col-sm- col-form-label"> Sub Location</label>
 
                                             <div class="col-sm-12">
                                                 <input type="text" class="form-control" id="input" name="location_name" value="{{$data['location_name']}}">
+                                            </div>
+                                        </div> -->
+                                        <div class="mb-3 row">
+                                            <label for="input" class="col-sm- col-form-label">Address</label>
+                                            <div class="col-sm-12">
+                                                <textarea type="text" class="form-control" rows="3"  name="address">{{ $data->address }}</textarea>
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="address" class="col-sm- form-label">Description</label>
                                             <textarea class="form-control" id="address" rows="3" value="{{$data['description']}}" name="description">{{$data['description']}}</textarea>
                                         </div>
+                                        
                                         <!-- <div class="mb-3 row">
                                             <label for="email" class="col-sm- col-form-label">Email</label>
                                             <div class="col-sm-12">

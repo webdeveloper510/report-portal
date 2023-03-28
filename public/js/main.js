@@ -38,7 +38,7 @@ var base_url =  window.location.origin+'/report-portal';
           processData: false,
           success:function(response)
           {
-             // console.log(response);return false;
+              console.log(response);return false;
               $('#add').modal('hide');
               toastr.options =  {
                   "closeButton" : true,
@@ -55,6 +55,41 @@ var base_url =  window.location.origin+'/report-portal';
       });
   });
 
+  var base_url =  window.location.origin+'/report-portal';
+    $('#sub_location').on('submit', function(event){
+      event.preventDefault();
+      
+      var url = base_url+'/sub_location';
+      $.ajaxSetup({
+        headers:
+        {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+      $.ajax({
+          url: url,
+          method: 'POST',
+          data:$(this).serialize(),
+          cache : false,
+          processData: false,
+          success:function(response)
+          {
+            let data = JSON.parse(response)
+            console.log(response)
+              toastr.options =  {
+                  "closeButton" : true,
+                  "progressBar" : true,
+              }
+              toastr.success(data.message);
+              setTimeout(function(){
+                  location.reload();
+              },3000)
+          },
+          error: function(response) {
+              //$('.error').remove();
+          }
+      });
+  });
 
     
   var inputEle = document.getElementById('timeInput');
@@ -326,7 +361,15 @@ var base_url =  window.location.origin+'/report-portal';
       });
     });
 
-
+    function input_show(a){
+          if($(a).val()=='other'){
+            $('#other').show()
+          }else{
+            $('#other').hide()
+          }
+      
+   
+      }
 
 function showCompany(data){
     console.log(data)
@@ -336,4 +379,39 @@ function showCompany(data){
     $('.description').val(data.description);
     $('#address').text(data.address);
     $('.hidden').val(data.id);
+}
+//----------------------------------------------reports----------------------------------------//
+function get_address(a){
+    var id = $(a).val();
+    var url = base_url+'/get_address/'+id;
+    
+     $.ajaxSetup({
+        headers:
+        {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+      url: url,
+      type:"GET",
+
+      success:function(response){
+        //console.log(response);return false;
+        $('#sub_location').html('');
+        $('#sub_location').append(`<option value="">Choose Sub Location</option>`)
+        var add = response.locations[0].address;
+        for(let i=0;i<response.locations.length;i++){
+                $('#sub_location').append(`<option value="${response.locations[i].sub_id}">
+                ${response.locations[i].sub_location}
+                </option>`);
+            }
+        $('#sub_location').append(`<option value="other">Other</option>`)
+        $('textarea#add').val(add);
+      },
+       error: function(response) {
+      
+      },
+      });
+
+    
 }

@@ -5,6 +5,7 @@
     
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, materialpro admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, materialpro admin lite design, materialpro admin lite dashboard bootstrap 5 dashboard template">
@@ -346,9 +347,13 @@
                     <form action="{{ URL('/location_insert') }}" method="POST">
                             @csrf
                             <div class="text-end">
+                            
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
                                     Add Location
                                 </button>
+                                <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#address">
+                                    Sub Location
+                             </button>
                                 <div class="modal fade " id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog p-4">
                                         <div class="modal-content">
@@ -366,7 +371,7 @@
                                                             <input type="text" class="form-control" name="parent_location">
                                                             </div>
                                                             </div>
-                                                            <div class="mb-3 row">
+                                                            <!-- <div class="mb-3 row">
                                                                 <label for="input" class="col-sm-4  col-form-label">Sub Location </label>
                                                                 <div class="col-sm-">
                                                                 <select class="form-select" name="location_name" aria-label="Default select example">
@@ -382,6 +387,12 @@
                                                                     <option value="FiveBelow">Five Below</option>
                                                                 </select>
                                                                 </div>
+                                                            </div> -->
+                                                            <div class="mb-3 row">
+                                                                <label for="input" class="col-sm- col-form-label">Address</label>
+                                                                <div class="col-sm-12">
+                                                                    <textarea type="text" class="form-control" rows="3" name="address"></textarea>
+                                                                </div>
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm- col-form-label">Description</label>
@@ -389,72 +400,13 @@
                                                                     <textarea type="text" class="form-control" rows="3" name="description"></textarea>
                                                                 </div>
                                                             </div>
-                                                      
-
-                                                           
-                                                         
-                                                            <!-- <div class="mb-0 row">
-                                                                <label for="input" class="col-sm-12 col-form-label text-left">Sub Location</label>
-                                                                <div class="col-sm-">
-                                                                 <div class="mb-3 row">
-                                                                    <div class="col-sm-12">
-                                                                      <input type="text" class="form-control mt-2">
-                                                                    </div>
-                                                                   
-                                                                 </div>
-                                                                </div>
-                                                            </div>  -->
+     
                                                              
                                                              
                                                             <div id="main">
 
                                                             </div>
-                                                            <!-- <div class="mb-3 row">
-                                                                <label for="email" class="col-sm-2 col-form-label">Email</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" name="email">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="mb-3 row">
-                                                                <label for="password" class="col-sm-2 col-form-label">Password</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="password" class="form-control" name="password">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="email" class="col-sm-2 col-form-label">Phone</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="tel" class="form-control" name="phone">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-2 col-form-label">Address</label>
-                                                                <div class="col-sm-10">
-                                                                    <textarea type="text" class="form-control" rows="3" name="address"></textarea>
-                                                                </div>
-                                                            </div>                                                                       
-                                                                <input type="hidden" name="status" value="supervisor"></input> -->
-                                                                <!-- <div class="row">
-                                                                    <div class="col">
-                                                                        <button>Submit</button>
-                                                                    </div>
-                                                                    <div class="col"></div>
-                                                                </div> -->
-
-                                                              
-                                                            
-                                                            <!-- <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-2 col-form-label">Status</label>
-                                                                <input type="hidden" class="form-control" name="status" value="supervisor">
-                                                                <div class="col-sm-10">
-                                                                    <select class="form-select" aria-label="Default select example">
-                                                                        <option selected>status</option>
-                                                                        <option value="1">Admin</option>
-                                                                        <option value="2">user</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div> -->
+                                                          
                                                         </div>
                                                         <!-- <div class="col-md-2"></div> -->
                                                         <!-- </form> -->
@@ -467,7 +419,87 @@
                                         </div>
                                     </div>
                                 </div>
+
                         </form>
+
+                        <form id="sub_location">
+                                    
+                                <div class="modal fade " id="address" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog p-4">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="Report_user">Sub Location
+                                                    </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>                        
+                                                <div class="modal-body">   
+                                                    <div class="row">                                            
+                                                        <div class="col-md-12">
+                                                            <!-- <div class="mb-3 row">
+                                                                <label for="input" class="col-sm-4  col-form-label">Parent Location </label>
+                                                                <div class="col-sm- mb-3">
+                                                                <input type="text" class="form-control" name="parent_location">
+                                                                </div>
+                                                            </div> -->
+                                                            <div class="mb-3 row">
+                                                                <label for="input" class="col-sm-4  col-form-label">Main Location </label>
+                                                                <div class="col-sm-">
+                                                                <select class="form-select" name="parent_location" aria-label="Default select example">
+                                                                    @foreach($locations as $location)
+                                                                    <option selected value="{{$location['id']}}">{{$location['parent_location']}}</option>
+                                                                @endforeach
+                                                                </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="input" class="col-sm-4  col-form-label">Sub Location</label>
+                                                                <div class="col-sm-">
+                                                                <select class="form-select" name="sub_location" onchange="input_show(this)" aria-label="Default select example">
+                                                                    <option selected>Select Sub Location</option>
+                                                                    <option value="onsite">On Site</option>
+                                                                    <option value="eastparkinglot">East Parking Lot</option>
+                                                                    <option value="ParkingGarage">Parking Garage</option>
+                                                                    <option value="SouthParkingLot">South Parking Lot</option>
+                                                                    <option value="WestParkingLot">West Parking Lot</option>
+                                                                    <option value="LoadingDock">Loading Dock</option>
+                                                                    <option value="DisposalArea">Disposal Area</option>
+                                                                    <option value="Perimeter">Perimeter</option>
+                                                                    <option value="FiveBelow">Five Below</option>
+                                                                    <option value="other">other</option>
+                                                                </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row" id="other" style="display:none">
+                                                                <label for="input" class="col-sm- col-form-label">Sub Location</label>
+                                                                <div class="col-sm-12">
+                                                                    <input type="text" class="form-control" rows="3" name="custom_location">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="input" class="col-sm- col-form-label">Description</label>
+                                                                <div class="col-sm-12">
+                                                                    <textarea type="text" class="form-control" rows="3" name="description"></textarea>
+                                                                </div>
+                                                            </div>
+                                                      
+                                                            <div id="main">
+
+                                                            </div>
+                                                           
+                                                          
+                                                        </div>
+                                                        <!-- <div class="col-md-2"></div> -->
+                                                        <!-- </form> -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                                                            <button type="submit" class="btn btn-primary btn1">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>   
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
                         <div class="row">
                             <div class="col-sm-6"></div>
                             <div class="col-sm-6">
@@ -503,9 +535,12 @@
                                     <thead>
                                         <tr>
                                             
-                                            <th class="border-top-0">Sub Location</th>
-                                            <th class="border-top-0">parent Location</th>
-                                            <th class="border-top-0">Description</th>    
+                                            <!-- <th class="border-top-0">Sub Location</th> -->
+                                            <th class="border-top-0">Main Location</th>
+                                            <th class="border-top-0">Address</th>
+                                            <th class="border-top-0">Description</th> 
+                                            <th class="border-top-0">Sub Location</th> 
+                                               
                                             <th class="border-top-0">Action</th>
                                             
                                         </tr>
@@ -513,19 +548,17 @@
                                     <tbody>
                                         @foreach($locations as $location)
                                         <tr>
-                                            <td>{{$location['location_name']}}</td>
                                             <td>{{$location['parent_location']}}</td>
-                                            <td>{{$location['description']}}</td>                                        
+                                            <td>{{$location['address']}}</td>
+                                            <td>{{$location['description']}}</td>  
+                                            <td>{{$location['sub_location']}}</td>                                      
                                             <td>
                                                <a href="{{ 'edit_location/' . $location['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
                                                <a class="h3" data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData({{$location['id']}});">
                                                  <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </a>
-
+                                                
                                            </td>   
-
-                                           
-                                          
                                         </tr>
                                        @endforeach
                                     </tbody>

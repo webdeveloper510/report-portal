@@ -153,6 +153,8 @@ class AdminController extends Controller
 
     public function edit_location($id){
         $data = Location::find($id);
+        // echo "<pre>";
+        // print_r($data);die;
         return view('admin.edit_location',compact('data'));
     }
 
@@ -187,7 +189,8 @@ class AdminController extends Controller
 
 }
     public function locations(){
-        $locations = Location::all();
+        $locations = Location::select('locations.*','sub_location.sub_location')->leftjoin('sub_location','sub_location.parent_location_id','=','locations.id')->get()->toArray();
+  
         return view('admin.locations',compact('locations'));
     }
     
@@ -195,7 +198,8 @@ class AdminController extends Controller
      
         $data = Location::find($request->id);
          $data['parent_location'] = $request->parent_location;
-        $data->location_name = $request->location_name;
+        // $data->location_name = $request->location_name;
+        $data->address = $request->address;
         $data->description = $request->description;
         $data->save();
         return redirect('locations')->with('message', 'Location Updated Successfully!');
@@ -265,20 +269,22 @@ class AdminController extends Controller
        
          $company='';
          if($login['type']=='admin'){
-         $activitys = Report::select('reports.*', 'custom_title.title','locations.location_name','locations.parent_location')
+         $activitys = Report::select('reports.*', 'custom_title.title','locations.parent_location')
           ->leftjoin('locations', 'locations.id', '=', 'reports.main_location')
             ->leftjoin('custom_title', 'custom_title.id', '=', 'reports.report_title')
             ->with('users')->get()->toArray();
             // echo "<pre>";
             // print_r($activitys);die;
           $locations = Location::all();
+
+          $sublocation = DB::table('sub_location')->select('id','sub_location','parent_location_id')->get();
         //   echo "<pre>";
         //   print_r($locations);die;
            $company = CompanyDetails::all();
          }
          else{
              if($login['type']=='client'){
-             $activitys = Report::select('reports.*', 'custom_title.title','locations.location_name','locations.parent_location')
+             $activitys = Report::select('reports.*', 'custom_title.title','locations.parent_location')
             ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
              ->join('locations', 'locations.id', '=', 'reports.main_location')
             ->with('users')->whereIn('main_location',json_decode($permissions[0]->location_id))
@@ -297,7 +303,7 @@ class AdminController extends Controller
              }
            
           }
-           return view('admin.admin_reports',compact('data','locations','activitys','login','company','permissions'));
+           return view('admin.admin_reports',compact('data','locations','activitys','login','company','permissions','sublocation'));
         
     }
     public function edit_title(Request $request){
@@ -318,7 +324,8 @@ class AdminController extends Controller
     public function locations_insert(Request $request){
         $data = new Location;
           $data['parent_location'] = $request->parent_location;
-        $data['location_name'] = $request->location_name;
+        // $data['location_name'] = $request->location_name;
+        $data['address'] = $request->address;
         $data['parent_location'] = $request->parent_location;
         $data['description'] = $request->description;
       
@@ -336,8 +343,16 @@ class AdminController extends Controller
     }
 
    public function insert_activity(Request $request){
-    // echo "<pre>";
-    // print_r($request->all());die;
+            if($request->custom_id){
+                $sublocation = array(
+                    'sub_location'=>$request->custom_id,
+                    'parent_location_id'=>$request->main_location,
+                    'description'=>''
+                );            
+                $sub_id = DB::table('sub_location')->insertGetId($sublocation);
+            }
+
+           // print_r($request->all());die;
 
             $data = new Report;
             $data['report_title'] = $request->report_title;
@@ -346,7 +361,7 @@ class AdminController extends Controller
              $data['level'] = $request->level;
             $data['user_id'] = $request->user_id;
             $data['main_location'] = $request->main_location;
-            $data['sub_location'] = $request->sub_location;
+            $data['sub_location'] = $sub_id ? $sub_id : $request->sub_location;
             $data['report_time'] = $request->report_time." ".$request->meridian;
              $data['description'] = $request->description;
             $data['report_date'] = $request->report_date;        
@@ -393,7 +408,7 @@ class AdminController extends Controller
     }
 
             public function report_view($id){
-                $reports_view = Report::select('reports.*','locations.location_name','locations.parent_location')
+                $reports_view = Report::select('reports.*','locations.parent_location')
                ->join('locations', 'locations.id', '=', 'reports.main_location')
                 ->where('reports.id',$id)->with('users')->get()->toArray();
                 // echo "<pre>";
@@ -412,7 +427,7 @@ class AdminController extends Controller
             public function report_date(){
                 $filter_data = Session::get('filter'); 
                 // print_r($filter_data);die;   
-                $reports = Report::select('reports.*','locations.location_name','locations.parent_location')
+                $reports = Report::select('reports.*','locations.parent_location')
                 ->join('locations', 'locations.id', '=', 'reports.main_location')
                 ->where(['main_location'=>$filter_data['main_location'],'company_id'=>$filter_data['company_id']])
                 ->whereBetween('report_date', [$filter_data['start_date'], $filter_data['end_date']])->with('users')->get()->toArray();
@@ -523,22 +538,29 @@ class AdminController extends Controller
               
             }
             
-            
-    //  function AssignValueToClient(Request $request){
-    //     //  echo "<pre>";
-    //     //  print_r($request->all());die;
-    //      $id = $request->id;
-    //      $value = $request->value;
-    //      $update = Report::where('id', $id)->update(['assign_client'=>$value]);
-         
-    //      if($update)
-    //             echo json_encode(['message'=>'Report has been assigned Successfully!']);
-    //          else
-    //             echo json_encode(['message'=>'Some Error!']);
-         
-    //  }     
-     
+     public function get_address($id){
+    $locations = Location::select('locations.*','sub_location.id as sub_id','sub_location.sub_location','sub_location.parent_location_id')
+    ->leftjoin('sub_location','sub_location.parent_location_id','=','locations.id')->where('locations.id',$id)
+    ->get()->toArray();
+  
+    return response()->json([
+        'locations' => $locations
+    ]);
 
-        
+   }
+   public function sub_location(Request $request){
+    $sublocation = array(
+        'sub_location'=>$request->custom_location ? $request->custom_location:$request->sub_location,
+        'parent_location_id'=>$request->parent_location,
+        'description'=>$request->description
+    );
+
+    $save = DB::table('sub_location')->insert($sublocation);
+    if($save)
+                     echo json_encode(['message'=>'Sub Location Save  Successfully!']);
+                else
+                   echo json_encode(['message'=>'Some Error!']);
+
    }
 
+}
