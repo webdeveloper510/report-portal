@@ -593,7 +593,7 @@
                                                      <div class="mb-3 row">
                                                         <label for="input" class="col-sm- col-form-label">Address</label>
                                                         <div class="col-sm-12">
-                                                            <textarea type="text" class="form-control" rows="3"  name="address">{{ $activitys[0]['address'] }}</textarea>
+                                                            <textarea type="text" class="form-control" rows="3"  name="address">{{ $activitys ? $activitys[0]['address'] : ''}}</textarea>
                                                         </div>
                                                     </div>
                                                         <div class="mb-3">

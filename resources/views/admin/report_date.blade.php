@@ -501,12 +501,12 @@ height: 100% !important;
                if($report['level']=='level1')
                    $level = 'Level 1';
 
-            if($report['level']=='level2')
-                $level = 'Level 2';
+                if($report['level']=='level2')
+                    $level = 'Level 2';
 
-            if($report['level']=='level3')
-            $level = 'Level 3';
-              ?>      
+                if($report['level']=='level3')
+                $level = 'Level 3';
+                ?>      
                <div class="report-view mt-1">
                    <div class="header-table">
                         <div class="sub_header">
