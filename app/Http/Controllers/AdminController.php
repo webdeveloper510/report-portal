@@ -156,16 +156,12 @@ class AdminController extends Controller
     public function edit_location($id,$sub_id){
         $data = Location::find($id);
         $reports = Report::all()->get()->toArray();
-echo "<pre>";
-print_r($reports);die;
          foreach ($reports as $report) {
             $report_sub_location = $report->sub_location;         
             }
         
         $locations = Report::where('sub_location', $location_id)
                     ->get()->toArray();
-        // echo "<pre>";
-        // print_r($locations);die;
         return view('admin.edit_location',compact('data','locations'));
     }
 
@@ -275,28 +271,21 @@ print_r($reports);die;
 
     public function admin_reports(){
         $login = Session::get('data');
-       // print_r($filter_data['type']);die;
         $data = DB::table('custom_title')->select('id','title')->get();
         $permissions = AccessWebsite::where('user_id',$login['id'])->get();
         $sublocation='';
          $company='';
          if($login['type']=='admin'){
-         $activitys = Report::select('reports.*', 'custom_title.title','locations.parent_location')
+         $activitys = Report::select('reports.*', 'custom_title.title','locations.parent_location','sub_location.sub_location')
           ->leftjoin('locations', 'locations.id', '=', 'reports.main_location')
             ->leftjoin('custom_title', 'custom_title.id', '=', 'reports.report_title')
+            ->leftjoin('sub_location', 'reports.sub_location', '=', 'sub_location.id')
             ->with('users')->get()->toArray();
-            // echo "<pre>";
-            // print_r($activitys);die;
-            // $location = Location::select('locations.*','sub_location.sub_location','sub_location.id as sub_id')->leftjoin('sub_location','sub_location.parent_location_id','=','locations.id')->get()->toArray();
 
-          $locations = Location::all();
-
-          $sublocation = DB::table('sub_location')->select('id','sub_location','parent_location_id')->get();
-        //   echo "<pre>";
-        //   print_r($locations);die;
-           $company = CompanyDetails::all();
-        //    echo "<pre>";
-        //      print_r($company);die;
+        $locations = Location::all();
+        $sublocation = DB::table('sub_location')->select('id','sub_location','parent_location_id')->get();        
+        $company = CompanyDetails::all();
+       
          }
          else{
              if($login['type']=='client'){
@@ -371,11 +360,9 @@ print_r($reports);die;
                 );  
                 
                 $sub_id = DB::table('sub_location')->insertGetId($sublocation);
-                // echo "<pre>";
-                // print_r($sub_id);die;
+             
             }
 
-           // print_r($request->all());die;
             $data = new Report;
             $data['report_title'] = $request->report_title;
              $data['address'] = $request->address;
@@ -401,8 +388,7 @@ print_r($reports);die;
             $data->report_photo = json_encode($image_array);
         }
         
-            if($request->level=="level3"){
-                    $data->save();      
+            if($data->save()){                          
                     echo json_encode(['message'=>'Report Successfully!']);
                 }else{
                echo json_encode(['message'=>'Some error!']);
