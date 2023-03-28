@@ -348,6 +348,7 @@ class AdminController extends Controller
     }
 
    public function insert_activity(Request $request){
+     
     
             if($request->custom_id){
                 $sublocation = array(
@@ -357,8 +358,7 @@ class AdminController extends Controller
                 );  
                 
                 $sub_id = DB::table('sub_location')->insertGetId($sublocation);
-                // echo "<pre>";
-                // print_r($sub_id);die;
+              
             }
 
            // print_r($request->all());die;
@@ -381,9 +381,8 @@ class AdminController extends Controller
                      $image->move(public_path('images'), $filename);
                      $image_array[]  = $filename;
             }
-            // echo "<pre>";
-            // print_r($image_array);die;
-            // die;
+          
+    
             $data->report_photo = json_encode($image_array);
         }
         
