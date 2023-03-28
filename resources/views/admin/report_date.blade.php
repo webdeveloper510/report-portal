@@ -116,9 +116,16 @@ img.report_logo {
     height: 50px !important;
 }
 
-.level.me-3 {
+.level2 {
+    background: orange !important;
+}
+.level1 {
+    background: green !important;
+}
+.level3 {
     background: red !important;
 }
+
 
 
 p.num.my-1 {
@@ -489,7 +496,17 @@ height: 100% !important;
                         </div>
                     </div>
                </div>
-               @foreach($reports as $report)        
+               @foreach($reports as $report)
+               <?php
+               if($report['level']=='level1')
+                   $level = 'Level 1';
+
+            if($report['level']=='level2')
+                $level = 'Level 2';
+
+            if($report['level']=='level3')
+            $level = 'Level 3';
+              ?>      
                <div class="report-view mt-1">
                    <div class="header-table">
                         <div class="sub_header">
@@ -516,8 +533,8 @@ height: 100% !important;
                                      
                                    
                                     <p class=" mb-1">{{$report['users'] ? $report['users']['name']:''}}</p>
-                                    <div class="level me-3">
-                                        <p class="text-white  mx-2">(S) Level 3</p>
+                                    <div class="{{$report['level']}} me-3">
+                                        <p class="text-white  mx-2" style="text-transform: capitalize;">{{$level}}</p>
                                     </div>
                                 </div>
                             </div>

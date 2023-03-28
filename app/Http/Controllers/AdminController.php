@@ -155,18 +155,13 @@ class AdminController extends Controller
 
     public function edit_location($id,$sub_id){
         $data = Location::find($id);
-        $reports = Report::all()->get()->toArray();
-         foreach ($reports as $report) {
-            $report_sub_location = $report->sub_location;         
-            }
         
-        $locations = Report::where('sub_location', $location_id)
-                    ->get()->toArray();
-        return view('admin.edit_location',compact('data','locations'));
+        return view('admin.edit_location',compact('data'));
     }
 
     public function deny_access(Request $request){
-
+        // echo "<pre>";
+        // print_r($request->all());die;
         $count = AccessWebsite::where(['user_id'=>$request->user_id])->count();
         //echo $count;die;
         if($count>0){
@@ -175,6 +170,10 @@ class AdminController extends Controller
             $data['location_id'] =json_encode($request->location_id);
             $data['control_users'] =json_encode($request->users_id);
             $data['report_assign'] =$request->report_assign;
+            $data['create_report'] =$request->create;
+            $data['view_report'] =$request->view;
+            $data['edit_report'] =$request->edit;
+            $data['delete_report'] =$request->delete;
           $data['create_account'] =$request->create_account=='on' ?  1 : 0;
             $update = AccessWebsite::where('user_id', $request->user_id)->update($data);
             if($update){
@@ -188,6 +187,10 @@ class AdminController extends Controller
             $data['user_id'] = $request->user_id;
             $data['location_id'] =json_encode($request->location_id);
             $data['report_assign'] =$request->report_assign;
+            $data['create_report'] =$request->create;
+            $data['view_report'] =$request->view;
+            $data['edit_report'] =$request->edit;
+            $data['delete_report'] =$request->delete;
             $data['create_account'] = $request->create_account=='on' ?  1 : 0;
             if($data->save()){
                 return redirect('manage_access')->with('message', 'Changes Successfully!');
@@ -289,8 +292,9 @@ class AdminController extends Controller
          }
          else{
              if($login['type']=='client'){
-             $activitys = Report::select('reports.*', 'custom_title.title','locations.parent_location')
+             $activitys = Report::select('reports.*', 'custom_title.title','locations.parent_location','sub_location.sub_location')
             ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
+            ->join('sub_location', 'reports.sub_location', '=', 'sub_location.id')
              ->join('locations', 'locations.id', '=', 'reports.main_location')
             ->with('users')->whereIn('main_location',json_decode($permissions[0]->location_id))
             ->where('company_id',$permissions[0]->company_id)
@@ -298,7 +302,6 @@ class AdminController extends Controller
               $company = CompanyDetails::where('id',$permissions[0]->company_id);
               $locations = Location::whereIn('id',json_decode($permissions[0]->location_id))->get();
              }else{
-              //  echo "dddd";die;
                   $activitys = Report::select('reports.*', 'custom_title.title','locations.parent_location')
             ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
             ->join('locations', 'locations.id', '=', 'reports.main_location')
