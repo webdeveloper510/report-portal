@@ -154,7 +154,7 @@ class AdminController extends Controller
     }
 
     public function edit_location($id,$sub_id){
-        // $locations = Location::select('locations.*','sub_location.sub_location','sub_location.id as sub_id')->leftjoin('sub_location','sub_location.parent_location_id','=','locations.id')->get()->toArray();
+        //  $locations = Location::select('locations.*','sub_location.sub_location','sub_location.id as sub_id')->leftjoin('sub_location','sub_location.parent_location_id','=','locations.id')->get()->toArray();
         // echo "<pre>";
         // print_r($locations);die;
         $data = Location::find($id);
@@ -358,7 +358,7 @@ class AdminController extends Controller
     }
 
    public function insert_activity(Request $request){
-    
+    $sub_id = '';
             if($request->custom_id){
                 $sublocation = array(
                     'sub_location'=>$request->custom_id,
