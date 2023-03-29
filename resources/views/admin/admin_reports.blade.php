@@ -397,7 +397,7 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="col-md-6 d-flex col-4 align-self-center" style="{{$permissions[0]->create_report==1 ? 'display:block':'display:none'}}">
+                    <div class="col-md-6 d-flex col-4 align-self-center" style="{{$permissions[0]->create_report==1 ? '' : 'display:none !important'}}">
                      
                         <div class="text-end mx-auto upgrade-btn me-2">
                             <a href=""  data-bs-toggle="modal" data-bs-target="#add"
@@ -469,8 +469,8 @@
                                                     <option  value="level2">Level2</option>
                                                     <option  value="level3">Level3</option>
                                                   </select>
-                                                </div>
-
+                                                </div>  
+            
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Main Location</label>
                                                     <!-- <input type="text" class="form-control" name="main_location" value="{{$locations[0]['parent_location']}}" /> -->
