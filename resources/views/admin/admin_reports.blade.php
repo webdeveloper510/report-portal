@@ -475,6 +475,7 @@
                                                   <label for="exampleInputEmail1" class="form-label">Main Location</label>
                                                     <!-- <input type="text" class="form-control" name="main_location" value="{{$locations[0]['parent_location']}}" /> -->
                                                     <select class="form-select"  name="main_location" onchange="get_address(this)" aria-label="Default select example">
+                                                    <option selected >Select Main Location</option>
                                                     @foreach($locations as $location)
                                                         <option  value="{{$location['id']}}">{{$location['parent_location']}}</option>
                                                     @endforeach
@@ -483,7 +484,7 @@
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Sub Location</label>
                                                         <select class="form-select"  name="sub_location"  onchange="input_show(this)" id="sub_location" aria-label="Default select example">
-                                                            <option value="">Select Sub Location</option>
+                                                            <option value="" selected>Select Sub Location</option>
                                                         </select>
                                                 </div>
                                                 <div class="mb-3" id="other" style="display:none">
