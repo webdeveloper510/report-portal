@@ -347,11 +347,11 @@
                 <p>Silvertrac Software</p>
             </div>
             <div class="sub"> 
-                <p class="">Tue Mar 13, 2018 12:08 PM</p>
+                <p class=""><b class="me-2">Date and Time:</b>{{$reports_view[0]['report_date']}} {{$reports_view[0]['report_time']}}</p>
                 <p class="text-"><b class="me-2">Location:</b>{{$reports_view[0]['parent_location']}}</p>
                
-                <p class="text-"><b  class="me-2">Sub Location</b>{{$reports_view[0]['sub_location']}}</p>
-                <p class="text-center">{{$reports_view[0]['description']}}</p>
+                <p class="text-"><b class="me-2">Sub Location:</b>{{$reports_view[0]['sub_location']}}</p>
+                <p class="text-"><b class="me-2">Description:</b>{{$reports_view[0]['description']}}</p>
                 @foreach (json_decode($reports_view[0]['report_photo']) as $member)
                 <div class="row">
                     <div class="col-md-4"></div>
