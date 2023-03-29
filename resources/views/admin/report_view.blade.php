@@ -63,6 +63,10 @@
         color: #ffffff !important;
         font-size: small;
     }
+    .img_size {
+    width: 288px !important;
+    height: 288px !important;
+}
     </style>
 </head>
 
@@ -349,7 +353,14 @@
                 <p class="text-"><b  class="me-2">Sub Location</b>{{$reports_view[0]['sub_location']}}</p>
                 <p class="text-center">{{$reports_view[0]['description']}}</p>
                 @foreach (json_decode($reports_view[0]['report_photo']) as $member)
-                <img src="{{ URL::asset('public/images/'.$member)}}"/> 
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <img src="{{ URL::asset('public/images/'.$member)}}" class="img_size"/>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+                 
                 @endforeach
                 
                 

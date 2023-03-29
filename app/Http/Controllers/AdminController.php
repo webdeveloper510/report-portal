@@ -373,14 +373,14 @@ class AdminController extends Controller
 
             $data = new Report;
             $data['report_title'] = $request->report_title;
-             $data['address'] = $request->address;
-             $data['company_id'] = $request->company_id;
+            $data['address'] = $request->address;
+            $data['company_id'] = $request->company_id;
             $data['level'] =    $request->level;
             $data['user_id'] = $request->user_id;
             $data['main_location'] = $request->main_location;
             $data['sub_location'] = $sub_id ? $sub_id : $request->sub_location;
             $data['report_time'] = $request->report_time." ".$request->meridian;
-             $data['description'] = $request->description;
+            $data['description'] = $request->description;
             $data['report_date'] = $request->report_date;        
             $data['report_type'] = $request->report_type;        
             if($request->hasfile('report_photo')){
