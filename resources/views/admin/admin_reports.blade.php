@@ -582,14 +582,6 @@
                                                             @endforeach
                                                             </select>
                                                         </div>
-                                                        <!-- <div class="mb-3">
-                                                            <label class="form-label">Sub Location</label>
-                                                            <select class="form-select" id="sub_loc" name="sub_location" aria-label="Default select example">
-                                                            @foreach($locations as $location)
-                                                                <option selected value="{{$location['id']}}">{{$location['location_name']}}</option>
-                                                            @endforeach
-                                                            </select>
-                                                        </div> -->
                                                         
                                                      <div class="mb-3 row">
                                                         <label for="input" class="col-sm- col-form-label">Address</label>

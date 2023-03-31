@@ -34,7 +34,6 @@ Route::get('/delete_supervisor/{id}', [AdminController::class, 'delete_superviso
 Route::get('/delete_location/{id}', [AdminController::class, 'delete_location']);
 Route::get('/edit_supervisor/{id}', [AdminController::class, 'ShowData']);
 Route::get('/get_address/{id}', [AdminController::class, 'get_address']);
-
 Route::post('deny_access',[AdminController::class, 'deny_access']);
 Route::post('location_insert',[AdminController::class, 'locations_insert'])->name('location.insert');
 Route::get('admin_reports',[AdminController::class, 'admin_reports']);
@@ -45,7 +44,6 @@ Route::get('edit_location/{id}/{sub_id}',[AdminController::class, 'edit_location
 Route::post('/update_locations', [AdminController::class, 'update_locations']);
 Route::post('update_profile', [AdminController::class, 'update_profile']);
 Route::get('report_title',[AdminController::class, 'report_title']);
-// Route::view('report_title',[AdminController::class, 'report_title']);
 Route::post('insert_title', [AdminController::class, 'insert_title']);
 Route::post('edit_title/', [AdminController::class, 'edit_title']);
 Route::get('/delete_title/{id}', [AdminController::class, 'delete_title']);
@@ -56,17 +54,16 @@ Route::get('report_date',[AdminController::class, 'report_date']);
 Route::post('filter_data',[AdminController::class, 'filter_data']);
 });
 Route::get('login', [AdminController::class, 'admin_login']);
-
 Route::post('login', [AdminController::class, 'login']);
 Route::get('logout',[AdminController::class, 'logout']);
 Route::post('company_post_details', [AdminController::class, 'company_details'])->name('company.details');
 Route::get('company_details',[AdminController::class, 'get_company']);
 Route::post('edit_company',[AdminController::class, 'update_company']);
-
 Route::get('send-email-with-pdf',[AdminController::class,'sendEmailWithPdf']);
 Route::post('assign-client', [AdminController::class,'AssignValueToClient']);
 Route::post('sub_location', [AdminController::class,'sub_location']);
-
+Route::get('get_report_images', [AdminController::class,'get_report_images']);
+Route::post('update_report_images', [AdminController::class,'update_report_images']);
 
 
 

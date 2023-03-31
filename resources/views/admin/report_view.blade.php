@@ -344,7 +344,7 @@
             <!-- ============================================================== -->
             <div class="text-center">
                 <h3>Daily Activity Report</h3>
-                <p>Silvertrac Software</p>
+                
             </div>
             <div class="sub"> 
                 <p class=""><b class="me-2">Date and Time:</b>{{$reports_view[0]['report_date']}} {{$reports_view[0]['report_time']}}</p>
