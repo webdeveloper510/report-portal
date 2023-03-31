@@ -116,9 +116,16 @@ img.report_logo {
     height: 50px !important;
 }
 
-.level.me-3 {
+.level2 {
+    background: orange !important;
+}
+.level1 {
+    background: green !important;
+}
+.level3 {
     background: red !important;
 }
+
 
 
 p.num.my-1 {
@@ -489,7 +496,17 @@ height: 100% !important;
                         </div>
                     </div>
                </div>
-               @foreach($reports as $report)        
+               @foreach($reports as $report)
+               <?php
+               if($report['level']=='level1')
+                   $level = 'Level 1';
+
+                if($report['level']=='level2')
+                    $level = 'Level 2';
+
+                if($report['level']=='level3')
+                $level = 'Level 3';
+                ?>      
                <div class="report-view mt-1">
                    <div class="header-table">
                         <div class="sub_header">
@@ -498,7 +515,7 @@ height: 100% !important;
                                         <div class=""><p class="my-1">{{$report['report_date']}}, {{$report['report_time']}}</p></div>
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="text-center"><p class="my-1">(S) Officer Arrived On Duty</p></div>
+                                        <div class="text-center"><p class="my-1"></p>{{$report['title']}}</div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="text-end"><p class="num my-1">293742753</p></div>
@@ -513,17 +530,18 @@ height: 100% !important;
                                     <p class="mb-0">Commercial Property</p>
                                     <p class="mb-0"><b>Address:</b>{{$report['address']}}</p>
                                     <p class="mb-0"><b>Location: </b>{{$report['parent_location']}}</p>
+                                    <p class="mb-0"><b>Sub Location: </b>{{$report['sub_location']}}</p>
                                      
                                    
                                     <p class=" mb-1">{{$report['users'] ? $report['users']['name']:''}}</p>
-                                    <div class="level me-3">
-                                        <p class="text-white  mx-2">(S) Level 3</p>
+                                    <div class="{{$report['level']}} me-3">
+                                        <p class="text-white  mx-2" style="text-transform: capitalize;">{{$level}}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="text ">
-                                    <p>Reported: Officer arrived on duty and checked in at the property securityoffice. Keys and radio equipment received along with past down ordersfrom past shift officer. Radio and equipment were found fully charged andavailable for my daily activity shift report.</p>
+                                    <p>{{$report['description']}}</p>
                                 </div>
                             </div>
                             <div class="col-md-4" >

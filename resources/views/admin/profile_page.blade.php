@@ -349,7 +349,7 @@
                     <div class="col-lg-8 col-xlg-9 col-md-7">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ URL('/update_profile') }}" enctype="multipart/form-data" method="POST" class="row ">
+                            <form action="{{ URL('/update_profile') }}" enctype="multipart/form-data" method="POST" class="row">
                                 @csrf
                                
                                 <div class="col-md-12">

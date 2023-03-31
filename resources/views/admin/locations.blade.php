@@ -547,13 +547,15 @@
                                     </thead>
                                     <tbody>
                                         @foreach($locations as $location)
+                                       
                                         <tr>
                                             <td>{{$location['parent_location']}}</td>
                                             <td>{{$location['address']}}</td>
                                             <td>{{$location['description']}}</td>  
                                             <td>{{$location['sub_location']}}</td>                                      
                                             <td>
-                                               <a href="{{ 'edit_location/' . $location['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
+                                            <!-- . '/' . $location['sub_id'] -->
+                                               <a href="{{ 'edit_location/' . $location['id'] . '/' . $location['sub_id']}}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
                                                <a class="h3" data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData({{$location['id']}});">
                                                  <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </a>

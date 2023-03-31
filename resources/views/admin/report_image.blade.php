@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, materialpro admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, materialpro admin lite design, materialpro admin lite dashboard bootstrap 5 dashboard template">
@@ -13,64 +14,57 @@
     <link rel="canonical" href="https://www.wrappixel.com/templates/materialpro-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo URL::to('/'); ?>/public/assets/images/favicon.png">
+    <!-- chartist CSS -->
+    <link href="<?php echo URL::to('/'); ?>/public/assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="<?php echo URL::to('/'); ?>/public/assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+    <link href="<?php echo URL::to('/'); ?>/public/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <!--This page css - Morris CSS -->
+    <link href="<?php echo URL::to('/'); ?>/public/assets/plugins/c3-master/c3.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?php echo URL::to('/'); ?>/public/css/style.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+     alpha/css/bootstrap.css" rel="stylesheet">
+    <style>
+        .topbar .top-navbar .navbar-nav>.nav-item .nav-link {
+            font-size: medium !important;
+        }
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+        /* HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+     WARNING: Respond.js doesn't work if you view the page via file:// 
+    [if lt IE 9]
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-    <style>
- .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
-    font-size: medium !important;
- }
+[endif] */
 
-    #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
-        color: #2400ff !important;
-    }
+
+        #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link i {
+            color: #2400ff !important;
+        }
 
         #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
-        color: #2400ff !important;
-    }
+            color: #2400ff !important;
+        }
 
-        .topbar{
+        .topbar {
             background: #2f3356 !important;
-       }
-
-        body {
-            background-color: whitesmoke !important;
         }
 
-        .col-md-4.mb-3.mx-5 {
-            margin-top: 15px !important;
-            background: white !important;
-            width: 35% !important;
-            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.4);
-        }
 
-        .col-sm-4 {
-            text-align: center !important;
-        }
 
-        img.location2 {
+        img.profile {
             width: 100px !important;
             height: 100px !important;
         }
 
-       
-
         .card {
-            background: whitesmoke;
+            background: white !important;
         }
-
 
         .left-sidebar {
-        top: 52px !important;
+            top: 52px !important;
         }
-        
+
         header.topbar1 {
             background: #2f3356 !important;
         }
@@ -106,20 +100,20 @@
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <!-- <a href="<?php echo URL::to('/'); ?>/index" class="navbar-brand ms-4"> -->
-                        <!-- Logo icon -->
-                        <!-- <b class="logo-icon"> -->
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/logo-light-icon.png" alt="homepage" class="dark-logo" /> -->
+                    <!-- Logo icon -->
+                    <!-- <b class="logo-icon"> -->
+                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                    <!-- Dark Logo icon -->
+                    <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/logo-light-icon.png" alt="homepage" class="dark-logo" /> -->
 
-                        <!-- </b> -->
-                        <!--End Logo icon -->
-                        <!-- Logo text -->
-                        <!-- <span class="logo-text"> -->
-                            <!-- dark Logo text -->
-                            <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/logo-light-text.png" alt="homepage" class="dark-logo" /> -->
+                    <!-- </b> -->
+                    <!--End Logo icon -->
+                    <!-- Logo text -->
+                    <!-- <span class="logo-text"> -->
+                    <!-- dark Logo text -->
+                    <!-- <img src="<?php echo URL::to('/'); ?>/public/assets/images/logo-light-text.png" alt="homepage" class="dark-logo" /> -->
 
-                        <!-- </span> -->
+                    <!-- </span> -->
                     <!-- </a> -->
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -136,8 +130,7 @@
                 <div class="navbar-collapse collapse mx-5" id="navbarSupportedContent" data-navbarbg="skin5">
                     <ul class="navbar-nav d-lg-none d-md-block ">
                         <li class="nav-item">
-                            <a class="nav-toggler nav-link waves-effect waves-light text-white "
-                                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                            <a class="nav-toggler nav-link waves-effect waves-light text-white " href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                         </li>
                     </ul>
                     <!-- ============================================================== -->
@@ -154,12 +147,8 @@
                                 <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
                                     class="srh-btn"><i class="ti-close"></i></a> </form>
                         </li> -->
-                        <li class="sidebar-item mt-1"> <a href="tel:9876543210" class="top-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-phone"></i><span
-                                    class="hide-menu ">Phone: 9876543210</span></a></li>
-                        <li class="sidebar-item mt-1 mx-4"> <a href="mailto:rohit@gmail.com" class="top-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-email"></i><span
-                                    class="hide-menu ">Email: rohit@gmail.com</span></a></li>
+                        <li class="sidebar-item mt-1"> <a href="tel:9876543210" class="top-link" aria-expanded="false"><i class="mdi me-2 mdi-phone"></i><span class="hide-menu ">Phone: 9876543210</span></a></li>
+                        <li class="sidebar-item mt-1 mx-4"> <a href="mailto:rohit@gmail.com" class="top-link" aria-expanded="false"><i class="mdi me-2 mdi-email"></i><span class="hide-menu ">Email: rohit@gmail.com</span></a></li>
                         <!-- <li class="nav-item ">
                             <a class="nav-link text-muted " href=""><i class=""></i></i>Phone: 9876543210</a>
                         </li>
@@ -175,32 +164,24 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.facebook.com" target="_blank" class="top-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-facebook-box"></i><span
-                                    class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.instagram.com" target="_blank" class="top-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-instagram"></i><span
-                                    class="hide-menu "></span></a></li>
-                        <li class="sidebar-item mt-1 mx-1"> <a href="http://m.me" target="_blank" class="top-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-facebook-messenger"></i><span
-                                    class="hide-menu "></span></a></li>  
-                                    <li class="sidebar-item mt-1 mx-1 "> <a href="https://twitter.com" class="top-link"
-                                 aria-expanded="false"><i class="mdi me-2 mdi-twitter"></i><span
-                                    class="hide-menu "></span></a></li>                   
+                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.facebook.com" target="_blank" class="top-link" aria-expanded="false"><i class="mdi me-2 mdi-facebook-box"></i><span class="hide-menu "></span></a></li>
+                        <li class="sidebar-item mt-1 mx-1"> <a href="https://www.instagram.com" target="_blank" class="top-link" aria-expanded="false"><i class="mdi me-2 mdi-instagram"></i><span class="hide-menu "></span></a></li>
+                        <li class="sidebar-item mt-1 mx-1"> <a href="http://m.me" target="_blank" class="top-link" aria-expanded="false"><i class="mdi me-2 mdi-facebook-messenger"></i><span class="hide-menu "></span></a></li>
+                        <li class="sidebar-item mt-1 mx-1 "> <a href="https://twitter.com" class="top-link" aria-expanded="false"><i class="mdi me-2 mdi-twitter"></i><span class="hide-menu "></span></a></li>
                         <!-- <li class="nav-item dropdown">
                           <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark"> -->
-                                <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                 <!-- {{session('data')['name']}}  -->
-                            <!-- </a>
+                        <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
+                        <!-- {{session('data')['name']}}  -->
+                        <!-- </a>
                            <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark "><i class="mdi mdi-power"></i></a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li> -->
                     </ul>
                 </div>
             </nav>
-         
+
         </header>
-        
+
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <!-- Start Topbar header -->
@@ -233,8 +214,7 @@
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
                     <!-- ============================================================== -->
-                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none"
-                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -242,8 +222,7 @@
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
                     <ul class="navbar-nav d-lg-none d-md-block ">
                         <li class="nav-item">
-                            <a class="nav-toggler nav-link waves-effect waves-light text-white "
-                                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                            <a class="nav-toggler nav-link waves-effect waves-light text-white " href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                         </li>
                     </ul>
                     <!-- ============================================================== -->
@@ -271,8 +250,8 @@
                         <li class="nav-item search-box">
                             <a class="nav-link text-muted" href="javascript:void(0)"><i class="ti-search"></i></a>
                             <form class="app-search" style="display: none;">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
-                                    class="srh-btn"><i class="ti-close"></i></a> </form>
+                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>
+                            </form>
                         </li>
                         <!-- <li class="nav-item ">
                             <a class="nav-link text-muted " href=""><i class=""></i>Phone: 9876543210</a>
@@ -290,11 +269,11 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                          <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark">
+                            <a href="<?php echo URL::to('/'); ?>/admin_login" class=" nav-link dropdown-toggle text-muted waves-effect waves-dark">
                                 <!-- <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2"> -->
-                                 {{session('data')['name']}} 
+                                {{session('data')['name']}}
                             </a>
-                           <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark "><i class="mdi mdi-power"></i></a>
+                            <a href="" class="nav-link dropdown-toggle text-muted waves-effect waves-dark "><i class="mdi mdi-power"></i></a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown"></ul>
                         </li>
                     </ul>
@@ -321,12 +300,12 @@
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
                     <div class="col-md-6 col-8 align-self-center">
-                        <h3 class="page-title mb-0 p-0">Edit Location</h3>
+                        <h3 class="page-title mb-0 p-0">Report Image</h3>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Report Image</li>
                                 </ol>
                             </nav>
                         </div>
@@ -336,91 +315,62 @@
                         <div class="row">
                             <div class="col-sm-6"></div>
                             <div class="col-sm-6">
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
-        <div class="container-fluid">
+
             <!-- ============================================================== -->
-            <!-- Start Page Content -->
+            <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <div class="row">
-
-                <!-- column -->
-                <div class="col-sm-12 ">
-                    <div class="card ">
-                        <div class="card-body  ">
-
-                            <form action="{{ URL('/update_locations') }}" method="POST" class="row ">
-                                @csrf
-                                <div class="col-md-4"></div>
-
-                                <div class="col-md-4 mb-3 mx-5">
-
-                                    <div class="mb-0 row">
-                                        <div class="col-sm-4"></div>
-                                        <div class="col-sm-4 mb-3 mt-4">
-                                            <img class="location2" src="<?php echo URL::to('/'); ?>/public/assets/images/location2.png" />
-                                        </div>
-                                        <h4 class="text-center">Edit User Location</h4>
-                                        <div class="col-sm-4"></div>
-                                    </div>
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col">
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                      <div class="card">
+                        <div class="card-body">
+                            <form action="{{ URL('/update_report_images') }}" enctype="multipart/form-data" method="POST" class="row">
+                            {{ csrf_field() }}
+                               
+                                <div class="col-md-12">
+                                   
+                                    <input type="hidden" class="form-control"  name="id" value="{{session('data')['id']}}">
                                     <div class="p-3">
-                                        <input type="hidden" class="form-control"  name="id" value="{{$data['id']}}">
+                                    
                                         <div class="mb-3 row">
-                                            <label for="name" class="col-sm- col-form-label">Parent Location</label>
+                                            <label for="file" class="col-sm- col-form-label">Upload Report Image</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control"  name="parent_location" value="{{$data['parent_location']}}">
+                                                <input type="file" class="form-control" id="file" name="file">
                                             </div>
+                                           
                                         </div>
-                                        <!-- <div class="mb-3 row">
-                                            <label for="name" class="col-sm- col-form-label"> Sub Location</label>
-
-                                            <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="location_name" value="{{$data['location_name']}}">
-                                            </div>
-                                        </div> -->
-                                        <div class="mb-3 row">
-                                            <label for="input" class="col-sm- col-form-label">Address</label>
-                                            <div class="col-sm-12">
-                                                <textarea type="text" class="form-control" rows="3"  name="address">{{ $data->address }}</textarea>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="address" class="col-sm- form-label">Description</label>
-                                            <textarea class="form-control" id="address" rows="3" value="{{$data['description']}}" name="description">{{$data['description']}}</textarea>
-                                        </div>
-                                        <div class="mb-3 row">
-                                                <label for="name" class="col-sm- col-form-label"><h6>Sub Locations</h6></label>
-                                                <div class="mb-3 dropdown col-sm-12">                                                    
-                                                    <select id="multiple-checkboxes1" class="form-control">
-                                                        @foreach($locations as $location)
-                                                            <option value="$location['id']">{{$location['sub_location']}}</option>  
-                                                        @endforeach 
-                                                    </select>
-                                                    <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
-                                                </div>
-                                        
-                                        <!-- <input type="hidden" class="form-control mb-4" id="input" name="status" value=""> -->
-                                        
+                                    
                                         <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                                         <button type="submit" class="btn btn-primary">Update Location</button>
-                                        </div>                                        
+                                            <button href="" type="submit" class="btn btn-primary">Update Report Image</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4"></div>
+                            </div>
+
                             </form>
                         </div>
                     </div>
+                    
                 </div>
+                 <!-- column -->
+                 <div class="col">
+                    </div>
             </div>
             <!-- ============================================================== -->
             <!-- End PAge Content -->
@@ -436,7 +386,8 @@
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
-       
+        <!-- ============================================================== -->
+
     </div>
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
@@ -459,7 +410,7 @@
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
 
-   <script>
+ <script>
   @if(Session::has('message'))
   toastr.options =
   {

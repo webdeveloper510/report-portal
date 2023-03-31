@@ -371,13 +371,17 @@
                                                              <div class="mb-3 row">
                                                                     <label for="name" class="col-sm- col-form-label"><h6>Main Locations</h6></label>
                                                                     <div class="dropdown col-sm-12">
-                                                                        <select class="form-control" id="parent_loc"  name="main_location[]" multiple="multiple">
+                                                                        <select class="form-control" id="parent_loc"  name="main_location[]" onchange="input_shows(this)" multiple="multiple">
                                                                             @foreach($get_locations as $location)
-                                                                            <option value="{{$location['id']}}">{{$location['parent_location']}}</option>   
+                                                                            <option  value="{{$location['id']}}">{{$location['parent_location']}}</option>   
                                                                             @endforeach 
                                                                         </select>
                                                                        
                                                                     </div>
+                                                                </div>
+                                                                <div class="mb-3" id="other" style="display:none">
+                                                                    <label for="exampleInputEmail1" class="form-label">Custom Location</label>
+                                                                    <input type="text" class="form-control" name="custom_id" value=""/>
                                                                 </div>
                                                         
                                                          <div class="mb-2 row">
@@ -385,7 +389,7 @@
                                                                 <div class="col-sm-">
                                                                    <input type="file"  name="logo" class="form-control">
                                                                 </div>
-                                                            </div>
+                                                        </div>
                                                             
                                                       
                                                             

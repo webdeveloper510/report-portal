@@ -371,6 +371,7 @@ var base_url =  window.location.origin+'/report-portal';
    
       }
 
+
 function showCompany(data){
     console.log(data)
     //let obj = JSON.parse(data);
