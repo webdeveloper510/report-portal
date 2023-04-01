@@ -432,21 +432,21 @@ class AdminController extends Controller
              public function company_details(Request $request)
               {
                 $login = Session::get('data');
-            //     $custom = '';
-            //         if($request->custom_id){
-            //             $main_location= array(
-            //                 'main_location'=>$request->custom_id,
-            //                 'parent_location_id'=>'',
-            //                 'description'=>''
-            //             );  
+                $custom_loc = '';
+                    if($request->custom_id){
+                        $main_location= array(
+                            'main_location'=>$request->custom_id,
+                            'parent_location_id'=>'',
+                            'description'=>''
+                        );  
                         
-            //         $custom[]= DB::table('locations')->insertGetId($main_location);
-            // }
+                    $custom_loc[]= DB::table('locations')->insertGetId($main_location);
+            }
 
                 $data = new CompanyDetails;
                 $data['company_name'] = $request->company_name;
                 $data['address'] = '';
-                $data['main_location'] = $custom ? json_encode($custom) : json_encode($request->main_location);
+                $data['main_location'] = $custom_loc ? json_encode($custom_loc) : json_encode($request->main_location);
                 $data['sub_location'] = '';
                 $data['type'] = $login['type'];
                 $data['description'] = $request->description;                
