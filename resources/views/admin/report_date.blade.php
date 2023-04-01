@@ -480,7 +480,7 @@ height: 100% !important;
                <div class="row mt-5">
                     <div class="col-md-4">
                         <div class="">
-                            <img src="public/assets/images/report_date_logo.jpg" class="report_logo"/>
+                        <img class="profile" src="{{ 'public/images/'}}"  width="150"  />
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -532,8 +532,8 @@ height: 100% !important;
                                     <p class="mb-0"><b>Location: </b>{{$report['parent_location']}}</p>
                                     <p class="mb-0"><b>Sub Location: </b>{{$report['sub_location']}}</p>
                                      
-                                   
-                                    <p class=" mb-1">{{$report['users'] ? $report['users']['name']:''}}</p>
+                                    <p class="mb-1">{{$report['users'] ? $report['users']['name']:''}}</p>
+                                    
                                     <div class="{{$report['level']}} me-3">
                                         <p class="text-white  mx-2" style="text-transform: capitalize;">{{$level}}</p>
                                     </div>

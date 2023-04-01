@@ -375,6 +375,7 @@
                                     </div>
                                     <div class="p-3">
                                         <input type="hidden" class="form-control"  name="id" value="{{$data['id']}}">
+                                        <input type="hidden" class="form-control"  name="sub_id" value="{{$locations[0]->id}}">
                                         <div class="mb-3 row">
                                             <label for="name" class="col-sm- col-form-label">Parent Location</label>
                                             <div class="col-sm-12">
@@ -401,11 +402,9 @@
                                         <div class="mb-3 row">
                                                 <label for="name" class="col-sm- col-form-label"><h6>Sub Locations</h6></label>
                                                 <div class="mb-3 dropdown col-sm-12">                                                    
-                                                    <select id="multiple-checkboxes1" class="form-control">
-                                                        @foreach($locations as $location)
-                                                            <option value="$location['id']">{{$location['sub_location']}}</option>  
-                                                        @endforeach 
-                                                    </select>
+                                                <div class="col-sm-12">
+                                                <input type="text" class="form-control"  name="sub_location" value="{{$locations[0]->sub_location}}">
+                                            </div>
                                                     <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
                                                 </div>
                                         

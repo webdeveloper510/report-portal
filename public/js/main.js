@@ -371,6 +371,16 @@ var base_url =  window.location.origin+'/report-portal';
    
       }
 
+      function input(a){
+        if($(a).val()=='test'){
+          $('#other').show()
+        }else{
+          $('#other').hide()
+        }
+    
+ 
+    }
+
 
 function showCompany(data){
     console.log(data)

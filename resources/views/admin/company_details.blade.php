@@ -379,9 +379,14 @@
                                                                        
                                                                     </div>
                                                                 </div>
+                                                                <div class="mb-3 d-flex">
+                                                                    <input type="checkbox"  onchange="input(this)" name="create" class="ms-2" value="test">
+                                                                    <label for="vehicle1" class="ps-2 m-0" >Custom Location</label>
+                                                            
+                                                                </div>
                                                                 <div class="mb-3" id="other" style="display:none">
                                                                     <label for="exampleInputEmail1" class="form-label">Custom Location</label>
-                                                                    <input type="text" class="form-control" name="custom_id" value=""/>
+                                                                    <input type="text" class="form-control" name="custom_loc" value=""/>
                                                                 </div>
                                                         
                                                          <div class="mb-2 row">
