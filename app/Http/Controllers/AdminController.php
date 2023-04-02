@@ -144,7 +144,8 @@ class AdminController extends Controller
 
     public function edit_location($id,$sub_id){
         $data = Location::find($id);
-        return view('admin.edit_location',compact('data'));
+        $locations =DB::table('sub_location')->where('id',$sub_id)->get()->toArray();
+        return view('admin.edit_location',compact('data','locations'));
     }
 
     public function deny_access(Request $request){
@@ -191,10 +192,12 @@ class AdminController extends Controller
     public function update_locations(Request $request){
      
         $data = Location::find($request->id);
+        $sub_id = $request->sub_id;
         $data['parent_location'] = $request->parent_location;
         $data->address = $request->address;
         $data->description = $request->description;
         $data->save();
+        DB::table('sub_location')->where('id',$sub_id)->update(array('sub_location'=>$request->sub_location));
         return redirect('locations')->with('message', 'Location Updated Successfully!');
         
     }
@@ -438,22 +441,26 @@ class AdminController extends Controller
             
              public function company_details(Request $request)
               {
-            //     $custom = '';
-            //         if($request->custom_id){
-            //             $main_location= array(
-            //                 'main_location'=>$request->custom_id,
-            //                 'parent_location_id'=>'',
-            //                 'description'=>''
-            //             );  
+                $login = Session::get('data');
+                $custom_loc = '';
+                    if($request->custom_id){
+                        $main_location= array(
+                            'main_location'=>$request->custom_id,
+                            'parent_location_id'=>'',
+                            'description'=>''
+                        );  
                         
-            //         $custom[]= DB::table('locations')->insertGetId($main_location);
-            // }
+                    $custom_loc[]= DB::table('locations')->insertGetId($main_location);
+            }
+
+
 
                 $data = new CompanyDetails;
                 $data['company_name'] = $request->company_name;
                 $data['address'] = '';
-                $data['main_location'] = $custom ? json_encode($custom) : json_encode($request->main_location);
+                $data['main_location'] = $custom_loc ? json_encode($custom_loc) : json_encode($request->main_location);
                 $data['sub_location'] = '';
+                $data['type'] = $login['type'];
                 $data['description'] = $request->description;                
                 $data['logo'] = '';
                 if($request->hasfile('logo')){
@@ -471,9 +478,19 @@ class AdminController extends Controller
     
     
         public function get_company(){
-            $get_locations = Location::all();      
-            $final_location = CompanyDetails::all();
-            
+            $login = Session::get('data');
+            $permissions = AccessWebsite::where('user_id',$login['id'])->get();
+            if($login['type']=='admin'){
+                $get_locations = Location::all();      
+                $final_location = CompanyDetails::all();
+            }
+            else{
+                $get_locations = Location::whereIn('id',json_decode($permissions[0]->location_id))->get();   
+                $final_location = [];
+            }
+        
+            //print_r($final_location);die;
+            $locations=[];
             $final_data =[];
             foreach ($final_location as $location) {
                 $final_array['id']= $location->id;
@@ -549,6 +566,7 @@ class AdminController extends Controller
  
 }
 public function update_report_images(Request $request){
+    
     $data = Report_image::find($request->id);
     $data->file = '';
       if($request->hasfile('file')){
@@ -557,26 +575,9 @@ public function update_report_images(Request $request){
         $request->file->move(public_path('images'), $filename);
         $data->file = $filename;
         $data->save();
-        session()->put('data', $data);
+        
         return view('admin.report_image');
      }
-
-    // echo 
-    // $data=$id;
-    // DB::table('report_image')->insert($data);
-      
-    //  $data->update($request->all());
-            // $data['images'] = '';
-            // if($request->hasfile('file')){
-            //     $extension = $request->file('file')->getClientOriginalName();
-            //     $filename = time().'.'.$extension;
-            //     $request->file->move(public_path('images'), $filename);
-            //     $data['images'] = $filename;
-                
-            //     $save = DB::table('report_image')->insert($data);   
-            //     return view('admin.report_image');
-                // echo "<pre>";
-                // print_r($save);die;
         }
 }
 
