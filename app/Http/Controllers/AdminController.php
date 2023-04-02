@@ -252,6 +252,8 @@ class AdminController extends Controller
         $login = Session::get('data');
         $data = DB::table('custom_title')->select('id','title')->get();
         $permissions = AccessWebsite::where('user_id',$login['id'])->get();
+        // echo "<pre>";
+        // print_r($permissions);die;
         $sublocation='';
          $company='';
          if($login['type']=='admin'){
@@ -364,14 +366,23 @@ class AdminController extends Controller
 
     function edit_report(Request $request)
     {
-     
+        $sub_id = '';
+            if($request->custom_id){
+                $sublocation = array(
+                    'sub_location'=>$request->custom_id,
+                    'parent_location_id'=>$request->main_location,
+                    'description'=>''             
+                    );  
+             $sub_id= DB::table('sub_location')->insertGetId($sublocation);
+
+            }
         $data = Report::find($request->id);
         $data->report_title = $request->report_title;
         $data->user_id= $request->user_id;
         $data->address = $request->address;
         $data->level =   $request->level;
         $data->main_location = $request->main_location;
-        $data->sub_location = $request->sub_location;
+        $data->sub_location = $sub_id ? $sub_id : $request->sub_location;
         $data->report_time = $request->report_time." ".$request->meridian;
         $data->description = $request->description;
         $data->report_date = $request->report_date;        

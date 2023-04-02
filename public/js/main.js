@@ -127,6 +127,7 @@ var base_url =  window.location.origin+'/report-portal';
               $('#parent_loc').val(data.main_location);
               $('#sub_loc').val(data.sub_location);
               $('#hidden').val(data.id);
+              $('.level').val(data.level);
               $('#desc').html(data.description);
               $('#user_id').val(data.user_id);  
           }
@@ -362,10 +363,11 @@ var base_url =  window.location.origin+'/report-portal';
     });
 
     function input_show(a){
+        console.log($(a).next().show())
           if($(a).val()=='other'){
-            $('#other').show()
+            $(a).parent().parent().find("#other").show()
           }else{
-            $('#other').hide()
+            $(a).parent().parent().find("#other").hide()
           }
       
    
@@ -397,17 +399,18 @@ function get_address(a){
       type:"GET",
 
       success:function(response){
-        //console.log(response);return false;
-        $('#sub_location').html('');
-        $('#sub_location').append(`<option value="">Choose Sub Location</option>`)
+        //console.log($(a).parent().parent().html());return false;
+        $(a).parent().parent().find('.sub_location').html('');
+        $(a).parent().parent().find('.sub_location').append(`<option value="">Choose Sub Location</option>`)
         var add = response.locations[0].address;
         for(let i=0;i<response.locations.length;i++){
-                $('#sub_location').append(`<option value="${response.locations[i].sub_id}">
+               $(a).parent().parent().find('.sub_location').append(`<option value="${response.locations[i].sub_id}">
                 ${response.locations[i].sub_location}
                 </option>`);
             }
-        $('#sub_location').append(`<option value="other">Other</option>`)
+        $(a).parent().parent().find('.sub_location').append(`<option value="other">Other</option>`)
         $('textarea#add').val(add);
+         $('textarea#text_address').val(add);
       },
        error: function(response) {
       
