@@ -443,6 +443,8 @@ class AdminController extends Controller
                     $custom_loc[]= DB::table('locations')->insertGetId($main_location);
             }
 
+
+
                 $data = new CompanyDetails;
                 $data['company_name'] = $request->company_name;
                 $data['address'] = '';
@@ -563,6 +565,7 @@ public function update_report_images(Request $request){
         $request->file->move(public_path('images'), $filename);
         $data->file = $filename;
         $data->save();
+        
         return view('admin.report_image');
      }
         }

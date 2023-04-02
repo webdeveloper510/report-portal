@@ -62,7 +62,12 @@ Route::post('edit_company',[AdminController::class, 'update_company']);
 Route::get('send-email-with-pdf',[AdminController::class,'sendEmailWithPdf']);
 Route::post('assign-client', [AdminController::class,'AssignValueToClient']);
 Route::post('sub_location', [AdminController::class,'sub_location']);
+
+
 Route::get('get_report_images', [AdminController::class,'get_report_images']);
+
+
+
 Route::post('update_report_images', [AdminController::class,'update_report_images']);
 
 
