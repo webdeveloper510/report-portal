@@ -473,7 +473,7 @@
             
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Main Location</label>
-                                                   
+                                                    <!-- <input type="text" class="form-control" name="main_location" value="{{$locations[0]['parent_location']}}" /> -->
                                                     <select class="form-select"  name="main_location" onchange="get_address(this)" aria-label="Default select example">
                                                     <option selected >Select Main Location</option>
                                                     @foreach($locations as $location)
@@ -483,7 +483,7 @@
                                                 </div>
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Sub Location</label>
-                                                        <select class="form-select"  name="sub_location"  onchange="input_show(this)" id="sub_location" aria-label="Default select example">
+                                                        <select class="form-select sub_location"  name="sub_location"  onchange="input_show(this)"  aria-label="Default select example">
                                                             <option value="" selected>Select Sub Location</option>
                                                         </select>
                                                 </div>
@@ -576,17 +576,39 @@
                                                    
                                                         <div class="mb-3">
                                                             <label class="form-label">Main Location</label>
-                                                            <select class="form-select" id="parent_loc" name="main_location" aria-label="Default select example">
+                                                            <select class="form-select" id="parent_loc" name="main_location" onchange="get_address(this)" aria-label="Default select example">
                                                             @foreach($locations as $location)
                                                                 <option  value="{{$location['id']}}">{{$location['parent_location']}}</option>
                                                             @endforeach
                                                             </select>
                                                         </div>
                                                         
+                                             <div class="mb-3">
+                                                  <label for="exampleInputEmail1" class="form-label">Sub Location</label>
+                                                        <select class="form-select sub_location"  name="sub_location"  onchange="input_show(this)"  aria-label="Default select example">
+                                                            <option value="" selected>Select Sub Location</option>
+                                                        </select>
+                                                </div>
+                                                  <div class="mb-3" id="other" style="display:none">
+                                                  <label for="exampleInputEmail1" class="form-label">Custom Location</label>
+                                                  <input type="text" class="form-control" name="custom_id" value=""/>
+                                                </div>
+
+                                            <div class="mb-3">
+                                                  <label for="exampleInputEmail1" class="form-label">Level</label>
+                                                  <select class="form-select level"  name="level" aria-label="Default select example">
+                                                    <option value="">Select Lavel</option>
+                                                    <option  value="level1">Level1</option>
+                                                    <option  value="level2">Level2</option>
+                                                    <option  value="level3">Level3</option>
+                                                  </select>
+                                                </div>  
+                                                        
                                                      <div class="mb-3 row">
                                                         <label for="input" class="col-sm- col-form-label">Address</label>
                                                         <div class="col-sm-12">
-                                                            <textarea type="text" class="form-control" rows="3"  name="address">{{ $activitys ? $activitys[0]['address'] : ''}}</textarea>
+                                                            <textarea type="text" class="form-control" rows="3"  id="text_address" name="address">{{$activitys ?  $activitys[0]['address'] : '' }}</textarea>
+
                                                         </div>
                                                     </div>
                                                         <div class="mb-3">
@@ -603,7 +625,11 @@
                                                                     <textarea type="text" class="form-control" rows="3"  id="desc" name="description"></textarea>
                                                                 </div>
                                                          </div>
-                                                        <!--<div class="mb-3">-->
+                                                             <div class="mb-3">
+                                                                <label class="form-label">Report Photo</label>
+                                                                <input type="file" name="report_photo[]" class="form-control" multiple>
+                                                             </div>
+                                                            <!--<div class="mb-3">-->
                                                         <!--    <label class="form-label">Report Photo</label>-->
                                                         <!--    <input type="file" value="" name="report_photo" class="form-control" multiple>-->
                                                         <!--</div>-->

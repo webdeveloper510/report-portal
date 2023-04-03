@@ -255,6 +255,8 @@ class AdminController extends Controller
         $login = Session::get('data');
         $data = DB::table('custom_title')->select('id','title')->get();
         $permissions = AccessWebsite::where('user_id',$login['id'])->get();
+        // echo "<pre>";
+        // print_r($permissions);die;
         $sublocation='';
          $company='';
          if($login['type']=='admin'){
@@ -325,17 +327,16 @@ class AdminController extends Controller
     }
 
    public function insert_activity(Request $request){
+
     $sub_id = '';
             if($request->custom_id){
                 $sublocation = array(
                     'sub_location'=>$request->custom_id,
                     'parent_location_id'=>$request->main_location,
-                    'description'=>''
-                );  
-                
+                    'description'=>''             
+                    );  
                 $sub_id= DB::table('sub_location')->insertGetId($sublocation);
-                
-             
+
             }
 
             $data = new Report;
@@ -369,14 +370,36 @@ class AdminController extends Controller
 
     function edit_report(Request $request)
     {
-     
+        print_r($request->all());
         $data = Report::find($request->id);
+        $sub_id = '';
+            if($request->custom_id){
+                $sublocation = array(
+                    'sub_location'=>$request->custom_id,
+                    'parent_location_id'=>$request->main_location,
+                    'description'=>''             
+                    );  
+             $sub_id= DB::table('sub_location')->insertGetId($sublocation);
+
+            }
+            
+        if($request->hasfile('report_photo')){
+                foreach ($request->report_photo as $image) {
+                     $name = $image->getClientOriginalName();
+                     $filename = time().'.'.$name;
+                     $image->move(public_path('images'), $filename);
+                     $image_array[]  = $filename;
+            }
+
+            $data->report_photo = json_encode($image_array);
+        }      
+        
         $data->report_title = $request->report_title;
         $data->user_id= $request->user_id;
         $data->address = $request->address;
         $data->level =   $request->level;
         $data->main_location = $request->main_location;
-        $data->sub_location = $request->sub_location;
+        $data->sub_location = $sub_id ? $sub_id : $request->sub_location;
         $data->report_time = $request->report_time." ".$request->meridian;
         $data->description = $request->description;
         $data->report_date = $request->report_date;        
@@ -404,18 +427,16 @@ class AdminController extends Controller
             }
            
             public function report_date(){
-                $filter_data = Session::get('filter'); 
-            //    echo "<pre>";
-            //    print_r($filter_data);die;
+                $filter_data = Session::get('filter');
+                $report_image = Report_image::all();
+                //print_r($report_image);die;
                 $reports = Report::select('reports.*','custom_title.title','locations.parent_location','sub_location.sub_location')
                 ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
                 ->join('sub_location', 'reports.sub_location', '=', 'sub_location.id')
                 ->join('locations', 'locations.id', '=', 'reports.main_location')
                 ->where(['main_location'=>$filter_data['main_location'],'company_id'=>$filter_data['company_id']])
                 ->whereBetween('report_date', [$filter_data['start_date'], $filter_data['end_date']])->with('users')->get()->toArray();
-               $data = Report_image::all();
-               
-                return view('admin.report_date',compact('reports','filter_data','data'));
+                return view('admin.report_date',compact('reports','filter_data','report_image'));
                
             }            
 
