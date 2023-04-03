@@ -147,7 +147,7 @@ var base_url =  window.location.origin+'/report-portal';
                 processData: false,
                 success:function(response)
                 {
-                    console.log(response);return false;
+                    console.log(response);
                     $('#add').modal('hide');
                     toastr.options =  {
                         "closeButton" : true,
@@ -167,8 +167,20 @@ var base_url =  window.location.origin+'/report-portal';
     function deleteData(id){
           delete_id = id;
       }
+      /*-------------------------------------------------------Show Access Data--------------------------------------------------------*/
+      
+      function show_access_info(a){
+          let user_id = $(a).val();
+        $.ajax({
+           url: base_url+"/show_info/"+user_id,
+           type: 'GET',
+           success: function(res) {                   
+                console.log(res['manage'][0]['location_id'])
+           }
+       });
+      }
 
-        // *---------------------------------------------------DELETE REPORT----------------------------------------------//
+        // *-----------------------------------------------------------DELETE REPORT----------------------------------------------//
 
       function DataDelete(table){
         $.ajax({

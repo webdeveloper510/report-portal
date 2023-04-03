@@ -385,7 +385,7 @@
                                             <div class="mb-3 row">
                                                 <label for="name" class="col-sm- col-form-label"><h6>Select User</h6></label>
                                                 <div class="dropdown col-sm-12">
-                                                <select class="form-select"  name="user_id" aria-label="Default select example">
+                                                <select class="form-select"  name="user_id" onchange="show_access_info(this)" aria-label="Default select example">
                                                 @foreach($users as $user)
                                                     <option value="{{$user['id']}}">{{$user['name']}}</option>
                                                 @endforeach
