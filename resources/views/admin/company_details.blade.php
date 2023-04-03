@@ -390,7 +390,7 @@
                                                                 </div>
                                                         
                                                          <div class="mb-2 row">
-                                                                <label for="input" class="col-sm-4  col-form-label"> Logo </label>
+                                                                <label for="input" class="col-sm-4  col-form-label">Logo</label>
                                                                 <div class="col-sm-">
                                                                    <input type="file"  name="logo" class="form-control">
                                                                 </div>
