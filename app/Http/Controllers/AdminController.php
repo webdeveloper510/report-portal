@@ -282,8 +282,9 @@ class AdminController extends Controller
               $company = CompanyDetails::where('id',$permissions[0]->company_id)->get();
               $locations = Location::whereIn('id',json_decode($permissions[0]->location_id))->get();
              }else{
-                  $activitys = Report::select('reports.*', 'custom_title.title','locations.parent_location')
+                  $activitys = Report::select('reports.*', 'custom_title.title','locations.parent_location','sub_location.sub_location')
                 ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
+                ->join('sub_location', 'reports.sub_location', '=', 'sub_location.id')
                 ->join('locations', 'locations.id', '=', 'reports.main_location')
                 ->with('users')->where('user_id',$login['id'])->get()->toArray();
               $company = CompanyDetails::all();    
@@ -404,14 +405,17 @@ class AdminController extends Controller
            
             public function report_date(){
                 $filter_data = Session::get('filter'); 
-               
+            //    echo "<pre>";
+            //    print_r($filter_data);die;
                 $reports = Report::select('reports.*','custom_title.title','locations.parent_location','sub_location.sub_location')
                 ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
                 ->join('sub_location', 'reports.sub_location', '=', 'sub_location.id')
                 ->join('locations', 'locations.id', '=', 'reports.main_location')
                 ->where(['main_location'=>$filter_data['main_location'],'company_id'=>$filter_data['company_id']])
                 ->whereBetween('report_date', [$filter_data['start_date'], $filter_data['end_date']])->with('users')->get()->toArray();
-                return view('admin.report_date',compact('reports','filter_data'));
+               $data = Report_image::all();
+               
+                return view('admin.report_date',compact('reports','filter_data','data'));
                
             }            
 
@@ -435,7 +439,7 @@ class AdminController extends Controller
                 $custom_loc = '';
                     if($request->custom_id){
                         $main_location= array(
-                            'main_location'=>$request->custom_id,
+                            'main_location'=>$request->custom_loc,
                             'parent_location_id'=>'',
                             'description'=>''
                         );  
@@ -485,14 +489,19 @@ class AdminController extends Controller
             foreach ($final_location as $location) {
                 $final_array['id']= $location->id;
                 $final_array['company_name']= $location->company_name;
-                $final_array['description']= $location->description;
-                $details = json_decode($location->main_location);             
+                $final_array['description']= $location->description;               
+                $details = json_decode($location->main_location);   
+                
+                // echo "<pre>";
+                // print_r($details);die;
+
                 $locations = Location::select("parent_location")
                     ->whereIn('id', $details)
                     ->get()->toArray();                
                 $final_array['location'] = collect($locations)->pluck('parent_location')->implode(', ');
                 array_push($final_data,$final_array);
-            }             
+                
+            }    
           return view('admin.company_details',compact('locations','final_data','get_locations'));
               
         }
@@ -556,7 +565,8 @@ class AdminController extends Controller
  
 }
 public function update_report_images(Request $request){
-    
+    // echo "<pre>";
+    // print_r($request->all());die;
     $data = Report_image::find($request->id);
     $data->file = '';
       if($request->hasfile('file')){
@@ -565,7 +575,7 @@ public function update_report_images(Request $request){
         $request->file->move(public_path('images'), $filename);
         $data->file = $filename;
         $data->save();
-        
+ 
         return view('admin.report_image');
      }
         }
