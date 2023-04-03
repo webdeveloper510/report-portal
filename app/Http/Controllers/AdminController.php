@@ -369,6 +369,8 @@ class AdminController extends Controller
 
     function edit_report(Request $request)
     {
+        print_r($request->all());
+        $data = Report::find($request->id);
         $sub_id = '';
             if($request->custom_id){
                 $sublocation = array(
@@ -379,7 +381,18 @@ class AdminController extends Controller
              $sub_id= DB::table('sub_location')->insertGetId($sublocation);
 
             }
-        $data = Report::find($request->id);
+            
+        if($request->hasfile('report_photo')){
+                foreach ($request->report_photo as $image) {
+                     $name = $image->getClientOriginalName();
+                     $filename = time().'.'.$name;
+                     $image->move(public_path('images'), $filename);
+                     $image_array[]  = $filename;
+            }
+
+            $data->report_photo = json_encode($image_array);
+        }      
+        
         $data->report_title = $request->report_title;
         $data->user_id= $request->user_id;
         $data->address = $request->address;
@@ -413,15 +426,16 @@ class AdminController extends Controller
             }
            
             public function report_date(){
-                $filter_data = Session::get('filter'); 
-               
+                $filter_data = Session::get('filter');
+                $report_image = Report_image::all();
+                //print_r($report_image);die;
                 $reports = Report::select('reports.*','custom_title.title','locations.parent_location','sub_location.sub_location')
                 ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
                 ->join('sub_location', 'reports.sub_location', '=', 'sub_location.id')
                 ->join('locations', 'locations.id', '=', 'reports.main_location')
                 ->where(['main_location'=>$filter_data['main_location'],'company_id'=>$filter_data['company_id']])
                 ->whereBetween('report_date', [$filter_data['start_date'], $filter_data['end_date']])->with('users')->get()->toArray();
-                return view('admin.report_date',compact('reports','filter_data'));
+                return view('admin.report_date',compact('reports','filter_data','report_image'));
                
             }            
 

@@ -480,7 +480,7 @@ height: 100% !important;
                <div class="row mt-5">
                     <div class="col-md-4">
                         <div class="">
-                        <img class="profile" src="{{ 'public/images/'}}"  width="150"  />
+                        <img class="profile" src="{{ 'public/images/'.$report_image[0]->file}}"  width="150"  />
                         </div>
                     </div>
                     <div class="col-md-4">

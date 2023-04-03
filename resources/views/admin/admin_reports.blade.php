@@ -473,7 +473,7 @@
             
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Main Location</label>
-                                                   
+                                                    <!-- <input type="text" class="form-control" name="main_location" value="{{$locations[0]['parent_location']}}" /> -->
                                                     <select class="form-select"  name="main_location" onchange="get_address(this)" aria-label="Default select example">
                                                     <option selected >Select Main Location</option>
                                                     @foreach($locations as $location)
@@ -625,7 +625,11 @@
                                                                     <textarea type="text" class="form-control" rows="3"  id="desc" name="description"></textarea>
                                                                 </div>
                                                          </div>
-                                                        <!--<div class="mb-3">-->
+                                                             <div class="mb-3">
+                                                                <label class="form-label">Report Photo</label>
+                                                                <input type="file" name="report_photo[]" class="form-control" multiple>
+                                                             </div>
+                                                            <!--<div class="mb-3">-->
                                                         <!--    <label class="form-label">Report Photo</label>-->
                                                         <!--    <input type="file" value="" name="report_photo" class="form-control" multiple>-->
                                                         <!--</div>-->
