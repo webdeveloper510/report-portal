@@ -10,5 +10,9 @@ class AccessWebsite extends Model
     use HasFactory;
     protected $table = "access_websites";
     
+        protected $casts = [
+             'location_id' => 'array',
+             'control_users' => 'array',
+        ];
   
 }

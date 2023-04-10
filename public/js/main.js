@@ -115,9 +115,8 @@ var base_url =  window.location.origin+'/report-portal';
             }
             
             function runMyFunction(data){
-            //   console.log(data);return false;
+              console.log(data);
               let time = data.report_time.split(':');
-              console.log(time)
               let str = time[1].replace("AM",'');
         
               $("#time").attr({'value': time[0] + ':' +str.trim() })
@@ -125,7 +124,7 @@ var base_url =  window.location.origin+'/report-portal';
               $('#report_type').val(data.report_type);
               $('#report_title').val(data.report_title);
               $('#parent_loc').val(data.main_location);
-              $('#sub_loc').val(data.sub_location);
+              $('.sub_location').val(data.sub_id);
               $('#hidden').val(data.id);
               $('.level').val(data.level);
               $('#desc').html(data.description);
@@ -174,8 +173,17 @@ var base_url =  window.location.origin+'/report-portal';
         $.ajax({
            url: base_url+"/show_info/"+user_id,
            type: 'GET',
-           success: function(res) {                   
-                console.log(res['manage'][0]['location_id'])
+           success: function(res) { 
+              // console.log(res)
+             $('.company_id').val(res.permision[0].company_id)
+             $('.create_report').prop('checked', res.permision[0].create_report==1 ? true : false);
+             $('.edit_report').prop('checked', res.permision[0].edit_report==1 ? true : false);
+             $('.delete_report').prop('checked', res.permision[0].delete_report==1 ? true : false);
+             $('.view_report').prop('checked', res.permision[0].view_report==1 ? true : false);
+             $('.report_assign').val(res.permision[0].report_assign)
+             $('.site_access').prop('checked', res.permision[0].view_report==1 ? true : false);
+             $('.create_account').prop('checked', res.permision[0].view_report==1 ? true : false);
+          
            }
        });
       }
@@ -386,7 +394,7 @@ var base_url =  window.location.origin+'/report-portal';
       }
 
       function input(a){
-        if($(a).val()=='test'){
+        if($(a).is(':checked')){
           $('#other').show()
         }else{
           $('#other').hide()
@@ -394,7 +402,6 @@ var base_url =  window.location.origin+'/report-portal';
     
  
     }
-
 
 function showCompany(data){
     console.log(data)
@@ -405,6 +412,28 @@ function showCompany(data){
     $('#address').text(data.address);
     $('.hidden').val(data.id);
 }
+
+//-----------------------------------------Show Location Company----------------------
+
+function showCompanyLocation(a){
+    var id = $(a).val();
+    var url = base_url+'/get_location/'+id;
+    $.ajax({
+      url: url,
+      type:"GET",
+
+      success:function(response){
+        console.log(response);
+      
+      },
+       error: function(response) {
+      
+      },
+      });
+
+    
+}
+
 //----------------------------------------------reports----------------------------------------//
 function get_address(a){
     var id = $(a).val();

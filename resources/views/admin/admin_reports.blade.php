@@ -238,91 +238,7 @@
         <!-- ============================================================== -->
         <!-- Start Topbar header -->
         <!-- ============================================================== -->
-        <header class="topbar" data-navbarbg="skin6">
-            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-                <div class="navbar-header " data-logobg="skin6">
-                    <!-- ============================================================== -->
-                    <!-- Logo -->
-                    <!-- ============================================================== -->
-                    <a class="navbar-brand ms-4" href="index.html">
-                        <!-- Logo icon -->
-                        <b class="logo-icon mx-4">
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="<?php echo URL::to('/'); ?>/public/assets/images/logo-light-icon.png" alt="homepage" class="dark-logo  mx-5" />
-                            <!-- <img src="../assets/images/logo-light-icon.png" alt="homepage" class="dark-logo" /> -->
-
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text -->
-                      
-                    </a>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <a class="nav-toggler waves-effect waves-light text-white d-block d-md-none"
-                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                    <ul class="navbar-nav d-lg-none d-md-block ">
-                        <li class="nav-item">
-                            <a class="nav-toggler nav-link waves-effect waves-light text-white "
-                                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                        </li>
-                    </ul>
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav me-auto mt-md-0 ">
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-
-                        <!-- <li class="nav-item"> <a href="<?php echo URL::to('/'); ?>/index" class="nav-link "
-                                 aria-expanded="false"><i class="mdi me-2 mdi-"></i><span
-                                    class="hide-menu me- ">Dashboard</span></a></li>
-                        <li class="nav-item"> <a href="<?php echo URL::to('/'); ?>/profile_page" class="nav-link"
-                                 aria-expanded="false">
-                                <i class="mdi me- mdi-"></i><span class="hide-menu me-">Profile</span></a>
-                        </li>
-                        <li class="nav-item"> <a href="<?php echo URL::to('/'); ?>/users" class="nav-link"
-                                 aria-expanded="false"><i class="mdi me- mdi-"></i><span
-                                    class="hide-menu me-">Users</span></a></li>
-                        <li class="nav-item"> <a href="<?php echo URL::to('/'); ?>/admin_reports" class="nav-link" aria-expanded="false"><i class="mdi me-0 mdi-"></i><span class="hide-menu me-">Reports Record</span></a></li>
-                        <li class="nav-item"> <a href="<?php echo URL::to('/'); ?>/report_title" class="nav-link" aria-expanded="false"><i class="mdi me-0 mdi-"></i><span class="hide-menu me-">Manage Report Title</span></a></li>
-                        <li class="nav-item"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="nav-link" aria-expanded="false"><i class="mdi me-0 mdi-y"></i><span class="hide-menu me-">Manage Access</span></a></li>
-                        <li class="nav-item"> <a href="<?php echo URL::to('/'); ?>/locations" class="nav-link" aria-expanded="false"><i class="mdi me-0 mdi-"></i><span class="hide-menu me-">Location</span></a></li> -->
-                        <li class="nav-item search-box">
-                            <a class="nav-link text-muted" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <form class="app-search" style="display: none;">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
-                                    class="srh-btn"><i class="ti-close"></i></a> </form>
-                        </li>
-                    </ul>
-
-                    <!-- ============================================================== -->
-                    <!-- Right side toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav">
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link text-muted waves-effect waves-dark" href="pages-profile.html"  role="button">
-                                <img src="../assets/images/users/1.jpg" alt="user" class="profile-pic me-2">Markarn Doe
-                            </a>
-                            
-                        </li> -->
-                    </ul>
-                </div>
-            </nav>
-        </header>
+        @include('admin.header')
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
@@ -397,8 +313,8 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="col-md-6 d-flex col-4 align-self-center" style="{{$permissions[0]->create_report==1 ? '' : 'display:none !important'}}">
-                     
+                    
+                    <div class="col-md-6 d-flex col-4 align-self-center" style="{{(count($permissions) > 0 && $permissions[0]->create_report==1) ||  session('data')['type'] == 'admin' ? '' : 'display:none !important'}}">
                         <div class="text-end mx-auto upgrade-btn me-2">
                             <a href=""  data-bs-toggle="modal" data-bs-target="#add"
                                 class="btn btn-success d-none d-md-inline-block text-white" target="_blank">Add Report</a>
@@ -408,7 +324,7 @@
                                 class="btn btn-danger d-none d-md-inline-block text-white" target="_blank">End Shift</a>
                         </div>
                     </div>
-                      
+
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -452,7 +368,7 @@
                                                 </div>
                                                    <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Company Name</label>
-                                                   <select class="form-select"  name="company_id" aria-label="Default select example">
+                                                   <select class="form-select" name="company_id" aria-label="Default select example" onchange="showCompanyLocation(this)">
 
                                                     <option selected>Select Company Name</option>
                                                      @foreach($company as $value)
@@ -473,7 +389,6 @@
             
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Main Location</label>
-                                                    <!-- <input type="text" class="form-control" name="main_location" value="{{$locations[0]['parent_location']}}" /> -->
                                                     <select class="form-select"  name="main_location" onchange="get_address(this)" aria-label="Default select example">
                                                     <option selected >Select Main Location</option>
                                                     @foreach($locations as $location)
@@ -577,6 +492,7 @@
                                                         <div class="mb-3">
                                                             <label class="form-label">Main Location</label>
                                                             <select class="form-select" id="parent_loc" name="main_location" onchange="get_address(this)" aria-label="Default select example">
+                                                            <option selected>Select Main Location</option>
                                                             @foreach($locations as $location)
                                                                 <option  value="{{$location['id']}}">{{$location['parent_location']}}</option>
                                                             @endforeach
@@ -587,6 +503,9 @@
                                                   <label for="exampleInputEmail1" class="form-label">Sub Location</label>
                                                         <select class="form-select sub_location"  name="sub_location"  onchange="input_show(this)"  aria-label="Default select example">
                                                             <option value="" selected>Select Sub Location</option>
+                                                            @foreach($sublocation as $sublocation)
+                                                                <option  value="{{$sublocation->id}}">{{$sublocation->sub_location}}</option>
+                                                            @endforeach
                                                         </select>
                                                 </div>
                                                   <div class="mb-3" id="other" style="display:none">
@@ -706,16 +625,17 @@
                                                 <td >
                                                     <div class="d-flex">
                                                         <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit" onclick="return runMyFunction({{json_encode($activity)}});">
-                                                            <i class="mdi mdi-pencil" style="{{$permissions[0]->edit_report==1 ? 'display:block':'display:none'}}"></i>
+                                                            <i class="mdi mdi-pencil" style="{{(count($permissions) > 0 && $permissions[0]->edit_report==1) ||  session('data')['type'] == 'admin' ? '' : 'display:none !important'}}"></i>
                                                         </a>
                                                         <a class="h3"  data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData({{$activity['id']}});">
-                                                            <i class="mdi mdi-delete" style="{{$permissions[0]->delete_report==1 ? 'display:block':'display:none'}}"></i>
+                                                            <i class="mdi mdi-delete" style="{{(count($permissions) > 0 && $permissions[0]->delete_report==1) ||  session('data')['type'] == 'admin' ? '' : 'display:none !important'}}"></i>
                                                         </a>
                                                         <a class="h3"  href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
-                                                            <i class="mdi mdi-eye" style="{{$permissions[0]->view_report==1 ? 'display:block':'display:none'}}"></i>
+                                                            <i class="mdi mdi-eye" style="{{(count($permissions) > 0 && $permissions[0]->view_report==1) ||  session('data')['type'] == 'admin' ? '' : 'display:none !important'}}"></i>
                                                             
                                                         </a>
                                                     </div>
+                        
                                                 </td>
                                             </tr>                                 
                                       
@@ -751,6 +671,7 @@
                                                 <div class="mb-3">
                                                       <label for="exampleInputEmail1" class="form-label">Main Location</label>
                                                        <select class="form-select"  name="main_location" aria-label="Default select example">
+                                                           <option>Select Main Location</option>
                                                       @foreach($locations as $location)
                                                         <option  value="{{$location['id']}}">{{$location['parent_location']}}</option>
                                                       @endforeach
