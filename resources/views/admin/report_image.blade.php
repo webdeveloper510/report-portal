@@ -409,8 +409,8 @@
     <script src="<?php echo URL::to('/'); ?>/public/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
-
- <script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
   @if(Session::has('message'))
   toastr.options =
   {
@@ -429,6 +429,7 @@
         toastr.error("{{ session('error') }}");
   @endif
 </script>
+   
 </body>
 
 </html>

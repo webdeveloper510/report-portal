@@ -281,7 +281,6 @@ $(document).ready(function(){
     })
 });
 
-
 $('#update_data').on('submit',function(e){
 e.preventDefault();    
 let title = $('#show_data').val();

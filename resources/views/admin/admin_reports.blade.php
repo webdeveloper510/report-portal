@@ -342,7 +342,7 @@
                 <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Sidebar Title 1 </label>
+                        <label for="exampleFormControlInput1" class="form-label">Sidebar Title 1</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1">
                     </div>
                     <div class="mb-3">
