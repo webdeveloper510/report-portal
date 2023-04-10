@@ -385,7 +385,7 @@
                                             <div class="mb-3 row">
                                                 <label for="name" class="col-sm- col-form-label"><h6>Select User</h6></label>
                                                 <div class="dropdown col-sm-12">
-                                                <select class="form-select"  name="user_id" aria-label="Default select example">
+                                                <select class="form-select"  name="user_id" onchange="show_access_info(this)" aria-label="Default select example">
                                                 @foreach($users as $user)
                                                     <option value="{{$user['id']}}">{{$user['name']}}</option>
                                                 @endforeach
@@ -434,20 +434,20 @@
                                                 <label for="report_access" class="col-sm- col-form-label"><h6>Report Access</h6></label>
                                                 </div>
                                                 <div class="mb-3 d-flex">
-                                                    <input type="checkbox" id="" name="create" class="ms-2" value="1">
+                                                    <input type="checkbox" id="create_report" name="create" class="ms-2" value="">
                                                     <label for="vehicle1" class="ps-2 m-0" >Create</label>
-                                                    <input type="checkbox" id="" class="ms-2" name="edit" value="1">
+                                                    <input type="checkbox" id="edit_report" class="ms-2" name="edit" value="">
                                                     <label for="vehicle2" class="ps-2 m-0">Edit</label>
-                                                    <input type="checkbox" id="" class="ms-2" name="delete" value="1">
+                                                    <input type="checkbox" id="delete_report" class="ms-2" name="delete" value="">
                                                     <label for="vehicle2" class="ps-2 m-0">Delete</label>
-                                                    <input type="checkbox" id="" class="ms-2" name="view" value="1">
+                                                    <input type="checkbox" id="view_report" class="ms-2" name="view" value="">
                                                     <label for="vehicle2" class="ps-2 m-0">View</label>
                                                  </div>
                                             <div class="mb-3 row">
                                                 <label for="email" class="col-sm- col-form-label"><h6>Site Access</h6></label>
                                                 <div class="col-sm-12">
                                                 <div class="form-check form-switch">
-                                                    <input class="form-check-input" name="site_access"   type="checkbox" id="flexSwitchCheckDefault">
+                                                    <input class="form-check-input" name="site_access"   type="checkbox" id="site_access">
                                                 <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
                                                 </div>
                                                 <!-- <input type="text" class="form-control" value="" name="email"> -->
@@ -457,7 +457,7 @@
                                                 <label for="email" class="col-sm- col-form-label"><h6>Create Other Account</h6></label>
                                                 <div class="col-sm-12">
                                                 <div class="form-check form-switch">
-                                                    <input class="form-check-input"  name="create_account"   type="checkbox" id="flexSwitchCheckDefault">
+                                                    <input class="form-check-input"  name="create_account"   type="checkbox" id="cr_account">
                                                     <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
                                                 </div>
                                                     <!-- <input type="text" class="form-control" value="" name="email"> -->
@@ -476,7 +476,7 @@
                                                  <div class="mb-3 row">
                                                 <label for="name" class="col-sm- col-form-label"><h6>Report Assign</h6></label>
                                                 <div class="dropdown col-sm-12">
-                                                       <select class="form-select"  name="report_assign" aria-label="Default select example">
+                                                       <select class="form-select" id="r_assign" name="report_assign" aria-label="Default select example">
                                                                 <option value="">Choose</option>
                                                                 <option value="1">Yes</option>
                                                                 <option value="0">No</option>
@@ -555,6 +555,8 @@
   }
         toastr.error("{{ session('error') }}");
   @endif
+
+  
 </script>
 
 </body>

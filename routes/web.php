@@ -59,6 +59,7 @@ Route::get('logout',[AdminController::class, 'logout']);
 Route::post('company_post_details', [AdminController::class, 'company_details'])->name('company.details');
 Route::get('company_details',[AdminController::class, 'get_company']);
 Route::post('edit_company',[AdminController::class, 'update_company']);
+Route::get('show_info/{id}',[AdminController::class, 'show_access']);
 Route::get('send-email-with-pdf',[AdminController::class,'sendEmailWithPdf']);
 Route::post('assign-client', [AdminController::class,'AssignValueToClient']);
 Route::post('sub_location', [AdminController::class,'sub_location']);

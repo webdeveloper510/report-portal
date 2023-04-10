@@ -132,6 +132,7 @@ var base_url =  window.location.origin+'/report-portal';
               $('#user_id').val(data.user_id);  
           }
 
+  
   // *---------------------------------------------------EDIT REPORT----------------------------------------------//
 
           $('#update_report').on('submit', function(event){
@@ -147,7 +148,7 @@ var base_url =  window.location.origin+'/report-portal';
                 processData: false,
                 success:function(response)
                 {
-                    console.log(response);return false;
+                    console.log(response);
                     $('#add').modal('hide');
                     toastr.options =  {
                         "closeButton" : true,
@@ -167,8 +168,60 @@ var base_url =  window.location.origin+'/report-portal';
     function deleteData(id){
           delete_id = id;
       }
+      /*-------------------------------------------------------Show Access Data--------------------------------------------------------*/
+      
+      function show_access_info(a){
+        let user_id = $(a).val();
+      $.ajax({
+        url: base_url+"/show_info/"+user_id,
+        type: 'GET',
+        success: function(res) {  
+          console.log(res) 
 
-        // *---------------------------------------------------DELETE REPORT----------------------------------------------//
+              var c_report = res.manage[0].create_report; 
+               if(c_report == 1){
+                $("#create_report").prop("checked", true);
+               }
+
+              var e_report = res.manage[0].edit_report; 
+              if(e_report == 1){
+                $("#edit_report").prop("checked", true);
+               }
+
+              var d_report = res.manage[0].delete_report; 
+              if(d_report == 1){
+                $("#delete_report").prop("checked", true);
+               }
+
+              var v_report = res.manage[0].view_report;     
+              if(v_report == 1){
+                $("#view_report").prop("checked", true);
+               }
+
+              var site_access = res.manage[0].site_access;     
+              if(site_access == 1){
+                $("#site_access").prop("checked", true);
+               }
+
+               var create_account = res.manage[0].create_account;     
+               if(create_account == 1){
+                 $("#cr_account").prop("checked", true);
+                }
+
+
+               var report_assign = res.manage[0].report_assign;     
+               if(report_assign == 1){
+                $('select[name="report_assign"]').find('option[value="1"]').attr("selected",true);               
+                }
+                if(report_assign == 0){
+                  $('select[name="report_assign"]').find('option[value="0"]').attr("selected",true);               
+                  }
+
+        }
+      });
+      }
+
+        // *-----------------------------------------------------------DELETE REPORT----------------------------------------------//
 
       function DataDelete(table){
         $.ajax({
@@ -425,7 +478,7 @@ function get_address(a){
        error: function(response) {
       
       },
-      });
-
-    
+      });  
 }
+
+

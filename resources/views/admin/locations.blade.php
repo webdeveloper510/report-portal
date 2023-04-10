@@ -453,22 +453,23 @@
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm-4  col-form-label">Sub Location</label>
-                                                                <div class="col-sm-">
-                                                                <select class="form-select" name="sub_location" onchange="input_show(this)" aria-label="Default select example">
-                                                                    <option selected>Select Sub Location</option>
-                                                                    <option value="onsite">On Site</option>
-                                                                    <option value="eastparkinglot">East Parking Lot</option>
-                                                                    <option value="ParkingGarage">Parking Garage</option>
-                                                                    <option value="SouthParkingLot">South Parking Lot</option>
-                                                                    <option value="WestParkingLot">West Parking Lot</option>
-                                                                    <option value="LoadingDock">Loading Dock</option>
-                                                                    <option value="DisposalArea">Disposal Area</option>
-                                                                    <option value="Perimeter">Perimeter</option>
-                                                                    <option value="FiveBelow">Five Below</option>
-                                                                    <option value="other">other</option>
-                                                                </select>
-                                                                </div>
+                                                           
+                                                                    <select class="form-select" name="sub_location" onchange="input_show(this)" aria-label="Default select example">
+                                                                        <option selected>Select Sub Location</option>
+                                                                        <option value="onsite">On Site</option>
+                                                                        <option value="eastparkinglot">East Parking Lot</option>
+                                                                        <option value="ParkingGarage">Parking Garage</option>
+                                                                        <option value="SouthParkingLot">South Parking Lot</option>
+                                                                        <option value="WestParkingLot">West Parking Lot</option>
+                                                                        <option value="LoadingDock">Loading Dock</option>
+                                                                        <option value="DisposalArea">Disposal Area</option>
+                                                                        <option value="Perimeter">Perimeter</option>
+                                                                        <option value="FiveBelow">Five Below</option>
+                                                                        <option value="other">other</option>
+                                                                    </select>
+                                                               
                                                             </div>
+                                            
                                                             <div class="mb-3 row" id="other" style="display:none">
                                                                 <label for="input" class="col-sm- col-form-label">Sub Location</label>
                                                                 <div class="col-sm-12">
