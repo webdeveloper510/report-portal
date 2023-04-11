@@ -259,11 +259,9 @@
                                         <div class="mb-3 row">
                                             <label for="file" class="col-sm- col-form-label">Upload Report Image</label>
                                             <div class="col-sm-12">
-                                                <input type="file" class="form-control" id="file" name="file" required>
+                                                <input type="file" class="form-control" id="file" name="file">
                                             </div>
-                                           
                                         </div>
-                                    
                                         <div class="d-grid gap-2 col-6 mx-auto mb-3">
                                             <button href="" type="submit" class="btn btn-primary">Update Report Image</a>
                                         </div>

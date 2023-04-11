@@ -278,6 +278,13 @@ class AdminController extends Controller
     }
 
          public function insert_title(Request $request){
+            $validator = Validator::make($request->all(), [  
+                'title' => 'required',
+            ]);
+        
+            if ($validator->fails()) {
+                 return response()->json(['error'=>$validator->errors()]);
+            }
                 $title = $request->input('title');
                 $data=array('title'=>$title);
                 $save = DB::table('custom_title')->insert($data);    
@@ -521,6 +528,9 @@ class AdminController extends Controller
                   
               $validator = Validator::make($request->all(), [
                     'company_name' => 'required',
+                    'custom_loc' => 'required',
+                    'create' => 'required',
+                    'logo' => 'required',
                     'description' => 'required',
                 ]);
           
@@ -644,6 +654,17 @@ class AdminController extends Controller
 
     }
     public function sub_location(Request $request){
+        $validator = Validator::make($request->all(), [
+            
+            'custom_location' => 'required',
+            'description' => 'required',
+            'sub_location' => 'required',
+            'parent_location' => 'required'
+        ]);
+  
+        if ($validator->fails()) {
+             return response()->json(['error'=>$validator->errors()]);
+        }
         $sublocation = array(
             'sub_location'=>$request->custom_location ? $request->custom_location:$request->sub_location,
             'parent_location_id'=>$request->parent_location,
@@ -663,7 +684,14 @@ class AdminController extends Controller
  
 }
 public function update_report_images(Request $request){
-    
+    $validator = Validator::make($request->all(), [  
+        'file' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+         return response()->json(['error'=>$validator->errors()]);
+    }
+
     $data = Report_image::find(1);
     if($data)
     {

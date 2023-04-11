@@ -287,19 +287,22 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="mb-3 d-flex">
-                                                                    <input type="checkbox"  onchange="input(this)" name="create" class="ms-2" value="test" required>
+                                                                    <input type="checkbox"  onchange="input(this)" name="create" class="ms-2" value="test">
+                                                                    <span class="text-danger error-text create_err"></span>
                                                                     <label for="vehicle1" class="ps-2 m-0" >Custom Location</label>
                                                             
                                                                 </div>
                                                                 <div class="mb-3" id="other" style="display:none">
                                                                     <label for="exampleInputEmail1" class="form-label">Custom Location</label>
-                                                                    <input type="text" class="form-control" name="custom_loc" value="" required>
+                                                                    <input type="text" class="form-control" name="custom_loc" value="" >
+                                                                    <span class="text-danger error-text custom_loc_err"></span>
                                                                 </div>
                                                         
                                                          <div class="mb-2 row">
                                                                 <label for="input" class="col-sm-4  col-form-label">Logo</label>
                                                                 <div class="col-sm-">
-                                                                   <input type="file"  name="logo" class="form-control" required>
+                                                                   <input type="file"  name="logo" class="form-control" >
+                                                                   <span class="text-danger error-text logo_err"></span>
                                                                 </div>
                                                         </div>
                                                             
@@ -350,7 +353,7 @@
                                                             <div class="mb-2 row">
                                                                 <label for="input" class="col-sm-4  col-form-label"> Company Name </label>
                                                                 <div class="col-sm-">
-                                                                    <input type="text" class="form-control company_name" value=""  name="company_name" required>
+                                                                    <input type="text" class="form-control company_name" value=""  name="company_name">
                                                                 </div>
                                                             </div>
                                                             
@@ -370,7 +373,7 @@
                                                             <div class="mb-0 row">
                                                                 <label for="input" class="col-sm- col-form-label">Description</label>
                                                                 <div class="col-sm-12">
-                                                                    <textarea type="text" class="form-control description" value="" rows="5" name="description" required></textarea>
+                                                                    <textarea type="text" class="form-control description" value="" rows="5" name="description"></textarea>
                                                                 </div>
                                                             </div>
                                

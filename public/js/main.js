@@ -74,21 +74,19 @@ var base_url =  window.location.origin+'/report-portal';
           processData: false,
           success:function(response)
           {
-          //   if($.isEmptyObject(data.error)){
-          //     alert(data.success);
-          // }else{
-          //     printErrorMsg(data.error);
-          // }
-            let data = JSON.parse(response)
-            console.log(response)
-              toastr.options =  {
-                  "closeButton" : true,
-                  "progressBar" : true,
-              }
-              toastr.success(data.message);
-              setTimeout(function(){
-                  location.reload();
-              },3000)
+            if($.isEmptyObject(response.error)){
+              $('#add').modal('hide');
+               toastr.options =  {
+                   "closeButton" : true,
+                   "progressBar" : true,
+               }
+               toastr.success(response.message);
+               setTimeout(function(){
+                   location.reload();
+               },3000)
+             }else{
+                 printErrorMsg(response.error);
+               }
           },
           error: function(response) {
               //$('.error').remove();
@@ -281,11 +279,19 @@ $.ajax({
   },
   success:function(response){
         let done = JSON.parse(response);
-        toastr.options =  {
-        "closeButton" : true,
-        "progressBar" : true
-    }
-    toastr.success(done.message);
+        if($.isEmptyObject(done.error)){
+        
+           toastr.options =  {
+               "closeButton" : true,
+               "progressBar" : true,
+           }
+           toastr.success(done.message);
+           setTimeout(function(){
+               location.reload();
+           },3000)
+         }else{
+             printErrorMsg(done.error);
+           }
   },
    error: function(response) {
   
@@ -329,12 +335,6 @@ var base_url =  window.location.origin+'/report-portal';
       });
 
 
-      function printErrorMsg (msg) {
-        $.each( msg, function( key, value ) {
-        console.log(key);
-          $('.'+key+'_err').text(value);
-        });
-    }
   });
   /*----------------------------------------------------------Show Error messages--------------------------------------*/
   function printErrorMsg (msg) {

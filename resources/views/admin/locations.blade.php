@@ -262,7 +262,7 @@
                                 <div class="modal fade " id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog p-4">
                                         <div class="modal-content">
-                                            <div class="modal-header">
+                                            <div class="modal-header">  
                                                 <h5 class="modal-title" id="Report_user">Add Location
                                                     </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -273,7 +273,7 @@
                                                             <div class="mb-3 row">
                                                             <label for="input" class="col-sm-4  col-form-label">Parent Location </label>
                                                             <div class="col-sm- mb-3">
-                                                            <input type="text" class="form-control" name="parent_location" required>
+                                                            <input type="text" class="form-control" name="parent_location">
                                                             </div>
                                                               @if ($errors->has('parent_location'))
                                                                             <span class="invalid feedback"role="alert">
@@ -301,7 +301,7 @@
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm- col-form-label">Address</label>
                                                                 <div class="col-sm-12">
-                                                                    <textarea type="text" class="form-control" rows="3" name="address" required></textarea>
+                                                                    <textarea type="text" class="form-control" rows="3" name="address"></textarea>
                                                                 </div>
                                                                     @if ($errors->has('address'))
                                                                             <span class="invalid feedback"role="alert">
@@ -312,7 +312,7 @@
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm- col-form-label">Description</label>
                                                                 <div class="col-sm-12">
-                                                                    <textarea type="text" class="form-control" rows="3" name="description" required></textarea>
+                                                                    <textarea type="text" class="form-control" rows="3" name="description"></textarea>
                                                                 </div>
                                                                 @if ($errors->has('description'))
                                                                             <span class="invalid feedback"role="alert">
@@ -355,12 +355,7 @@
                                                 <div class="modal-body">   
                                                     <div class="row">                                            
                                                         <div class="col-md-12">
-                                                            <!-- <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-4  col-form-label">Parent Location </label>
-                                                                <div class="col-sm- mb-3">
-                                                                <input type="text" class="form-control" name="parent_location">
-                                                                </div>
-                                                            </div> -->
+                                                        
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm-4  col-form-label">Main Location </label>
                                                                 <div class="col-sm-">
@@ -369,13 +364,16 @@
                                                                     <option selected value="{{$location['id']}}">{{$location['parent_location']}}</option>
                                                                 @endforeach
                                                                 </select>
+                                                                <span class="text-danger error-text parent_location_err"></span>
+                                                                
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm-4  col-form-label">Sub Location</label>
                                                            
                                                                     <select class="form-select" name="sub_location" onchange="input_show(this)" aria-label="Default select example">
-                                                                        <option selected>Select Sub Location</option>
+                                                                    <span class="text-danger error-text sub_location_err"></span>    
+                                                                    <option selected>Select Sub Location</option>
                                                                         <option value="onsite">On Site</option>
                                                                         <option value="eastparkinglot">East Parking Lot</option>
                                                                         <option value="ParkingGarage">Parking Garage</option>
@@ -386,20 +384,24 @@
                                                                         <option value="Perimeter">Perimeter</option>
                                                                         <option value="FiveBelow">Five Below</option>
                                                                         <option value="other">other</option>
+
                                                                     </select>
-                                                               
+                                                                   <span class="text-danger error-text sub_location_err"></span>
                                                             </div>
                                             
                                                             <div class="mb-3 row" id="other" style="display:none">
                                                                 <label for="input" class="col-sm- col-form-label">Sub Location</label>
                                                                 <div class="col-sm-12">
-                                                                    <input type="text" class="form-control" rows="3" name="custom_location" required>
+                                                                    <input type="text" class="form-control" rows="3" name="custom_location">
+                                                                    <span class="text-danger error-text custom_location_err"></span>
                                                                 </div>
+                                                                
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm- col-form-label">Description</label>
                                                                 <div class="col-sm-12">
-                                                                    <textarea type="text" class="form-control" rows="3" name="description" required></textarea>
+                                                                    <textarea type="text" class="form-control" rows="3" name="description" ></textarea>
+                                                                    <span class="text-danger error-text description_err"></span>
                                                                 </div>
                                                             </div>
                                                       
