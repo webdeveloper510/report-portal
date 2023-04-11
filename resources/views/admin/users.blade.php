@@ -58,6 +58,13 @@
         list-style: none;
         font-size: x-large;
     }
+    
+    span.invalid.feedback {
+    color: red;
+    text-align: left;
+}
+
+
 
     .fa {
         margin-left: 8px !important;
@@ -242,7 +249,7 @@
                     <form action="{{ route('add.user') }}" method="POST">
                             @csrf
                             <div class="text-end">
-                                <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
+                                <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" id="openPopup" data-bs-toggle="modal" data-bs-target="#Report">
                                     Add User
                                 </button>
                                 <div class="modal fade" id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -258,27 +265,47 @@
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm-2 col-form-label">Name</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" required name="name">
+                                                                    <input type="text" class="form-control"  name="name">
                                                                 </div>
+                                                                    @if ($errors->has('name'))
+                                                                            <span class="invalid feedback"role="alert">
+                                                                                <strong>{{ $errors->first('name') }}.</strong>
+                                                                            </span>
+                                                                    @endif
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="email" class="col-sm-2 col-form-label">Email</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" required name="email">
+                                                                    <input type="text" class="form-control"  name="email">
                                                                 </div>
+                                                               @if ($errors->has('email'))
+                                                                            <span class="invalid feedback"role="alert">
+                                                                                <strong>{{ $errors->first('email') }}.</strong>
+                                                                            </span>
+                                                                    @endif
                                                             </div>
 
                                                             <div class="mb-3 row">
                                                                 <label for="password" class="col-sm-2 col-form-label">Password</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="text" class="form-control" required name="password">
+                                                                    <input type="text" class="form-control"  name="password">
                                                                 </div>
+                                                                  @if ($errors->has('password'))
+                                                                            <span class="invalid feedback"role="alert">
+                                                                                <strong>{{ $errors->first('password') }}.</strong>
+                                                                            </span>
+                                                                    @endif
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="email" class="col-sm-2 col-form-label">Phone</label>
                                                                 <div class="col-sm-10">
-                                                                    <input type="tel" class="form-control" required name="phone">
+                                                                    <input type="tel" class="form-control"  name="phone">
                                                                 </div>
+                                                                @if ($errors->has('phone'))
+                                                                            <span class="invalid feedback"role="alert">
+                                                                                <strong>{{ $errors->first('phone') }}.</strong>
+                                                                            </span>
+                                                                    @endif
                                                             </div>
 
                                                             <div class="mb-3 row">
@@ -293,12 +320,22 @@
                                                                     <option value="admin">Admin  </option>
                                                                 </select>
                                                                 </div>
+                                                                   @if ($errors->has('categeory'))
+                                                                            <span class="invalid feedback"role="alert">
+                                                                                <strong>{{ $errors->first('categeory') }}.</strong>
+                                                                            </span>
+                                                                    @endif
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm-2 col-form-label">Address</label>
                                                                 <div class="col-sm-10">
-                                                                    <textarea type="text" class="form-control" required rows="3" name="address"></textarea>
+                                                                    <textarea type="text" class="form-control"  rows="3" name="address"></textarea>
                                                                 </div>
+                                                           @if ($errors->has('address'))
+                                                                            <span class="invalid feedback"role="alert">
+                                                                                <strong>{{ $errors->first('address') }}.</strong>
+                                                                            </span>
+                                                             @endif
                                                             </div>                                                                       
                                                                 <input type="hidden" name="status" required value="supervisor"></input>
                                                                 <!-- <div class="row">
@@ -327,7 +364,9 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
                                                         <button type="submit" class="btn btn-primary btn1">Submit</button>
-                                                    </div>
+                                                        
+                                                          
+                                                                </div>
                                                 </div>
                                         </div>
                                     </div>
@@ -461,8 +500,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-       <script>
-
+    <script>
   @if(Session::has('message'))
   toastr.options =
   {
@@ -480,6 +518,9 @@
   }
         toastr.error("{{ session('error') }}");
   @endif
+   @if(count($errors)>0)
+       $('#openPopup').trigger('click');
+    @endif
 </script>
 </body>
 

@@ -303,7 +303,8 @@ var base_url =  window.location.origin+'/report-portal';
           processData: false,
           success:function(response)
           {
-              $('#add').modal('hide');
+            if($.isEmptyObject(response.error)){
+             $('#add').modal('hide');
               toastr.options =  {
                   "closeButton" : true,
                   "progressBar" : true,
@@ -312,12 +313,25 @@ var base_url =  window.location.origin+'/report-portal';
               setTimeout(function(){
                   location.reload();
               },3000)
+            }else{
+                printErrorMsg(response.error);
+              }
+
           },
           error: function(response) {
               //$('.error').remove();
           }
       });
   });
+  /*----------------------------------------------------------Show Error messages--------------------------------------*/
+  function printErrorMsg (msg) {
+          $.each( msg, function( key, value ) {
+            console.log(value);
+              $('.'+key+'_err').text(value);
+            });
+    }
+    
+    
     $('#editData').on('submit', function(event){
       event.preventDefault();
       var url = base_url+'/edit_company'
