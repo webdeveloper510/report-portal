@@ -93,7 +93,7 @@ class AdminController extends Controller
     }
     public function get_user()
     {
-        $users = User::all();
+        $users = User::all()->except(1);
         return view('admin.users', compact('users'));
     }
 
@@ -143,7 +143,7 @@ class AdminController extends Controller
 
     public function manage_access(){
        
-        $users = User::all();
+        $users = User::all()->except(1);
         $company = CompanyDetails::all();
         $sub_location = DB::table('sub_location')->get();
         $locations = Location::all();
@@ -178,8 +178,15 @@ class AdminController extends Controller
     }
 
     public function deny_access(Request $request){
+            $request->validate([
+            'user_id' => 'required',
+            'parent_location' => 'required',
+            'location_id' => 'required',
+            'report_assign' => 'required',
+         
+        ]);
         $count = AccessWebsite::where(['user_id'=>$request->user_id])->count();
-        //print_r(json_encode($request->location_id));die;
+      
         if($count>0){
             $data['company_id'] =$request->parent_location;
             $data['site_access'] =$request->site_access=='on' ?  1 : 0;
@@ -229,12 +236,16 @@ class AdminController extends Controller
     }
     
     public function update_locations(Request $request){
+        $request->validate([
+            'address' => 'required',
+            'sub_location' => 'required',
+        ]);
      
         $data = Location::find($request->id);
         $sub_id = $request->sub_id;
         $data['parent_location'] = $request->parent_location;
         $data->address = $request->address;
-        $data->description = $request->description;
+        $data->description = $request->description ? $request->description :'';
         $data->save();
          $sub_location = DB::table('sub_location')->where('id',$sub_id)->get();
          if(count($sub_location)> 0 ){
@@ -257,6 +268,20 @@ class AdminController extends Controller
      }
 
     public function update_profile(Request $request){
+        
+        //  $validator = Validator::make($request->all(), [  
+        //     'name' => 'required',
+        //     'email' => 'required',
+        //     'password' => 'required',
+        //     'phone' => 'required',
+        //     'address' => 'required'
+            
+        // ]);
+  
+        // if ($validator->fails()) {
+        //      return response()->json(['error'=>$validator->errors()]);
+        // }
+        
         $data = User::find($request->id);
         $data->profile = '';
           if($request->hasfile('file')){
@@ -265,11 +290,11 @@ class AdminController extends Controller
             $request->file->move(public_path('profile'), $filename);
             $data->profile = $filename;
          }
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->password = $request->password;
-        $data->phone = $request->phone;
-        $data->address = $request->address;
+        $data->name = $request->name ? $request->name : '';
+        $data->email = $request->email ? $request->email : '';
+        $data->password = $request->password ? $request->password : '';
+        $data->phone = $request->phone ? $request->phone : '';
+        $data->address = $request->address ? $request->address : '';
         $data->save();
         
         session()->put('data', $data);
@@ -389,6 +414,23 @@ class AdminController extends Controller
     }
 
    public function insert_activity(Request $request){
+       $validator = Validator::make($request->all(), [
+            'report_type' => 'required',
+            'company_id' => 'required',
+            'level' => 'required',
+            'main_location' => 'required',
+            'sub_location' => 'required',
+            'report_title' => 'required',
+            'address' => 'required',
+            'report_time' => 'required',
+            'description' => 'required',
+            'report_date' => 'required',
+            'report_photo' => 'required',
+        ]);
+  
+        if ($validator->fails()) {
+             return response()->json(['error'=>$validator->errors()]);
+        }
 
     $sub_id = '';
             if($request->custom_id){
@@ -432,7 +474,21 @@ class AdminController extends Controller
 
     function edit_report(Request $request)
     {
-        //print_r($request->all());
+        $validator = Validator::make($request->all(), [
+            'report_type' => 'required',
+            'level' => 'required',
+            'main_location' => 'required',
+            'sub_location' => 'required',
+            'report_title' => 'required',
+            'address' => 'required',
+            'report_time' => 'required',
+            'description' => 'required',
+            'report_date' => 'required',
+        ]);
+  
+        if ($validator->fails()) {
+             return response()->json(['error'=>$validator->errors()]);
+        }
         $data = Report::find($request->id);
         $sub_id = '';
             if($request->custom_id){
@@ -602,6 +658,16 @@ class AdminController extends Controller
         
          function update_company(Request $request)
         {          
+            $validator = Validator::make($request->all(), [
+            'company_name' => 'required',
+            'main_location' => 'required',
+            'description' => 'required',
+
+        ]);
+  
+        if ($validator->fails()) {
+             return response()->json(['error'=>$validator->errors()]);
+        }
             $data = CompanyDetails::find($request->id);
             $data->company_name = $request->company_name;
             $data->address = '';
@@ -639,7 +705,17 @@ class AdminController extends Controller
         ]);
 
     }
-    public function sub_location(Request $request){
+    public function sub_location(Request $request){    
+           $validator = Validator::make($request->all(), [  
+            'custom_location' => 'required',
+            'description' => 'required',
+            'sub_location' => 'required',
+            'parent_location' => 'required'
+        ]);
+  
+        if ($validator->fails()) {
+             return response()->json(['error'=>$validator->errors()]);
+        }
         $sublocation = array(
             'sub_location'=>$request->custom_location ? $request->custom_location:$request->sub_location,
             'parent_location_id'=>$request->parent_location,

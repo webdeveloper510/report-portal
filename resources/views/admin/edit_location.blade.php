@@ -79,6 +79,10 @@
             color: #ffffff !important;
             font-size: small;
         }
+        
+        span.invalid.feedback {
+                color: red;
+            }
     </style>
 </head>
 
@@ -304,6 +308,11 @@
                                             <div class="col-sm-12">
                                                 <textarea type="text" class="form-control" rows="3"  name="address">{{ $data->address }}</textarea>
                                             </div>
+                                               @if ($errors->has('address'))
+                                                    <span class="invalid feedback"role="alert">
+                                                        <strong>{{ $errors->first('address') }}.</strong>
+                                                    </span>
+                                              @endif
                                         </div>
                                         <div class="mb-3">
                                             <label for="address" class="col-sm- form-label">Description</label>
@@ -315,11 +324,14 @@
                                                 <div class="col-sm-12">
                                                 <input type="text" class="form-control"  name="sub_location" value="{{count($locations) > 0 ? $locations[0]->sub_location : ''}}">
                                             </div>
-                                                    <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
+                                              @if ($errors->has('sub_location'))
+                                                    <span class="invalid feedback"role="alert">
+                                                        <strong>{{ $errors->first('sub_location') }}.</strong>
+                                                    </span>
+                                              @endif
                                                 </div>
                                         
-                                        <!-- <input type="hidden" class="form-control mb-4" id="input" name="status" value=""> -->
-                                        
+
                                         <div class="d-grid gap-2 col-6 mx-auto mb-3">
                                          <button type="submit" class="btn btn-primary">Update Location</button>
                                         </div>                                        

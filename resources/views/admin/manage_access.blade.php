@@ -81,7 +81,9 @@
      header.topbar1 {
         background: #2f3356 !important;
     }
-
+span.invalid.feedback {
+    color: red;
+}
     a.top-link {
         color: #ffffff !important;
         font-size: small;
@@ -291,10 +293,16 @@
                                                 <label for="name" class="col-sm- col-form-label"><h6>Select User</h6></label>
                                                 <div class="dropdown col-sm-12">
                                                 <select class="form-select"  name="user_id" onchange="show_access_info(this)" aria-label="Default select example">
+                                                    <option value="">Select User</option>
                                                 @foreach($users as $user)
                                                     <option value="{{$user['id']}}">{{$user['name']}}</option>
                                                 @endforeach
                                                 </select>
+                                                     @if ($errors->has('user_id'))
+                                                        <span class="invalid feedback"role="alert">
+                                                            <strong>{{ $errors->first('user_id') }}.</strong>
+                                                        </span>
+                                                @endif
                                                     <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
                                                 </div>
                                             </div>
@@ -303,13 +311,16 @@
                                                 <label for="name" class="col-sm- col-form-label"><h6>Parent Location</h6></label>
                                                 <div class="dropdown col-sm-12">
                                                 <select class="form-select company_id"  name="parent_location" aria-label="Default select example">
-                                                     <option selected>Select Company Name</option>
+                                                     <option value="">Select Company Name</option>
                                                     @foreach($company as $value)
                                                     <option  value="{{$value->id}}">{{$value->company_name}}</option>
                                                     @endforeach
-                                                    
-                                             
                                                 </select>
+                                                     @if ($errors->has('parent_location'))
+                                                        <span class="invalid feedback"role="alert">
+                                                            <strong>{{ $errors->first('parent_location') }}.</strong>
+                                                        </span>
+                                                @endif
                                                     <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
                                                 </div>
                                             </div>
@@ -317,11 +328,16 @@
                                                 <label for="name" class="col-sm- col-form-label"><h6>Main Locations</h6></label>
                                                 <div class="dropdown col-sm-12">
                                                     <select id="multiple-checkboxes" class="form-control location_id"  name="location_id[]" multiple="multiple">
+                                                        
                                                         @foreach($locations as $location)
                                                         <option value="{{$location['id']}}">{{$location['parent_location']}}</option>   
                                                         @endforeach 
                                                     </select>
-                                                   
+                                                       @if ($errors->has('location_id'))
+                                                        <span class="invalid feedback"role="alert">
+                                                            <strong>{{ $errors->first('location_id') }}.</strong>
+                                                        </span>
+                                                @endif
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
@@ -387,6 +403,11 @@
                                                                 <option value="0">No</option>
                                                       </select>
                                                 </div>
+                                                    @if ($errors->has('report_assign'))
+                                                        <span class="invalid feedback"role="alert">
+                                                            <strong>{{ $errors->first('report_assign') }}.</strong>
+                                                        </span>
+                                                @endif
                                             </div>
                                             <div class="d-grid gap-2 col-6 mx-auto mb-3">
                                                 <button type="submit" class="btn btn-primary">Update Manage</button>

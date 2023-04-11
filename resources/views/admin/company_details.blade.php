@@ -264,7 +264,7 @@
                                                             <div class="mb-3 ">
                                                                 <label for="input" class="form-label"> Company Name </label>
                                                                     <input type="text" class="form-control" name="company_name">
-                                                                    Add Location
+                                                                    
                                                                   <span class="text-danger error-text company_name_err"></span>
                                                             </div>
                                                             <!--  <div class="mb-3 ">-->
@@ -282,23 +282,27 @@
                                                                             <option  value="{{$location['id']}}">{{$location['parent_location']}}</option>   
                                                                             @endforeach 
                                                                         </select>
+                                                                        <!--<span class="text-danger error-text main_location_err"></span>-->
                                                                        
                                                                     </div>
                                                                 </div>
                                                                 <div class="mb-3 d-flex">
                                                                     <input type="checkbox"  onchange="input(this)" name="create" class="ms-2" value="test">
+                                                                    
                                                                     <label for="vehicle1" class="ps-2 m-0" >Custom Location</label>
                                                             
                                                                 </div>
                                                                 <div class="mb-3" id="other" style="display:none">
                                                                     <label for="exampleInputEmail1" class="form-label">Custom Location</label>
                                                                     <input type="text" class="form-control" name="custom_loc" value=""/>
+                                                                    <span class="text-danger error-text custom_loc_err"></span>
                                                                 </div>
                                                         
                                                          <div class="mb-2 row">
                                                                 <label for="input" class="col-sm-4  col-form-label"> Logo </label>
                                                                 <div class="col-sm-">
                                                                    <input type="file"  name="logo" class="form-control">
+                                                                   <span class="text-danger error-text logo_err"></span>
                                                                 </div>
                                                         </div>
                                                             
@@ -350,6 +354,7 @@
                                                                 <label for="input" class="col-sm-4  col-form-label"> Company Name </label>
                                                                 <div class="col-sm-">
                                                                     <input type="text" class="form-control company_name" value=""  name="company_name">
+                                                                       <span class="text-danger error-text company_name_err"></span>
                                                                 </div>
                                                             </div>
                                                             
@@ -362,7 +367,7 @@
                                                                             <option value="{{$location['id']}}">{{$location['parent_location']}}</option>   
                                                                             @endforeach 
                                                                         </select>
-                                                                       
+                                                                             <span class="text-danger error-text main_location_err"></span>
                                                                     </div>
                                                                 </div>
                                                        
@@ -371,6 +376,7 @@
                                                                 <div class="col-sm-12">
                                                                     <textarea type="text" class="form-control description" value="" rows="5" name="description"></textarea>
                                                                 </div>
+                                                                   <span class="text-danger error-text description_err"></span>
                                                             </div>
                                
                                                             <div id="main">

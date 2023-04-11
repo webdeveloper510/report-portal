@@ -256,7 +256,7 @@
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" id="openPopup" data-bs-toggle="modal" data-bs-target="#Report">
                                     Add Location
                                 </button>
-                                <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#address">
+                                <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white"  data-bs-toggle="modal" data-bs-target="#address">
                                     Sub Location
                              </button>
                                 <div class="modal fade " id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -369,6 +369,7 @@
                                                                     <option selected value="{{$location['id']}}">{{$location['parent_location']}}</option>
                                                                 @endforeach
                                                                 </select>
+                                                                <span class="text-danger error-text parent_location_err"></span>
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
@@ -387,19 +388,21 @@
                                                                         <option value="FiveBelow">Five Below</option>
                                                                         <option value="other">other</option>
                                                                     </select>
-                                                               
+                                                                <span class="text-danger error-text sub_location_err"></span>
                                                             </div>
                                             
                                                             <div class="mb-3 row" id="other" style="display:none">
                                                                 <label for="input" class="col-sm- col-form-label">Sub Location</label>
                                                                 <div class="col-sm-12">
                                                                     <input type="text" class="form-control" rows="3" name="custom_location">
+                                                                    <span class="text-danger error-text custom_location_err"></span>
                                                                 </div>
-                                                            </div>
+                                                            </div>  
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm- col-form-label">Description</label>
                                                                 <div class="col-sm-12">
                                                                     <textarea type="text" class="form-control" rows="3" name="description"></textarea>
+                                                                     <span class="text-danger error-text description_err"></span>
                                                                 </div>
                                                             </div>
                                                       

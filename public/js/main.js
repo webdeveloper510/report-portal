@@ -38,8 +38,9 @@ var base_url =  window.location.origin+'/report-portal';
           processData: false,
           success:function(response)
           {
-            //   console.log(response);return false;
-              $('#add').modal('hide');
+               console.log(response);
+              if($.isEmptyObject(response.error)){
+             $('#add').modal('hide');
               toastr.options =  {
                   "closeButton" : true,
                   "progressBar" : true,
@@ -48,6 +49,10 @@ var base_url =  window.location.origin+'/report-portal';
               setTimeout(function(){
                   location.reload();
               },3000)
+            }else{
+                printErrorMsg(response.error);
+              }
+
           },
           error: function(response) {
               //$('.error').remove();
@@ -59,7 +64,7 @@ var base_url =  window.location.origin+'/report-portal';
     $('#sub_location').on('submit', function(event){
       event.preventDefault();
       
-      var url = base_url+'/sub_location';
+      var url = base_url+'/sub_location';     
       $.ajaxSetup({
         headers:
         {
@@ -74,17 +79,21 @@ var base_url =  window.location.origin+'/report-portal';
           processData: false,
           success:function(response)
           {
-            let data = JSON.parse(response)
-            console.log(response)
+           if($.isEmptyObject(response.error)){
+             $('#add').modal('hide');
               toastr.options =  {
                   "closeButton" : true,
                   "progressBar" : true,
               }
-              toastr.success(data.message);
+              toastr.success(response.message);
               setTimeout(function(){
                   location.reload();
               },3000)
-          },
+            }else{
+                printErrorMsg(response.error);
+              }
+
+          },   
           error: function(response) {
               //$('.error').remove();
           }
@@ -345,8 +354,8 @@ var base_url =  window.location.origin+'/report-portal';
           processData: false,
           success:function(response)
           {
-              console.log(response)
-            toastr.options =  {
+               if($.isEmptyObject(response.error)){
+               toastr.options =  {
                   "closeButton" : true,
                   "progressBar" : true,
               }
@@ -354,6 +363,11 @@ var base_url =  window.location.origin+'/report-portal';
               setTimeout(function(){
                   location.reload();
               },3000)
+            }else{
+                printErrorMsg(response.error);
+              }
+              console.log(response)
+          
           },
           error: function(response) {
               //$('.error').remove();
