@@ -273,7 +273,7 @@
                                                             <div class="mb-3 row">
                                                             <label for="input" class="col-sm-4  col-form-label">Parent Location </label>
                                                             <div class="col-sm- mb-3">
-                                                            <input type="text" class="form-control" name="parent_location">
+                                                            <input type="text" class="form-control" name="parent_location" required>
                                                             </div>
                                                             </div>
                                                             <!-- <div class="mb-3 row">
@@ -296,13 +296,13 @@
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm- col-form-label">Address</label>
                                                                 <div class="col-sm-12">
-                                                                    <textarea type="text" class="form-control" rows="3" name="address"></textarea>
+                                                                    <textarea type="text" class="form-control" rows="3" name="address" required></textarea>
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm- col-form-label">Description</label>
                                                                 <div class="col-sm-12">
-                                                                    <textarea type="text" class="form-control" rows="3" name="description"></textarea>
+                                                                    <textarea type="text" class="form-control" rows="3" name="description" required></textarea>
                                                                 </div>
                                                             </div>
      
@@ -378,13 +378,13 @@
                                                             <div class="mb-3 row" id="other" style="display:none">
                                                                 <label for="input" class="col-sm- col-form-label">Sub Location</label>
                                                                 <div class="col-sm-12">
-                                                                    <input type="text" class="form-control" rows="3" name="custom_location">
+                                                                    <input type="text" class="form-control" rows="3" name="custom_location" required>
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm- col-form-label">Description</label>
                                                                 <div class="col-sm-12">
-                                                                    <textarea type="text" class="form-control" rows="3" name="description"></textarea>
+                                                                    <textarea type="text" class="form-control" rows="3" name="description" required></textarea>
                                                                 </div>
                                                             </div>
                                                       

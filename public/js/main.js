@@ -74,6 +74,11 @@ var base_url =  window.location.origin+'/report-portal';
           processData: false,
           success:function(response)
           {
+          //   if($.isEmptyObject(data.error)){
+          //     alert(data.success);
+          // }else{
+          //     printErrorMsg(data.error);
+          // }
             let data = JSON.parse(response)
             console.log(response)
               toastr.options =  {
@@ -303,6 +308,11 @@ var base_url =  window.location.origin+'/report-portal';
           processData: false,
           success:function(response)
           {
+              if($.isEmptyObject(response.error)){
+                alert(response.success);
+            }else{
+                printErrorMsg(response.error);
+            }
               $('#add').modal('hide');
               toastr.options =  {
                   "closeButton" : true,
@@ -317,6 +327,14 @@ var base_url =  window.location.origin+'/report-portal';
               //$('.error').remove();
           }
       });
+
+
+      function printErrorMsg (msg) {
+        $.each( msg, function( key, value ) {
+        console.log(key);
+          $('.'+key+'_err').text(value);
+        });
+    }
   });
     $('#editData').on('submit', function(event){
       event.preventDefault();

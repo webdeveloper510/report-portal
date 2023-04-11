@@ -103,8 +103,8 @@
                                              <div class="mb-3 row">
                                                 <label for="categeory" class="form-label">User Type</label>
                                             
-                                                    <select class="form-select" name="type" aria-label="Default select example">
-                                                    <option selected>Select Categeory</option>
+                                                    <select class="form-select" name="type"  id="validationDefault04" required>
+                                                    <option>Select Categeory</option>
                                                     <option value="supervisor">Supervisor</option>
                                                     <option value="dispatcher">Dispatcher</option>
                                                     <option value="client">Client </option>
@@ -117,13 +117,13 @@
                                         <div class="mb-3 row">
                                             <label for="email" class="col-sm- col-form-label">Email</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control"  name="email">
+                                                <input type="text" class="form-control"  name="email" required>
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="password" class="col-sm- col-form-label">Password</label>
                                             <div class="col-sm-12">
-                                                <input type="password" class="form-control"  name="password">
+                                                <input type="password" class="form-control"  name="password" required>
                                             </div>
                                         </div>
                                         <div class="mb-3 form-check">

@@ -288,7 +288,7 @@
                                         <div class="mb-3 row">
                                             <label for="name" class="col-sm- col-form-label">Parent Location</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control"  name="parent_location" value="{{$data['parent_location']}}">
+                                                <input type="text" class="form-control"  name="parent_location" value="{{$data['parent_location']}}" required>
                                             </div>
                                         </div>
                                        
@@ -302,18 +302,18 @@
                                         <div class="mb-3 row">
                                             <label for="input" class="col-sm- col-form-label">Address</label>
                                             <div class="col-sm-12">
-                                                <textarea type="text" class="form-control" rows="3"  name="address">{{ $data->address }}</textarea>
+                                                <textarea type="text" class="form-control" rows="3"  name="address" required>{{ $data->address }}</textarea>
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="address" class="col-sm- form-label">Description</label>
-                                            <textarea class="form-control" id="address" rows="3" value="{{$data['description']}}" name="description">{{$data['description']}}</textarea>
+                                            <textarea class="form-control" id="address" rows="3" value="{{$data['description']}}" name="description" required>{{$data['description']}}</textarea>
                                         </div>
                                         <div class="mb-3 row">
                                                 <label for="name" class="col-sm- col-form-label"><h6>Sub Locations</h6></label>
                                                 <div class="mb-3 dropdown col-sm-12">                                                    
                                                 <div class="col-sm-12">
-                                                <input type="text" class="form-control"  name="sub_location" value="{{count($locations) > 0 ? $locations[0]->sub_location : ''}}">
+                                                <input type="text" class="form-control"  name="sub_location" value="{{count($locations) > 0 ? $locations[0]->sub_location : ''}}" required>
                                             </div>
                                                     <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
                                                 </div>

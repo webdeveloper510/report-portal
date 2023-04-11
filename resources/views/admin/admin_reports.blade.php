@@ -359,6 +359,7 @@
                                                   <label for="exampleInputEmail1" class="form-label">Report Type</label>
                                                   <select class="form-select"  name="report_type" aria-label="Default select example">
                                                     <option selected>Select Report Type</option>
+                                                    
                                                     <option value="Activity Reports">Activity Reports</option>
                                                     <option value="Incident Reports">Incident Reports</option>
                                                     <option value="Patrol Reports">Petrol Reports</option>
@@ -404,7 +405,7 @@
                                                 </div>
                                                 <div class="mb-3" id="other" style="display:none">
                                                   <label for="exampleInputEmail1" class="form-label">Custom Location</label>
-                                                  <input type="text" class="form-control" name="custom_id" value=""/>
+                                                  <input type="text" class="form-control" name="custom_id" value="" required>
                                                 </div>
                                                 
                                                 <div class="mb-3">
@@ -421,28 +422,28 @@
                                                 <div class="mb-3 row">
                                                     <label for="input" class="col-sm- col-form-label">Address</label>
                                                     <div class="col-sm-12">
-                                                        <textarea type="text" class="form-control" rows="3" id="add" name="address"></textarea>
+                                                        <textarea type="text" class="form-control" rows="3" id="add" name="address" required></textarea>
                                                     </div>
                                                  </div>
                                                 <div class="mb-3">
                                                   <label class="form-label">Report Time</label>
-                                                  <input type="time"  name="report_time" value="" id="timeInput" onChange="onTimeChange()" class="form-control">
+                                                  <input type="time"  name="report_time" value="" id="timeInput" onChange="onTimeChange()" class="form-control" required>
                                                   <input type="hidden" name="meridian" value="" id="meridian"/>
                                                 </div>
                                                  <div class="mb-3">
                                                           <label for="input" class="col-sm- col-form-label">Description</label>
                                                                 <div class="col-sm-12">
-                                                                    <textarea type="text" class="form-control" rows="3" name="description"></textarea>
+                                                                    <textarea type="text" class="form-control" rows="3" name="description" required></textarea>
                                                                 </div>
                                                          </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Report Date</label>
-                                                    <input type="date" value="" name="report_date" class="form-control">
+                                                    <input type="date" value="" name="report_date" class="form-control" required>
                                                 </div>
                                                 
                                                 <div class="mb-3">
                                                     <label class="form-label">Report Photo</label>
-                                                    <input type="file" name="report_photo[]" class="form-control" multiple>
+                                                    <input type="file" name="report_photo[]" class="form-control" multiple required>
                                                 </div>
                                                   <input type="hidden" name="user_id" value="{{session('data')['id']}} "/>
 
@@ -510,7 +511,7 @@
                                                 </div>
                                                   <div class="mb-3" id="other" style="display:none">
                                                   <label for="exampleInputEmail1" class="form-label">Custom Location</label>
-                                                  <input type="text" class="form-control" name="custom_id" value=""/>
+                                                  <input type="text" class="form-control" name="custom_id" value="" required>
                                                 </div>
 
                                             <div class="mb-3">
@@ -526,27 +527,27 @@
                                                      <div class="mb-3 row">
                                                         <label for="input" class="col-sm- col-form-label">Address</label>
                                                         <div class="col-sm-12">
-                                                            <textarea type="text" class="form-control" rows="3"  id="text_address" name="address">{{$activitys ?  $activitys[0]['address'] : '' }}</textarea>
+                                                            <textarea type="text" class="form-control" rows="3"  id="text_address" name="address" required>{{$activitys ?  $activitys[0]['address'] : '' }}</textarea>
 
                                                         </div>
                                                     </div>
                                                         <div class="mb-3">
                                                             <label class="form-label">Report Time</label>
-                                                            <input type="time" value="" id="time" name="report_time" class="form-control">
+                                                            <input type="time" value="" id="time" name="report_time" class="form-control" required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label class="form-label">Report Date</label>
-                                                            <input type="date" value="" id="date" name="report_date" class="form-control">
+                                                            <input type="date" value="" id="date" name="report_date" class="form-control" required>
                                                         </div>
                                                         <div class="mb-3">
                                                           <label for="input" class="col-sm- col-form-label">Description</label>
                                                                 <div class="col-sm-12">
-                                                                    <textarea type="text" class="form-control" rows="3"  id="desc" name="description"></textarea>
+                                                                    <textarea type="text" class="form-control" rows="3"  id="desc" name="description" required></textarea>
                                                                 </div>
                                                          </div>
                                                              <div class="mb-3">
                                                                 <label class="form-label">Report Photo</label>
-                                                                <input type="file" name="report_photo[]" class="form-control" multiple>
+                                                                <input type="file" name="report_photo[]" class="form-control" multiple required>
                                                              </div>
                                                             <!--<div class="mb-3">-->
                                                         <!--    <label class="form-label">Report Photo</label>-->
@@ -679,19 +680,19 @@
                                                 </div>
                                         <div class="mb-3">
                                             <label class="form-label">Start Date</label>
-                                            <input type="date" name="start_date" class="form-control" >
+                                            <input type="date" name="start_date" class="form-control" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Start Time</label>
-                                            <input type="time" class="form-control" >
+                                            <input type="time" class="form-control" required >
                                         </div>
                                         <div class="mb-3">
                                             <label  class="form-label">End Date</label>
-                                            <input type="date" name="end_date" class="form-control" >
+                                            <input type="date" name="end_date" class="form-control" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">End Time</label>
-                                            <input type="time" class="form-control" >
+                                            <input type="time" class="form-control" required>
                                         </div>
                                         <div class="text-center">
                                         <button  type="submit" class="btn btn-primary col-6">Submit</button>

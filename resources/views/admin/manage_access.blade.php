@@ -352,7 +352,7 @@
                                                 <label for="email" class="col-sm- col-form-label"><h6>Site Access</h6></label>
                                                 <div class="col-sm-12">
                                                 <div class="form-check form-switch">
-                                                    <input class="form-check-input site_access" name="site_access" type="checkbox" id="flexSwitchCheckDefault">
+                                                    <input class="form-check-input site_access" name="site_access" type="checkbox" id="flexSwitchCheckDefault" required>
                                                 <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
                                                 </div>
                                                 <!-- <input type="text" class="form-control" value="" name="email"> -->
@@ -362,7 +362,7 @@
                                                 <label for="email" class="col-sm- col-form-label "><h6>Create Other Account</h6></label>
                                                 <div class="col-sm-12">
                                                 <div class="form-check form-switch">
-                                                    <input class="form-check-input create_account"  name="create_account"   type="checkbox" id="flexSwitchCheckDefault">
+                                                    <input class="form-check-input create_account"  name="create_account"   type="checkbox" id="flexSwitchCheckDefault" required >
                                                     <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
                                                 </div>
                                                     <!-- <input type="text" class="form-control" value="" name="email"> -->

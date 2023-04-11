@@ -259,7 +259,7 @@
                                         <div class="mb-3 row">
                                             <label for="file" class="col-sm- col-form-label">Upload Report Image</label>
                                             <div class="col-sm-12">
-                                                <input type="file" class="form-control" id="file" name="file">
+                                                <input type="file" class="form-control" id="file" name="file" required>
                                             </div>
                                            
                                         </div>

@@ -272,30 +272,30 @@
                                             <div class="mb-3 row">
                                                 <label for="name" class="col-sm- col-form-label">Name</label>
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="input" name="name" value="{{session('data')['name']}}">
+                                                    <input type="text" class="form-control" id="input" name="name" value="{{session('data')['name']}}" required>
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
                                                 <label for="email" class="col-sm- col-form-label">Email</label>
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control" id="input" name="email" value="{{session('data')['email']}}">
+                                                    <input type="text" class="form-control" id="input" name="email" value="{{session('data')['email']}}" required>
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
                                                 <label for="password" class="col-sm- col-form-label">Password</label>
                                                 <div class="col-sm-12">
-                                                    <input type="password" class="form-control" id="input" name="password" value="{{session('data')['password']}}">
+                                                    <input type="password" class="form-control" id="input" name="password" value="{{session('data')['password']}}" required>
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
                                                 <label for="phone" class="col-sm- col-form-label">Phone</label>
                                                 <div class="col-sm-12">
-                                                    <input type="number" class="form-control" id="input" name="phone" value="{{session('data')['phone']}}">
+                                                    <input type="number" class="form-control" id="input" name="phone" value="{{session('data')['phone']}}" required>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="address" class="col-sm- form-label">Address</label>
-                                                <textarea class="form-control" id="address" name="address" rows="3">{{session('data')['address']}}</textarea>
+                                                <textarea class="form-control" id="address" name="address" rows="3" required>{{session('data')['address']}}</textarea>
                                             </div>
                                             <input type="hidden" class="form-control" name="status" value="{{session('data')['status']}}">
                                         </div>
