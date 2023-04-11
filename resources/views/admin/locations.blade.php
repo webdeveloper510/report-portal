@@ -253,7 +253,7 @@
                             @csrf
                             <div class="text-end">
                             
-                                <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#Report">
+                                <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" id="openPopup" data-bs-toggle="modal" data-bs-target="#Report">
                                     Add Location
                                 </button>
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" data-bs-toggle="modal" data-bs-target="#address">
@@ -275,6 +275,11 @@
                                                             <div class="col-sm- mb-3">
                                                             <input type="text" class="form-control" name="parent_location" required>
                                                             </div>
+                                                              @if ($errors->has('parent_location'))
+                                                                            <span class="invalid feedback"role="alert">
+                                                                                <strong>{{ $errors->first('parent_location') }}.</strong>
+                                                                            </span>
+                                                                    @endif
                                                             </div>
                                                             <!-- <div class="mb-3 row">
                                                                 <label for="input" class="col-sm-4  col-form-label">Sub Location </label>
@@ -298,12 +303,22 @@
                                                                 <div class="col-sm-12">
                                                                     <textarea type="text" class="form-control" rows="3" name="address" required></textarea>
                                                                 </div>
+                                                                    @if ($errors->has('address'))
+                                                                            <span class="invalid feedback"role="alert">
+                                                                                <strong>{{ $errors->first('address') }}.</strong>
+                                                                            </span>
+                                                                    @endif
                                                             </div>
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm- col-form-label">Description</label>
                                                                 <div class="col-sm-12">
                                                                     <textarea type="text" class="form-control" rows="3" name="description" required></textarea>
                                                                 </div>
+                                                                @if ($errors->has('description'))
+                                                                            <span class="invalid feedback"role="alert">
+                                                                                <strong>{{ $errors->first('description') }}.</strong>
+                                                                            </span>
+                                                                    @endif
                                                             </div>
      
                                                              
@@ -553,6 +568,12 @@
   }
         toastr.error("{{ session('error') }}");
   @endif
+  
+  
+    @if(count($errors)>0)
+       $('#openPopup').trigger('click');
+    @endif
+    
 </script>
 </body>
 </html>

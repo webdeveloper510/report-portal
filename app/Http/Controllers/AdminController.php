@@ -15,6 +15,7 @@ use DB;
 use Session;
 use Mail;
 use PDF;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -67,7 +68,16 @@ class AdminController extends Controller
 
     public function add_user(Request $request)
     {
-   
+      $input = $request->all();
+ 
+        $request->validate([
+            'name' => 'required',
+            'categeory' => 'required',
+            'phone' => 'required|min:10',
+            'address' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'required|min:6|max:8',
+        ]);
         $data = new User;
         $data['name'] = $request->name;
         $data['email'] = $request->email;
@@ -356,6 +366,11 @@ class AdminController extends Controller
     }
 
     public function locations_insert(Request $request){
+        $request->validate([
+            'parent_location' => 'required',
+            'description' => 'required',
+            'address' => 'required|max:255',
+        ]);
         $data = new Location;
         $id = session('data')['id'];
         $data['parent_location'] = $request->parent_location;
@@ -503,14 +518,25 @@ class AdminController extends Controller
             
              public function company_details(Request $request)
               {
+                  
+              $validator = Validator::make($request->all(), [
+                    'company_name' => 'required',
+                    'description' => 'required',
+                ]);
+          
+                if ($validator->fails()) {
+                     return response()->json(['error'=>$validator->errors()]);
+                }
                  $custom_loc=[];
                 $login = Session::get('data');
+               // print_r($login);die;
                 $custom_loc;
                     if($request->custom_loc){
                         $main_location= array(
                             'parent_location'=>$request->custom_loc,
                             'address'=>'',
-                            'description'=>''
+                            'description'=>'',
+                            'user_id'=>$login->id
                         );  
                         
                     $custom_loc[]= DB::table('locations')->insertGetId($main_location);

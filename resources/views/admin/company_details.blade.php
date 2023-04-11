@@ -258,14 +258,15 @@
                                                 <h5 class="modal-title" id="">Add Company Details
                                                     </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>                        
-                                                <div class="modal-body">   
                                                 
+                                               
+                                                  </div>                        
+                                                <div class="modal-body">   
                                                             <div class="mb-3 ">
                                                                 <label for="input" class="form-label"> Company Name </label>
-                                                                
                                                                     <input type="text" class="form-control" name="company_name">
-                                                                    <span class="text-danger error-text company_name_err"></span>
+                                                                    Add Location
+                                                                  <span class="text-danger error-text company_name_err"></span>
                                                             </div>
                                                             <!--  <div class="mb-3 ">-->
                                                             <!--    <label for="address" class="form-label">Address</label>-->
@@ -307,8 +308,8 @@
                                                             
                                                             <div class="mb-3 ">
                                                                 <label for="input" class="form-label">Description</label>
-                                                                    <textarea type="text" class="form-control" rows="5" name="description" required></textarea>
-                                                               
+                                                                    <textarea type="text" class="form-control" rows="5" name="description"></textarea>
+                                                                <span class="text-danger error-text description_err"></span>
                                                             </div>
                                                       
                                                              <div class="modal-footer">
