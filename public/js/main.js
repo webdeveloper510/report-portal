@@ -155,16 +155,22 @@ var base_url =  window.location.origin+'/report-portal';
                 processData: false,
                 success:function(response)
                 {
-                    console.log(response);
-                    $('#add').modal('hide');
-                    toastr.options =  {
-                        "closeButton" : true,
-                        "progressBar" : true,
+                if($.isEmptyObject(response.error)){
+                  console.log(response);
+                            $('#add').modal('hide');
+                            toastr.options =  {
+                                "closeButton" : true,
+                                "progressBar" : true,
+                            }
+                            toastr.success(response.message);
+                            setTimeout(function(){
+                                location.reload();
+                            },3000)
                     }
-                    toastr.success(response.message);
-                    setTimeout(function(){
-                        location.reload();
-                    },3000)
+            else{
+                printErrorMsg(response.error);
+              }
+                   
                 },
                 error: function(response) {
                     //$('.error').remove();
