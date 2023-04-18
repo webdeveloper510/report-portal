@@ -327,7 +327,7 @@
                                             <div class="mb-3 row">
                                                 <label for="name" class="col-sm- col-form-label"><h6>Sub Locations</h6></label>
                                                 <div class="mb-3 dropdown col-sm-12">                                                    
-                                                    <select id="multiple-checkboxes1" class="form-control" multiple="multiple">
+                                                    <select id="multiple-checkboxes1" name="sub_location" class="form-control" multiple="multiple">
                                                     @foreach($sub_location as $location1)
                                                         <option value="{{$location1->id}}">{{$location1->sub_location}}</option>   
                                                         @endforeach 

@@ -157,8 +157,6 @@ class AdminController extends Controller
          return response()->json([
             'permision' => $infor
               ]);
-
-
     }
     
     //   public function get_location($id=0){
@@ -184,6 +182,7 @@ class AdminController extends Controller
             $data['company_id'] =$request->parent_location;
             $data['site_access'] =$request->site_access=='on' ?  1 : 0;
             $data['location_id'] =$request->location_id;
+            $data['sub_location'] =$request->sub_location;
             $data['control_users'] =$request->users_id;
             $data['report_assign'] =$request->report_assign;
             $data['create_report'] =$request->create ? $request->create : 0;
@@ -202,6 +201,7 @@ class AdminController extends Controller
             $data['site_access'] = $request->site_access=='on' ?  1 : 0;
             $data['user_id'] = $request->user_id;
             $data['location_id'] =$request->location_id;
+            $data['sub_location'] =$request->sub_location;
             $data['report_assign'] =$request->report_assign;
              $data['create_report'] =$request->create ? $request->create : 0;
             $data['view_report'] =$request->view ? $request->view : 0;
@@ -257,7 +257,9 @@ class AdminController extends Controller
      }
 
     public function update_profile(Request $request){
-        $data = User::find($request->id);
+        $data = new User();
+        echo "<pre>";
+        print_r($data);die;
         $data->profile = '';
           if($request->hasfile('file')){
             $extension = $request->file->getClientOriginalName();
@@ -505,7 +507,10 @@ class AdminController extends Controller
                 ->join('locations', 'locations.id', '=', 'reports.main_location')
                 ->where(['main_location'=>$filter_data['main_location'],'company_id'=>$filter_data['company_id']])
                 ->whereBetween('report_date', [$filter_data['start_date'], $filter_data['end_date']])->with('users')->get()->toArray();
+                // echo "<pre>";
+                // print_r($reports[0]['id']);die;
                 return view('admin.report_date',compact('reports','filter_data','report_image'));
+
                
             }            
 
@@ -693,6 +698,9 @@ public function update_report_images(Request $request){
     }
 
     $data = Report_image::find(1);
+    // echo "<pre>";
+    // print_r($data);
+    
     if($data)
     {
         $extension = $request->file->getClientOriginalName();
@@ -712,9 +720,6 @@ public function update_report_images(Request $request){
     }
            return view('admin.report_image');         
     
-
-     
-     
   }
 }
 
