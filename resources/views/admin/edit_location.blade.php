@@ -286,6 +286,8 @@
                                     <div class="p-3">
                                        
                                         <input type="hidden" class="form-control"  name="id" value="{{$data['id']}}">
+                                        
+                                       <input type="hidden" class="form-control"  name="sub_id" value="{{count($locations)>0 ? $locations[0]->id : ''}}">
                                        
                                         
                                        
@@ -303,33 +305,23 @@
                                                 <input type="text" class="form-control" id="input" name="location_name" value="{{$data['location_name']}}">
                                             </div>
                                         </div> -->
-                                        <div class="mb-3 row">
-                                            <label for="input" class="col-sm- col-form-label">Address</label>
-                                            <div class="col-sm-12">
-                                                <textarea type="text" class="form-control" rows="3"  name="address">{{ $data->address }}</textarea>
-                                            </div>
-                                               @if ($errors->has('address'))
-                                                    <span class="invalid feedback"role="alert">
-                                                        <strong>{{ $errors->first('address') }}.</strong>
-                                                    </span>
-                                              @endif
-                                        </div>
+                                        <!--<div class="mb-3 row">-->
+                                        <!--    <label for="input" class="col-sm- col-form-label">Address</label>-->
+                                        <!--    <div class="col-sm-12">-->
+                                        <!--        <textarea type="text" class="form-control" rows="3"  name="address">{{ $data->address }}</textarea>-->
+                                        <!--    </div>-->
+                                        <!--       @if ($errors->has('address'))-->
+                                        <!--            <span class="invalid feedback"role="alert">-->
+                                        <!--                <strong>{{ $errors->first('address') }}.</strong>-->
+                                        <!--            </span>-->
+                                        <!--      @endif-->
+                                        <!--</div>-->
                                         <div class="mb-3">
                                             <label for="address" class="col-sm- form-label">Description</label>
                                             <textarea class="form-control" id="address" rows="3" value="{{$data['description']}}" name="description">{{$data['description']}}</textarea>
                                         </div>
                                         <div class="mb-3 row">
-                                                <label for="name" class="col-sm- col-form-label"><h6>Sub Locations</h6></label>
-                                                <div class="mb-3 dropdown col-sm-12">                                                    
-                                                <div class="col-sm-12">
-                                                <input type="text" class="form-control"  name="sub_location" value="{{count($locations) > 0 ? $locations[0]->sub_location : ''}}">
-                                            </div>
-                                              @if ($errors->has('sub_location'))
-                                                    <span class="invalid feedback"role="alert">
-                                                        <strong>{{ $errors->first('sub_location') }}.</strong>
-                                                    </span>
-                                              @endif
-                                                </div>
+                                          
                                         
 
                                         <div class="d-grid gap-2 col-6 mx-auto mb-3">

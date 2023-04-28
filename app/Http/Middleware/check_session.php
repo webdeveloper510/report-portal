@@ -19,7 +19,9 @@ class check_session
         if (Session::has('data')) {
             return $next($request);
         }
-    
-        return redirect()->back();
+        
+        else
+           return redirect('login');
+       
     }
 }

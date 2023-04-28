@@ -67,6 +67,10 @@
         background: white !important;
         width: 40% !important;
     }
+    
+    span.invalid.feedback {
+    color: red;
+}
 
     .col-sm-4 {
         text-align: center !important;
@@ -238,7 +242,6 @@
         <!-- ============================================================== -->
         <!-- Start Topbar header -->
         <!-- ============================================================== -->
-        @include('admin.header')
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
@@ -319,10 +322,10 @@
                             <a href=""  data-bs-toggle="modal" data-bs-target="#add"
                                 class="btn btn-success d-none d-md-inline-block text-white" target="_blank">Add Report</a>
                         </div>
-                         <div class="text-end end_shift ">
-                            <a href=""  data-bs-toggle="modal" data-bs-target=""
-                                class="btn btn-danger d-none d-md-inline-block text-white" target="_blank">End Shift</a>
-                        </div>
+                        <!-- <div class="text-end end_shift ">-->
+                        <!--    <a href=""  data-bs-toggle="modal" data-bs-target=""-->
+                        <!--        class="btn btn-danger d-none d-md-inline-block text-white" target="_blank">End Shift</a>-->
+                        <!--</div>-->
                     </div>
 
                 </div>
@@ -392,20 +395,24 @@
             
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Main Location</label>
-                                                    <select class="form-select"  name="main_location" onchange="get_address(this)" aria-label="Default select example">
+                                                    <select class="form-select"  name="main_location" id="main_location" onchange="get_address(this)" aria-label="Default select example">
                                                     <option value="" >Select Main Location</option>
                                                     @foreach($locations as $location)
-                                                        <option  value="{{$location['id']}}">{{$location['parent_location']}}</option>
+                                                        <!--<option  value="{{$location['id']}}">{{$location['parent_location']}}</option>-->
                                                     @endforeach
                                                     </select>
                                                      <span class="text-danger error-text main_location_err"></span>
                                                 </div>
-                                                <div class="mb-3">
+                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Sub Location</label>
-                                                        <select class="form-select sub_location"  name="sub_location"  onchange="input_show(this)"  aria-label="Default select example">
-                                                            <option value="">Select Sub Location</option>
+                                                       <select class="form-select company_sublocation" name="sub_location" onchange="input_shows(this)"  aria-label="Default select example">
+                                                           <option value="">Add Sub Location</option>
+                                                             @foreach($sublocation_admin as $location1)
+                                                                <!--<option value="{{$location1->id}}">{{$location1->sub_location}}</option>   -->
+                                                             @endforeach 
+                                                            <option value="other">other</option>
                                                         </select>
-                                                        <span class="text-danger error-text sub_location_err"></span>
+                                                         <span class="text-danger error-text sub_location_err"></span>
                                                 </div>
                                                 <div class="mb-3" id="other" style="display:none">
                                                   <label for="exampleInputEmail1" class="form-label">Custom Location</label>
@@ -416,7 +423,7 @@
                                                 <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Report Title</label>
                                                   <select class="form-select"  name="report_title" aria-label="Default select example">
-                                                    <option selected>Select Report Title</option>
+                                                    <option value="">Select Report Title</option>
                                                     @foreach($data as $title)
                                                     <option  value="{{$title->id}}">{{$title->title}}</option>
                                                     @endforeach
@@ -433,6 +440,11 @@
                                                         <span class="text-danger error-text address_err"></span>
                                                     </div>
                                                  </div>
+                                                 
+                                                 
+
+                                               
+                                                
                                                 <div class="mb-3">
                                                   <label class="form-label">Report Time</label>
                                                   <input type="time"  name="report_time" value="" id="timeInput" onChange="onTimeChange()" class="form-control">
@@ -503,25 +515,35 @@
                                                             </select>
                                                              <span class="text-danger error-text report_title_err"></span>
                                                         </div>
-                                                   
+                                                <div class="mb-3">
+                                                      <label for="exampleInputEmail1" class="form-label">Company Name</label>
+                                                       <select class="form-select" id="company_id" onchange="showCompanyLocation(this)" name="company_id" aria-label="Default select example">
+                                                        <option selected>Select Company Name</option>
+                                                         @foreach($company as $value)
+                                                        <option  value="{{$value->id}}">{{$value->company_name}}</option>
+                                                        @endforeach
+                                                      </select>
+                                                        <span class="text-danger error-text company_id_err"></span>
+                                                   </div>
                                                         <div class="mb-3">
                                                             <label class="form-label">Main Location</label>
-                                                            <select class="form-select" id="parent_loc" name="main_location" onchange="get_address(this)" aria-label="Default select example">
+                                                            <select class="form-select" id="main_location" name="main_location" onchange="get_address(this)" aria-label="Default select example">
                                                             <option value="">Select Main Location</option>
-                                                            @foreach($locations as $location)
-                                                                <option  value="{{$location['id']}}">{{$location['parent_location']}}</option>
-                                                            @endforeach
+                                                                @foreach($locations as $location)
+                                                                    <option  value="{{$location['id']}}">{{$location['parent_location']}}</option>
+                                                                @endforeach
                                                             </select>
                                                              <span class="text-danger error-text main_location_err"></span>
                                                         </div>
                                                         
                                              <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Sub Location</label>
-                                                        <select class="form-select sub_location"  name="sub_location"  onchange="input_show(this)"  aria-label="Default select example">
-                                                            <option value="" >Select Sub Location</option>
-                                                            @foreach($sublocation as $sublocation)
-                                                                <option  value="{{$sublocation->id}}">{{$sublocation->sub_location}}</option>
-                                                            @endforeach
+                                                       <select class="form-select company_sublocation" name="sub_location" onchange="input_shows(this)"  aria-label="Default select example">
+                                                           <option value="">Add Sub Location</option>
+                                                             @foreach($sublocation_admin as $location1)
+                                                                <!--<option value="{{$location1->id}}">{{$location1->sub_location}}</option>   -->
+                                                             @endforeach 
+                                                            <option value="other">other</option>
                                                         </select>
                                                          <span class="text-danger error-text sub_location_err"></span>
                                                 </div>
@@ -548,6 +570,7 @@
                                                            <span class="text-danger error-text address_err"></span>
                                                         </div>
                                                     </div>
+                                                   
                                                         <div class="mb-3">
                                                             <label class="form-label">Report Time</label>
                                                             <input type="time" value="" id="time" name="report_time" class="form-control">
@@ -632,6 +655,7 @@
                                                 <td>{{$activity['report_time']}}</td>
                                                 <td>{{$activity['report_date']}}</td>
                                                 <td>{{$activity['report_type']}}</td>
+                                                 
                                            
                                                     <!--<div class="d-flex">-->
                                                     <!--<input type="checkbox" id="vehicle1" name="create" class=" ms-2" value="Create">-->
@@ -682,38 +706,80 @@
                                      @csrf
                                           <div class="mb-3">
                                                   <label for="exampleInputEmail1" class="form-label">Company Name</label>
-                                                   <select class="form-select"  name="company_id" aria-label="Default select example">
-
-                                                    <option selected>Select Company Name</option>
+                                                   <select class="form-select"  onchange="showCompanyLocation(this)" name="company_id" aria-label="Default select example">
+                                                    <option value="">Select Company Name</option>
                                                      @foreach($company as $value)
                                                     <option  value="{{$value->id}}">{{$value->company_name}}</option>
                                                     @endforeach
                                                   </select>
+                                                      @if ($errors->has('company_id'))
+                                                                            <span class="invalid feedback"role="alert">
+                                                                                <strong>{{ $errors->first('company_id') }}.</strong>
+                                                                            </span>
+                                                    @endif
                                             </div>
                                                 <div class="mb-3">
                                                       <label for="exampleInputEmail1" class="form-label">Main Location</label>
-                                                       <select class="form-select"  name="main_location" aria-label="Default select example">
-                                                           <option>Select Main Location</option>
+                                                       <select class="form-select"  id="main_location"  name="main_location" onchange="get_address(this)" aria-label="Default select example">
+                                                           <option value="">Select Main Location</option>
                                                       @foreach($locations as $location)
-                                                        <option  value="{{$location['id']}}">{{$location['parent_location']}}</option>
+                                                        <!--<option  value="{{$location['id']}}">{{$location['parent_location']}}</option>-->
                                                       @endforeach
                                                       </select>
+                                                      @if ($errors->has('main_location'))
+                                                            <span class="invalid feedback"role="alert">
+                                                                <strong>{{ $errors->first('main_location') }}.</strong>
+                                                            </span>
+                                                        @endif
                                                 </div>
+                                                <div class="mb-3 row">
+                                                    <label for="name" class="col-sm- col-form-label"><h6>Sub Locations</h6></label>
+                                                 <div class="mb-3 dropdown col-sm-12">                                                    
+                                                    <select id="remove_option"  name="sub_location" class="form-control company_sublocation">
+                                                        <option value="">Choose Sub Location</option>
+                                                    @foreach($sublocation_admin as $location1)
+                                                        
+                                                        <!--<option value="{{$location1->id}}">{{$location1->sub_location}}</option>   -->
+                                                        @endforeach 
+                                                        
+                                                    </select>
+                                                    @if ($errors->has('sub_location'))
+                                                                            <span class="invalid feedback"role="alert">
+                                                                                <strong>{{ $errors->first('sub_location') }}.</strong>
+                                                                            </span>
+                                                                    @endif
+                                                    <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
+                                                </div>
+                                            </div>
+                                         
+                                                
                                         <div class="mb-3">
                                             <label class="form-label">Start Date</label>
                                             <input type="date" name="start_date" class="form-control" >
+                                            @if ($errors->has('start_date'))
+                                                    <span class="invalid feedback"role="alert">
+                                                        <strong>{{ $errors->first('start_date') }}.</strong>
+                                                    </span>
+                                            @endif
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Start Time</label>
-                                            <input type="time" class="form-control" >
+                                            <input type="time" name="start_time" class="form-control" >
+                                           
                                         </div>
                                         <div class="mb-3">
                                             <label  class="form-label">End Date</label>
                                             <input type="date" name="end_date" class="form-control" >
+                                            @if ($errors->has('end_date'))
+                                                    <span class="invalid feedback"role="alert">
+                                                        <strong>{{ $errors->first('end_date') }}.</strong>
+                                                    </span>
+                                            @endif
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">End Time</label>
-                                            <input type="time" class="form-control" >
+                                            <input type="time" name="end_time" class="form-control" >
+                                             
                                         </div>
                                         <div class="text-center">
                                         <button  type="submit" class="btn btn-primary col-6">Submit</button>

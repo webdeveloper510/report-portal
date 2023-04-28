@@ -277,19 +277,19 @@
                                                              <div class="mb-3 row">
                                                                     <label for="name" class="col-sm- col-form-label"><h6>Main Locations</h6></label>
                                                                     <div class="dropdown col-sm-12">
-                                                                        <select class="form-control" id="parent_loc"  name="main_location[]" onchange="input_shows(this)" multiple="multiple">
+                                                                        <select class="form-control" id="parent_loc"  name="main_location[]" onchange="get_address(this)" multiple="multiple">
                                                                             @foreach($get_locations as $location)
                                                                             <option  value="{{$location['id']}}">{{$location['parent_location']}}</option>   
                                                                             @endforeach 
                                                                         </select>
-                                                                        <!--<span class="text-danger error-text main_location_err"></span>-->
+                                                                        <span class="text-danger error-text main_location_err"></span>
                                                                        
                                                                     </div>
                                                                 </div>
                                                                 <div class="mb-3 d-flex">
                                                                     <input type="checkbox"  onchange="input(this)" name="create" class="ms-2" value="test">
                                                                     
-                                                                    <label for="vehicle1" class="ps-2 m-0" >Custom Location</label>
+                                                                    <label for="vehicle1" class="ps-2 m-0" >Add New Location</label>
                                                             
                                                                 </div>
                                                                 <div class="mb-3" id="other" style="display:none">
@@ -297,7 +297,41 @@
                                                                     <input type="text" class="form-control" name="custom_loc" value=""/>
                                                                     <span class="text-danger error-text custom_loc_err"></span>
                                                                 </div>
-                                                        
+                                                                <div class="mb-3 row">
+                                                                    <label for="name" class="col-sm- col-form-label"><h6>Sub Locations</h6></label>  
+                                                                    <div class="mb-3 dropdown col-sm-12">                                                    
+                                                                        <select id="multiple-checkboxes1" name="sub_location[]" class="form-control sub_location"  multiple="multiple">
+                                                                      
+                                                                    
+                                                                </select>
+                                                                
+                                                                 <span class="text-danger error-text sub_location_err"></span>
+                                                                        <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
+                                                                </div>
+                                                                
+                                                                 <div class="mb-3 d-flex">
+                                                                    <input type="checkbox"  onchange="inputs(this)" name="creates" class="ms-2" value="test">
+                                                                    
+                                                                    <label for="vehicle1" class="ps-2 m-0" >Add New Location</label>
+                                                            
+                                                                </div>
+                                                                 <div class="mb-3" id="others" style="display:none">
+                                                                    <label for="exampleInputEmail1" class="form-label">Add New Location</label>
+                                                                    <input type="text" class="form-control" name="custom_sub" value=""/>
+                                                                    <span class="text-danger error-text custom_loc_err"></span>
+                                                     
+                                                                </div>
+                                                
+                                                                </div>
+                                                                
+                                                                       <div class="mb-3 row">
+                                                                <label for="input" class="col-sm- col-form-label">Address</label>
+                                                                <div class="col-sm-12">
+                                                                    <textarea type="text" class="form-control"  rows="3" name="address"></textarea>
+                                                                </div>
+                                                                   <span class="text-danger error-text address_err"></span>
+                                                            </div>
+                                                             
                                                          <div class="mb-2 row">
                                                                 <label for="input" class="col-sm-4  col-form-label"> Logo </label>
                                                                 <div class="col-sm-">
@@ -312,7 +346,7 @@
                                                             <div class="mb-3 ">
                                                                 <label for="input" class="form-label">Description</label>
                                                                     <textarea type="text" class="form-control" rows="5" name="description"></textarea>
-                                                                <span class="text-danger error-text description_err"></span>
+                                                                <!--<span class="text-danger error-text description_err"></span>-->
                                                             </div>
                                                       
                                                              <div class="modal-footer">
@@ -362,7 +396,7 @@
                                                              <div class="mb-3 row">
                                                                     <label for="name" class="col-sm- col-form-label">Main Locations</label>
                                                                     <div class="dropdown col-sm-12">
-                                                                        <select class="form-control edit" id="parent_loc" name="main_location[]" multiple="multiple">
+                                                                        <select class="form-control edit" id="parent_loc" name="main_location[]" onchange="get_address(this)" multiple="multiple">
                                                                             @foreach($get_locations as $location)
                                                                             <option value="{{$location['id']}}">{{$location['parent_location']}}</option>   
                                                                             @endforeach 
@@ -370,7 +404,52 @@
                                                                              <span class="text-danger error-text main_location_err"></span>
                                                                     </div>
                                                                 </div>
-                                                       
+                                                                 <div class="mb-3 d-flex">
+                                                                    <input type="checkbox"  onchange="showCustomInput(this,'location')" name="create" class="ms-2" value="test">
+                                                                    
+                                                                    <label for="vehicle1" class="ps-2 m-0" >Add New Location</label>
+                                                            
+                                                                </div>
+                                                                  <div class="mb-3" id="editmain" style="display:none">
+                                                                    <label for="exampleInputEmail1" class="form-label">Custom Location</label>
+                                                                    <input type="text" class="form-control" name="custom_loc" value=""/>
+                                                                    <span class="text-danger error-text custom_loc_err"></span>
+                                                                </div>
+                                                                
+                                                      <!--------------------------Sub LOcation--!----------------->
+                                                              <div class="mb-3 row">
+                                                                    <label for="name" class="col-sm- col-form-label"><h6>Sub Locations</h6></label>  
+                                                                    <div class="mb-3 dropdown col-sm-12">                                                    
+                                                                        <select id="multiple-checkboxes2" name="sub_location[]" class="form-control sub_location"  multiple="multiple">
+                                                                      
+                                                                    
+                                                                          </select>
+                                                                
+                                                                 <span class="text-danger error-text sub_location_err"></span>
+                                                                        <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
+                                                                </div>
+                                                                
+                                                                 <div class="mb-3 d-flex">
+                                                                    <input type="checkbox"  onchange="showCustomInput(this,'sub')" name="creates" class="ms-2" value="test">
+                                                                    
+                                                                    <label for="vehicle1" class="ps-2 m-0" >Add New Location</label>
+                                                            
+                                                                </div>
+                                                                 <div class="mb-3" id="editsub" style="display:none">
+                                                                    <label for="exampleInputEmail1" class="form-label">Add New Location</label>
+                                                                    <input type="text" class="form-control" name="custom_sub" value=""/>
+                                                                    <span class="text-danger error-text custom_loc_err"></span>
+                                                     
+                                                                </div>
+                                                
+                                                                </div>
+                                                                <div class="mb-3 row">
+                                                                <label for="input" class="col-sm- col-form-label">Address</label>
+                                                                <div class="col-sm-12">
+                                                                    <textarea type="text" class="form-control"  rows="3" name="address"></textarea>
+                                                                </div>
+                                                                   <span class="text-danger error-text address_err"></span>
+                                                            </div>
                                                             <div class="mb-0 row">
                                                                 <label for="input" class="col-sm- col-form-label">Description</label>
                                                                 <div class="col-sm-12">
@@ -424,9 +503,9 @@
                                         <tr>
                                             <th class="border-top-0">Company Name</th>
                                              <th class="border-top-0">Main Location</th>
-                                              <!--<th class="border-top-0">Sub Location</th>-->
+                                              <th class="border-top-0">Sub Location</th>
                                                <!--<th class="border-top-0">Address</th>-->
-                                            <th class="border-top-0">Description</th>    
+                                            <!--<th class="border-top-0">Description</th>    -->
                                             <th class="border-top-0">Action</th>
                                             
                                         </tr>
@@ -436,7 +515,8 @@
                                         <tr>
                                             <td>{{$location['company_name']}}</td>
                                             <td>{{$location['location']}}</td>
-                                            <td>{{$location['description']}}</td> 
+                                            <td>{{$location['sub_location']}}</td>
+                                            <!--<td>{{$location['description']}}</td> -->
                                             
                                               <td>
                                                <a href="" data-bs-toggle="modal" data-bs-target="#edit" onclick="showCompany({{json_encode($location)}})">

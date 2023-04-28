@@ -88,6 +88,11 @@
     a {
         color: #1e88e5 !important;
     }
+    
+    span.invalid.feedback {
+    color: red;
+    text-align: left;
+}
     a:hover {
         color: #7460ee !important;
     }
@@ -256,9 +261,7 @@
                                 <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white" id="openPopup" data-bs-toggle="modal" data-bs-target="#Report">
                                     Add Location
                                 </button>
-                                <button type="button" class="btn d-flex btn-danger d-none d-md-inline-block text-white"  data-bs-toggle="modal" data-bs-target="#address">
-                                    Sub Location
-                             </button>
+                               
                                 <div class="modal fade " id="Report" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog p-4">
                                         <div class="modal-content">
@@ -298,27 +301,27 @@
                                                                 </select>
                                                                 </div>
                                                             </div> -->
-                                                            <div class="mb-3 row">
-                                                                <label for="input" class="col-sm- col-form-label">Address</label>
-                                                                <div class="col-sm-12">
-                                                                    <textarea type="text" class="form-control" rows="3" name="address"></textarea>
-                                                                </div>
-                                                                    @if ($errors->has('address'))
-                                                                            <span class="invalid feedback"role="alert">
-                                                                                <strong>{{ $errors->first('address') }}.</strong>
-                                                                            </span>
-                                                                    @endif
-                                                            </div>
+                                                            <!--<div class="mb-3 row">-->
+                                                            <!--    <label for="input" class="col-sm- col-form-label">Address</label>-->
+                                                            <!--    <div class="col-sm-12">-->
+                                                            <!--        <textarea type="text" class="form-control" rows="3" name="address"></textarea>-->
+                                                            <!--    </div>-->
+                                                            <!--        @if ($errors->has('address'))-->
+                                                            <!--                <span class="invalid feedback"role="alert">-->
+                                                            <!--                    <strong>{{ $errors->first('address') }}.</strong>-->
+                                                            <!--                </span>-->
+                                                            <!--        @endif-->
+                                                            <!--</div>-->
                                                             <div class="mb-3 row">
                                                                 <label for="input" class="col-sm- col-form-label">Description</label>
                                                                 <div class="col-sm-12">
                                                                     <textarea type="text" class="form-control" rows="3" name="description"></textarea>
                                                                 </div>
-                                                                @if ($errors->has('description'))
-                                                                            <span class="invalid feedback"role="alert">
-                                                                                <strong>{{ $errors->first('description') }}.</strong>
-                                                                            </span>
-                                                                    @endif
+                                                                <!--@if ($errors->has('description'))-->
+                                                                <!--            <span class="invalid feedback"role="alert">-->
+                                                                <!--                <strong>{{ $errors->first('description') }}.</strong>-->
+                                                                <!--            </span>-->
+                                                                <!--    @endif-->
                                                             </div>
      
                                                              
@@ -342,88 +345,6 @@
 
                         </form>
 
-                        <form id="sub_location">
-                                    
-                                <div class="modal fade " id="address" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog p-4">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="Report_user">Sub Location
-                                                    </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>                        
-                                                <div class="modal-body">   
-                                                    <div class="row">                                            
-                                                        <div class="col-md-12">
-                                                            <!-- <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-4  col-form-label">Parent Location </label>
-                                                                <div class="col-sm- mb-3">
-                                                                <input type="text" class="form-control" name="parent_location">
-                                                                </div>
-                                                            </div> -->
-                                                            <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-4  col-form-label">Main Location </label>
-                                                                <div class="col-sm-">
-                                                                <select class="form-select" name="parent_location" aria-label="Default select example">
-                                                                    @foreach($locations as $location)
-                                                                    <option selected value="{{$location['id']}}">{{$location['parent_location']}}</option>
-                                                                @endforeach
-                                                                </select>
-                                                                <span class="text-danger error-text parent_location_err"></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mb-3 row">
-                                                                <label for="input" class="col-sm-4  col-form-label">Sub Location</label>
-                                                           
-                                                                    <select class="form-select" name="sub_location" onchange="input_show(this)" aria-label="Default select example">
-                                                                        <option selected>Select Sub Location</option>
-                                                                        <option value="onsite">On Site</option>
-                                                                        <option value="eastparkinglot">East Parking Lot</option>
-                                                                        <option value="ParkingGarage">Parking Garage</option>
-                                                                        <option value="SouthParkingLot">South Parking Lot</option>
-                                                                        <option value="WestParkingLot">West Parking Lot</option>
-                                                                        <option value="LoadingDock">Loading Dock</option>
-                                                                        <option value="DisposalArea">Disposal Area</option>
-                                                                        <option value="Perimeter">Perimeter</option>
-                                                                        <option value="FiveBelow">Five Below</option>
-                                                                        <option value="other">other</option>
-                                                                    </select>
-                                                                <span class="text-danger error-text sub_location_err"></span>
-                                                            </div>
-                                            
-                                                            <div class="mb-3 row" id="other" style="display:none">
-                                                                <label for="input" class="col-sm- col-form-label">Sub Location</label>
-                                                                <div class="col-sm-12">
-                                                                    <input type="text" class="form-control" rows="3" name="custom_location">
-                                                                    <span class="text-danger error-text custom_location_err"></span>
-                                                                </div>
-                                                            </div>  
-                                                            <div class="mb-3 row">
-                                                                <label for="input" class="col-sm- col-form-label">Description</label>
-                                                                <div class="col-sm-12">
-                                                                    <textarea type="text" class="form-control" rows="3" name="description"></textarea>
-                                                                     <span class="text-danger error-text description_err"></span>
-                                                                </div>
-                                                            </div>
-                                                      
-                                                            <div id="main">
-
-                                                            </div>
-                                                           
-                                                          
-                                                        </div>
-                                                        <!-- <div class="col-md-2"></div> -->
-                                                        <!-- </form> -->
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
-                                                            <button type="submit" class="btn btn-primary btn1">Submit</button>
-                                                        </div>
-                                                    </div>
-                                                </div>   
-                                        </div>
-                                    </div>
-                                </div>
-                                </form>
                         <div class="row">
                             <div class="col-sm-6"></div>
                             <div class="col-sm-6">
@@ -461,10 +382,9 @@
                                             
                                             <!-- <th class="border-top-0">Sub Location</th> -->
                                             <th class="border-top-0">Main Location</th>
-                                            <th class="border-top-0">Address</th>
-                                            <th class="border-top-0">Description</th> 
-                                            <th class="border-top-0">Sub Location</th> 
-                                               
+                                            <!--<th class="border-top-0">Address</th>-->
+                                            <!--<th class="border-top-0">Description</th> -->
+                                             <th class="border-top-0">Company Name</th> 
                                             <th class="border-top-0">Action</th>
                                             
                                         </tr>
@@ -474,12 +394,12 @@
                                        
                                         <tr>
                                             <td>{{$location['parent_location']}}</td>
-                                            <td>{{$location['address']}}</td>
-                                            <td>{{$location['description']}}</td>  
-                                            <td>{{$location['sub_location']}}</td>                                      
+                                            <td>{{$location['company_name']}}</td>
+                                            <!--<td>{{$location['description']}}</td>  -->
+                                           
                                             <td>
                                             <!-- . '/' . $location['sub_id'] -->
-                                               <a href="{{ 'edit_location/' . $location['id'] . '/' . $location['sub_id']}}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
+                                               <a href="{{ 'edit_location/' . $location['id']}}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
                                                <a class="h3" data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData({{$location['id']}});">
                                                  <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </a>
