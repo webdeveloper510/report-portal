@@ -5,8 +5,19 @@
         $('#multiple-checkboxes').multiselect({
           includeSelectAllOption: true,
         });
+        
 
-        $('#multiple-checkboxes1').multiselect({
+        $('#multiple-checkboxes4').multiselect({
+          includeSelectAllOption: true,
+        });
+          $('#multiple-checkboxes1').multiselect({
+          includeSelectAllOption: true,
+        });
+           $('#multiple-checkboxes2').multiselect({
+          includeSelectAllOption: true,
+        });
+        
+        $('#multiple-checkboxes3').multiselect({
           includeSelectAllOption: true,
         });
         $('#multiple_user-checkboxes').multiselect({
@@ -14,6 +25,7 @@
           });
         $('#parent_loc').multiselect({
             includeSelectAllOption: true,
+        
         });
         $('.edit').multiselect({
             includeSelectAllOption: true,
@@ -38,8 +50,9 @@ var base_url =  window.location.origin+'/report-portal';
           processData: false,
           success:function(response)
           {
-            //   console.log(response);return false;
-              $('#add').modal('hide');
+               console.log(response);
+              if($.isEmptyObject(response.error)){
+             $('#add').modal('hide');
               toastr.options =  {
                   "closeButton" : true,
                   "progressBar" : true,
@@ -48,18 +61,45 @@ var base_url =  window.location.origin+'/report-portal';
               setTimeout(function(){
                   location.reload();
               },3000)
+            }else{
+                printErrorMsg(response.error);
+              }
+
           },
           error: function(response) {
               //$('.error').remove();
           }
       });
   });
+  
+   function get_shift(){
+      $.ajaxSetup({
+        headers:
+        {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+        $.ajax({
+           type:'POST',
+           url:base_url+'/list',
+           data:'_token = <?php echo csrf_token() ?>',
+           processData: false,
+           success:function(data){
+               console.log(data);return false;
+              $("#msg").html(data.msg);
+           }
+        });
+     
+       
+     }
+  
+ 
 
   var base_url =  window.location.origin+'/report-portal';
     $('#sub_location').on('submit', function(event){
       event.preventDefault();
       
-      var url = base_url+'/sub_location';
+      var url = base_url+'/sub_location';     
       $.ajaxSetup({
         headers:
         {
@@ -74,26 +114,69 @@ var base_url =  window.location.origin+'/report-portal';
           processData: false,
           success:function(response)
           {
-            if($.isEmptyObject(response.error)){
-              $('#add').modal('hide');
-               toastr.options =  {
-                   "closeButton" : true,
-                   "progressBar" : true,
-               }
-               toastr.success(response.message);
-               setTimeout(function(){
-                   location.reload();
-               },3000)
-             }else{
-                 printErrorMsg(response.error);
-               }
-          },
+              console.log(response)
+           if($.isEmptyObject(response.error)){
+             $('#address').modal('hide');
+              toastr.options =  {
+                  "closeButton" : true,
+                  "progressBar" : true,
+              }
+              let data = JSON.parse(response);
+              toastr.success(data.message);
+              setTimeout(function(){
+                  location.reload();
+              },3000)
+            }else{
+                printErrorMsg(response.error);
+              }
+
+          },   
           error: function(response) {
               //$('.error').remove();
           }
       });
   });
 
+
+$('#edit_sub').on('submit', function(event){
+      event.preventDefault();
+      
+      var url = base_url+'/edit_sublocation';     
+      $.ajaxSetup({
+        headers:
+        {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+      $.ajax({
+          url: url,
+          method: 'POST',
+          data:$(this).serialize(),
+          cache : false,
+          processData: false,
+          success:function(response)
+          {
+           if($.isEmptyObject(response.error)){
+             $('#edit').modal('hide');
+              toastr.options =  {
+                  "closeButton" : true,
+                  "progressBar" : true,
+              }
+              let data = JSON.parse(response);
+              toastr.success(data.message);
+              setTimeout(function(){
+                  location.reload();
+              },3000)
+            }else{
+                printErrorMsg(response.error);
+              }
+
+          },   
+          error: function(response) {
+              //$('.error').remove();
+          }
+      });
+  });
     
   var inputEle = document.getElementById('timeInput');
             function onTimeChange() {
@@ -121,20 +204,24 @@ var base_url =  window.location.origin+'/report-portal';
               console.log(data);
               let time = data.report_time.split(':');
               let str = time[1].replace("AM",'');
-        
+            console.log(data.company_id);
               $("#time").attr({'value': time[0] + ':' +str.trim() })
               $('#date').val(data.report_date)
               $('#report_type').val(data.report_type);
               $('#report_title').val(data.report_title);
-              $('#parent_loc').val(data.main_location);
-              $('.sub_location').val(data.sub_id);
+              $('#days').val(data.days);
+              $('#start_shift').val(data.start_shift);
+              $('#end_shift').val(data.end_shift);
+              $('#company_id').val(data.company_id);
+              $('#update_report #main_location').val(data.main_location);
+              $('.sub_location').val(data.sub_location);
               $('#hidden').val(data.id);
+              
               $('.level').val(data.level);
               $('#desc').html(data.description);
               $('#user_id').val(data.user_id);  
           }
 
-  
   // *---------------------------------------------------EDIT REPORT----------------------------------------------//
 
           $('#update_report').on('submit', function(event){
@@ -150,16 +237,22 @@ var base_url =  window.location.origin+'/report-portal';
                 processData: false,
                 success:function(response)
                 {
-                    console.log(response);
-                    $('#add').modal('hide');
-                    toastr.options =  {
-                        "closeButton" : true,
-                        "progressBar" : true,
+                if($.isEmptyObject(response.error)){
+                  console.log(response);
+                            $('#add').modal('hide');
+                            toastr.options =  {
+                                "closeButton" : true,
+                                "progressBar" : true,
+                            }
+                            toastr.success(response.message);
+                            setTimeout(function(){
+                                location.reload();
+                            },3000)
                     }
-                    toastr.success(response.message);
-                    setTimeout(function(){
-                        location.reload();
-                    },3000)
+            else{
+                printErrorMsg(response.error);
+              }
+                   
                 },
                 error: function(response) {
                     //$('.error').remove();
@@ -179,7 +272,7 @@ var base_url =  window.location.origin+'/report-portal';
            type: 'GET',
            success: function(res) { 
               // console.log(res)
-             $('.company_id').val(res.permision[0].company_id)
+            // $('.company_id').val(res.permision[0].company_id)
              $('.create_report').prop('checked', res.permision[0].create_report==1 ? true : false);
              $('.edit_report').prop('checked', res.permision[0].edit_report==1 ? true : false);
              $('.delete_report').prop('checked', res.permision[0].delete_report==1 ? true : false);
@@ -252,6 +345,7 @@ $(document).ready(function(){
     })
 });
 
+
 $('#update_data').on('submit',function(e){
 e.preventDefault();    
 let title = $('#show_data').val();
@@ -279,19 +373,11 @@ $.ajax({
   },
   success:function(response){
         let done = JSON.parse(response);
-        if($.isEmptyObject(done.error)){
-        
-           toastr.options =  {
-               "closeButton" : true,
-               "progressBar" : true,
-           }
-           toastr.success(done.message);
-           setTimeout(function(){
-               location.reload();
-           },3000)
-         }else{
-             printErrorMsg(done.error);
-           }
+        toastr.options =  {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+    toastr.success(done.message);
   },
    error: function(response) {
   
@@ -314,6 +400,7 @@ var base_url =  window.location.origin+'/report-portal';
           processData: false,
           success:function(response)
           {
+              //console.log(response);return false;
             if($.isEmptyObject(response.error)){
              $('#add').modal('hide');
               toastr.options =  {
@@ -333,8 +420,6 @@ var base_url =  window.location.origin+'/report-portal';
               //$('.error').remove();
           }
       });
-
-
   });
   /*----------------------------------------------------------Show Error messages--------------------------------------*/
   function printErrorMsg (msg) {
@@ -358,8 +443,8 @@ var base_url =  window.location.origin+'/report-portal';
           processData: false,
           success:function(response)
           {
-              console.log(response)
-            toastr.options =  {
+               if($.isEmptyObject(response.error)){
+               toastr.options =  {
                   "closeButton" : true,
                   "progressBar" : true,
               }
@@ -367,6 +452,11 @@ var base_url =  window.location.origin+'/report-portal';
               setTimeout(function(){
                   location.reload();
               },3000)
+            }else{
+                printErrorMsg(response.error);
+              }
+              console.log(response)
+          
           },
           error: function(response) {
               //$('.error').remove();
@@ -390,7 +480,7 @@ var base_url =  window.location.origin+'/report-portal';
     });
       $.ajax({
           
-          url: url,
+          url: url, 
           method: 'POST',
           data: {value:value, id:data_id},
           success:function(response)
@@ -409,16 +499,39 @@ var base_url =  window.location.origin+'/report-portal';
       });
     });
 
-    function input_show(a){
-        console.log($(a).next().show())
-          if($(a).val()=='other'){
-            $(a).parent().parent().find("#other").show()
-          }else{
-            $(a).parent().parent().find("#other").hide()
-          }
-      
-   
+    function input_shows(a){
+        console.log('trrrrrrr');
+     let id = $(a).val()
+     if($(a).val()=='other'){
+          $(a).parent().parent().find("#other").show()
       }
+      else{
+         $(a).parent().parent().find("#other").hide()
+         var url = base_url+'/get_sub_address/'+id;
+             $.ajaxSetup({
+                headers:
+                {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({ 
+              url: url,
+              type:"GET",
+        
+              success:function(response){
+                  console.log(response) 
+                $('textarea#add').val(response.locations[0].address);
+                $('textarea#text_address').val(response.locations[0].address);
+              },
+               error: function(response) {
+              
+              },
+              });
+
+          }
+      }
+     
+
 
       function input(a){
         if($(a).is(':checked')){
@@ -426,8 +539,32 @@ var base_url =  window.location.origin+'/report-portal';
         }else{
           $('#other').hide()
         }
+    }
+  
+
+      function inputs(a){
+        if($(a).is(':checked')){
+          $('#others').show()
+        }else{
+          $('#others').hide()
+        }
+    }
     
- 
+    function showCustomInput(a,flag){
+        if(flag=='location'){
+             if($(a).is(':checked'))
+                $('#editmain').show()
+                
+             else
+                $('#editmain').hide()
+        }
+        else{
+              if($(a).is(':checked'))
+                $('#editsub').show()
+                
+             else
+                $('#editsub').hide()
+        }
     }
 
 function showCompany(data){
@@ -440,18 +577,72 @@ function showCompany(data){
     $('.hidden').val(data.id);
 }
 
+function showSublocation(data){
+    console.log(data);
+    $('#sub_id').val(data.sub_id);
+    $('.main_location').val(data.id);
+    $('.address').val(data.sub_address);
+    $('.sub_location').val(data.sub_location);
+}
+
+
 //-----------------------------------------Show Location Company----------------------
 
 function showCompanyLocation(a){
     var id = $(a).val();
+    console.log(id);
+    var text =$(a).find("option:selected").text()
     var url = base_url+'/get_location/'+id;
     $.ajax({
       url: url,
       type:"GET",
 
-      success:function(response){
-        console.log(response);
-      
+      success:function(response){ 
+         $(a).closest("form").find('#main_location').empty();
+         $(a).closest("form").find('#main_location').append("<option value=''>Choose Main Location</option>");
+          $(a).closest("form").find('.location_id').empty();
+         $(a).closest("form").find('.location_id').append("<option value=''>Choose Main Location</option>");
+        
+        $(a).closest("form").find('.company_sublocation').empty();
+         $(a).closest("form").find('.company_sublocation').append("<option value=''>Choose Sub Location</option>");
+         
+              $(a).closest("form").find('.company_sublocations').empty();
+         $(a).closest("form").find('.company_sublocations').append("<option value=''>Choose Sub Location</option>");
+         for(let i=0; i<response.location.length;i++){
+        $(a).closest("form").find('#main_location')
+         .append($("<option></option>")
+                    .attr("value", response.location[i][0].id)
+                    .text(response.location[i][0].parent_location)); 
+           $(a).closest("form").find('.location_id')
+           .append($("<option></option>")
+                .attr("value", response.location[i][0].id)
+                .text(response.location[i][0].parent_location+'('+response['company'][i]+')'));     
+         }
+         
+        for(let i=0;i<response.sub_location.length;i++){
+         
+            for(let j=0; j<response.sub_location[i].length; j++){
+              
+           $(a).closest("form").find('.company_sublocation')
+               .append($("<option></option>")
+                    .attr("value", response.sub_location[i][j].id)
+                    .text(response.sub_location[i][j].sub_location)); 
+            }       
+        }
+          for(let i=0; i<response.sub_location.length;i++){
+              for(let j=0; j<response.sub_location[i].length;j++){
+        $(a).closest("form").find('.company_sublocations')
+         .append($("<option></option>")
+                    .attr("value", response.sub_location[i][j].id)
+                    .text(response.sub_location[i][j].sub_location+'('+response['company'][i]+','+response.sub_location[i][j].address+')')); 
+                    
+              }
+           
+         }
+         
+         $(a).closest("form").find('.location_id').multiselect('rebuild');
+          $(a).closest("form").find('.company_sublocation').multiselect('rebuild');
+             $(a).closest("form").find('.company_sublocations').multiselect('rebuild');
       },
        error: function(response) {
       
@@ -464,6 +655,7 @@ function showCompanyLocation(a){
 //----------------------------------------------reports----------------------------------------//
 function get_address(a){
     var id = $(a).val();
+    console.log(id);
     var url = base_url+'/get_address/'+id;
     
      $.ajaxSetup({
@@ -477,23 +669,59 @@ function get_address(a){
       type:"GET",
 
       success:function(response){
-        //console.log($(a).parent().parent().html());return false;
-        $(a).parent().parent().find('.sub_location').html('');
-        $(a).parent().parent().find('.sub_location').append(`<option value="">Choose Sub Location</option>`)
+         //console.log(response);
+         if(response.locations.length > 0){
+         $(a).closest("form").find('.sub_location').html('');
+         $(a).closest("form").find('.sub_location').append(`<option value="">Choose Sub Location</option>`)
         var add = response.locations[0].address;
-        for(let i=0;i<response.locations.length;i++){
-               $(a).parent().parent().find('.sub_location').append(`<option value="${response.locations[i].sub_id}">
+          for(let i=0;i<response.locations.length;i++){
+              $(a).closest("form").find('.sub_location').append(`<option value="${response.locations[i].sub_id}">
                 ${response.locations[i].sub_location}
                 </option>`);
             }
-        $(a).parent().parent().find('.sub_location').append(`<option value="other">Other</option>`)
-        $('textarea#add').val(add);
-         $('textarea#text_address').val(add);
+         $(a).closest("form").find('.sub_location').append(`<option value="other">Other</option>`)
+         $("#remove_option option[value='other']").remove();
+          $("#multiple-checkboxes1 option[value='other']").remove();
+      
+         }
+         
+         else
+           $(a).closest("form").find('.sub_location option').remove();
+           
+         $(a).closest("form").find('.sub_location').multiselect('rebuild');
+
+      
       },
        error: function(response) {
       
       },
-      });  
-}
+      });
 
+    }
+    
+    
+//     function get_report_address(a){
+//     var id = $(a).val();
+//     var url = base_url+'/get_sub_address/'+id;
+    
+//      $.ajaxSetup({
+//         headers:
+//         {   
+//           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         }
+//     });
+//     $.ajax({
+//       url: url,
+//       type:"GET",
 
+//       success:function(response){
+//         $('textarea#add').val(response.locations[0].address);
+//         $('textarea#text_address').val(response.locations[0].address);
+//       },
+//       error: function(response) {
+      
+//       },
+//       });
+
+    
+// }

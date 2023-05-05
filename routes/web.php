@@ -32,15 +32,18 @@ Route::get('users', [AdminController::class, 'get_user']);
 Route::post('/update', [AdminController::class, 'update']);
 Route::get('/delete_supervisor/{id}', [AdminController::class, 'delete_supervisor']);
 Route::get('/delete_location/{id}', [AdminController::class, 'delete_location']);
-Route::get('/edit_supervisor/{id}', [AdminController::class, 'ShowData']);
-Route::get('/get_address/{id}', [AdminController::class, 'get_address']);
+Route::get('/edit_user/{id}', [AdminController::class, 'ShowData']);
+Route::get('/get_address/{id?}', [AdminController::class, 'get_address']);
+Route::get('/get_sub_address/{id}', [AdminController::class, 'get_sub_address']);
 Route::post('deny_access',[AdminController::class, 'deny_access']);
 Route::post('location_insert',[AdminController::class, 'locations_insert'])->name('location.insert');
 Route::get('admin_reports',[AdminController::class, 'admin_reports']);
 Route::post('edit_reports',[AdminController::class, 'edit_report']);
 Route::get('manage_access',[AdminController::class, 'manage_access']);
 Route::get('locations',[AdminController::class, 'locations']);
-Route::get('edit_location/{id}/{sub_id?}',[AdminController::class, 'edit_location']);
+Route::get('sub_locations',[AdminController::class, 'sub_locations']);
+Route::post('edit_sublocation',[AdminController::class, 'edit_sublocation']);
+Route::get('edit_location/{id}',[AdminController::class, 'edit_location']);
 Route::post('/update_locations', [AdminController::class, 'update_locations']);
 Route::post('update_profile', [AdminController::class, 'update_profile']);
 Route::get('report_title',[AdminController::class, 'report_title']);
@@ -61,10 +64,15 @@ Route::get('company_details',[AdminController::class, 'get_company']);
 Route::post('edit_company',[AdminController::class, 'update_company']);
 Route::get('show_info/{id}',[AdminController::class, 'show_access']);
 Route::get('get_location/{id}',[AdminController::class, 'get_location']);
-Route::get('send-email-with-pdf',[AdminController::class,'sendEmailWithPdf']);
+// Route::get('send-email',[AdminController::class,'sendEmail']);
 Route::post('assign-client', [AdminController::class,'AssignValueToClient']);
 Route::post('sub_location', [AdminController::class,'sub_location']);
 Route::get('get_report_images', [AdminController::class,'get_report_images']);
+Route::post('list',[AdminController::class, 'get_data']);
+Route::get('email',[AdminController::class, 'sendEmail']);
+
+
+
 Route::post('update_report_images', [AdminController::class,'update_report_images']);
 
 

@@ -428,7 +428,7 @@
                                             <td>{{$user['address']}}</td>
                                                                                  
                                             <td>
-                                               <a href="{{ 'edit_supervisor/' . $user['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
+                                               <a href="{{ 'edit_user/' . $user['id'] }}"><i class="fa fa-pencil"  aria-hidden="true"></i></a>
                                                <a data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData({{$user['id']}});">
                                                <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                            </td>   

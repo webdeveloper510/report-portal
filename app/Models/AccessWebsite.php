@@ -13,6 +13,8 @@ class AccessWebsite extends Model
         protected $casts = [
              'location_id' => 'array',
              'control_users' => 'array',
+             'company_id'=>'array',
+             'sub_location'=>'array',
         ];
   
 }

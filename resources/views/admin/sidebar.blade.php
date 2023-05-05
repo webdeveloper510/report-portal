@@ -8,7 +8,7 @@
                         <li class="sidebar-item" 
                 
                         >
-                             <a href="<?php echo URL::to('/'); ?>/index" class="sidebar-link waves-effect waves-dark sidebar-link"
+                             <a href="<?php echo URL::to('/'); ?>/index" style="{{session('data')['type']=='admin' || session('data')['type']=='supervisor'? 'display:block':'display:none'}}" class="sidebar-link waves-effect waves-dark sidebar-link"
                                  aria-expanded="false"><i class="mdi me-2 mdi-gauge"></i><span
                                     class="hide-menu">Dashboard</span></a></li>
                         <li class="sidebar-item"><a href="<?php echo URL::to('/'); ?>/profile_page" class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -22,6 +22,7 @@
                  <li class="sidebar-item" style="{{session('data')['type']=='supervisor' || session('data')['type']=='admin' ? 'display:block':'display:none'}}"> <a href="<?php echo URL::to('/'); ?>/report_title" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-account-card-details"></i><span class="hide-menu">Manage Report Title</span></a></li>
                     <li class="sidebar-item" style="{{session('data')['type']=='admin' ? 'display:block':'display:none'}}"> <a href="<?php echo URL::to('/'); ?>/manage_access" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-airplay"></i><span class="hide-menu">Manage Access</span></a></li>
                      <li class="sidebar-item" style="{{session('data')['type']=='supervisor' || session('data')['type']=='admin'  ? 'display:block':'display:none'}}"> <a href="<?php echo URL::to('/'); ?>/locations" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Location</span></a></li>
+                      <li class="sidebar-item" style="{{session('data')['type']=='supervisor' || session('data')['type']=='admin'  ? 'display:block':'display:none'}}"> <a href="<?php echo URL::to('/'); ?>/sub_locations" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-earth"></i><span class="hide-menu">Sub Location</span></a></li>
                       <li class="sidebar-item" style="{{session('data')['type']=='supervisor' || session('data')['type']=='admin'  ? 'display:block':'display:none'}}"> <a href="<?php echo URL::to('/'); ?>/company_details" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-bank"></i><span class="hide-menu">Company Details</span></a></li>
                       <li class="sidebar-item" style="{{session('data')['type']=='admin' ? 'display:block':'display:none'}}"> <a href="<?php echo URL::to('/'); ?>/get_report_images" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-bank"></i><span class="hide-menu">Report Image</span></a></li>
                         

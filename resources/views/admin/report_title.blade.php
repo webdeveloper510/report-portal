@@ -266,7 +266,7 @@
                                                                        
                                                                         <label for="input" class="col-sm-4  col-form-label">Report Title</label>
                                                                         <div class="col-sm-">
-                                                                            <textarea type="text" id="show_data" class="form-control" rows="3" name="title"></textarea>
+                                                                            <textarea type="text" id="show_data" class="form-control" rows="3" name="title" required></textarea>
                                                                         </div>
                                                                         <span class="text-danger error-text title_err"></span>    
                                                                     </div>                                                                       

@@ -139,12 +139,17 @@ p.num.my-1 {
 
 img.four_images {
 width: 100% !important;
-height: 77px !important;
+
 }
 
 * {
   box-sizing: border-box;
 }
+
+
+/*.report_img{*/
+/*    backgroung-image:url('1681332942.Prestige Letter Head.png');*/
+/*}*/
 
 /* .zoom {
   
@@ -218,7 +223,7 @@ height: 100% !important;
 
                         <!-- </span> -->
                     <!-- </a> -->
-                    <!-- ============================================================== -->
+                    <!-- =============url("1681332942.Prestige Letter Head....png"))================================================= -->
                     <!-- End Logo -->
                     <!-- ============================================================== -->
                     <!-- ============================================================== -->
@@ -303,13 +308,13 @@ height: 100% !important;
         <!-- Start Topbar header -->
         <!-- ============================================================== -->
         @include('admin.header')
+         @include('admin.sidebar')
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        @include('admin.sidebar')
 
         <!-- Edit List Modal -->
         <div class="modal fade" id="editlist" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -392,16 +397,13 @@ height: 100% !important;
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
+            <div class="row">
 
-               <div class="row mt-5">
-                   @if(isset($report_image) && count($report_image) > 0)
-                   
                     <div class="col-md-4">
                         <div class="">
-                        <img class="profile" src="{{ 'public/images/'. $report_image[0]->file}}"  width="150"  />
+                       
                         </div>
                     </div>
-                    @endif
                     <div class="col-md-4">
                         <div class="text-center">
                             <h4>Daily Activity Report</h4>
@@ -415,6 +417,13 @@ height: 100% !important;
                         </div>
                     </div>
                </div>
+                @if(count($report_image)>0)
+                   <div class="header-image">
+                       <img src="{{ URL::asset('public/images/'. $report_image ? $report_image[0]->file : '' )}}" height="150px" width="100%" style="object-fit:fill;" />
+                   </div>
+                @endif
+              
+        
                 @foreach($reports as $report)
                    <?php
                    if($report['level']=='level1')
@@ -425,8 +434,10 @@ height: 100% !important;
     
                     if($report['level']=='level3')
                     $level = 'Level 3';
-                    ?>      
-               <div class="report-view mt-1">
+                    ?>
+                    
+                    @if(count($reports)>0)
+                    <div class="report-view mt-1">
                    <div class="header-table">
                         <div class="sub_header">
                             <div class="row g-0 mx-2">
@@ -484,15 +495,7 @@ height: 100% !important;
                             </div>
                    </div>
                </div>
-               @endforeach
-               
-            <div class="card mt-5" style="{{$reports ? 'display:none':'display:block'}}">
-              <div class="card-body">
-                Data not found
-              </div>
-            </div>
-              
-                <!-- ============================================================== -->
+                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
@@ -502,6 +505,16 @@ height: 100% !important;
                 <!-- ============================================================== -->
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
+            </div>
+                    @endif
+                     @endforeach
+                    <!--  <div class="text-center">-->
+                    <!--       <h1>Data Not Found</h1> -->
+                    <!--</div>-->
+                       <div class="card mt-5" style="{{$reports ? 'display:none':'display:block'}}">
+              <div class="card-body">
+                Data not found
+              </div>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->

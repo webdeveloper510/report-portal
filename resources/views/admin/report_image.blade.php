@@ -259,9 +259,11 @@
                                         <div class="mb-3 row">
                                             <label for="file" class="col-sm- col-form-label">Upload Report Image</label>
                                             <div class="col-sm-12">
-                                                <input type="file" class="form-control" id="file" name="file">
+                                                <input type="file" class="form-control" id="file" name="file" required>
                                             </div>
+                                           
                                         </div>
+                                    
                                         <div class="d-grid gap-2 col-6 mx-auto mb-3">
                                             <button href="" type="submit" class="btn btn-primary">Update Report Image</a>
                                         </div>
@@ -314,8 +316,9 @@
     <script src="<?php echo URL::to('/'); ?>/public/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+ <script>
   @if(Session::has('message'))
   toastr.options =
   {
@@ -334,7 +337,6 @@
         toastr.error("{{ session('error') }}");
   @endif
 </script>
-   
 </body>
 
 </html>

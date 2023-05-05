@@ -37,7 +37,11 @@
         #main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
         color: #2400ff !important;
     }
+    button.multiselect.dropdown-toggle.btn.btn-default {overflow-x: scroll;}
 
+    button.multiselect.dropdown-toggle.btn.btn-default::-webkit-scrollbar {
+        display: none;
+    }
     .topbar .top-navbar .navbar-nav>.nav-item .nav-link{
         font-size: medium !important;
     }
@@ -81,7 +85,9 @@
      header.topbar1 {
         background: #2f3356 !important;
     }
-
+span.invalid.feedback {
+    color: red;
+}
     a.top-link {
         color: #ffffff !important;
         font-size: small;
@@ -291,10 +297,16 @@
                                                 <label for="name" class="col-sm- col-form-label"><h6>Select User</h6></label>
                                                 <div class="dropdown col-sm-12">
                                                 <select class="form-select"  name="user_id" onchange="show_access_info(this)" aria-label="Default select example">
+                                                    <option value="">Select User</option>
                                                 @foreach($users as $user)
                                                     <option value="{{$user['id']}}">{{$user['name']}}</option>
                                                 @endforeach
                                                 </select>
+                                                     @if ($errors->has('user_id'))
+                                                        <span class="invalid feedback"role="alert">
+                                                            <strong>{{ $errors->first('user_id') }}.</strong>
+                                                        </span>
+                                                @endif
                                                     <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
                                                 </div>
                                             </div>
@@ -302,39 +314,50 @@
                                               <div class="mb-3 row">
                                                 <label for="name" class="col-sm- col-form-label"><h6>Parent Location</h6></label>
                                                 <div class="dropdown col-sm-12">
-                                                <select class="form-select company_id"  name="parent_location" aria-label="Default select example">
-                                                     <option selected>Select Company Name</option>
+                                                <select id="multiple-checkboxes4"  class="form-select company_id"  name="parent_location[]" onchange =showCompanyLocation(this) multiple="multiple">
+                                                     <option value="">Select Company Name</option>
                                                     @foreach($company as $value)
                                                     <option  value="{{$value->id}}">{{$value->company_name}}</option>
                                                     @endforeach
-                                                    
-                                             
                                                 </select>
+                                                     @if ($errors->has('parent_location'))
+                                                        <span class="invalid feedback"role="alert">
+                                                            <strong>{{ $errors->first('parent_location') }}.</strong>
+                                                        </span>
+                                                @endif   
                                                     <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
                                                 </div>
                                             </div>
                                             <div class="mb-3 row">
                                                 <label for="name" class="col-sm- col-form-label"><h6>Main Locations</h6></label>
                                                 <div class="dropdown col-sm-12">
-                                                    <select id="multiple-checkboxes" class="form-control location_id"  name="location_id[]" multiple="multiple">
-                                                        @foreach($locations as $location)
-                                                        <option value="{{$location['id']}}">{{$location['parent_location']}}</option>   
-                                                        @endforeach 
+                                                    <select id="multiple-checkboxes" class="form-control location_id"  name="location_id[]" onchange="get_address(this)" multiple="multiple">
+                                                        
+                                                        <!--@foreach($locations as $location)-->
+                                                        <!--<option value="{{$location['id']}}">{{$location['parent_location']}}</option>   -->
+                                                        <!--@endforeach -->
                                                     </select>
-                                                   
+                                                       @if ($errors->has('location_id'))
+                                                        <span class="invalid feedback"role="alert">
+                                                            <strong>{{ $errors->first('location_id') }}.</strong>
+                                                        </span>
+                                                @endif
                                                 </div>
                                             </div>
-                                            <div class="mb-3 row">
-                                                <label for="name" class="col-sm- col-form-label"><h6>Sub Locations</h6></label>
+                                             <div class="mb-3 row">
+                                                 <label for="name" class="col-sm- col-form-label"><h6>Sub Locations</h6></label>
                                                 <div class="mb-3 dropdown col-sm-12">                                                    
-                                                    <select id="multiple-checkboxes1" name="sub_location" class="form-control" multiple="multiple">
-                                                    @foreach($sub_location as $location1)
-                                                        <option value="{{$location1->id}}">{{$location1->sub_location}}</option>   
-                                                        @endforeach 
+                                                    <select id="multiple-checkboxes1" class="form-control company_sublocations" name="sub_location[]" multiple="multiple">
+                                                    <!--@foreach($sub_location as $location1)-->
+                                                    <!--    <option value="{{$location1->id}}">{{$location1->sub_location}}</option>   -->
+                                                    <!--    @endforeach -->
                                                         
                                                     </select>
                                                     <!-- <input type="text" class="form-control" id="input" name="name" value=""> -->
                                                 </div>
+                                            </div>
+                                            
+                                            <div class="mb-3 row">
                                                 <div class="mb-3 row">
                                                 <label for="report_access" class="col-sm- col-form-label"><h6>Report Access</h6></label>
                                                 </div>
@@ -348,36 +371,6 @@
                                                     <input type="checkbox" id="" class="ms-2 view_report" name="view" value="1">
                                                     <label for="vehicle2" class="ps-2 m-0">View</label>
                                                  </div>
-                                            <div class="mb-3 row">
-                                                <label for="email" class="col-sm- col-form-label"><h6>Site Access</h6></label>
-                                                <div class="col-sm-12">
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input site_access" name="site_access" type="checkbox" id="flexSwitchCheckDefault" required>
-                                                <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
-                                                </div>
-                                                <!-- <input type="text" class="form-control" value="" name="email"> -->
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                                <label for="email" class="col-sm- col-form-label "><h6>Create Other Account</h6></label>
-                                                <div class="col-sm-12">
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input create_account"  name="create_account"   type="checkbox" id="flexSwitchCheckDefault" required >
-                                                    <!-- <label class="form-check-label" for="flexSwitchCheckDefault">YES/NO</label> -->
-                                                </div>
-                                                    <!-- <input type="text" class="form-control" value="" name="email"> -->
-                                                </div>
-                                            </div>
-                                            <div class="mb-3 row">
-                                                <label for="name" class="col-sm- col-form-label"><h6>User Supervision</h6></label>
-                                                <div class="dropdown col-sm-12">
-                                                    <select id="multiple_user-checkboxes" class="form-control" name="users_id[]" multiple="multiple">
-                                                    @foreach($users as $user)
-                                                    <option value="{{$user['id']}}">{{$user['name']}}</option>
-                                                    @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
                                                  <div class="mb-3 row">
                                                 <label for="name" class="col-sm- col-form-label"><h6>Report Assign</h6></label>
                                                 <div class="dropdown col-sm-12">
@@ -387,6 +380,11 @@
                                                                 <option value="0">No</option>
                                                       </select>
                                                 </div>
+                                                    @if ($errors->has('report_assign'))
+                                                        <span class="invalid feedback"role="alert">
+                                                            <strong>{{ $errors->first('report_assign') }}.</strong>
+                                                        </span>
+                                                @endif
                                             </div>
                                             <div class="d-grid gap-2 col-6 mx-auto mb-3">
                                                 <button type="submit" class="btn btn-primary">Update Manage</button>
@@ -460,8 +458,6 @@
   }
         toastr.error("{{ session('error') }}");
   @endif
-
-  
 </script>
 
 </body>

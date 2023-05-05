@@ -309,11 +309,11 @@
                                             <label for="categeory" class="col-sm- col-form-label">Categeory</label>
                                             <div class="col-sm-12">
                                             <select class="form-select" name="categeory" aria-label="Default select example">
-                                                <option selected>Select Categeory</option>
-                                                 <option value="supervisor">Supervisor</option>
-                                                 <option value="dispatcher">Dispatcher</option>
-                                                <option value="client">Client </option>
-                                                <option value="guard">Guard  </option>
+                                                <option value="">Select Categeory</option>
+                                                 <option value="supervisor" {{$data['type']=='supervisor' ? 'selected' : ''}}>Supervisor</option>
+                                                 <option value="dispatcher" {{$data['type']=='dispatcher' ? 'selected' : ''}}>Dispatcher</option>
+                                                <option value="client" {{$data['type']=='client' ? 'selected' : ''}}>Client </option>
+                                                <option value="guard" {{$data['type']=='guard' ? 'selected' : ''}}>Guard  </option>
                                                 </select>
                                             </div>
                                         </div>
