@@ -71,6 +71,29 @@ var base_url =  window.location.origin+'/report-portal';
           }
       });
   });
+  
+   function get_shift(){
+      $.ajaxSetup({
+        headers:
+        {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+        $.ajax({
+           type:'POST',
+           url:base_url+'/list',
+           data:'_token = <?php echo csrf_token() ?>',
+           processData: false,
+           success:function(data){
+               console.log(data);return false;
+              $("#msg").html(data.msg);
+           }
+        });
+     
+       
+     }
+  
+ 
 
   var base_url =  window.location.origin+'/report-portal';
     $('#sub_location').on('submit', function(event){

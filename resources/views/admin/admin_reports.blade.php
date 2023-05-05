@@ -317,15 +317,15 @@
                         </div>
                     </div>
                     
-                    <div class="col-md-6 d-flex col-4 align-self-center" style="{{(count($permissions) > 0 && $permissions[0]->create_report==1) ||  session('data')['type'] == 'admin' ? '' : 'display:none !important'}}">
+                    <div class="col-md-6 d-flex col-4 align-self-center" style="{{ session('data')['type'] === 'admin' ? 'display:block;' : 'display:none !important;' }}">
                         <div class="text-end mx-auto upgrade-btn me-2">
                             <a href=""  data-bs-toggle="modal" data-bs-target="#add"
                                 class="btn btn-success d-none d-md-inline-block text-white" target="_blank">Add Report</a>
                         </div>
-                        <!-- <div class="text-end end_shift ">-->
-                        <!--    <a href=""  data-bs-toggle="modal" data-bs-target=""-->
-                        <!--        class="btn btn-danger d-none d-md-inline-block text-white" target="_blank">End Shift</a>-->
-                        <!--</div>-->
+                         <div class="text-end end_shift ">
+                            <a href="" onclick="get_shift()"  data-bs-toggle="modal" data-bs-target=""
+                                class="btn btn-danger d-none d-md-inline-block text-white"  target="_blank">End Shift</a>
+                        </div>
                     </div>
 
                 </div>

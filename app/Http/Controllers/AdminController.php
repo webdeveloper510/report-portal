@@ -800,7 +800,7 @@ class AdminController extends Controller
         
          function update_company(Request $request)
         {     
-             $data = $request->all();
+            $data = $request->all();
             $data['main_location'] =$request->custom_loc ? $request->custom_loc : $request->main_location;
             $data['sub_location'] =$request->custom_sub ? $request->custom_sub : $request->sub_location;
             $validator = Validator::make($data, [
@@ -849,26 +849,40 @@ class AdminController extends Controller
             $data->sub_location = $custom_sub ? json_encode($custom_sub) :json_encode($request->sub_location) ;
             $data->description = $request->description;
              if($data->save())
-                     echo json_encode(['message'=>'Company Save  Successfully!']);
+                     echo json_encode(['message'=>'Company Save  Successfully!']);  
                 else
                    echo json_encode(['message'=>'Some Error!']);
         }
         
         
-        function sendEmailWithPdf(){
-            $data["email"] = "ritesh@codenomad.net";
-            $data["title"] = "This is a test email with pdf file";
-            $data["body"] = "Test email";      
-            $pdf = PDF::loadView('emails.myTestMail', $data);
-      
-            Mail::send('emails.myTestMail', $data, function($message)use($data, $pdf) {
-                $message->to($data["email"])
-                        ->subject($data["title"])
-                        ->attachData($pdf->output(), "text.pdf");
-            });      
-            dd('Mail sent successfully');              
-            }
+        // function sendEmail(){
+        //     $data["email"] = "ritesh@codenomad.net";
+        //     $data["title"] = "This is a test email with pdf file";
+        //     $data["body"] = "Test email";      
             
+      
+        //     Mail::send('admin.email', $data, function($message)use($data) {
+        //         $message->to($data["email"])
+        //                 ->subject($data["title"]);
+        //     });      
+        //     dd('Mail sent successfully');              
+        // }
+        
+        function sendEmail(){
+            
+            $to_name = "Ritesh";
+            $to_email = "ritesh@codenomad.net";
+            $data = array("name"=>"Fahim", "body" => "A test mail");
+            
+            Mail::send("admin.email", $data, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+            ->subject("Laravel Test Mail");
+            $message->from("reports@quickreportingsystems.com","Test Mail");
+            });
+            dd('Mail sent successfully'); 
+         }       
+              
+                        
         public function get_address($id=0){
             $ids = explode(",",$id);
             $locations = Location::select('locations.*','sub_location.id as sub_id','sub_location.sub_location','sub_location.parent_location_id')
@@ -988,6 +1002,36 @@ public function update_report_images(Request $request){
             'locations' => $locations
         ]);
       
+  }
+  
+  
+  public function get_data(){
+      
+      $data = User::select('users.*','access_websites.user_id','access_websites.location_id','access_websites.company_id','access_websites.sub_location')
+      ->leftjoin('access_websites','access_websites.user_id','users.id')
+      ->where('users.type', '=', 'client')->get()->toArray();
+    foreach ($data as $user) {
+        $company_id =  $user['company_id'];
+        $sub_location =  $user['sub_location'];
+     $report = Report::whereIn('sub_location',json_decode($sub_location))
+        ->whereIn('company_id',json_decode($company_id))
+     ->get()->toArray();
+       
+     print_r($report);die;
+     
+     
+     
+     
+    //   return response()->json([
+    //       'data' => $var
+    //       ]);
+    
+  }
+  }
+  
+  
+  public function email_data(){
+      return view('admin.email');
   }
 }
 
