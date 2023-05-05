@@ -284,25 +284,25 @@
                                         <div class="mb-3 row">
                                             <label for="name" class="col-sm- col-form-label">Name</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control" id="input" name="name" value="{{$data['name']}}">
+                                                <input type="text" class="form-control" id="input" name="name" value="{{$data['name']}}" required>
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="email" class="col-sm- col-form-label">Email</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control" value="{{$data['email']}}" name="email">
+                                                <input type="text" class="form-control" value="{{$data['email']}}" name="email" required>
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="password" class="col-sm- col-form-label">Password</label>
                                             <div class="col-sm-12">
-                                                <input type="text" class="form-control" name="password" value="{{$data['password']}}">
+                                                <input type="text" class="form-control" name="password" value="{{$data['password']}}" required>
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
                                             <label for="phone" class="col-sm- col-form-label">Emergency Contact</label>
                                             <div class="col-sm-12">
-                                                <input type="number" class="form-control" id="input" name="phone" value="{{$data['phone']}}">
+                                                <input type="number" class="form-control" id="input" name="phone" value="{{$data['phone']}}" required>
                                             </div>
                                         </div>
                                         <div class="mb-3 row">
@@ -319,7 +319,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="address" class="col-sm- form-label">Address</label>
-                                            <textarea class="form-control" id="address" rows="3" name="address">{{$data['address']}}</textarea>
+                                            <textarea class="form-control" id="address" rows="3" name="address" required>{{$data['address']}}</textarea>
                                         </div>
                                         <!-- <div class="mb-3 row">
                                             <label for="status" class="col-sm- col-form-label">Status</label>

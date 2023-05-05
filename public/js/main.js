@@ -706,7 +706,7 @@ function get_address(a){
     
 //      $.ajaxSetup({
 //         headers:
-//         {
+//         {   
 //           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 //         }
 //     });
