@@ -638,15 +638,16 @@ class AdminController extends Controller
             $data["email"] = "ritesh@codenomad.net";
             $data["title"] = "This is a test email with pdf file";
             $data["body"] = "Test email";      
-            $pdf = PDF::loadView('emails.myTestMail', $data);
+            
       
-            Mail::send('emails.myTestMail', $data, function($message)use($data, $pdf) {
+            Mail::send('emails.myTestMail', $data, function($message)use($data) {
                 $message->to($data["email"])
-                        ->subject($data["title"])
-                        ->attachData($pdf->output(), "text.pdf");
+                        ->subject($data["title"]);
             });      
             dd('Mail sent successfully');              
-            }
+        }
+
+
             
         public function get_address($id){
             $locations = Location::select('locations.*','sub_location.id as sub_id','sub_location.sub_location','sub_location.parent_location_id')
