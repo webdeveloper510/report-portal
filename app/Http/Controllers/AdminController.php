@@ -866,22 +866,7 @@ class AdminController extends Controller
         //     });      
         //     dd('Mail sent successfully');              
         // }
-        
-        function sendEmail(){
-            
-            $to_name = "Ritesh";
-            $to_email = "ritesh@codenomad.net";
-            $data = array("name"=>"Fahim", "body" => "A test mail");
-            
-            Mail::send("admin.email", $data, function($message) use ($to_name, $to_email) {
-            $message->to($to_email, $to_name)
-            ->subject("Laravel Test Mail");
-            $message->from("reports@quickreportingsystems.com","Test Mail");
-            });
-            dd('Mail sent successfully'); 
-         }       
-              
-                        
+                   
         public function get_address($id=0){
             $ids = explode(",",$id);
             $locations = Location::select('locations.*','sub_location.id as sub_id','sub_location.sub_location','sub_location.parent_location_id')
@@ -1005,34 +990,52 @@ public function update_report_images(Request $request){
   
   
   public function get_data(){
-      
+    
       $data = User::select('users.*','access_websites.user_id','access_websites.location_id','access_websites.company_id','access_websites.sub_location')
-      ->leftjoin('access_websites','access_websites.user_id','users.id')
+      ->join('access_websites','access_websites.user_id','users.id')
       ->where('users.type', '=', 'client')->get()->toArray();
+     // print_r($data);die;
     foreach ($data as $user) {
         $company_id =  $user['company_id'];
+        $email =  $user['email'];
         $sub_location =  $user['sub_location'];
-     $report = Report::whereIn('sub_location',json_decode($sub_location))
-        ->whereIn('company_id',json_decode($company_id))
-     ->get()->toArray();
-       
-     print_r($report);die;
-     
-     
-     
-     
-    //   return response()->json([
-    //       'data' => $var
-    //       ]);
-    
-  }
-  }
+        
+        $report = Report::select('reports.*', 'custom_title.title','locations.parent_location','sub_location.sub_location','sub_location.id as sub_id')
+            ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
+            ->join('sub_location', 'reports.sub_location', '=', 'sub_location.id')
+            ->join('locations', 'locations.id', '=', 'reports.main_location')
+            ->with('users')
+            ->whereIn('reports.sub_location',json_decode($sub_location))
+            ->whereIn('company_id',json_decode($company_id))->get()->toArray();
+            // echo "<pre>";
+            // print_r($report);die;
+             $this->sendEmail($email,$data,$report);    
+    }
   
-  
-  public function email_data(){
-      return view('admin.email');
-  }
 }
+
+function sendEmail($email,$email_data,$report){
+
+    // print_r($email);die;
+   
+    $to_name = "Ritesh";
+    $to_email = $email;
+   
+
+   Mail::send("admin.email", ['report'=>$report], function($message) use ($to_name, $to_email) {
+    $message->to($to_email, $to_name)
+    ->subject("Laravel Test Mail");
+    $message->from('technicalverma96@gmail.com','technicalVerma');
+    });
+
+    return response()->json([
+        'message' => 'sent email successfully !',
+        'data'    => $email_data
+    ]);
+}  
+
+}
+
 
 
 

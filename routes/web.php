@@ -69,10 +69,7 @@ Route::post('assign-client', [AdminController::class,'AssignValueToClient']);
 Route::post('sub_location', [AdminController::class,'sub_location']);
 Route::get('get_report_images', [AdminController::class,'get_report_images']);
 Route::post('list',[AdminController::class, 'get_data']);
-Route::get('email',[AdminController::class, 'sendEmail']);
-
-
-
+Route::post('email',[AdminController::class, 'sendEmail']);
 Route::post('update_report_images', [AdminController::class,'update_report_images']);
 
 
