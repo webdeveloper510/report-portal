@@ -13,7 +13,7 @@ use App\Models\AccessWebsite;
 use Illuminate\Support\Facades\Hash;
 use DB;
 use Session;
-use Mail;
+use App\Jobs\SendQueueEmail;
 use PDF;
 use Illuminate\Support\Facades\Validator;
 
@@ -989,49 +989,46 @@ public function update_report_images(Request $request){
   }
   
   
-  public function get_data(){
+//   public function get_data(){
     
-      $data = User::select('users.*','access_websites.user_id','access_websites.location_id','access_websites.company_id','access_websites.sub_location')
-      ->join('access_websites','access_websites.user_id','users.id')
-      ->where('users.type', '=', 'client')->get()->toArray();
-     // print_r($data);die;
-    foreach ($data as $user) {
-        $company_id =  $user['company_id'];
-        $email =  $user['email'];
-        $sub_location =  $user['sub_location'];
+//       $data = User::select('users.*','access_websites.user_id','access_websites.location_id','access_websites.company_id','access_websites.sub_location')
+//       ->join('access_websites','access_websites.user_id','users.id')
+//       ->where('users.type', '=', 'client')->get()->toArray();
+//      // print_r($data);die;
+//     foreach ($data as $user) {
+//         $company_id =  $user['company_id'];
+//         $email =  $user['email'];
+//         $sub_location =  $user['sub_location'];
         
-        $report = Report::select('reports.*', 'custom_title.title','locations.parent_location','sub_location.sub_location','sub_location.id as sub_id')
-            ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
-            ->join('sub_location', 'reports.sub_location', '=', 'sub_location.id')
-            ->join('locations', 'locations.id', '=', 'reports.main_location')
-            ->with('users')
-            ->whereIn('reports.sub_location',json_decode($sub_location))
-            ->whereIn('company_id',json_decode($company_id))->get()->toArray();
-            // echo "<pre>";
-            // print_r($report);die;
-             $this->sendEmail($email,$data,$report);    
-    }
+//         $report = Report::select('reports.*', 'custom_title.title','locations.parent_location','sub_location.sub_location','sub_location.id as sub_id')
+//             ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
+//             ->join('sub_location', 'reports.sub_location', '=', 'sub_location.id')
+//             ->join('locations', 'locations.id', '=', 'reports.main_location')
+//             ->with('users')
+//             ->whereIn('reports.sub_location',json_decode($sub_location))
+//             ->whereIn('company_id',json_decode($company_id))->get()->toArray();
+//             // echo "<pre>";
+//             // print_r($report);die;
+//              $this->sendEmail($email,$data,$report);    
+//     }
   
-}
+// }
 
-function sendEmail($email,$email_data,$report){
+ public function sendEmail(Request $request){
 
     // print_r($email);die;
    
-    $to_name = "Ritesh";
-    $to_email = $email;
+    $details = [
+        'subject' => 'Test Notification'
+    ];
+    
+    $job = (new \App\Jobs\SendQueueEmail($details));
+            // ->delay(now()->addSeconds(0)); 
+
+    dispatch($job);
+    
+    echo "Mail send successfully !!";
    
-
-   Mail::send("admin.email", ['report'=>$report], function($message) use ($to_name, $to_email) {
-    $message->to($to_email, $to_name)
-    ->subject("Laravel Test Mail");
-    $message->from('technicalverma96@gmail.com','technicalVerma');
-    });
-
-    return response()->json([
-        'message' => 'sent email successfully !',
-        'data'    => $email_data
-    ]);
 }  
 
 }

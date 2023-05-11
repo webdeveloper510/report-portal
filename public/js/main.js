@@ -81,7 +81,7 @@ var base_url =  window.location.origin+'/report-portal';
     });
         $.ajax({
            type:'POST',
-           url:base_url+'/list',
+           url:base_url+'/email',
            data:'_token = <?php echo csrf_token() ?>',
            processData: false,
            success:function(data){

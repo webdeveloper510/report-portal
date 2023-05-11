@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SendMailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,9 +69,14 @@ Route::get('get_location/{id}',[AdminController::class, 'get_location']);
 Route::post('assign-client', [AdminController::class,'AssignValueToClient']);
 Route::post('sub_location', [AdminController::class,'sub_location']);
 Route::get('get_report_images', [AdminController::class,'get_report_images']);
-Route::post('list',[AdminController::class, 'get_data']);
+// Route::post('list',[AdminController::class, 'get_data']);
 Route::post('email',[AdminController::class, 'sendEmail']);
 Route::post('update_report_images', [AdminController::class,'update_report_images']);
+
+
+// -------------------------send email ---------------------------------------//
+
+// Route::get('send/mail', [SendMailController::class, 'send_mail'])->name('send_mail');
 
 
 
