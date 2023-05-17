@@ -85,7 +85,7 @@ var base_url =  window.location.origin+'/report-portal';
            data:'_token = <?php echo csrf_token() ?>',
            processData: false,
            success:function(data){
-               console.log(data);return false;
+               console.log(data);
               $("#msg").html(data.msg);
            }
         });
@@ -288,11 +288,14 @@ $('#edit_sub').on('submit', function(event){
         // *-----------------------------------------------------------DELETE REPORT----------------------------------------------//
 
       function DataDelete(table){
+          var isDeleted = $(event.target).attr('is-deleted');
         $.ajax({
            url: base_url+"/delete_data/"+delete_id+'/'+table,
            type: 'GET',
+           data: { 'value': isDeleted},
            dataType: 'json', // added data type
-           success: function(res) {                   
+           success: function(res) {  
+            
            toastr.options =  {
                        "closeButton" : true,
                        "progressBar" : true,

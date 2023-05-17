@@ -386,9 +386,9 @@
                                                   <label for="exampleInputEmail1" class="form-label">Level</label>
                                                   <select class="form-select"  name="level" aria-label="Default select example">
                                                     <option value="">Select Lavel</option>
-                                                    <option  value="level1">Level1</option>
-                                                    <option  value="level2">Level2</option>
-                                                    <option  value="level3">Level3</option>
+                                                    <option  value="level1">Normal</option>
+                                                    <option  value="level2">Attention Needed</option>
+                                                    <option  value="level3">Urgent</option>
                                                   </select>
                                                   <span class="text-danger error-text level_err"></span>
                                                 </div>  
@@ -619,7 +619,7 @@
                                             This process cannot be undone.</p>
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger btn-lg" onclick="return DataDelete('reports')">Delete</button>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger btn-lg" is-deleted="1" onclick="return DataDelete('reports')">Delete</button>
                                             </div>
                                             </div>
                                             

@@ -445,6 +445,7 @@ class AdminController extends Controller
             ->join('locations' , 'locations.id', '=', 'reports.main_location')
             ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
             ->join('sub_location', 'reports.sub_location', '=', 'sub_location.id')
+            // ->where('is_deleted', 0)
             ->with('users')->get()->toArray();
 
         $locations = Location::all();
@@ -467,6 +468,7 @@ class AdminController extends Controller
             ->whereIn('main_location',$permissions ? $permissions[0]->location_id:[])
             ->where('company_id',$permissions[0]->company_id)
             ->where('report_date',$current_date)
+            // ->where('is_deleted', 0)
             ->get()->toArray();
             // echo "<pre>";
             // print_r($activitys);die;
@@ -855,32 +857,20 @@ class AdminController extends Controller
         }
         
         
-        // function sendEmail(){
-        //     $data["email"] = "ritesh@codenomad.net";
-        //     $data["title"] = "This is a test email with pdf file";
-        //     $data["body"] = "Test email";      
+        function sendEmail(){
+            $data["email"] = "amit@codenomad.net";
+            $data["title"] = "This is a test email with pdf file";
+            $data["body"] = "Test email";      
             
       
-        //     Mail::send('admin.email', $data, function($message)use($data) {
-        //         $message->to($data["email"])
-        //                 ->subject($data["title"]);
-        //     });      
-        //     dd('Mail sent successfully');              
-        // }
+            Mail::send("admin.email", $data, function($message)use($data) {
+                $message->to($data["email"])
+                        ->subject($data["title"]);
+            });      
+            dd('Mail sent successfully');              
+        }
         
-        function sendEmail(){
-            
-            $to_name = "Ritesh";
-            $to_email = "ritesh@codenomad.net";
-            $data = array("name"=>"Fahim", "body" => "A test mail");
-            
-            Mail::send("admin.email", $data, function($message) use ($to_name, $to_email) {
-            $message->to($to_email, $to_name)
-            ->subject("Laravel Test Mail");
-            $message->from("reports@quickreportingsystems.com","Test Mail");
-            });
-            dd('Mail sent successfully'); 
-         }       
+           
               
                         
         public function get_address($id=0){
@@ -1017,7 +1007,7 @@ public function update_report_images(Request $request){
         ->whereIn('company_id',json_decode($company_id))
      ->get()->toArray();
        
-     print_r($report);die;
+    //  print_r($report);die;
      
      
      
@@ -1029,10 +1019,37 @@ public function update_report_images(Request $request){
   }
   }
   
-  
-  public function email_data(){
-      return view('admin.email');
+ public function delete_report(){
+      $data = Report::all()->toArray();
+     
+      foreach($data as $del){
+           $deleted =  $del['is_deleted'];
+     
+          if($deleted == 1){
+            $deleted_data = Report::where('is_deleted',$deleted)->get()->toArray();
+            // echo "<pre>";
+            // print_r($deleted_data);die;
+            
+       }
+          
+      }
+       
+       
+      return view('admin.reports_delete',compact('deleted_data'));
   }
+  
+  public function delete_company(){
+    //     $company = CompanyDetails::all();
+    //     echo "<pre>";
+    //   print_r($company);die;
+      return view('admin.company_delete');
+      
+  }
+      
+  
+  
+  
+
 }
 
 
