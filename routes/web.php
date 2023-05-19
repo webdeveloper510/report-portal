@@ -64,14 +64,11 @@ Route::get('company_details',[AdminController::class, 'get_company']);
 Route::post('edit_company',[AdminController::class, 'update_company']);
 Route::get('show_info/{id}',[AdminController::class, 'show_access']);
 Route::get('get_location/{id}',[AdminController::class, 'get_location']);
-
 Route::post('assign-client', [AdminController::class,'AssignValueToClient']);
 Route::post('sub_location', [AdminController::class,'sub_location']);
-
-
 Route::get('get_report_images', [AdminController::class,'get_report_images']);
-Route::post('list',[AdminController::class, 'get_data']);
-Route::get('email',[AdminController::class, 'sendEmail']);  
+// Route::post('list',[AdminController::class, 'get_data']);
+Route::post('email',[AdminController::class, 'send_mail']);  
 Route::post('update_report_images', [AdminController::class,'update_report_images']);
 Route::get('report_delete', [AdminController::class,'delete_report']);
 Route::get('company_delete', [AdminController::class,'delete_company']);

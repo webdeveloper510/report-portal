@@ -16,12 +16,13 @@
                                 <i class="mdi me-2 mdi-account-check"></i><span class="hide-menu">Profile</span></a>
                         </li>
                         <li class="sidebar-item" style="{{session('data')['type']=='admin' ? 'display:block':'display:none'}}"><a href="#" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-bank"></i><span class="hide-menu">Log</span>
-                        <ul class="submenu collapse">
+                        
+                        </a><ul class="submenu collapse ps-4">
                 			<li "sidebar-item"><a class="nav-link" href="<?php echo URL::to('/'); ?>/report_delete">Report</a></li>
                 			<li "sidebar-item"><a class="nav-link" href="<?php echo URL::to('/'); ?>/company_delete">Company </a></li>
                 		
 		                </ul>
-		                </a>
+		                
                         </li>
 
                        <li class="sidebar-item" style="{{session('data')['type']=='admin' ? 'display:block':'display:none'}}"><a href="<?php echo URL::to('/'); ?>/users" class="sidebar-link waves-effect waves-dark sidebar-link"

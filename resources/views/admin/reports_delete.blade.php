@@ -386,21 +386,24 @@
                                                 <th class="border-top-0">Report Date</th>
                                                 <th class="border-top-0">Report Type</th>
                                                 <!--<th class="border-top-0">Report Permission</th>-->
-                                                <th class="border-top-0">Action</th>
+                                                
                                             </tr>
                                         </thead>
                                      <tbody>
+                                    @foreach($data as $item)
+                               
                                          <tr>
-                                             <td></td>
-                                             <td></td>
-                                             <td></td>
-                                             <td></td>
-                                             <td></td>
-                                             <td></td>
-                                             <td></td>
-                                             <td></td>
-                                             <td></td>
+                                             <td>{{$loop->iteration }}</td>
+                                             <td>{{$item['users'] ? $item['users']['name']:''}}</td>
+                                             <td>{{$item['title']}}</td>
+                                             <td>{{$item['parent_location']}}</td>
+                                             <td>{{$item['address']}}</td>
+                                             <td>{{$item['sub_location']}}</td>
+                                             <td>{{$item['report_time']}}</td>
+                                             <td>{{$item['report_date']}}</td>
+                                             <td>{{$item['report_type']}}</td>
                                          </tr>
+                                     @endforeach
                                      </tbody>
                                     </table>
                                 </div>

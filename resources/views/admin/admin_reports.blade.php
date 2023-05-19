@@ -324,7 +324,7 @@
                         </div>
                          <div class="text-end end_shift ">
                             <a href="" onclick="get_shift()"  data-bs-toggle="modal" data-bs-target=""
-                                class="btn btn-danger d-none d-md-inline-block text-white"  target="_blank">End Shift</a>
+                                class="btn btn-danger d-none d-md-inline-block text-white"  target="_blank">End Shift</a>  
                         </div>
                     </div>
 
@@ -364,7 +364,7 @@
                                                     <option value="">Select Report Type</option>
                                                     <option value="Activity Reports">Activity Reports</option>
                                                     <option value="Incident Reports">Incident Reports</option>
-                                                    <option value="Patrol Reports">Petrol Reports</option>
+                                                    <option value="Patrol Reports">Patrol Reports</option>
                                                     <option value="Parking violations">Parking violations</option>
                                                     <option value="Visitor logs">Visitor logs</option>
                                                   </select>
@@ -386,9 +386,9 @@
                                                   <label for="exampleInputEmail1" class="form-label">Level</label>
                                                   <select class="form-select"  name="level" aria-label="Default select example">
                                                     <option value="">Select Lavel</option>
-                                                    <option  value="level1">Normal</option>
-                                                    <option  value="level2">Attention Needed</option>
-                                                    <option  value="level3">Urgent</option>
+                                                    <option  value="Normal">Normal</option>
+                                                    <option  value="Attention">Attention Needed</option>
+                                                    <option  value="Urgent">Urgent</option>
                                                   </select>
                                                   <span class="text-danger error-text level_err"></span>
                                                 </div>  
@@ -556,9 +556,9 @@
                                                   <label for="exampleInputEmail1" class="form-label">Level</label>
                                                   <select class="form-select level"  name="level" aria-label="Default select example">
                                                     <option value="">Select Lavel</option>
-                                                    <option  value="level1">Level1</option>
-                                                    <option  value="level2">Level2</option>
-                                                    <option  value="level3">Level3</option>
+                                                    <option  value="Normal">Normal</option>
+                                                    <option  value="Attention_Needed">Attention Needed</option>
+                                                    <option  value="Urgent">Urgent</option>
                                                   </select>
                                                    <span class="text-danger error-text level_err"></span>
                                                 </div>  
@@ -619,7 +619,8 @@
                                             This process cannot be undone.</p>
                                             <div class="text-center">
                                                 <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger btn-lg" is-deleted="1" onclick="return DataDelete('reports')">Delete</button>
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger btn-lg" 
+                                                onclick="return DataDelete('reports')">Delete</button>
                                             </div>
                                             </div>
                                             

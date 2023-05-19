@@ -52,10 +52,10 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/report-portal/'),
+    'url' => env('APP_URL', 'http://quickreportingsystems.com/report-portal/'),
 
 
-    'asset_url' => env('ASSET_URL', 'http://localhost/report-portal/'),
+    'asset_url' => env('ASSET_URL', 'http://quickreportingsystems.com/report-portal/'),
 
     /*
     |--------------------------------------------------------------------------

@@ -116,13 +116,13 @@ img.report_logo {
     height: 50px !important;
 }
 
-.level2 {
+.Attention Needed {
     background: orange !important;
 }
-.level1 {
+.Normal {
     background: green !important;
 }
-.level3 {
+.Urgent {
     background: red !important;
 }
 
@@ -419,7 +419,7 @@ height: 100% !important;
                </div>
                 @if(count($report_image)>0)
                    <div class="header-image">
-                       <img src="{{ URL::asset('public/images/'. $report_image ? $report_image[0]->file : '' )}}" height="150px" width="100%" style="object-fit:fill;" />
+                       <img src="<?php echo URL::to('/'); ?>/public/images/{{$report_image ? $report_image[0]->file : ''}}" height="150px" width="100%" style="object-fit:fill;" />
                    </div>
                 @endif
               
@@ -427,13 +427,13 @@ height: 100% !important;
                 @foreach($reports as $report)
                    <?php
                    if($report['level']=='level1')
-                       $level = 'Level 1';
+                       $level = 'Normal';
     
                     if($report['level']=='level2')
-                        $level = 'Level 2';
+                        $level = 'Attention Needed';
     
                     if($report['level']=='level3')
-                    $level = 'Level 3';
+                    $level = 'Urgent';
                     ?>
                     
                     @if(count($reports)>0)
@@ -464,8 +464,8 @@ height: 100% !important;
                                      
                                     <p class="mb-1">{{$report['users'] ? $report['users']['name']:''}}</p>
                                     
-                                    <div class="{{$report['level']}} me-3">
-                                        <p class="text-white  mx-2" style="text-transform: capitalize;">{{$level}}</p>
+                                    <div class="{{ $report['level'] }} me-3">
+                                        <p class="text-white  mx-2" style="text-transform: capitalize;">{{ $report['level'] }}</p>
                                     </div>
                                 </div>
                             </div>

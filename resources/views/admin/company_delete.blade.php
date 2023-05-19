@@ -263,7 +263,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Company Details </h4>
+                            <h4 class="card-title">Company Delete </h4>
                             <!-- <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
                             <div class="table-responsive">
                                 <table class="table user-table">
@@ -274,12 +274,18 @@
                                               <th class="border-top-0">Sub Location</th>
                                                <!--<th class="border-top-0">Address</th>-->
                                             <!--<th class="border-top-0">Description</th>    -->
-                                            <th class="border-top-0">Action</th>
+                                           
                                             
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                         @foreach($final_data as $item)
+                                        <tr>
+                                            <td>{{$item['company_name']}}</td>
+                                            <td>{{$item['location']}}</td>
+                                            <td>{{$item['sub_location']}}</td>
+                                        </tr>
+                                         @endforeach
                                     </tbody>
                                    
                                 </table>

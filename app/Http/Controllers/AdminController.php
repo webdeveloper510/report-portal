@@ -178,11 +178,12 @@ class AdminController extends Controller
                   
                 //$location[] = Location::whereIn('id',json_decode($infor[$i]['main_location']))->groupBy('parent_location')->get()->toArray();
                 $sub_locations[] = DB::table('sub_location')->whereIn('id',json_decode($infor[$i]['sub_location']))->get()->toArray();
+               
                 
                 $company[] = $infor[$i]['company_name'];
-                //print_r($location);
+              
             }
-        //print_r($location);
+        // print_r($location);die;
                     
         
           return response()->json([
@@ -290,17 +291,17 @@ class AdminController extends Controller
             $sublocation_admin = DB::table('sub_location')->select('id','sub_location')->get()->toArray(); 
             if($login['type']=='admin'){ 
                 $get_locations = Location::get()->unique('parent_location')->toArray();      
-                $final_location = CompanyDetails::all();
+                $final_location = CompanyDetails::where('company_details.is_deleted', 0)->get();
                 
             }
             else{
               $get_locations = Location::get()->unique('parent_location')->toArray();      
-              $final_location = CompanyDetails::all();
+              $final_location = CompanyDetails::where('company_details.is_deleted', 0)->get();
             }
          
             $locations=[];
             $final_data =[];
-             $sub_locations =[];
+            $sub_locations =[];
             
             foreach ($final_location as $location) {
                 $final_array['id']= $location->id;
@@ -445,7 +446,7 @@ class AdminController extends Controller
             ->join('locations' , 'locations.id', '=', 'reports.main_location')
             ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
             ->join('sub_location', 'reports.sub_location', '=', 'sub_location.id')
-            // ->where('is_deleted', 0)
+             ->where('reports.is_deleted', 0)
             ->with('users')->get()->toArray();
 
         $locations = Location::all();
@@ -468,7 +469,7 @@ class AdminController extends Controller
             ->whereIn('main_location',$permissions ? $permissions[0]->location_id:[])
             ->where('company_id',$permissions[0]->company_id)
             ->where('report_date',$current_date)
-            // ->where('is_deleted', 0)
+            ->where('reports.is_deleted', 0)
             ->get()->toArray();
             // echo "<pre>";
             // print_r($activitys);die;
@@ -482,6 +483,7 @@ class AdminController extends Controller
                 ->join('locations', 'locations.id', '=', 'reports.main_location')
                 ->join('sub_location', 'reports.sub_location', '=', 'sub_location.id')
                 ->with('users')
+                ->where('reports.is_deleted', 0)
                 ->whereIn('main_location',count($permissions) > 0 ? $permissions[0]->location_id:[])
                 ->orWhere('company_id',count($permissions) > 0 ? $permissions[0]->company_id:[])->get()->toArray();
                 
@@ -666,7 +668,13 @@ class AdminController extends Controller
                 
             }
             public function delete_data(Request $request,$id,$tbl){ 
+              
+                if($tbl == 'reports' || $tbl == 'company_details'){
+                    $delete = DB::table($tbl)->where('id',$id)->update(['is_deleted' => 1]);
+                }
+                else{
                 $delete = DB::table($tbl)->where('id',$id)->delete();
+                }
                 if($delete)
                    echo json_encode(['message'=>'Delete  Successfully!']);
                 else
@@ -857,18 +865,19 @@ class AdminController extends Controller
         }
         
         
-        function sendEmail(){
-            $data["email"] = "amit@codenomad.net";
-            $data["title"] = "This is a test email with pdf file";
-            $data["body"] = "Test email";      
-            
-      
-            Mail::send("admin.email", $data, function($message)use($data) {
-                $message->to($data["email"])
-                        ->subject($data["title"]);
-            });      
-            dd('Mail sent successfully');              
-        }
+        public function send_mail(Request $request)
+    {
+                   $details = [
+            		'subject' => 'Test Notification'
+            	];
+            	
+                $job = (new \App\Jobs\SendQueueEmail($details))
+                    	->delay(now()->addSeconds(2)); 
+        
+                dispatch($job);
+                echo "Mail send successfully !!";
+    }
+        
         
            
               
@@ -1019,37 +1028,74 @@ public function update_report_images(Request $request){
   }
   }
   
- public function delete_report(){
-      $data = Report::all()->toArray();
-     
-      foreach($data as $del){
-           $deleted =  $del['is_deleted'];
-     
-          if($deleted == 1){
-            $deleted_data = Report::where('is_deleted',$deleted)->get()->toArray();
-            // echo "<pre>";
-            // print_r($deleted_data);die;
-            
-       }
-          
-      }
-       
-       
-      return view('admin.reports_delete',compact('deleted_data'));
-  }
-  
-  public function delete_company(){
-    //     $company = CompanyDetails::all();
-    //     echo "<pre>";
-    //   print_r($company);die;
-      return view('admin.company_delete');
-      
-  }
-      
-  
-  
-  
+// 
 
+  
+  public function delete_report(){
+        $data = Report::select('reports.*', 'custom_title.title','locations.parent_location','sub_location.sub_location','sub_location.id as sub_id')
+            ->join('locations' , 'locations.id', '=', 'reports.main_location')
+            ->join('custom_title', 'custom_title.id', '=', 'reports.report_title')
+            ->join('sub_location', 'reports.sub_location', '=', 'sub_location.id')
+             ->where('is_deleted', 1)
+            ->with('users')->get()->toArray();
+   
+    
+      return view('admin.reports_delete',compact('data'));
+  }
+  
+  
+  
+public function delete_company(){
+     $login = Session::get('data');
+      $sublocation_admin = DB::table('sub_location')->select('id','sub_location')->get()->toArray(); 
+    
+        // $company_data = CompanyDetails::where('is_deleted', 1)->get()->toArray();
+           if($login['type']=='admin'){ 
+                $get_locations = Location::get()->unique('parent_location')->toArray();      
+                $final_location = CompanyDetails::where('company_details.is_deleted', 1)->get();
+                // echo "<pre>";
+                // print_r($final_location);die;
+                
+            }
+            else{
+              $get_locations = Location::get()->unique('parent_location')->toArray();      
+              $final_location = CompanyDetails::where('company_details.is_deleted', 1)->get();
+            }
+            
+            $locations=[];
+            $final_data =[];
+            $sub_locations =[];
+            
+            foreach ($final_location as $location) {
+       
+                $final_array['id']= $location->id;
+                $final_array['company_name']= $location->company_name;
+                $final_array['description']= $location->description;
+                $final_array['sub_location']= $location->sub_location;
+                $details = json_decode($location->main_location);
+                $details1 = json_decode($location->sub_location); 
+                $locations = Location::select("parent_location")
+                    ->whereIn('id', $details)
+                    ->get()->toArray();   
+                    
+                 $sub_locations = DB::table('sub_location')->select('sub_location')
+                    ->whereIn('id', $details1)
+                    ->get()->toArray(); 
+                $final_array['location'] = collect($locations)->pluck('parent_location')->implode(',');
+             
+                 $final_array['sub_location'] = collect($sub_locations)->pluck('sub_location')->implode(',');
+                  
+                  array_push($final_data,$final_array);
+              
+               
+            }    
+     
+      
+      
+      return view('admin.company_delete',compact('final_data','sublocation_admin','get_locations','location'));
+      
+  }
+ 
 }
 
 
