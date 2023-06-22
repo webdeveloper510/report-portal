@@ -18,8 +18,8 @@
                         <li class="sidebar-item" style="{{session('data')['type']=='admin' ? 'display:block':'display:none'}}"><a href="#" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi me-2 mdi-bank"></i><span class="hide-menu">Log</span>
                         
                         </a><ul class="submenu collapse ps-4">
-                			<li "sidebar-item"><a class="nav-link" href="<?php echo URL::to('/'); ?>/report_delete">Report</a></li>
-                			<li "sidebar-item"><a class="nav-link" href="<?php echo URL::to('/'); ?>/company_delete">Company </a></li>
+                			<li "sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo URL::to('/'); ?>/report_delete">Report</a></li>
+                			<li "sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo URL::to('/'); ?>/company_delete">Company </a></li>
                 		
 		                </ul>
 		                
@@ -41,22 +41,5 @@
                 <!-- End Sidebar navigation -->
             </div>
             <!-- End Sidebar scroll-->
-            <div class="sidebar-footer">
-                <div class="row">
-                    <!-- <div class="col-4 link-wrap"> -->
-                        <!-- item-->
-                        <!-- <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Settings"><i
-                                class="ti-settings"></i></a> -->
-                    <!-- </div> -->
-                    <!-- <div class="col-4 link-wrap"> -->
-                        <!-- item-->
-                        <!-- <a href="" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i
-                                class="mdi mdi-gmail"></i></a> -->
-                    <!-- </div> -->
-                    <div class="col-12 link-wrap">
-                        <!-- item-->
-                       <a href="<?php echo URL::to('/'); ?>/logout" class="nav-link dropdown-toggle text-muted waves-effect waves-dark "><i class="mdi mdi-power"></i></a>
-                    </div>
-                </div>
-            </div>
+
         </aside>

@@ -394,7 +394,7 @@
                                        
                                         <tr>
                                             <td>{{$location['parent_location']}}</td>
-                                            <td>{{$location['company_name']}}</td>
+                                            <td>@isset($location['company_name']) {{$location['company_name']}} @endisset</td>
                                             <!--<td>{{$location['description']}}</td>  -->
                                            
                                             <td>

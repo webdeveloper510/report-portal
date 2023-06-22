@@ -72,6 +72,35 @@ var base_url =  window.location.origin+'/report-portal';
       });
   });
   
+  
+  /*----------------------------------------------------------------------------Send Email---------------------------------*/
+  
+  var base_url =  window.location.origin+'/report-portal';
+    $('#sendEmail').on('submit', function(event){
+      event.preventDefault();
+      var url = base_url+'/email'
+ $.ajaxSetup({
+        headers:
+        {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+      $.ajax({
+          url: url,
+          method: 'POST',
+          data:$(this).serialize(),
+          success:function(response)
+          {
+              console.log(response);
+               $('.btn-close').trigger('click');
+
+          },
+          error: function(response) {
+              //$('.error').remove();
+          }
+      });
+  });
+  
    function get_shift(){
       $.ajaxSetup({
         headers:
@@ -591,13 +620,19 @@ function showSublocation(data){
 function showCompanyLocation(a){
     var id = $(a).val();
     console.log(id);
-    var text =$(a).find("option:selected").text()
-    var url = base_url+'/get_location/'+id;
+    let array= [];
+    var text =$(a).find("option:selected").each(function(){
+    array.push($(this).text());
+  });
+     console.log(array);
+    var url = base_url+'/get_location/'+array;
+    
     $.ajax({
       url: url,
       type:"GET",
 
       success:function(response){ 
+         // console.log(response);return false;
          $(a).closest("form").find('#main_location').empty();
          $(a).closest("form").find('#main_location').append("<option value=''>Choose Main Location</option>");
           $(a).closest("form").find('.location_id').empty();
@@ -608,7 +643,9 @@ function showCompanyLocation(a){
          
               $(a).closest("form").find('.company_sublocations').empty();
          $(a).closest("form").find('.company_sublocations').append("<option value=''>Choose Sub Location</option>");
+         console.log(response.location);
          for(let i=0; i<response.location.length;i++){
+             //console.log(response.location[i][0].id)
         $(a).closest("form").find('#main_location')
          .append($("<option></option>")
                     .attr("value", response.location[i][0].id)
@@ -623,8 +660,8 @@ function showCompanyLocation(a){
          
             for(let j=0; j<response.sub_location[i].length; j++){
               
-           $(a).closest("form").find('.company_sublocation')
-               .append($("<option></option>")
+          $(a).closest("form").find('.company_sublocation')
+              .append($("<option></option>")
                     .attr("value", response.sub_location[i][j].id)
                     .text(response.sub_location[i][j].sub_location)); 
             }       
@@ -653,51 +690,67 @@ function showCompanyLocation(a){
 }
 
 //----------------------------------------------reports----------------------------------------//
-function get_address(a){
-    var id = $(a).val();
-    console.log(id);
-    var url = base_url+'/get_address/'+id;
+// function get_address(a){
+//     var id = $(a).val();
+//     console.log(id);
+//     var url = base_url+'/get_address/'+id;
     
-     $.ajaxSetup({
-        headers:
-        {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $.ajax({
-      url: url,
-      type:"GET",
+//      $.ajaxSetup({
+//         headers:
+//         {
+//           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         }
+//     });
+//     $.ajax({
+//       url: url,
+//       type:"GET",
 
-      success:function(response){
-         //console.log(response);
-         if(response.locations.length > 0){
-         $(a).closest("form").find('.sub_location').html('');
-         $(a).closest("form").find('.sub_location').append(`<option value="">Choose Sub Location</option>`)
-        var add = response.locations[0].address;
-          for(let i=0;i<response.locations.length;i++){
-              $(a).closest("form").find('.sub_location').append(`<option value="${response.locations[i].sub_id}">
-                ${response.locations[i].sub_location}
-                </option>`);
-            }
-         $(a).closest("form").find('.sub_location').append(`<option value="other">Other</option>`)
-         $("#remove_option option[value='other']").remove();
-          $("#multiple-checkboxes1 option[value='other']").remove();
+//       success:function(response){
+//          console.log(response);
+//          if(response.locations.length > 0){
+//          $(a).closest("form").find('.sub_location').html('');
+//          $(a).closest("form").find('.sub_location').append(`<option value="">Choose Sub Location</option>`)          
+//              $(a).closest("form").find('.company_sublocation').empty();
+//          $(a).closest("form").find('.company_sublocation').append("<option value=''>Choose Sub Location</option>");             
+//               $(a).closest("form").find('.company_sublocations').empty();
+//          $(a).closest("form").find('.company_sublocations').append("<option value=''>Choose Sub Location</option>");
+//         var add = response.locations[0].address;
+//           for(let i=0;i<response.locations.length;i++){
+//               $(a).closest("form").find('.sub_location').append(`<option value="${response.locations[i].sub_id}">
+//                 ${response.locations[i].sub_location}
+//                 </option>`);
+                
+//         //           $(a).closest("form").find('.company_sublocation')
+//         //       .append($("<option></option>")
+//         //             .attr("value", response.locations[i].sub_id)
+//         //             .text(response.locations[i].sub_location)); 
+                    
+//         //              $(a).closest("form").find('.company_sublocations')
+//         //  .append($("<option></option>")
+//         //             .attr("value", response.locations[i].id)
+//         //             .text(response.locations[i].sub_location))
+//             }
+//          $(a).closest("form").find('.sub_location').append(`<option value="other">Other</option>`)
+//          $("#remove_option option[value='other']").remove();
+//           $("#multiple-checkboxes1 option[value='other']").remove();
+//             //   $(a).closest("form").find('.company_sublocation').multiselect('rebuild');
+//             //  $(a).closest("form").find('.company_sublocations').multiselect('rebuild');
       
-         }
+//          }
          
-         else
-           $(a).closest("form").find('.sub_location option').remove();
+//          else
+//           $(a).closest("form").find('.sub_location option').remove();
            
-         $(a).closest("form").find('.sub_location').multiselect('rebuild');
+//          $(a).closest("form").find('.sub_location').multiselect('rebuild');
 
       
-      },
-       error: function(response) {
+//       },
+//       error: function(response) {
       
-      },
-      });
+//       },
+//       });
 
-    }
+//     }
     
     
 //     function get_report_address(a){

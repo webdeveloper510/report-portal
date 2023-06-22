@@ -50,7 +50,7 @@ Route::get('report_title',[AdminController::class, 'report_title']);
 Route::post('insert_title', [AdminController::class, 'insert_title']);
 Route::post('edit_title/', [AdminController::class, 'edit_title']);
 Route::get('/delete_title/{id}', [AdminController::class, 'delete_title']);
-Route::get('/delete_data/{id}/{table}', [AdminController::class, 'delete_data']);
+Route::get('/delete_data/{id}/{table}', [AdminController::class, 'delete_data']);       
 Route::post('insert_activity', [AdminController::class, 'insert_activity']);
 Route::get('report_view/{id}',[AdminController::class, 'report_view']);
 Route::get('report_date',[AdminController::class, 'report_date']);
@@ -63,7 +63,7 @@ Route::post('company_post_details', [AdminController::class, 'company_details'])
 Route::get('company_details',[AdminController::class, 'get_company']);
 Route::post('edit_company',[AdminController::class, 'update_company']);
 Route::get('show_info/{id}',[AdminController::class, 'show_access']);
-Route::get('get_location/{id}',[AdminController::class, 'get_location']);
+Route::get('get_location/{text}',[AdminController::class, 'get_location']);
 Route::post('assign-client', [AdminController::class,'AssignValueToClient']);
 Route::post('sub_location', [AdminController::class,'sub_location']);
 Route::get('get_report_images', [AdminController::class,'get_report_images']);

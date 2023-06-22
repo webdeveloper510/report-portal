@@ -412,8 +412,8 @@ height: 100% !important;
                     </div>
                     <div class="col-md-4">
                         <div class="text-end">
-                            <p class="mb-0"><b>Start: </b>{{$filter_data['start_date']}}</p>
-                             <p class=""><b>End: </b>{{$filter_data['end_date']}}</p>
+                            <p class="mb-0"><b>Start: </b>{{$filter_data['start_date']}}, {{$filter_data['start_time']}}</p>
+                             <p class=""><b>End: </b>{{$filter_data['end_date']}}, {{$filter_data['end_time']}}</p>
                         </div>
                     </div>
                </div>
@@ -426,13 +426,13 @@ height: 100% !important;
         
                 @foreach($reports as $report)
                    <?php
-                   if($report['level']=='level1')
+                   if($report['level']=='Normal')
                        $level = 'Normal';
     
-                    if($report['level']=='level2')
+                    if($report['level']=='Attention Needed')
                         $level = 'Attention Needed';
     
-                    if($report['level']=='level3')
+                    if($report['level']=='Urgent')
                     $level = 'Urgent';
                     ?>
                     

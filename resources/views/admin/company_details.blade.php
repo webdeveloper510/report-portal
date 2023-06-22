@@ -498,7 +498,7 @@
                             <h4 class="card-title">Company Details </h4>
                             <!-- <h6 class="card-subtitle">Add class <code>.table</code></h6> -->
                             <div class="table-responsive">
-                                <table class="table user-table">
+                                <table id="reportTable" class="table user-table">
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Company Name</th>
@@ -597,6 +597,10 @@
     <!--Custom JavaScript -->
     <script src="<?php echo URL::to('/'); ?>/public/js/custom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> 
+    
+    
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script>
   @if(Session::has('message'))
   toastr.options =
@@ -615,6 +619,10 @@
   }
         toastr.error("{{ session('error') }}");
   @endif
+  
+    $(document).ready(function () {
+    $('#reportTable').DataTable();
+});
 </script>
 </body>
 </html>

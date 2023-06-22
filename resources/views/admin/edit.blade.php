@@ -308,7 +308,7 @@
                                         <div class="mb-3 row">
                                             <label for="categeory" class="col-sm- col-form-label">Categeory</label>
                                             <div class="col-sm-12">
-                                            <select class="form-select" name="categeory" aria-label="Default select example">
+                                            <select class="form-select" name="category" aria-label="Default select example">
                                                 <option value="">Select Categeory</option>
                                                  <option value="supervisor" {{$data['type']=='supervisor' ? 'selected' : ''}}>Supervisor</option>
                                                  <option value="dispatcher" {{$data['type']=='dispatcher' ? 'selected' : ''}}>Dispatcher</option>

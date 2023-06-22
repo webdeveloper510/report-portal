@@ -28,7 +28,6 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-
 <link rel="stylesheet" type="text/css" 
      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
@@ -242,6 +241,7 @@
         <!-- ============================================================== -->
         <!-- Start Topbar header -->
         <!-- ============================================================== -->
+         @include('admin.header')
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
@@ -317,18 +317,68 @@
                         </div>
                     </div>
                     
-                    <div class="col-md-6 d-flex col-4 align-self-center" style="{{ session('data')['type'] === 'admin' ? 'display:block;' : 'display:none !important;' }}">
+                    <div class="col-md-6 d-flex col-4 align-self-center" style="{{ session('data')['type'] !== 'client' ? 'display:block;' : 'display:none !important;'}}">  
                         <div class="text-end mx-auto upgrade-btn me-2">
                             <a href=""  data-bs-toggle="modal" data-bs-target="#add"
                                 class="btn btn-success d-none d-md-inline-block text-white" target="_blank">Add Report</a>
                         </div>
                          <div class="text-end end_shift ">
-                            <a href="" onclick="get_shift()"  data-bs-toggle="modal" data-bs-target=""
+                            <a href=""   data-bs-toggle="modal" data-bs-target="#exampleModal"
                                 class="btn btn-danger d-none d-md-inline-block text-white"  target="_blank">End Shift</a>  
                         </div>
                     </div>
 
                 </div>
+                
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">End Shift</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <form id="sendEmail" method="post">
+                              <div class="modal-body">
+                               <div class="">
+                                    <div class="mb-3">
+                                                    <label class="form-label">Start Date</label>
+                                                    <input type="date" name="start_date" class="form-control" >
+                                                    @if ($errors->has('start_date'))
+                                                            <span class="invalid feedback"role="alert">
+                                                                <strong>{{ $errors->first('start_date') }}.</strong>
+                                                            </span>
+                                                    @endif
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Start Time</label>
+                                                    <input type="time" name="start_time" class="form-control" >
+                                                   
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label  class="form-label">End Date</label>
+                                                    <input type="date" name="end_date" class="form-control" >
+                                                    @if ($errors->has('end_date'))
+                                                            <span class="invalid feedback"role="alert">
+                                                                <strong>{{ $errors->first('end_date') }}.</strong>
+                                                            </span>
+                                                    @endif
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">End Time</label>
+                                                    <input type="time" name="end_time" class="form-control" >
+                                                     
+                                                </div>
+                                                
+                                                <div class="text-center">
+                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                                </div>
+                                   </div>
+                                  </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
             </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
@@ -387,7 +437,7 @@
                                                   <select class="form-select"  name="level" aria-label="Default select example">
                                                     <option value="">Select Lavel</option>
                                                     <option  value="Normal">Normal</option>
-                                                    <option  value="Attention">Attention Needed</option>
+                                                    <option  value="Attention Needed">Attention Needed</option>
                                                     <option  value="Urgent">Urgent</option>
                                                   </select>
                                                   <span class="text-danger error-text level_err"></span>
@@ -557,7 +607,7 @@
                                                   <select class="form-select level"  name="level" aria-label="Default select example">
                                                     <option value="">Select Lavel</option>
                                                     <option  value="Normal">Normal</option>
-                                                    <option  value="Attention_Needed">Attention Needed</option>
+                                                    <option  value="Attention Needed">Attention Needed</option>
                                                     <option  value="Urgent">Urgent</option>
                                                   </select>
                                                    <span class="text-danger error-text level_err"></span>
@@ -628,7 +678,7 @@
                                         </div>
                                     </div>
                                 <div class="table-responsive">
-                                    <table class="table user-table">
+                                    <table id="reportTable" class="table user-table table-striped table-bordered w-100">
                                         <thead>
                                             <tr>
                                                 <th class="border-top-0">#</th>
@@ -672,13 +722,13 @@
                                                 <td >
                                                     <div class="d-flex">
                                                         <a href="" class="h3" data-bs-toggle="modal" data-bs-target="#edit" onclick="return runMyFunction({{json_encode($activity)}});">
-                                                            <i class="mdi mdi-pencil" style="{{(count($permissions) > 0 && $permissions[0]->edit_report==1) ||  session('data')['type'] == 'admin' ? '' : 'display:none !important'}}"></i>
+                                                            <i class="mdi mdi-pencil" style="{{(count($permissions) > 0 && $permissions[0]['edit_report']==1) ||  session('data')['type'] == 'admin' ? '' : 'display:none !important'}}"></i>
                                                         </a>
                                                         <a class="h3"  data-bs-toggle="modal" data-bs-target="#delete" onclick="return deleteData({{$activity['id']}});">
-                                                            <i class="mdi mdi-delete" style="{{(count($permissions) > 0 && $permissions[0]->delete_report==1) ||  session('data')['type'] == 'admin' ? '' : 'display:none !important'}}"></i>
+                                                            <i class="mdi mdi-delete" style="{{(count($permissions) > 0 && $permissions[0]['delete_report']==1) ||  session('data')['type'] == 'admin' ? '' : 'display:none !important'}}"></i>
                                                         </a>
                                                         <a class="h3"  href="{{ 'report_view/' . $activity['id'] }}" data-bs-toggle="modal">
-                                                            <i class="mdi mdi-eye" style="{{(count($permissions) > 0 && $permissions[0]->view_report==1) ||  session('data')['type'] == 'admin' ? '' : 'display:none !important'}}"></i>
+                                                            <i class="mdi mdi-eye" style="{{(count($permissions) > 0 && $permissions[0]['view_report']==1) ||  session('data')['type'] == 'admin' ? '' : 'display:none !important'}}"></i>
                                                             
                                                         </a>
                                                     </div>
@@ -835,6 +885,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     
    <script>
   @if(Session::has('message'))
@@ -854,6 +906,10 @@
   }
         toastr.error("{{ session('error') }}");
   @endif
+  
+  $(document).ready(function () {
+    $('#reportTable').DataTable();
+});
 </script>
 </body>
 </html>
