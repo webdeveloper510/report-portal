@@ -17,6 +17,7 @@ class CreateCompanyDetailsTable extends Migration
             $table->id();
             $table->string('company_name');
             $table->string('description');
+            $table->string('logo');
             $table->timestamps();
         });
     }

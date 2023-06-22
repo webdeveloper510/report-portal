@@ -442,7 +442,7 @@ height: 100% !important;
                         <div class="sub_header">
                             <div class="row g-0 mx-2">
                                     <div class="col-md-4">
-                                        <div class=""><p class="my-1">{{$report['report_date']}}, {{$report['report_time']}}</p></div>
+                                        <div class=""><p class="my-1">{{$report['report_date']}},{{$report['report_time']}}</p></div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="text-center"><p class="my-1"></p>{{$report['title']}}</div>

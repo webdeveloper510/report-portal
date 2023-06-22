@@ -15,7 +15,7 @@ use DB;
 use App\Mail\BulkEmail;
 use Illuminate\Support\Carbon; 
 use Session;
-use Mail;
+use App\Jobs\SendQueueEmail;
 use PDF;
 use Illuminate\Support\Facades\Validator;
 
@@ -166,8 +166,6 @@ class AdminController extends Controller
          return response()->json([
             'permision' => $infor
               ]);
-
-
     }
     
       public function get_location($text=''){
@@ -732,6 +730,7 @@ class AdminController extends Controller
         
                 
                 return view('admin.report_date',compact('reports','filter_data','report_image'));
+
                
             }            
 
@@ -1049,6 +1048,9 @@ public function edit_sublocation(Request $request){
 public function update_report_images(Request $request){
     
     $data = Report_image::find(1);
+    // echo "<pre>";
+    // print_r($data);
+    
     if($data)
     {
         $extension = $request->file->getClientOriginalName();
@@ -1068,9 +1070,6 @@ public function update_report_images(Request $request){
     }
            return redirect('get_report_images')->with('message', 'Report image set successfully !');   
     
-
-     
-     
   }
   
   public function get_sub_address($sub_id =0){
@@ -1176,6 +1175,7 @@ public function delete_company(){
   }
  
 }
+
 
 
 
